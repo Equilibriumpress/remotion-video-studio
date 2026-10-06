@@ -1,0 +1,92 @@
+{
+  "id": "premium-motion-demo",
+  "title": "Premium Motion System",
+  "template": "travel-story",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#10130F",
+    "foreground": "#FFF8EC",
+    "muted": "#CABFAF",
+    "accent": "#E9B86F"
+  },
+  "scenes": [
+    {
+      "id": "premium-hero",
+      "type": "hero-image",
+      "duration": 3.8,
+      "src": "/media/premium/forest.svg",
+      "kicker": "Premium motion",
+      "title": "Stories should move",
+      "subtitle": "Editorial layouts, cinematic motion and consistent transitions",
+      "motion": "slow-push",
+      "transition": "fade"
+    },
+    {
+      "id": "premium-split",
+      "type": "split-image",
+      "duration": 3.6,
+      "leftSrc": "/media/premium/forest.svg",
+      "rightSrc": "/media/premium/city.svg",
+      "title": "Contrast creates rhythm",
+      "caption": "Split-screen editorial scene",
+      "motion": "fade-rise",
+      "transition": "slide-left"
+    },
+    {
+      "id": "premium-quote",
+      "type": "quote",
+      "duration": 3.4,
+      "quote": "The template sets the visual language. The project supplies the story.",
+      "attribution": "Remotion Video Studio",
+      "motion": "drift-up",
+      "transition": "wipe"
+    },
+    {
+      "id": "premium-timeline",
+      "type": "timeline",
+      "duration": 4,
+      "title": "One project, a complete narrative",
+      "items": [
+        {"label": "Hook", "value": "0:00"},
+        {"label": "Context", "value": "0:04"},
+        {"label": "Evidence", "value": "0:08"},
+        {"label": "Payoff", "value": "0:12"}
+      ],
+      "transition": "slide-up"
+    },
+    {
+      "id": "premium-comparison",
+      "type": "comparison",
+      "duration": 3.3,
+      "title": "Browser-first production",
+      "left": {"label": "Video render in Actions", "value": "0 min"},
+      "right": {"label": "Local MP4 output", "value": "1080p"},
+      "motion": "pop",
+      "transition": "zoom"
+    },
+    {
+      "id": "premium-chart",
+      "type": "chart",
+      "duration": 4,
+      "title": "A data scene with motion",
+      "items": [
+        {"label": "Q1", "value": 42},
+        {"label": "Q2", "value": 58},
+        {"label": "Q3", "value": 76},
+        {"label": "Q4", "value": 91}
+      ],
+      "suffix": "%",
+      "transition": "fade"
+    },
+    {
+      "id": "premium-outro",
+      "type": "outro",
+      "duration": 2.8,
+      "title": "Built for richer stories",
+      "subtitle": "Motion presets + scene system + browser rendering",
+      "motion": "zoom-out",
+      "transition": "fade"
+    }
+  ]
+}
