@@ -90,3 +90,14 @@ Use these projects as composition references:
 Use `launch-hero`, `feature-grid`, and `cta` for product launches, app promos, research explainers, and high-energy intros.
 
 The visual language is: restrained particle fields, HUD-style corner brackets, scanner lines, staggered feature cards, and a focused CTA finale. Do not use every effect in every scene; preserve contrast between dense launch scenes and quieter explanatory scenes.
+
+
+### Travel-route motion language
+
+For travel stories, prefer `route-map` with a deliberate map style:
+
+- `clean` for product/data contexts.
+- `watercolor` for editorial travel and place storytelling.
+- `flow` for energetic journeys and abstract movement.
+
+Route points may use `icon`: `pin`, `temple`, `nature`, `station`, or `city`. Use `detail` for a short time, distance, or contextual cue. The route engine performs a subtle zoom-out while drawing the line and moving the active marker.
