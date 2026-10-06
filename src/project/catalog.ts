@@ -1,12 +1,14 @@
 import demo from '../../projects/demo.json';
 import travelDemo from '../../projects/travel-demo.json';
 import dataDemo from '../../projects/data-demo.json';
+import renderTest from '../../projects/render-test.json';
 import {parseProject, type VideoProject} from './schema';
 
 export const projects: VideoProject[] = [
   parseProject(demo),
   parseProject(travelDemo),
   parseProject(dataDemo),
+  parseProject(renderTest),
 ];
 
 export const getProject = (id: string) =>
