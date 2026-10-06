@@ -12,12 +12,14 @@ const sceneAssets = (scene: VideoScene): string[] => {
   switch (scene.type) {
     case 'image':
     case 'hero-image':
+    case 'photo-mask':
     case 'video':
     case 'caption-video':
       return [scene.src];
     case 'split-image':
       return [scene.leftSrc, scene.rightSrc];
     case 'map-overlay':
+    case 'lower-third':
       return scene.src ? [scene.src] : [];
     default:
       return [];
