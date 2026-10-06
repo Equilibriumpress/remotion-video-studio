@@ -12,106 +12,120 @@
   },
   "scenes": [
     {
+      "id": "kyoto-kinetic",
+      "type": "kinetic-title",
+      "duration": 2.9,
+      "text": "Kyoto before the crowds",
+      "kicker": "06:00 · Japan",
+      "style": "word-reveal",
+      "align": "left",
+      "highlight": "Kyoto",
+      "transition": "fade"
+    },
+    {
       "id": "kyoto-open",
       "type": "hero-image",
-      "duration": 4.4,
+      "duration": 4.1,
       "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg/1280px-JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg",
-      "kicker": "Kyoto · early morning",
-      "title": "Kyoto before the crowds",
-      "subtitle": "Four places. One quiet morning.",
+      "kicker": "Kiyomizu-dera",
+      "title": "Start while the city is still quiet",
+      "subtitle": "A slower edit for a slower morning.",
       "motion": "slow-push",
       "transition": "fade"
     },
     {
-      "id": "gion-street",
-      "type": "image",
-      "duration": 3.8,
+      "id": "kyoto-route",
+      "type": "route-map",
+      "duration": 4.4,
+      "title": "One morning across Kyoto",
+      "distance": "4 stops",
+      "points": [
+        {
+          "x": 0.2,
+          "y": 0.68,
+          "label": "Gion",
+          "detail": "06:15"
+        },
+        {
+          "x": 0.38,
+          "y": 0.56,
+          "label": "Kiyomizu",
+          "detail": "07:00"
+        },
+        {
+          "x": 0.68,
+          "y": 0.34,
+          "label": "Ryōan-ji",
+          "detail": "08:30"
+        },
+        {
+          "x": 0.82,
+          "y": 0.56,
+          "label": "Arashiyama",
+          "detail": "10:00"
+        }
+      ],
+      "transition": "slide-up"
+    },
+    {
+      "id": "kyoto-gion-mask",
+      "type": "photo-mask",
+      "duration": 3.7,
       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Streets_of_Gion%2C_Kyoto_-_Gion7712.jpg/1920px-Streets_of_Gion%2C_Kyoto_-_Gion7712.jpg",
-      "caption": "06:15 · Walk Gion while the lanes are still quiet",
-      "motion": "pan-left",
-      "transition": "slide-left"
+      "title": "Gion, before the shutters rise",
+      "caption": "Editorial window mask",
+      "shape": "window",
+      "treatment": "warm",
+      "frame": "offset",
+      "transition": "fade"
     },
     {
-      "id": "quiet-line",
-      "type": "quote",
-      "duration": 3,
-      "quote": "The city feels different before the day starts moving.",
-      "attribution": "Kyoto travel reel",
-      "motion": "drift-up",
-      "transition": "wipe"
-    },
-    {
-      "id": "temple-contrast",
+      "id": "kyoto-contrast",
       "type": "split-image",
-      "duration": 4,
+      "duration": 3.8,
       "leftSrc": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Ninna-ji_and_Ryoan-ji%2C_Kyoto_-_Ryoanji7753.jpg/1280px-Ninna-ji_and_Ryoan-ji%2C_Kyoto_-_Ryoanji7753.jpg",
       "rightSrc": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg/1280px-JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg",
       "title": "Stillness, then scale",
       "caption": "Ryōan-ji / Kiyomizu-dera",
       "motion": "fade-rise",
-      "transition": "fade"
+      "transition": "wipe"
     },
     {
-      "id": "start-time",
-      "type": "stat",
+      "id": "kyoto-callout",
+      "type": "callout",
       "duration": 3,
       "value": "06:00",
-      "label": "Start early enough to hear the city before you hear the crowds",
-      "motion": "pop",
-      "transition": "slide-up"
+      "title": "Start before the buses",
+      "body": "Use the first hours for the busiest districts, then slow the pace as the city fills.",
+      "transition": "slide-left"
     },
     {
-      "id": "arashiyama",
-      "type": "hero-image",
-      "duration": 4.2,
+      "id": "kyoto-arashiyama-mask",
+      "type": "photo-mask",
+      "duration": 4,
       "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/JP_%E6%97%A5%E6%9C%AC_Japan_tourism_%E4%BA%AC%E9%83%BD_Kyoto_%E5%B5%90%E5%B1%B1%E7%AB%B9%E6%9E%97_Arashiyama_Bamboo_Grove_n_Sagano_Bamboo_PathSagaogurayama_Tabuchiyamacho_Ukyo_Ward_Kyoto_City_June_2026_R12S_02.jpg/1920px-thumbnail.jpg",
-      "kicker": "08:00 · Arashiyama",
-      "title": "Let the bamboo fill the frame",
-      "subtitle": "Longer shots. Less text. More room for the image.",
-      "motion": "slow-push",
+      "title": "Let the image breathe",
+      "caption": "Arashiyama · later in the morning",
+      "shape": "portrait",
+      "treatment": "natural",
+      "frame": "thin",
       "transition": "zoom"
     },
     {
-      "id": "morning-route",
-      "type": "timeline",
-      "duration": 4.6,
-      "title": "A morning with room to breathe",
-      "items": [
-        {
-          "label": "Gion",
-          "value": "06:15"
-        },
-        {
-          "label": "Kiyomizu-dera",
-          "value": "07:00"
-        },
-        {
-          "label": "Ryōan-ji",
-          "value": "08:30"
-        },
-        {
-          "label": "Arashiyama",
-          "value": "10:00"
-        }
-      ],
-      "motion": "fade-rise",
-      "transition": "slide-up"
-    },
-    {
-      "id": "ryoan-close",
-      "type": "image",
-      "duration": 4,
-      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Ninna-ji_and_Ryoan-ji%2C_Kyoto_-_Ryoanji7753.jpg/1280px-Ninna-ji_and_Ryoan-ji%2C_Kyoto_-_Ryoanji7753.jpg",
-      "caption": "Leave space in the edit. Kyoto does not need constant motion.",
-      "motion": "zoom-out",
+      "id": "kyoto-quote",
+      "type": "quote",
+      "duration": 3,
+      "quote": "Kyoto does not need constant motion.",
+      "attribution": "Showcase edit principle",
+      "motion": "drift-up",
       "transition": "fade"
     },
     {
       "id": "kyoto-end",
       "type": "outro",
-      "duration": 3.4,
+      "duration": 2.7,
       "title": "Kyoto, slowly.",
-      "subtitle": "A premium travel-story showcase",
+      "subtitle": "Photography + SVG motion + browser rendering",
       "motion": "fade-rise",
       "transition": "fade"
     }
