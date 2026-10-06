@@ -105,6 +105,59 @@ const chartScene = baseScene.extend({
   suffix: z.string().optional(),
 });
 
+const photoMaskScene = baseScene.extend({
+  type: z.literal('photo-mask'),
+  src: z.string().min(1),
+  title: z.string().optional(),
+  caption: z.string().optional(),
+  shape: z.enum(['portrait', 'circle', 'window']).default('portrait'),
+});
+
+const kineticTitleScene = baseScene.extend({
+  type: z.literal('kinetic-title'),
+  text: z.string().min(1),
+  kicker: z.string().optional(),
+});
+
+const chapterNumberScene = baseScene.extend({
+  type: z.literal('chapter-number'),
+  number: z.string().min(1),
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+});
+
+const lowerThirdScene = baseScene.extend({
+  type: z.literal('lower-third'),
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  src: z.string().optional(),
+});
+
+const calloutScene = baseScene.extend({
+  type: z.literal('callout'),
+  title: z.string().min(1),
+  body: z.string().min(1),
+  value: z.string().optional(),
+});
+
+const lineChartScene = baseScene.extend({
+  type: z.literal('line-chart'),
+  title: z.string().min(1),
+  items: z.array(z.object({
+    label: z.string().min(1),
+    value: z.number(),
+  })).min(2).max(10),
+  suffix: z.string().optional(),
+});
+
+const donutChartScene = baseScene.extend({
+  type: z.literal('donut-chart'),
+  title: z.string().min(1),
+  value: z.number().min(0).max(100),
+  label: z.string().min(1),
+  suffix: z.string().default('%'),
+});
+
 const videoScene = baseScene.extend({
   type: z.literal('video'),
   src: z.string().min(1),
@@ -146,6 +199,13 @@ export const sceneSchema = z.discriminatedUnion('type', [
   timelineScene,
   comparisonScene,
   chartScene,
+  photoMaskScene,
+  kineticTitleScene,
+  chapterNumberScene,
+  lowerThirdScene,
+  calloutScene,
+  lineChartScene,
+  donutChartScene,
   videoScene,
   captionVideoScene,
   outroScene,

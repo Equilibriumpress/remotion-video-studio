@@ -3,6 +3,7 @@ import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from
 import type {VideoProject, VideoScene} from '../project/schema';
 import {resolveAsset} from '../project/assets';
 import {motionValues, transitionValues} from './motion';
+import {SvgSceneFrame} from './scenes/SvgScenes';
 
 type Props = {
   scene: VideoScene;
@@ -132,6 +133,18 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
     config: {damping: 18, stiffness: 115, mass: 0.8},
     durationInFrames: Math.max(12, Math.round(fps * 0.75)),
   });
+
+  if (
+    scene.type === 'photo-mask' ||
+    scene.type === 'kinetic-title' ||
+    scene.type === 'chapter-number' ||
+    scene.type === 'lower-third' ||
+    scene.type === 'callout' ||
+    scene.type === 'line-chart' ||
+    scene.type === 'donut-chart'
+  ) {
+    return <SvgSceneFrame scene={scene} project={project} />;
+  }
 
   const common = (
     <>
