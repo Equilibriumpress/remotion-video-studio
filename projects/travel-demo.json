@@ -1,0 +1,47 @@
+{
+  "id": "travel-story-demo",
+  "title": "48 Hours in Kyoto",
+  "template": "travel-story",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#17120F",
+    "foreground": "#FFF9F0",
+    "muted": "#C9BEB1",
+    "accent": "#E5B56E"
+  },
+  "scenes": [
+    {
+      "id": "travel-intro",
+      "type": "title",
+      "duration": 2.5,
+      "title": "48 Hours in Kyoto",
+      "subtitle": "A calm route through temples, lanes and gardens"
+    },
+    {
+      "id": "travel-text",
+      "type": "text",
+      "duration": 3,
+      "headline": "Start before the crowds",
+      "body": "Begin in Higashiyama early, then move north as the city wakes."
+    },
+    {
+      "id": "travel-list",
+      "type": "list",
+      "duration": 3.5,
+      "title": "Three anchors",
+      "items": [
+        "Kiyomizu-dera at opening",
+        "Philosopher’s Path before lunch",
+        "Gion around dusk"
+      ]
+    },
+    {
+      "id": "travel-outro",
+      "type": "outro",
+      "duration": 2,
+      "title": "Kyoto, slowly",
+      "subtitle": "Travel story template"
+    }
+  ]
+}
