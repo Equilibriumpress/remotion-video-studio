@@ -67,6 +67,7 @@ export const RenderPanel = ({project}: Props) => {
           width: dimensions.width,
           height: dimensions.height,
           calculateMetadata: null,
+          defaultProps: {project},
           id: project.id,
         },
         inputProps: {project},
