@@ -1,0 +1,57 @@
+{
+  "id": "render-test",
+  "title": "Browser Render Test",
+  "template": "explainer",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#0B0D10",
+    "foreground": "#F7F8FA",
+    "muted": "#AEB6C2",
+    "accent": "#78E08F"
+  },
+  "scenes": [
+    {
+      "id": "test-title",
+      "type": "title",
+      "duration": 1,
+      "title": "Render test",
+      "subtitle": "Title scene"
+    },
+    {
+      "id": "test-image",
+      "type": "image",
+      "duration": 1,
+      "src": "/media/render-test/pattern.svg",
+      "caption": "Local image asset"
+    },
+    {
+      "id": "test-text",
+      "type": "text",
+      "duration": 1,
+      "headline": "Text scene",
+      "body": "Checks typography and wrapping."
+    },
+    {
+      "id": "test-stat",
+      "type": "stat",
+      "duration": 1,
+      "value": "30",
+      "label": "frames per second"
+    },
+    {
+      "id": "test-list",
+      "type": "list",
+      "duration": 1,
+      "title": "List scene",
+      "items": ["One", "Two", "Three"]
+    },
+    {
+      "id": "test-outro",
+      "type": "outro",
+      "duration": 1,
+      "title": "All scene types",
+      "subtitle": "End of browser test"
+    }
+  ]
+}
