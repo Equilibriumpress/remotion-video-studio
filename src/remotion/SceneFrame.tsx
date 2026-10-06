@@ -87,6 +87,7 @@ const ImageLayer = ({
 }) => (
   <g opacity={opacity} transform={transform}>
     <image
+      crossOrigin="anonymous"
       href={resolveAsset(src)}
       x={-width * 0.06}
       y={-height * 0.06}
@@ -266,8 +267,8 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
       <>
         <rect width={width} height={height} fill={background} />
         <g opacity={motion.opacity}>
-          <image href={resolveAsset(scene.leftSrc)} x={0} y={0} width={panelWidth} height={height} preserveAspectRatio="xMidYMid slice" />
-          <image href={resolveAsset(scene.rightSrc)} x={panelWidth + gap} y={0} width={panelWidth} height={height} preserveAspectRatio="xMidYMid slice" />
+          <image crossOrigin="anonymous" href={resolveAsset(scene.leftSrc)} x={0} y={0} width={panelWidth} height={height} preserveAspectRatio="xMidYMid slice" />
+          <image crossOrigin="anonymous" href={resolveAsset(scene.rightSrc)} x={panelWidth + gap} y={0} width={panelWidth} height={height} preserveAspectRatio="xMidYMid slice" />
         </g>
         <rect width={width} height={height} fill="rgba(0,0,0,0.2)" />
         {scene.title ? (

@@ -30,6 +30,7 @@ const sceneAssets = (scene: VideoScene): AssetRef[] => {
 const loadImage = (source: string) =>
   new Promise<boolean>((resolve) => {
     const image = new Image();
+    image.crossOrigin = 'anonymous';
     image.onload = () => resolve(true);
     image.onerror = () => resolve(false);
     image.src = source;
@@ -56,8 +57,16 @@ export const checkProjectAssets = async (project: VideoProject): Promise<AssetCh
   for (const ref of unique) {
     const resolved = resolveAsset(ref.source);
     const external = /^https?:\/\//.test(ref.source) && !resolved.startsWith(window.location.origin);
+    const trustedRemote = external && (() => {
+      try {
+        const hostname = new URL(ref.source).hostname;
+        return hostname === 'upload.wikimedia.org' || hostname === 'thumb.wikimedia.org';
+      } catch {
+        return false;
+      }
+    })();
 
-    if (external) {
+    if (external && !trustedRemote) {
       checks.push({
         source: ref.source,
         ok: false,
