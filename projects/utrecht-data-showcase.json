@@ -53,29 +53,36 @@
       "transition": "zoom"
     },
     {
-      "id": "u-line",
-      "type": "line-chart",
-      "duration": 4.6,
-      "title": "Illustrative quarterly trend",
+      "id": "u-bar-line",
+      "type": "bar-line-chart",
+      "duration": 5,
+      "title": "Two signals, one story",
       "items": [
         {
           "label": "Q1",
-          "value": 42
+          "bar": 42,
+          "line": 35
         },
         {
           "label": "Q2",
-          "value": 49
+          "bar": 49,
+          "line": 46
         },
         {
           "label": "Q3",
-          "value": 61
+          "bar": 61,
+          "line": 59
         },
         {
           "label": "Q4",
-          "value": 68
+          "bar": 68,
+          "line": 74
         }
       ],
-      "suffix": "%",
+      "barLabel": "Illustrative completion",
+      "lineLabel": "Illustrative demand index",
+      "barSuffix": "%",
+      "lineSuffix": "",
       "transition": "slide-up"
     },
     {
