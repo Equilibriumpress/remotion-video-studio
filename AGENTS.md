@@ -40,7 +40,7 @@ Prefer scene + motion + transition composition over custom React for content vid
 
 ### Scene library
 
-Use: `title`, `image`, `hero-image`, `split-image`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `video`, `caption-video`, `outro`.
+Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `video`, `caption-video`, `outro`.
 
 ### Motion presets
 
@@ -68,3 +68,18 @@ For `kinetic-title`, choose `style`: `stacked`, `word-reveal`, or `oversize`. Us
 For `photo-mask`, choose `shape`: `portrait`, `circle`, or `window`. Optional `treatment` values are `natural`, `warm`, and `dark`. Optional `frame` values are `none`, `thin`, and `offset`.
 
 Prefer restrained combinations. One strong mask or kinetic treatment per sequence is usually enough.
+
+
+### Lightweight SVG maps
+
+Use `route-map`, `location-card`, `progress-route`, and `map-overlay` for stylized geographic motion when a live basemap is unnecessary. Coordinates use normalized 0–1 scene space. Keep routes to a small number of meaningful stops and use `contextPath` only for lightweight SVG geography.
+
+Do not introduce map tiles or WebGL into these scenes.
+
+### Showcase references
+
+Use these projects as composition references:
+
+- `kyoto-premium-showcase` for photography + route + editorial masks.
+- `utrecht-data-showcase` for pure SVG data storytelling. Its values are explicitly synthetic demo data.
+- `studio-product-showcase` for kinetic typography and explainer pacing.
