@@ -12,23 +12,42 @@
   },
   "scenes": [
     {
-      "id": "p-title",
-      "type": "kinetic-title",
-      "duration": 2.8,
-      "text": "Prompt to MP4",
-      "kicker": "REMOTION VIDEO STUDIO",
-      "style": "word-reveal",
-      "align": "center",
-      "highlight": "MP4",
+      "id": "p-launch",
+      "type": "launch-hero",
+      "duration": 3.2,
+      "eyebrow": "Remotion Video Studio",
+      "title": "Prompt to MP4",
+      "subtitle": "A browser-first video system built from reusable motion components.",
+      "badge": "Render locally",
       "transition": "fade"
     },
     {
-      "id": "p-chapter",
-      "type": "chapter-number",
-      "duration": 2.6,
-      "number": "01",
-      "title": "Content stays data",
-      "subtitle": "Templates stay reusable",
+      "id": "p-features",
+      "type": "feature-grid",
+      "duration": 5,
+      "title": "One system, many video modes",
+      "items": [
+        {
+          "title": "SVG Motion",
+          "body": "Browser-safe graphics",
+          "icon": "spark"
+        },
+        {
+          "title": "Travel Routes",
+          "body": "Maps without tiles",
+          "icon": "route"
+        },
+        {
+          "title": "Data Stories",
+          "body": "Animated charts",
+          "icon": "chart"
+        },
+        {
+          "title": "Video & Audio",
+          "body": "Remotion media",
+          "icon": "play"
+        }
+      ],
       "transition": "slide-up"
     },
     {
@@ -82,30 +101,12 @@
       "transition": "wipe"
     },
     {
-      "id": "p-lower",
-      "type": "lower-third",
+      "id": "p-cta",
+      "type": "cta",
       "duration": 3,
-      "title": "Browser-first renderer",
-      "subtitle": "Remotion Player + web-renderer",
-      "transition": "slide-left"
-    },
-    {
-      "id": "p-donut",
-      "type": "donut-chart",
-      "duration": 3.3,
-      "title": "Reusable scene system",
-      "value": 100,
-      "label": "project-driven composition",
-      "suffix": "%",
-      "transition": "fade"
-    },
-    {
-      "id": "p-end",
-      "type": "outro",
-      "duration": 2.5,
       "title": "Build the system once.",
-      "subtitle": "Then make videos from data.",
-      "motion": "fade-rise",
+      "subtitle": "Then make the next video from data.",
+      "action": "Render in browser",
       "transition": "fade"
     }
   ]
