@@ -63,11 +63,38 @@ export const SceneFrame = ({scene, project}: Props) => {
   const titleSize = Math.round(width * (height > width ? 0.095 : 0.064));
   const bodySize = Math.round(width * (height > width ? 0.045 : 0.03));
   const {background, foreground, muted, accent} = project.theme;
+  const isTravel = project.template === 'travel-story';
+  const isData = project.template === 'data-story';
+  const displayFont = isTravel ? 'Georgia, serif' : 'Inter, Arial, sans-serif';
 
   const common = (
     <>
       <rect width={width} height={height} fill={background} />
-      <rect x={pad} y={pad} width={Math.round(width * 0.08)} height={8} rx={4} fill={accent} />
+      {isData ? (
+        <g opacity={0.12}>
+          {Array.from({length: 9}).map((_, index) => (
+            <line
+              key={index}
+              x1={pad}
+              y1={pad + index * ((height - pad * 2) / 8)}
+              x2={width - pad}
+              y2={pad + index * ((height - pad * 2) / 8)}
+              stroke={accent}
+              strokeWidth={1}
+            />
+          ))}
+        </g>
+      ) : null}
+      {isTravel ? (
+        <>
+          <circle cx={width * 0.82} cy={height * 0.19} r={width * 0.19} fill="none" stroke={accent} strokeWidth={2} opacity={0.35} />
+          <text x={pad} y={pad + 16} fill={accent} fontFamily="Inter, Arial, sans-serif" fontSize={Math.round(bodySize * 0.55)} fontWeight={800} letterSpacing={4}>
+            TRAVEL STORY
+          </text>
+        </>
+      ) : (
+        <rect x={pad} y={pad} width={Math.round(width * 0.08)} height={8} rx={4} fill={accent} />
+      )}
     </>
   );
 
@@ -87,7 +114,7 @@ export const SceneFrame = ({scene, project}: Props) => {
     return (
       <svg viewBox={`0 0 ${width} ${height}`} width="100%" height="100%" opacity={fade}>
         {common}
-        <text x={pad} y={height * 0.48} fill={accent} fontFamily="Inter, Arial, sans-serif" fontSize={Math.round(titleSize * 2.1)} fontWeight={800}>
+        <text x={pad} y={height * 0.48} fill={accent} fontFamily={displayFont} fontSize={Math.round(titleSize * (isData ? 2.35 : 2.1))} fontWeight={800}>
           {scene.value}
         </text>
         <Lines lines={wrap(scene.label, 28)} x={pad} y={height * 0.58} fontSize={bodySize} lineHeight={bodySize * 1.35} fill={foreground} />
@@ -131,7 +158,9 @@ export const SceneFrame = ({scene, project}: Props) => {
   return (
     <svg viewBox={`0 0 ${width} ${height}`} width="100%" height="100%" opacity={fade}>
       {common}
-      <Lines lines={wrap(title, 20)} x={pad} y={height * 0.43} fontSize={titleSize} lineHeight={titleSize * 1.06} fill={foreground} />
+      <g style={{fontFamily: displayFont}}>
+        <Lines lines={wrap(title, 20)} x={pad} y={height * 0.43} fontSize={titleSize} lineHeight={titleSize * 1.06} fill={foreground} />
+      </g>
       {subtitle ? (
         <Lines lines={wrap(subtitle, 34)} x={pad} y={height * 0.68} fontSize={bodySize} lineHeight={bodySize * 1.35} fill={muted} weight={500} />
       ) : null}
