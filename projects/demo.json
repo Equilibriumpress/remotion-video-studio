@@ -1,0 +1,48 @@
+{
+  "id": "studio-demo",
+  "title": "Remotion Video Studio",
+  "template": "explainer",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#0B0D10",
+    "foreground": "#F7F8FA",
+    "muted": "#AEB6C2",
+    "accent": "#78E08F"
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "type": "title",
+      "duration": 2.5,
+      "title": "Video from code",
+      "subtitle": "Preview and render in your browser"
+    },
+    {
+      "id": "stat",
+      "type": "stat",
+      "duration": 2.5,
+      "value": "0",
+      "label": "video render minutes in GitHub Actions"
+    },
+    {
+      "id": "workflow",
+      "type": "list",
+      "duration": 3.5,
+      "title": "One simple workflow",
+      "items": [
+        "ChatGPT creates the project",
+        "GitHub stores the source",
+        "Pages hosts the studio",
+        "Your device renders the MP4"
+      ]
+    },
+    {
+      "id": "outro",
+      "type": "outro",
+      "duration": 2,
+      "title": "Remotion Video Studio",
+      "subtitle": "Browser-first by design"
+    }
+  ]
+}
