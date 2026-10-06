@@ -1,12 +1,33 @@
 import {existsSync, readFileSync, readdirSync} from 'node:fs';
 import {resolve} from 'node:path';
-import {projectSchema} from '../src/project/schema';
+import {projectSchema, type VideoProject, type VideoScene} from '../src/project/schema';
 
 const root = process.cwd();
 const projectDir = resolve(root, 'projects');
 const files = readdirSync(projectDir).filter((file) => file.endsWith('.json'));
 const projectIds = new Set<string>();
 const errors: string[] = [];
+
+const sceneAssets = (scene: VideoScene): string[] => {
+  switch (scene.type) {
+    case 'image':
+    case 'hero-image':
+    case 'video':
+    case 'caption-video':
+      return [scene.src];
+    case 'split-image':
+      return [scene.leftSrc, scene.rightSrc];
+    default:
+      return [];
+  }
+};
+
+const projectAssets = (project: VideoProject) => {
+  const assets = project.scenes.flatMap(sceneAssets);
+  if (project.audio?.music) assets.push(project.audio.music.src);
+  if (project.audio?.voiceover) assets.push(project.audio.voiceover.src);
+  return [...new Set(assets)];
+};
 
 for (const file of files) {
   try {
@@ -25,11 +46,25 @@ for (const file of files) {
       }
       sceneIds.add(scene.id);
 
-      if (scene.type === 'image' && !/^https?:\/\//.test(scene.src) && !scene.src.startsWith('data:')) {
-        const assetPath = resolve(root, 'public', scene.src.replace(/^\//, ''));
-        if (!existsSync(assetPath)) {
-          errors.push(`${file}: missing image asset "${scene.src}"`);
+      if (scene.type === 'caption-video') {
+        for (const caption of scene.captions) {
+          if (caption.end <= caption.start) {
+            errors.push(`${file}: caption "${caption.text}" ends before it starts`);
+          }
+          if (caption.end > scene.duration) {
+            errors.push(`${file}: caption "${caption.text}" exceeds scene duration`);
+          }
         }
+      }
+    }
+
+    for (const source of projectAssets(project)) {
+      if (/^https?:\/\//.test(source) || source.startsWith('data:') || source.startsWith('blob:')) {
+        continue;
+      }
+      const assetPath = resolve(root, 'public', source.replace(/^\//, ''));
+      if (!existsSync(assetPath)) {
+        errors.push(`${file}: missing asset "${source}"`);
       }
     }
   } catch (error) {

@@ -1,6 +1,8 @@
+import {Audio} from '@remotion/media';
 import {AbsoluteFill, Sequence} from 'remotion';
 import type {VideoProject} from '../project/schema';
-import {sceneFrames} from '../project/schema';
+import {sceneTimeline} from '../project/schema';
+import {resolveAsset} from '../project/assets';
 import {SceneFrame} from './SceneFrame';
 
 export type VideoCompositionProps = {
@@ -8,21 +10,39 @@ export type VideoCompositionProps = {
 };
 
 export const VideoComposition = ({project}: VideoCompositionProps) => {
-  let from = 0;
+  const timeline = sceneTimeline(project);
 
   return (
     <AbsoluteFill style={{backgroundColor: project.theme.background}}>
-      {project.scenes.map((scene) => {
-        const durationInFrames = sceneFrames(scene, project.fps);
-        const start = from;
-        from += durationInFrames;
+      {project.audio?.music ? (
+        <Audio
+          src={resolveAsset(project.audio.music.src)}
+          volume={project.audio.music.volume}
+          loop={project.audio.music.loop}
+        />
+      ) : null}
+      {project.audio?.voiceover ? (
+        <Audio
+          src={resolveAsset(project.audio.voiceover.src)}
+          volume={project.audio.voiceover.volume}
+          loop={project.audio.voiceover.loop}
+        />
+      ) : null}
 
-        return (
-          <Sequence key={scene.id} from={start} durationInFrames={durationInFrames} premountFor={Math.min(15, durationInFrames)}>
-            <SceneFrame scene={scene} project={project} />
-          </Sequence>
-        );
-      })}
+      {timeline.map(({scene, from, durationInFrames, transitionInFrames}) => (
+        <Sequence
+          key={scene.id}
+          from={from}
+          durationInFrames={durationInFrames}
+          premountFor={Math.min(20, durationInFrames)}
+        >
+          <SceneFrame
+            scene={scene}
+            project={project}
+            transitionInFrames={transitionInFrames}
+          />
+        </Sequence>
+      ))}
     </AbsoluteFill>
   );
 };

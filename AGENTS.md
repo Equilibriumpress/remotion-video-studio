@@ -32,3 +32,30 @@ Create data-driven videos that preview and render from GitHub Pages. Keep final 
 ## Definition of done
 
 A project is done when validation passes, the Pages preview plays from first to last frame, asset preflight succeeds and a Draft MP4 renders in a supported browser.
+
+
+## Premium motion system
+
+Prefer scene + motion + transition composition over custom React for content videos.
+
+### Scene library
+
+Use: `title`, `image`, `hero-image`, `split-image`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `video`, `caption-video`, `outro`.
+
+### Motion presets
+
+Use one of: `none`, `fade-rise`, `slow-push`, `pan-left`, `pan-right`, `pop`, `drift-up`, `zoom-out`.
+
+Use `slow-push` and `zoom-out` mainly for visual media. Use `fade-rise`, `pop` and `drift-up` for typography and data.
+
+### Transition presets
+
+Use one of: `cut`, `fade`, `slide-left`, `slide-up`, `wipe`, `zoom`.
+
+Limit one project to two or three transition styles unless the brief asks for a deliberately energetic edit.
+
+### Media
+
+For browser-rendered video, use `video` or `caption-video` with local assets under `public/media/<project-id>/`. Use `caption-video` captions as scene-relative seconds.
+
+Project-level `audio.music` and `audio.voiceover` are supported. Keep audio local and use explicit volume values.

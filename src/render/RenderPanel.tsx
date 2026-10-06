@@ -1,7 +1,7 @@
 import {useRef, useState} from 'react';
 import {canRenderMediaOnWeb, renderMediaOnWeb} from '@remotion/web-renderer';
 import type {VideoProject} from '../project/schema';
-import {getDimensions, projectFrames} from '../project/schema';
+import {getDimensions, projectFrames, projectHasAudio} from '../project/schema';
 import {VideoComposition} from '../remotion/VideoComposition';
 import {checkProjectAssets, type AssetCheck} from './preflight';
 import {renderProfiles, type RenderProfile} from './profiles';
@@ -34,6 +34,7 @@ export const RenderPanel = ({project}: Props) => {
       }
 
       const dimensions = getDimensions(project.format);
+      const hasAudio = projectHasAudio(project);
       const scale = renderProfiles[profile].scale;
       const width = Math.round(dimensions.width * scale);
       const height = Math.round(dimensions.height * scale);
@@ -43,7 +44,7 @@ export const RenderPanel = ({project}: Props) => {
         height,
         container: 'mp4',
         videoCodec: 'h264',
-        muted: true,
+        muted: !hasAudio,
       });
 
       if (!capability.canRender) {
@@ -73,7 +74,7 @@ export const RenderPanel = ({project}: Props) => {
         inputProps: {project},
         container: 'mp4',
         videoCodec: 'h264',
-        muted: true,
+        muted: !hasAudio,
         scale,
         signal: controller.signal,
         allowHtmlInCanvas: false,
