@@ -1,0 +1,112 @@
+{
+  "id": "studio-product-showcase",
+  "title": "Remotion Video Studio · Product Explainer",
+  "template": "explainer",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#0A0C10",
+    "foreground": "#F7F8FA",
+    "muted": "#AAB4C0",
+    "accent": "#78E08F"
+  },
+  "scenes": [
+    {
+      "id": "p-title",
+      "type": "kinetic-title",
+      "duration": 2.8,
+      "text": "Prompt to MP4",
+      "kicker": "REMOTION VIDEO STUDIO",
+      "style": "word-reveal",
+      "align": "center",
+      "highlight": "MP4",
+      "transition": "fade"
+    },
+    {
+      "id": "p-chapter",
+      "type": "chapter-number",
+      "duration": 2.6,
+      "number": "01",
+      "title": "Content stays data",
+      "subtitle": "Templates stay reusable",
+      "transition": "slide-up"
+    },
+    {
+      "id": "p-workflow",
+      "type": "timeline",
+      "duration": 4,
+      "title": "One lightweight workflow",
+      "items": [
+        {
+          "label": "ChatGPT",
+          "value": "project JSON"
+        },
+        {
+          "label": "GitHub",
+          "value": "source"
+        },
+        {
+          "label": "Pages",
+          "value": "preview"
+        },
+        {
+          "label": "Browser",
+          "value": "MP4"
+        }
+      ],
+      "transition": "fade"
+    },
+    {
+      "id": "p-callout",
+      "type": "callout",
+      "duration": 3.2,
+      "value": "0 min",
+      "title": "Video rendering in Actions",
+      "body": "GitHub builds the static studio. The final video render runs on the user's device.",
+      "transition": "zoom"
+    },
+    {
+      "id": "p-build",
+      "type": "comparison",
+      "duration": 3.8,
+      "title": "Observed Pages build improvement",
+      "left": {
+        "label": "Vite 7",
+        "value": ">5 min"
+      },
+      "right": {
+        "label": "Vite 8",
+        "value": "~4 sec"
+      },
+      "motion": "pop",
+      "transition": "wipe"
+    },
+    {
+      "id": "p-lower",
+      "type": "lower-third",
+      "duration": 3,
+      "title": "Browser-first renderer",
+      "subtitle": "Remotion Player + web-renderer",
+      "transition": "slide-left"
+    },
+    {
+      "id": "p-donut",
+      "type": "donut-chart",
+      "duration": 3.3,
+      "title": "Reusable scene system",
+      "value": 100,
+      "label": "project-driven composition",
+      "suffix": "%",
+      "transition": "fade"
+    },
+    {
+      "id": "p-end",
+      "type": "outro",
+      "duration": 2.5,
+      "title": "Build the system once.",
+      "subtitle": "Then make videos from data.",
+      "motion": "fade-rise",
+      "transition": "fade"
+    }
+  ]
+}
