@@ -111,12 +111,17 @@ const photoMaskScene = baseScene.extend({
   title: z.string().optional(),
   caption: z.string().optional(),
   shape: z.enum(['portrait', 'circle', 'window']).default('portrait'),
+  treatment: z.enum(['natural', 'warm', 'dark']).default('natural'),
+  frame: z.enum(['none', 'thin', 'offset']).default('none'),
 });
 
 const kineticTitleScene = baseScene.extend({
   type: z.literal('kinetic-title'),
   text: z.string().min(1),
   kicker: z.string().optional(),
+  style: z.enum(['stacked', 'word-reveal', 'oversize']).default('stacked'),
+  align: z.enum(['left', 'center']).default('left'),
+  highlight: z.string().optional(),
 });
 
 const chapterNumberScene = baseScene.extend({
