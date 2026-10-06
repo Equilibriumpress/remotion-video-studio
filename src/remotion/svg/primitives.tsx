@@ -399,3 +399,149 @@ export const KineticWords = ({
     })}
   </g>
 );
+
+
+export const TrackingText = ({
+  text,
+  x,
+  y,
+  progress,
+  fill,
+  fontSize,
+  weight = 850,
+  anchor = 'start',
+  startTracking = 18,
+  endTracking = 1,
+}: {
+  text: string;
+  x: number;
+  y: number;
+  progress: number;
+  fill: string;
+  fontSize: number;
+  weight?: number;
+  anchor?: 'start' | 'middle' | 'end';
+  startTracking?: number;
+  endTracking?: number;
+}) => {
+  const letterSpacing = startTracking + (endTracking - startTracking) * Math.max(0, Math.min(1, progress));
+  return (
+    <text
+      x={x}
+      y={y}
+      fill={fill}
+      fontSize={fontSize}
+      fontWeight={weight}
+      textAnchor={anchor}
+      letterSpacing={letterSpacing}
+      opacity={progress}
+    >
+      {text}
+    </text>
+  );
+};
+
+export const WordReveal = ({
+  words,
+  x,
+  y,
+  frame,
+  fps,
+  fontSize,
+  lineHeight,
+  fill,
+  accent,
+  highlight,
+  anchor = 'start',
+  maxPerLine = 2,
+}: {
+  words: string[];
+  x: number;
+  y: number;
+  frame: number;
+  fps: number;
+  fontSize: number;
+  lineHeight: number;
+  fill: string;
+  accent: string;
+  highlight?: string;
+  anchor?: 'start' | 'middle';
+  maxPerLine?: number;
+}) => (
+  <g>
+    {words.map((word, index) => {
+      const reveal = spring01(frame, fps, index * Math.max(2, Math.round(fps * 0.1)));
+      const line = Math.floor(index / maxPerLine);
+      const column = index % maxPerLine;
+      const direction = index % 2 === 0 ? -1 : 1;
+      const dx = anchor === 'middle'
+        ? (column - (maxPerLine - 1) / 2) * fontSize * 3.2
+        : column * fontSize * 3.2;
+      const dy = line * lineHeight;
+      const isHighlight = highlight?.toLowerCase() === word.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+      return (
+        <g key={`${word}-${index}`} opacity={reveal} transform={`translate(${direction * (1 - reveal) * fontSize * 0.7} 0)`}>
+          <text
+            x={x + dx}
+            y={y + dy}
+            fill={isHighlight ? accent : fill}
+            fontSize={fontSize}
+            fontWeight={900}
+            textAnchor={anchor}
+          >
+            {word}
+          </text>
+        </g>
+      );
+    })}
+  </g>
+);
+
+export const ImageFrame = ({
+  x,
+  y,
+  width,
+  height,
+  stroke,
+  mode,
+  progress,
+}: {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  stroke: string;
+  mode: 'none' | 'thin' | 'offset';
+  progress: number;
+}) => {
+  if (mode === 'none') return null;
+  if (mode === 'thin') {
+    return (
+      <rect
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+        rx={Math.min(width, height) * 0.025}
+        fill="none"
+        stroke={stroke}
+        strokeWidth={3}
+        opacity={progress}
+      />
+    );
+  }
+
+  return (
+    <rect
+      x={x + width * 0.035}
+      y={y + height * 0.035}
+      width={width}
+      height={height}
+      rx={Math.min(width, height) * 0.025}
+      fill="none"
+      stroke={stroke}
+      strokeWidth={5}
+      opacity={0.65 * progress}
+    />
+  );
+};
