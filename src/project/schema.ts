@@ -163,6 +163,20 @@ const donutChartScene = baseScene.extend({
   suffix: z.string().default('%'),
 });
 
+const barLineChartScene = baseScene.extend({
+  type: z.literal('bar-line-chart'),
+  title: z.string().min(1),
+  items: z.array(z.object({
+    label: z.string().min(1),
+    bar: z.number().nonnegative(),
+    line: z.number(),
+  })).min(2).max(8),
+  barLabel: z.string().optional(),
+  lineLabel: z.string().optional(),
+  barSuffix: z.string().optional(),
+  lineSuffix: z.string().optional(),
+});
+
 const routePointSchema = z.object({
   x: z.number().min(0).max(1),
   y: z.number().min(0).max(1),
@@ -286,6 +300,7 @@ export const sceneSchema = z.discriminatedUnion('type', [
   calloutScene,
   lineChartScene,
   donutChartScene,
+  barLineChartScene,
   routeMapScene,
   locationCardScene,
   progressRouteScene,
