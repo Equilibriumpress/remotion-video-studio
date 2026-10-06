@@ -13,6 +13,7 @@ const sceneAssets = (scene: VideoScene): AssetRef[] => {
   switch (scene.type) {
     case 'image':
     case 'hero-image':
+    case 'photo-mask':
       return [{source: scene.src, kind: 'image'}];
     case 'split-image':
       return [
@@ -23,6 +24,7 @@ const sceneAssets = (scene: VideoScene): AssetRef[] => {
     case 'caption-video':
       return [{source: scene.src, kind: 'media'}];
     case 'map-overlay':
+    case 'lower-third':
       return scene.src ? [{source: scene.src, kind: 'image'}] : [];
     default:
       return [];
