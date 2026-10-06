@@ -206,6 +206,31 @@ const mapOverlayScene = baseScene.extend({
   contextPath: z.string().optional(),
 });
 
+const launchHeroScene = baseScene.extend({
+  type: z.literal('launch-hero'),
+  eyebrow: z.string().optional(),
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  badge: z.string().optional(),
+});
+
+const featureGridScene = baseScene.extend({
+  type: z.literal('feature-grid'),
+  title: z.string().min(1),
+  items: z.array(z.object({
+    title: z.string().min(1),
+    body: z.string().optional(),
+    icon: z.enum(['spark', 'grid', 'route', 'chart', 'play', 'code']).default('spark'),
+  })).min(2).max(6),
+});
+
+const ctaScene = baseScene.extend({
+  type: z.literal('cta'),
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  action: z.string().optional(),
+});
+
 const videoScene = baseScene.extend({
   type: z.literal('video'),
   src: z.string().min(1),
@@ -258,6 +283,9 @@ export const sceneSchema = z.discriminatedUnion('type', [
   locationCardScene,
   progressRouteScene,
   mapOverlayScene,
+  launchHeroScene,
+  featureGridScene,
+  ctaScene,
   videoScene,
   captionVideoScene,
   outroScene,

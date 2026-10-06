@@ -5,6 +5,7 @@ import {resolveAsset} from '../project/assets';
 import {motionValues, transitionValues} from './motion';
 import {SvgSceneFrame} from './scenes/SvgScenes';
 import {MapSceneFrame} from './scenes/MapScenes';
+import {LaunchSceneFrame} from './scenes/LaunchScenes';
 
 type Props = {
   scene: VideoScene;
@@ -134,6 +135,14 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
     config: {damping: 18, stiffness: 115, mass: 0.8},
     durationInFrames: Math.max(12, Math.round(fps * 0.75)),
   });
+
+  if (
+    scene.type === 'launch-hero' ||
+    scene.type === 'feature-grid' ||
+    scene.type === 'cta'
+  ) {
+    return <LaunchSceneFrame scene={scene} project={project} />;
+  }
 
   if (
     scene.type === 'route-map' ||

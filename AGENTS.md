@@ -83,3 +83,10 @@ Use these projects as composition references:
 - `kyoto-premium-showcase` for photography + route + editorial masks.
 - `utrecht-data-showcase` for pure SVG data storytelling. Its values are explicitly synthetic demo data.
 - `studio-product-showcase` for kinetic typography and explainer pacing.
+
+
+### Launch motion language
+
+Use `launch-hero`, `feature-grid`, and `cta` for product launches, app promos, research explainers, and high-energy intros.
+
+The visual language is: restrained particle fields, HUD-style corner brackets, scanner lines, staggered feature cards, and a focused CTA finale. Do not use every effect in every scene; preserve contrast between dense launch scenes and quieter explanatory scenes.
