@@ -3,6 +3,7 @@ import {Player} from '@remotion/player';
 import {projects} from './project/catalog';
 import {getDimensions, projectFrames} from './project/schema';
 import {VideoComposition} from './remotion/VideoComposition';
+import {RenderPanel} from './render/RenderPanel';
 
 export const App = () => {
   const [projectId, setProjectId] = useState(projects[0].id);
@@ -82,6 +83,8 @@ export const App = () => {
               />
             </div>
           </div>
+
+          <RenderPanel project={project} />
 
           <div className="scene-strip" aria-label="Scene overview">
             {project.scenes.map((scene, index) => (

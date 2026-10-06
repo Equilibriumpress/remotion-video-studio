@@ -223,3 +223,129 @@ h2 { font-size: clamp(22px, 3vw, 36px); }
   .workspace { padding: 22px 0 0; }
   .player-stage { min-height: 420px; padding: 14px; }
 }
+
+
+.render-panel {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid #242a32;
+  border-radius: 14px;
+  background: #0f1318;
+}
+
+.render-head,
+.render-message,
+.render-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.render-head h3 { margin: 0; font-size: 18px; }
+
+.render-state {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #1a2027;
+  color: #8e99a8;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.render-state.rendering { color: #78e08f; }
+.render-state.error { color: #ff8e8e; }
+
+.profile-switch {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.profile {
+  padding: 12px;
+  border: 1px solid #252c35;
+  border-radius: 10px;
+  text-align: left;
+  color: #aeb6c2;
+  background: #12171d;
+  cursor: pointer;
+}
+
+.profile.active { border-color: #66717f; background: #192027; color: #fff; }
+.profile:disabled { cursor: default; opacity: .6; }
+.profile strong, .profile small { display: block; }
+.profile small { margin-top: 4px; color: #747f8e; font-size: 11px; }
+
+.progress-track {
+  height: 7px;
+  border-radius: 999px;
+  background: #20262e;
+  overflow: hidden;
+}
+
+.progress-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #78e08f;
+  transition: width .15s linear;
+}
+
+.render-message {
+  margin-top: 8px;
+  color: #7f8998;
+  font-size: 11px;
+}
+
+.render-message strong { color: #cbd2dc; }
+
+.asset-results {
+  display: grid;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.asset-results div {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 2px 8px;
+  font-size: 11px;
+}
+
+.asset-results small {
+  grid-column: 2;
+  color: #737e8c;
+}
+
+.asset-ok > span:first-child { color: #78e08f; }
+.asset-fail > span:first-child { color: #ff8e8e; }
+
+.render-actions {
+  justify-content: flex-start;
+  margin-top: 16px;
+}
+
+.primary-button,
+.secondary-button {
+  padding: 10px 14px;
+  border-radius: 9px;
+  border: 1px solid #303844;
+  cursor: pointer;
+}
+
+.primary-button {
+  border-color: #78e08f;
+  background: #78e08f;
+  color: #07110a;
+  font-weight: 800;
+}
+
+.primary-button:disabled { cursor: default; opacity: .5; }
+
+.secondary-button {
+  background: transparent;
+  color: #cbd2dc;
+}
