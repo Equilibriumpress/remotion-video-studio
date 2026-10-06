@@ -22,6 +22,8 @@ const sceneAssets = (scene: VideoScene): AssetRef[] => {
     case 'video':
     case 'caption-video':
       return [{source: scene.src, kind: 'media'}];
+    case 'map-overlay':
+      return scene.src ? [{source: scene.src, kind: 'image'}] : [];
     default:
       return [];
   }

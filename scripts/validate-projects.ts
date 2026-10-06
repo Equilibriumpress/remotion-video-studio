@@ -17,6 +17,8 @@ const sceneAssets = (scene: VideoScene): string[] => {
       return [scene.src];
     case 'split-image':
       return [scene.leftSrc, scene.rightSrc];
+    case 'map-overlay':
+      return scene.src ? [scene.src] : [];
     default:
       return [];
   }
