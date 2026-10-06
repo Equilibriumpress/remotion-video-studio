@@ -158,6 +158,49 @@ const donutChartScene = baseScene.extend({
   suffix: z.string().default('%'),
 });
 
+const routePointSchema = z.object({
+  x: z.number().min(0).max(1),
+  y: z.number().min(0).max(1),
+  label: z.string().min(1),
+  detail: z.string().optional(),
+});
+
+const routeMapScene = baseScene.extend({
+  type: z.literal('route-map'),
+  title: z.string().min(1),
+  points: z.array(routePointSchema).min(2).max(8),
+  distance: z.string().optional(),
+  contextPath: z.string().optional(),
+});
+
+const locationCardScene = baseScene.extend({
+  type: z.literal('location-card'),
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  location: z.string().min(1),
+  region: z.string().optional(),
+  x: z.number().min(0).max(1).default(0.5),
+  y: z.number().min(0).max(1).default(0.5),
+  contextPath: z.string().optional(),
+});
+
+const progressRouteScene = baseScene.extend({
+  type: z.literal('progress-route'),
+  title: z.string().min(1),
+  points: z.array(routePointSchema).min(2).max(8),
+  progress: z.number().min(0).max(1),
+  label: z.string().optional(),
+  contextPath: z.string().optional(),
+});
+
+const mapOverlayScene = baseScene.extend({
+  type: z.literal('map-overlay'),
+  title: z.string().min(1),
+  src: z.string().optional(),
+  points: z.array(routePointSchema).min(2).max(8),
+  contextPath: z.string().optional(),
+});
+
 const videoScene = baseScene.extend({
   type: z.literal('video'),
   src: z.string().min(1),
@@ -206,6 +249,10 @@ export const sceneSchema = z.discriminatedUnion('type', [
   calloutScene,
   lineChartScene,
   donutChartScene,
+  routeMapScene,
+  locationCardScene,
+  progressRouteScene,
+  mapOverlayScene,
   videoScene,
   captionVideoScene,
   outroScene,
