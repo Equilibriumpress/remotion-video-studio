@@ -3,11 +3,14 @@ import type {VideoProject, VideoScene} from '../../project/schema';
 import {resolveAsset} from '../../project/assets';
 import {
   CounterText,
+  ImageFrame,
   KineticWords,
   MotionGrid,
   PhotoMask,
   ProgressRing,
   RoutePath,
+  TrackingText,
+  WordReveal,
   progress01,
   spring01,
 } from '../svg/primitives';
@@ -98,6 +101,13 @@ export const SvgSceneFrame = ({
           reveal={p}
           scale={1.04 + p * 0.03}
         />
+        {scene.treatment === 'warm' ? (
+          <rect x={box.x} y={box.y} width={box.width} height={box.height} rx={box.radius} fill={accent} opacity={0.12 * p} />
+        ) : null}
+        {scene.treatment === 'dark' ? (
+          <rect x={box.x} y={box.y} width={box.width} height={box.height} rx={box.radius} fill="#000000" opacity={0.3 * p} />
+        ) : null}
+        <ImageFrame x={box.x} y={box.y} width={box.width} height={box.height} stroke={accent} mode={scene.frame} progress={p} />
         {scene.title ? (
           <Multiline value={scene.title} x={pad} y={height * 0.82} max={22} size={titleSize * 0.7} lineHeight={titleSize * 0.82} fill={foreground} />
         ) : null}
@@ -110,27 +120,59 @@ export const SvgSceneFrame = ({
 
   if (scene.type === 'kinetic-title') {
     const words = scene.text.split(/\s+/);
+    const centered = scene.align === 'center';
+    const x = centered ? width / 2 : pad;
+    const anchor = centered ? 'middle' as const : 'start' as const;
     return (
       <svg viewBox={`0 0 ${width} ${height}`} width="100%" height="100%">
         <rect width={width} height={height} fill={background} />
         <MotionGrid width={width} height={height} gap={width * 0.115} stroke={accent} opacity={0.08} offsetY={-frame * 0.25} />
         {scene.kicker ? (
-          <text x={pad} y={height * 0.2} fill={accent} fontSize={bodySize * 0.63} fontWeight={850} letterSpacing={4}>
+          <text x={x} y={height * 0.2} fill={accent} fontSize={bodySize * 0.63} fontWeight={850} letterSpacing={4} textAnchor={anchor}>
             {scene.kicker.toUpperCase()}
           </text>
         ) : null}
-        <KineticWords
-          words={words}
-          x={pad}
-          y={height * 0.43}
-          frame={frame}
-          fps={fps}
-          fontSize={titleSize * 0.72}
-          lineHeight={titleSize * 1.05}
-          fill={foreground}
-          accent={accent}
-          maxPerLine={2}
-        />
+        {scene.style === 'oversize' ? (
+          <TrackingText
+            text={scene.text.toUpperCase()}
+            x={x}
+            y={height * 0.54}
+            progress={p}
+            fill={foreground}
+            fontSize={titleSize * 1.05}
+            anchor={anchor}
+            startTracking={width * 0.035}
+            endTracking={width * 0.002}
+          />
+        ) : scene.style === 'word-reveal' ? (
+          <WordReveal
+            words={words}
+            x={x}
+            y={height * 0.42}
+            frame={frame}
+            fps={fps}
+            fontSize={titleSize * 0.72}
+            lineHeight={titleSize * 1.02}
+            fill={foreground}
+            accent={accent}
+            highlight={scene.highlight}
+            anchor={centered ? 'middle' : 'start'}
+            maxPerLine={2}
+          />
+        ) : (
+          <KineticWords
+            words={words}
+            x={x}
+            y={height * 0.43}
+            frame={frame}
+            fps={fps}
+            fontSize={titleSize * 0.72}
+            lineHeight={titleSize * 1.05}
+            fill={foreground}
+            accent={accent}
+            maxPerLine={2}
+          />
+        )}
       </svg>
     );
   }

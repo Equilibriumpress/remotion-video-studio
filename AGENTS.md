@@ -59,3 +59,12 @@ Limit one project to two or three transition styles unless the brief asks for a 
 For browser-rendered video, use `video` or `caption-video` with local assets under `public/media/<project-id>/`. Use `caption-video` captions as scene-relative seconds.
 
 Project-level `audio.music` and `audio.voiceover` are supported. Keep audio local and use explicit volume values.
+
+
+### SVG typography and image treatments
+
+For `kinetic-title`, choose `style`: `stacked`, `word-reveal`, or `oversize`. Use `highlight` for one emphasized word and `align` for left or centered layouts.
+
+For `photo-mask`, choose `shape`: `portrait`, `circle`, or `window`. Optional `treatment` values are `natural`, `warm`, and `dark`. Optional `frame` values are `none`, `thin`, and `offset`.
+
+Prefer restrained combinations. One strong mask or kinetic treatment per sequence is usually enough.
