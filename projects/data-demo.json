@@ -1,0 +1,43 @@
+{
+  "id": "data-story-demo",
+  "title": "Housing Snapshot",
+  "template": "data-story",
+  "format": "square",
+  "fps": 30,
+  "theme": {
+    "background": "#081117",
+    "foreground": "#F3F7FA",
+    "muted": "#93A7B3",
+    "accent": "#58C4DD"
+  },
+  "scenes": [
+    {
+      "id": "data-intro",
+      "type": "title",
+      "duration": 2,
+      "title": "Housing Snapshot",
+      "subtitle": "A compact data-led format"
+    },
+    {
+      "id": "data-stat-1",
+      "type": "stat",
+      "duration": 2.5,
+      "value": "4.1%",
+      "label": "year-on-year price change"
+    },
+    {
+      "id": "data-stat-2",
+      "type": "stat",
+      "duration": 2.5,
+      "value": "18,234",
+      "label": "transactions in the sample"
+    },
+    {
+      "id": "data-outro",
+      "type": "outro",
+      "duration": 2,
+      "title": "Data, then context",
+      "subtitle": "Data story template"
+    }
+  ]
+}
