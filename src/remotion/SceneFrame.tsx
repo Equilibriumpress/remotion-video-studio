@@ -6,6 +6,7 @@ import {motionValues, transitionValues} from './motion';
 import {SvgSceneFrame} from './scenes/SvgScenes';
 import {MapSceneFrame} from './scenes/MapScenes';
 import {LaunchSceneFrame} from './scenes/LaunchScenes';
+import {DataSceneFrame} from './scenes/DataScenes';
 
 type Props = {
   scene: VideoScene;
@@ -135,6 +136,10 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
     config: {damping: 18, stiffness: 115, mass: 0.8},
     durationInFrames: Math.max(12, Math.round(fps * 0.75)),
   });
+
+  if (scene.type === 'bar-line-chart') {
+    return <DataSceneFrame scene={scene} project={project} />;
+  }
 
   if (
     scene.type === 'launch-hero' ||
