@@ -168,6 +168,7 @@ const routePointSchema = z.object({
   y: z.number().min(0).max(1),
   label: z.string().min(1),
   detail: z.string().optional(),
+  icon: z.enum(['pin', 'temple', 'nature', 'station', 'city']).default('pin'),
 });
 
 const routeMapScene = baseScene.extend({
@@ -176,6 +177,8 @@ const routeMapScene = baseScene.extend({
   points: z.array(routePointSchema).min(2).max(8),
   distance: z.string().optional(),
   contextPath: z.string().optional(),
+  style: z.enum(['clean', 'watercolor', 'flow']).default('clean'),
+  showDetails: z.boolean().default(true),
 });
 
 const locationCardScene = baseScene.extend({
@@ -196,6 +199,8 @@ const progressRouteScene = baseScene.extend({
   progress: z.number().min(0).max(1),
   label: z.string().optional(),
   contextPath: z.string().optional(),
+  style: z.enum(['clean', 'watercolor', 'flow']).default('clean'),
+  showDetails: z.boolean().default(true),
 });
 
 const mapOverlayScene = baseScene.extend({
@@ -204,6 +209,8 @@ const mapOverlayScene = baseScene.extend({
   src: z.string().optional(),
   points: z.array(routePointSchema).min(2).max(8),
   contextPath: z.string().optional(),
+  style: z.enum(['clean', 'watercolor', 'flow']).default('clean'),
+  showDetails: z.boolean().default(true),
 });
 
 const launchHeroScene = baseScene.extend({
