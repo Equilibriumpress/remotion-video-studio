@@ -44,28 +44,34 @@
           "x": 0.2,
           "y": 0.68,
           "label": "Gion",
-          "detail": "06:15"
+          "detail": "06:15",
+          "icon": "city"
         },
         {
           "x": 0.38,
           "y": 0.56,
           "label": "Kiyomizu",
-          "detail": "07:00"
+          "detail": "07:00",
+          "icon": "temple"
         },
         {
           "x": 0.68,
           "y": 0.34,
           "label": "Ryōan-ji",
-          "detail": "08:30"
+          "detail": "08:30",
+          "icon": "temple"
         },
         {
           "x": 0.82,
           "y": 0.56,
           "label": "Arashiyama",
-          "detail": "10:00"
+          "detail": "10:00",
+          "icon": "nature"
         }
       ],
-      "transition": "slide-up"
+      "transition": "slide-up",
+      "style": "watercolor",
+      "showDetails": true
     },
     {
       "id": "kyoto-gion-mask",
