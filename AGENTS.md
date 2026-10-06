@@ -101,3 +101,8 @@ For travel stories, prefer `route-map` with a deliberate map style:
 - `flow` for energetic journeys and abstract movement.
 
 Route points may use `icon`: `pin`, `temple`, `nature`, `station`, or `city`. Use `detail` for a short time, distance, or contextual cue. The route engine performs a subtle zoom-out while drawing the line and moving the active marker.
+
+
+### Combined data motion
+
+Use `bar-line-chart` when two related series should be read together. The animation order is deliberate: bars grow first, the line draws second, labels follow, and the final line point receives a subtle pulse. This pattern is preferable to showing multiple disconnected chart scenes when the comparison belongs in one visual.
