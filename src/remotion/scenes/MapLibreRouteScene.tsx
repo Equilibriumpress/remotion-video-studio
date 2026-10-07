@@ -32,6 +32,7 @@ type Diagnostics = {
 };
 
 maplibregl.setWorkerUrl(workerUrl);
+maplibregl.setWorkerCount(1);
 
 const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
 const clamp = (value: number, min: number, max: number) =>
