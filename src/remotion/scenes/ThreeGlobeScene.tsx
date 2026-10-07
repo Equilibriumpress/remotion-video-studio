@@ -289,7 +289,7 @@ export const ThreeGlobeSceneFrame = ({
   project: VideoProject;
 }) => {
   const frame = useCurrentFrame();
-  const {width, height, fps} = useVideoConfig();
+  const {width, height, fps, durationInFrames} = useVideoConfig();
   const webGl = useMemo(canUseWebGl, []);
   const {background, foreground, muted, accent} = project.theme;
 
@@ -300,7 +300,7 @@ export const ThreeGlobeSceneFrame = ({
   const enter = interpolate(frame, [0, fps * 0.45], [0, 1], clamp);
   const progress = interpolate(
     frame,
-    [fps * 0.15, Math.max(fps * 0.8, useVideoConfig().durationInFrames * 0.82)],
+    [fps * 0.15, Math.max(fps * 0.8, durationInFrames * 0.82)],
     [0, 1],
     clamp,
   );
