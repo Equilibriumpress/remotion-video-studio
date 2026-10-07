@@ -3,6 +3,7 @@ import type {RouteStopScene, VideoProject} from '../../project/schema';
 import {resolveAsset} from '../../project/assets';
 import {projectGeoPath} from './GeoRouteScene';
 import {progress01, spring01} from '../svg/primitives';
+import {FittedSvgText} from '../svg/FittedSvgText';
 
 type Point = {x: number; y: number};
 
@@ -174,7 +175,16 @@ export const RouteStopSceneFrame = ({
 
       <g opacity={enter} transform={`translate(0 ${(1 - enter) * height * 0.025})`}>
         {scene.kicker ? <text x={pad} y={contentTop + height * 0.06} fill={accent} fontSize={width * 0.019} fontWeight={850} letterSpacing={3}>{scene.kicker.toUpperCase()}</text> : null}
-        <TextLines value={scene.title} x={pad} y={contentTop + height * 0.115} fontSize={width * 0.064} lineHeight={width * 0.07} fill={foreground} weight={850} maxChars={18} />
+        <FittedSvgText
+          value={scene.title}
+          x={pad}
+          y={contentTop + height * 0.115}
+          maxWidth={isPhotoMap ? width * 0.48 : width - pad * 2}
+          maxLines={2}
+          maxFontSize={width * 0.064}
+          fill={foreground}
+          weight={850}
+        />
         {scene.subtitle ? <text x={pad} y={contentTop + height * 0.17} fill={muted} fontSize={width * 0.027} fontWeight={650}>{scene.subtitle}</text> : null}
 
         <g transform={`translate(${pad} ${contentTop + height * 0.225})`}>
@@ -183,7 +193,19 @@ export const RouteStopSceneFrame = ({
           {scene.distance ? <text x={0} y={height * 0.04} fill={muted} fontSize={width * 0.021} fontWeight={650}>{scene.distance}</text> : null}
         </g>
 
-        {scene.body ? <TextLines value={scene.body} x={pad} y={contentTop + height * 0.325} fontSize={width * 0.026} lineHeight={width * 0.038} fill={foreground} weight={560} maxChars={34} /> : null}
+        {scene.body ? (
+          <FittedSvgText
+            value={scene.body}
+            x={pad}
+            y={contentTop + height * 0.325}
+            maxWidth={isPhotoMap ? width * 0.48 : width - pad * 2}
+            maxLines={4}
+            maxFontSize={width * 0.026}
+            fill={foreground}
+            weight={560}
+            lineHeight={1.45}
+          />
+        ) : null}
       </g>
 
       <MiniRoute scene={scene} project={project} x={mapX} y={mapY} width={mapWidth} height={mapHeight} />

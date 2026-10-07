@@ -21,7 +21,8 @@
     "@remotion/media": "4.0.533",
     "maplibre-gl": "^6.4.1",
     "@remotion/paths": "4.0.533",
-    "@remotion/transitions": "4.0.533"
+    "@remotion/transitions": "4.0.533",
+    "@remotion/layout-utils": "4.0.533"
   },
   "devDependencies": {
     "@types/react": "^19.1.16",
