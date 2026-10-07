@@ -41,7 +41,7 @@ Prefer scene + motion + transition composition over custom React for content vid
 
 ### Scene library
 
-Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `geo-route`, `elevation-route`, `route-chapter`, `route-stop`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `video`, `caption-video`, `outro`.
+Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `geo-route`, `maplibre-route`, `elevation-route`, `route-chapter`, `route-stop`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `video`, `caption-video`, `outro`.
 
 ### Motion presets
 
@@ -72,6 +72,12 @@ Prefer restrained combinations. One strong mask or kinetic treatment per sequenc
 
 
 ### Geographically faithful routes
+
+### Experimental MapLibre maps
+
+Use `maplibre-route` only when a real basemap materially improves the video. It reuses a sourced `geoRoutes` LineString and should never replace `geo-route` as the production default. The implementation follows Remotion's MapLibre pattern: non-interactive MapLibre, `fadeDuration: 0`, `preserveDrawingBuffer`, per-frame GeoJSON source updates and frame blocking until the map is idle. Use OpenFreeMap or another public style that does not require exposing a secret.
+
+MapLibre preview depends on WebGL and network map resources. Client-side MP4 export uses experimental HTML-in-canvas and should be treated as a Chromium-first path. Every MapLibre route project must retain a geographically equivalent SVG route option or automatic SVG fallback. Do not add MapLibre to the Travel Sequence Composer default output until browser export is proven reliable across target devices.
 
 Use `geo-route` for videos portraying a real railway, pedestrian route or road trip. Provide a top-level `geoRoutes` entry containing WGS84 `LineString` coordinates in `[longitude, latitude]` order, a route mode (`rail`, `walking`, `driving`) and source attribution. Scenes reference a `routeId` plus georeferenced `stops`. Reuse the route across scenes and vary `progress`, `style`, and `mapRotation` to tell the story. Use `camera: "follow"` with a restrained `cameraZoom` for movement-led sequences and `camera: "overview"` for orientation or arrival scenes. When `distance` is omitted, the scene derives route kilometres from the committed coordinates. The map draws SVG from precomputed geographic data; it does not fetch tiles or call live routing APIs during render. Optional `contextLines` must also be geographically sourced.
 
