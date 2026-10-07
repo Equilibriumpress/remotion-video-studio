@@ -232,6 +232,12 @@ const geoRouteScene = baseScene.extend({
   mapRotation: z.number().min(-180).max(180).default(0),
   camera: z.enum(['overview', 'follow']).default('overview'),
   cameraZoom: z.number().min(1).max(2.2).default(1.28),
+  vehicle: z.object({
+    type: z.enum(['train', 'car', 'walker', 'bike', 'plane']),
+    scale: z.number().min(0.5).max(2).default(1),
+    color: z.string().optional(),
+    showPulse: z.boolean().default(true),
+  }).optional(),
   style: z.enum(['clean', 'watercolor', 'flow']).default('clean'),
   showDetails: z.boolean().default(true),
 });
