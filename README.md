@@ -79,6 +79,7 @@ AGENTS.md                 ChatGPT/Codex authoring protocol
 - `kyoto-auto-story` — the same route expressed as a compact story config with generated scenes
 - `kyoto-premium-director` — a retained natural-language prompt compiled into a premium hook/orient/travel/detail/payoff sequence
 - `scotland-roadtrip-showcase` — flowing multi-stop Highland journey
+- `peak-district-roadtrip` — 60-second English Premium Director roadtrip through Ladybower, Castleton, Mam Tor, Monsal Head, Bakewell and Stanage Edge
 - `studio-product-showcase` — product explainer
 
 Production requires successful image preflight and a browser Draft render. Remote Wikimedia photographs may remain in use when export works. See `projects/IMAGE-CREDITS.md` for source credits.
