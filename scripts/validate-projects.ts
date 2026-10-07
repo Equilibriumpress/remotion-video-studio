@@ -20,6 +20,7 @@ const sceneAssets = (scene: VideoScene): string[] => {
       return [scene.leftSrc, scene.rightSrc];
     case 'map-overlay':
     case 'lower-third':
+    case 'route-stop':
       return scene.src ? [scene.src] : [];
     default:
       return [];
@@ -83,6 +84,10 @@ for (const file of files) {
         if (scene.endProgress <= scene.startProgress) {
           errors.push(`${file}: route chapter "${scene.id}" must end after it starts`);
         }
+      }
+
+      if (scene.type === 'route-stop' && scene.routeId && !project.geoRoutes?.[scene.routeId]) {
+        errors.push(`${file}: route stop "${scene.id}" references missing route "${scene.routeId}"`);
       }
 
       if (scene.type === 'geo-route') {
