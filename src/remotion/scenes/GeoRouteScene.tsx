@@ -1,3 +1,4 @@
+import {getLength, getPointAtLength, getTangentAtLength} from '@remotion/paths';
 import {useCurrentFrame, useVideoConfig} from 'remotion';
 import type {GeoRouteGeometry, GeoRouteScene, VideoProject} from '../../project/schema';
 import {LabelChip, LocationPin, RoutePath, ProgressRing, progress01, spring01} from '../svg/primitives';
@@ -64,31 +65,6 @@ const closestOnPath = (points: Point[], target: Point) => {
     walked += lengths[i];
   }
   return best;
-};
-
-const alongPath = (points: Point[], ratio: number) => {
-  const lengths = points.slice(1).map((p, i) => Math.hypot(p.x - points[i].x, p.y - points[i].y));
-  const total = lengths.reduce((sum, n) => sum + n, 0);
-  let left = total * constrain(ratio);
-  for (let i = 0; i < lengths.length; i++) {
-    if (left <= lengths[i]) {
-      const t = lengths[i] === 0 ? 0 : left / lengths[i];
-      const dx = points[i + 1].x - points[i].x;
-      const dy = points[i + 1].y - points[i].y;
-      return {
-        x: points[i].x + dx * t,
-        y: points[i].y + dy * t,
-        bearing: Math.atan2(dy, dx) * 180 / Math.PI,
-      };
-    }
-    left -= lengths[i];
-  }
-  const last = points[points.length - 1];
-  const previous = points[Math.max(0, points.length - 2)];
-  return {
-    ...last,
-    bearing: Math.atan2(last.y - previous.y, last.x - previous.x) * 180 / Math.PI,
-  };
 };
 
 const VehicleGlyph = ({
@@ -239,9 +215,17 @@ export const GeoRouteSceneFrame = ({
   const projected = projectGeoPath(route.coordinates, width, height, scene.mapRotation);
   const points = projected.points;
   const path = pathData(points);
+  const pathLength = getLength(path);
   const revealed = progress01(frame, fps * 0.14, Math.max(fps * 0.7, durationInFrames * 0.78));
   const drawn = revealed * scene.progress;
-  const marker = alongPath(points, drawn);
+  const markerDistance = pathLength * constrain(drawn);
+  const markerPoint = getPointAtLength(path, markerDistance);
+  const markerTangent = getTangentAtLength(path, markerDistance);
+  const marker = {
+    x: markerPoint.x,
+    y: markerPoint.y,
+    bearing: Math.atan2(markerTangent.y, markerTangent.x) * 180 / Math.PI,
+  };
   const enter = spring01(frame, fps);
   const compass = scene.mapRotation * Math.PI / 180;
   const stops = scene.stops.map((stop) => ({
