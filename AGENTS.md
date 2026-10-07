@@ -41,7 +41,7 @@ Prefer scene + motion + transition composition over custom React for content vid
 
 ### Scene library
 
-Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `geo-route`, `maplibre-route`, `elevation-route`, `route-chapter`, `route-stop`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `video`, `caption-video`, `outro`.
+Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `geo-route`, `maplibre-route`, `elevation-route`, `route-chapter`, `route-stop`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `lottie`, `video`, `caption-video`, `outro`.
 
 ### Motion presets
 
@@ -60,6 +60,8 @@ Limit one project to two or three transition styles unless the brief asks for a 
 For browser-rendered video, use `video` or `caption-video` with local assets under `public/media/<project-id>/`. Use `caption-video` captions as scene-relative seconds. The renderer converts these segments to the official Remotion `Caption[]` model and groups them with `createTikTokStyleCaptions()`. Choose `captionStyle: "basic"`, `"tiktok"`, or `"word-highlight"`; use `combineTokensWithinMilliseconds` and optional `breakOnSilenceAfterMilliseconds` to control page rhythm.
 
 Project-level `audio.music` and `audio.voiceover` are supported. Keep audio local and use explicit volume values.
+
+Use `lottie` for small reusable animated assets such as route pulses, compass flourishes, transport icons and editorial accents. Store JSON under `public/media/` so preflight and browser export are deterministic. The scene uses the SVG Lottie renderer. Prefer `@remotion/shapes` for simple arrows, circles, sparks and callouts instead of importing a Lottie file for geometry that can stay pure SVG.
 
 
 ### SVG typography and image treatments
