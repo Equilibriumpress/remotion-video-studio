@@ -15,8 +15,8 @@
       "id": "ml-intro",
       "type": "kinetic-title",
       "duration": 2.6,
-      "text": "Tokyo to Kyoto · live map",
-      "kicker": "EXPERIMENTAL MAPLIBRE / OPENFREEMAP",
+      "text": "Tokyo to Kyoto · snapshot map",
+      "kicker": "MAPLIBRE SNAPSHOT / OPENFREEMAP",
       "style": "word-reveal",
       "highlight": "Kyoto",
       "transition": "fade"
@@ -64,7 +64,7 @@
         }
       ],
       "progress": 1,
-      "label": "Fixed OpenFreeMap plate · Remotion SVG route overlay · real MLIT rail alignment",
+      "label": "Bounded OpenFreeMap snapshot · Remotion SVG route overlay · real MLIT rail alignment",
       "camera": "follow",
       "altitude": 11500,
       "mapStyleUrl": "https://tiles.openfreemap.org/styles/liberty",
@@ -72,14 +72,15 @@
       "markerColor": "#ef4444",
       "showDetails": true,
       "transition": "fade",
-      "graphicFps": 12
+      "graphicFps": 12,
+      "cameraZoom": 1.3
     },
     {
       "id": "ml-end",
       "type": "outro",
       "duration": 2.5,
-      "title": "MapLibre experiment",
-      "subtitle": "MapLibre loads once; Remotion animates the route and camera plate deterministically",
+      "title": "MapLibre snapshot",
+      "subtitle": "MapLibre prepares one bounded plate; Remotion animates the route after WebGL is released",
       "motion": "fade-rise",
       "transition": "fade"
     }
