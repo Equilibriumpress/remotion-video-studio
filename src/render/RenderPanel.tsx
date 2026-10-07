@@ -86,7 +86,7 @@ export const RenderPanel = ({project}: Props) => {
         muted: !hasAudio,
         scale,
         signal: controller.signal,
-        allowHtmlInCanvas: usesThree,
+        allowHtmlInCanvas: usesExperimentalCanvas,
         onProgress: ({progress: value}) => setProgress(value),
       });
 
