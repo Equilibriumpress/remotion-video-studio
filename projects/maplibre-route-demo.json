@@ -71,7 +71,8 @@
       "routeColor": "#111827",
       "markerColor": "#ef4444",
       "showDetails": true,
-      "transition": "fade"
+      "transition": "fade",
+      "graphicFps": 12
     },
     {
       "id": "ml-end",
@@ -1219,5 +1220,12 @@
         "license": "CC BY 4.0"
       }
     }
+  },
+  "direction": {
+    "personality": "corporate",
+    "baseTimingSeconds": 0.42,
+    "focalPoint": "center",
+    "transitionFamily": "fade",
+    "notes": "MapLibre stability reference: smooth fixed-plate camera with 12fps editorial route overlays."
   }
 }
