@@ -174,6 +174,9 @@ export const MapLibreRouteSceneFrame = ({
     const timeout = window.setTimeout(() => {
       if (disposed || loadingResolvedRef.current) return;
       setFallbackReason('map/style load timed out');
+      mapCanvas?.removeEventListener('webglcontextlost', onContextLost);
+      mapInstance?.remove();
+      mapInstance = null;
       finishLoading();
     }, 8000);
 
@@ -211,6 +214,8 @@ export const MapLibreRouteSceneFrame = ({
       event.preventDefault();
       if (disposed || snapshotComplete) return;
       setFallbackReason('WebGL context lost');
+      mapInstance?.remove();
+      mapInstance = null;
       finishLoading();
     };
     mapCanvas.addEventListener('webglcontextlost', onContextLost, {once: true});
