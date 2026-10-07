@@ -4,7 +4,7 @@ import {AbsoluteFill, useVideoConfig} from 'remotion';
 import type {VideoProject} from '../project/schema';
 import {sceneFrames} from '../project/schema';
 import {resolveAsset} from '../project/assets';
-import {TransitionSeries} from '@remotion/transitions';
+import {TransitionSeries, type TransitionPresentation} from '@remotion/transitions';
 import {SceneFrame} from './SceneFrame';
 import {transitionPresentation, transitionTiming} from './officialTransitions';
 
@@ -65,7 +65,7 @@ export const VideoComposition = ({project}: VideoCompositionProps) => {
           return [
             <TransitionSeries.Transition
               key={`transition-${scene.id}`}
-              presentation={presentation}
+              presentation={presentation as TransitionPresentation<any>}
               timing={timing}
             />,
             sequence,
