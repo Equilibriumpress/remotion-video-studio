@@ -23,6 +23,18 @@ export const transitionPresentation = (
       return wipe({direction: 'from-left'});
     case 'iris':
       return iris({width, height});
+    case 'map-reveal':
+      return wipe({direction: 'from-left'});
+    case 'photo-mask-reveal':
+      return iris({width, height});
+    case 'split-grid':
+      return pushCut({
+        cutProgress: 0.5,
+        outgoingScale: 1.025,
+        incomingStartScale: 1.075,
+        incomingEndScale: 1,
+        flashOpacity: 0,
+      });
     case 'zoom':
       return pushCut({
         outgoingScale: 1.06,
