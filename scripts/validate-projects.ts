@@ -102,6 +102,10 @@ for (const file of files) {
         errors.push(`${file}: route stop "${scene.id}" references missing route "${scene.routeId}"`);
       }
 
+      if (scene.type === 'maplibre-route' && !project.geoRoutes?.[scene.routeId]) {
+        errors.push(`${file}: MapLibre scene "${scene.id}" references missing route "${scene.routeId}"`);
+      }
+
       if (scene.type === 'geo-route') {
         const route = project.geoRoutes?.[scene.routeId];
         if (!route) {
