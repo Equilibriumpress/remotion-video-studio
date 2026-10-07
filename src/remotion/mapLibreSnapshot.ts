@@ -51,13 +51,12 @@ export const mapPlateDimensions = ({
   requestedZoom: number;
   webglLimit: number;
 }) => {
-  const safeLimit = Math.max(
-    Math.max(width, height),
-    Math.min(
-      MAX_MAP_PLATE_DIMENSION,
-      webglLimit > 0 ? webglLimit : MAX_MAP_PLATE_DIMENSION,
-    ),
+  const compositionMax = Math.max(width, height);
+  const safeLimit = Math.min(
+    MAX_MAP_PLATE_DIMENSION,
+    webglLimit > 0 ? webglLimit : MAX_MAP_PLATE_DIMENSION,
   );
+  const supported = safeLimit >= compositionMax;
   const safeCameraZoom = Math.min(
     MAX_MAP_CAMERA_ZOOM,
     Math.max(1, requestedZoom),
@@ -65,10 +64,11 @@ export const mapPlateDimensions = ({
   const requestedScale = follow
     ? Math.max(1.35, safeCameraZoom + 0.25)
     : 1.12;
-  const dimensionScale = safeLimit / Math.max(width, height);
-  const plateScale = Math.min(requestedScale, dimensionScale);
+  const dimensionScale = supported ? safeLimit / compositionMax : 1;
+  const plateScale = supported ? Math.min(requestedScale, dimensionScale) : 1;
 
   return {
+    supported,
     safeCameraZoom,
     safeLimit,
     plateScale,
