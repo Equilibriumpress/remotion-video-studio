@@ -44,15 +44,15 @@ Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title
 
 ### Motion presets
 
-Use one of: `none`, `fade-rise`, `slow-push`, `pan-left`, `pan-right`, `pop`, `drift-up`, `zoom-out`.
+Use one of: `none`, `fade-rise`, `slow-push`, `pan-left`, `pan-right`, `pop`, `drift-up`, `zoom-out`, `cinematic-push`, `cinematic-pull`, `pan-and-zoom`, `float-horizontal`.
 
-Use `slow-push` and `zoom-out` mainly for visual media. Use `fade-rise`, `pop` and `drift-up` for typography and data.
+Use `cinematic-push`, `cinematic-pull`, and `pan-and-zoom` for slower photo-led travel sequences. Use `slow-push` and `zoom-out` mainly for visual media. Use `fade-rise`, `pop` and `drift-up` for typography and data. Set `motionAmount` between roughly 0.6 and 1.1 for restrained travel edits.
 
 ### Transition presets
 
-Use one of: `cut`, `fade`, `slide-left`, `slide-up`, `wipe`, `zoom`.
+Use one of: `cut`, `fade`, `slide-left`, `slide-up`, `wipe`, `zoom`, `soft-zoom`, `whip-left`, `iris`.
 
-Limit one project to two or three transition styles unless the brief asks for a deliberately energetic edit.
+Limit one project to two or three transition styles unless the brief asks for a deliberately energetic edit. `transitionDuration` overrides the default 0.45-second overlap and accepts 0.15–1.5 seconds.
 
 ### Media
 
