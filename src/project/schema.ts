@@ -312,6 +312,23 @@ const mapLibreRouteScene = baseScene.extend({
   showDetails: z.boolean().default(true),
 });
 
+const threeGlobeScene = baseScene.extend({
+  type: z.literal('three-globe'),
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  stops: z.array(geoStopSchema).min(2).max(6),
+  globeColor: z.string().default('#0B132B'),
+  routeColor: z.string().default('#FFB703'),
+  markerColor: z.string().default('#FFFFFF'),
+  atmosphereColor: z.string().default('#5BC0EB'),
+  arcHeight: z.number().min(0.03).max(0.7).default(0.2),
+  globeRotation: z.number().min(-180).max(180).default(0),
+  cameraDistance: z.number().min(2.5).max(6).default(3.5),
+  autoRotate: z.number().min(-1).max(1).default(0.16),
+  showGrid: z.boolean().default(true),
+  showDetails: z.boolean().default(true),
+});
+
 const routeChapterScene = baseScene.extend({
   type: z.literal('route-chapter'),
   title: z.string().min(1),
@@ -477,6 +494,7 @@ export const sceneSchema = z.discriminatedUnion('type', [
   routeMapScene,
   geoRouteScene,
   mapLibreRouteScene,
+  threeGlobeScene,
   elevationRouteScene,
   routeChapterScene,
   routeStopScene,
@@ -541,6 +559,7 @@ export type VideoScene = z.infer<typeof sceneSchema>;
 export type GeoRouteGeometry = z.infer<typeof geoRouteSchema>;
 export type GeoRouteScene = Extract<VideoScene, {type: 'geo-route'}>;
 export type MapLibreRouteScene = Extract<VideoScene, {type: 'maplibre-route'}>;
+export type ThreeGlobeScene = Extract<VideoScene, {type: 'three-globe'}>;
 export type ElevationProfile = z.infer<typeof elevationProfileSchema>;
 export type ElevationRouteScene = Extract<VideoScene, {type: 'elevation-route'}>;
 export type RouteChapterScene = Extract<VideoScene, {type: 'route-chapter'}>;
