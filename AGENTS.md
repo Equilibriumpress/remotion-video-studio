@@ -41,7 +41,7 @@ Prefer scene + motion + transition composition over custom React for content vid
 
 ### Scene library
 
-Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `geo-route`, `maplibre-route`, `elevation-route`, `route-chapter`, `route-stop`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `lottie`, `video`, `caption-video`, `outro`.
+Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `geo-route`, `maplibre-route`, `three-globe`, `elevation-route`, `route-chapter`, `route-stop`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `lottie`, `video`, `caption-video`, `outro`.
 
 ### Motion presets
 
@@ -74,6 +74,12 @@ Prefer restrained combinations. One strong mask or kinetic treatment per sequenc
 
 
 ### Geographically faithful routes
+
+### Experimental Remotion Three
+
+Use `three-globe` only for global-scale travel, aviation or geographic perspective where 3D adds information. The scene uses `@remotion/three` + React Three Fiber with a procedural sphere, grid and great-circle arcs; do not add runtime textures, remote 3D models or terrain downloads to the default implementation. Keep `dpr={1}` and modest geometry detail so browser preview remains usable on tablets.
+
+The 3D route is a visualization, not a navigable flight path. Use sourced geographic coordinates for stops and say so in the scene when a path is illustrative. Browser MP4 export is experimental because the Three.js canvas requires HTML-in-canvas capture; prefer Chromium. Keep an SVG-based project or scene available for production-critical output.
 
 ### Experimental MapLibre maps
 
@@ -114,6 +120,7 @@ Use these projects as composition references:
 - `tokyo-kyoto-shinkansen` for clean station-to-station route explainers, journey progress and train imagery.
 - `kyoto-morning-route` for watercolor walking routes, editorial image masks and calm pacing.
 - `scotland-roadtrip-showcase` for flow-style maps, multi-stop routes and landscape-led travel films.
+- `three-globe-flight-demo` for global-scale aviation stories where a 3D globe adds perspective.
 - `studio-product-showcase` for kinetic typography and explainer pacing.
 
 
