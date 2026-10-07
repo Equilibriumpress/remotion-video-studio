@@ -1,0 +1,300 @@
+{
+  "id": "peak-district-roadtrip",
+  "title": "Peak District · 60 Second Roadtrip",
+  "template": "travel-story",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#101713",
+    "foreground": "#F6F3EA",
+    "muted": "#B9C0B3",
+    "accent": "#D7A85B"
+  },
+  "director": {
+    "sourcePrompt": "Create a 60-second premium vertical roadtrip video in English featuring the highlights of the Peak District. Make it cinematic and scenic, with a real geographic route, restrained text, premium photography, a clear roadtrip rhythm and a strong final payoff at Stanage Edge.",
+    "goal": "inspire",
+    "audience": "Travellers planning a scenic first roadtrip through the Peak District",
+    "durationTarget": 60,
+    "narrative": "journey",
+    "pacing": "calm",
+    "visualLanguage": "cinematic",
+    "mapRole": "hero",
+    "mapEngine": "editorial",
+    "assetBalance": "photo-led",
+    "hook": "Six Peak District highlights in one unforgettable roadtrip",
+    "payoff": "From quiet water to open gritstone skies",
+    "avoid": [
+      "back-to-back-maps",
+      "hard-cuts",
+      "dense-text",
+      "repeated-layouts",
+      "excessive-ui"
+    ]
+  },
+  "story": {
+    "routeId": "peak-district-drive",
+    "title": "Peak District Roadtrip",
+    "subtitle": "Reservoirs, stone villages, dramatic passes and classic viewpoints",
+    "style": "cinematic",
+    "vehicle": "car",
+    "introImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Ladybower_from_Bamford_Edge.jpg/1280px-Ladybower_from_Bamford_Edge.jpg",
+    "outroTitle": "Save this Peak District roadtrip.",
+    "overview": true,
+    "chapters": true,
+    "stopCards": true,
+    "mapRotation": 0,
+    "mode": "replace",
+    "stops": [
+      {
+        "coordinates": [
+          -1.6995,
+          53.3659
+        ],
+        "label": "Ladybower Reservoir",
+        "icon": "nature",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Ladybower_from_Bamford_Edge.jpg/1280px-Ladybower_from_Bamford_Edge.jpg"
+      },
+      {
+        "coordinates": [
+          -1.7778,
+          53.3433
+        ],
+        "label": "Castleton",
+        "icon": "city"
+      },
+      {
+        "coordinates": [
+          -1.809603,
+          53.349312
+        ],
+        "label": "Mam Tor",
+        "detail": "Winnats Pass and the Great Ridge",
+        "icon": "nature",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Mam_Tor_%2825247426697%29.jpg/1280px-Mam_Tor_%2825247426697%29.jpg",
+        "body": "Climb through Winnats Pass, then stop near Mam Tor for sweeping views across the Hope Valley."
+      },
+      {
+        "coordinates": [
+          -1.724896,
+          53.240962
+        ],
+        "label": "Monsal Head",
+        "detail": "Viaduct and limestone dale",
+        "icon": "nature",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Monsal_Head%2C_Peak_District%2C_Derbyshire%2C_UK_%2814588024369%29.jpg/1280px-Monsal_Head%2C_Peak_District%2C_Derbyshire%2C_UK_%2814588024369%29.jpg",
+        "body": "Pause above Monsal Dale for the classic view over Headstone Viaduct and the winding River Wye."
+      },
+      {
+        "coordinates": [
+          -1.669054,
+          53.209864
+        ],
+        "label": "Bakewell",
+        "detail": "River town and local character",
+        "icon": "city",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Bakewell_-River_Wye_-_geograph.org.uk_-_5456920.jpg/1280px-Bakewell_-River_Wye_-_geograph.org.uk_-_5456920.jpg",
+        "body": "Slow the pace in Bakewell with stone streets, riverside walks and the town's famous pudding."
+      },
+      {
+        "coordinates": [
+          -1.634167,
+          53.348611
+        ],
+        "label": "Stanage Edge",
+        "detail": "Gritstone cliffs and big skies",
+        "distance": "Final stop",
+        "icon": "nature",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Stanage_Edge_in_the_Peak_District.jpg/1280px-Stanage_Edge_in_the_Peak_District.jpg",
+        "body": "Finish above Hathersage at Stanage Edge, with open moorland and one of the Dark Peak's defining gritstone escarpments."
+      }
+    ]
+  },
+  "voiceoverScript": [
+    {
+      "sceneId": "director-hook",
+      "text": "Welcome to the Peak District, where one road trip links reservoirs, villages, ridges and open moorland."
+    },
+    {
+      "sceneId": "director-hero",
+      "text": "Start at Ladybower Reservoir, with water, woodland and wide Dark Peak views."
+    },
+    {
+      "sceneId": "director-orient",
+      "text": "Then follow the Hope Valley to Castleton and climb toward Mam Tor."
+    },
+    {
+      "sceneId": "director-detail-03",
+      "text": "Winnats Pass brings the drama, before Mam Tor opens sweeping views across the valley."
+    },
+    {
+      "sceneId": "director-travel",
+      "text": "Turn south through limestone country toward Monsal Dale."
+    },
+    {
+      "sceneId": "director-detail-04",
+      "text": "At Monsal Head, pause above the viaduct and the winding River Wye."
+    },
+    {
+      "sceneId": "director-detail-05",
+      "text": "Bakewell changes the rhythm: stone streets, riverside walks and the town's famous pudding."
+    },
+    {
+      "sceneId": "director-route-bridge",
+      "text": "For the final leg, head back toward the gritstone moors above Hathersage."
+    },
+    {
+      "sceneId": "director-arrival",
+      "text": "Finish at Stanage Edge, where cliffs, big skies and open country create the perfect finale."
+    },
+    {
+      "sceneId": "director-payoff-image",
+      "text": "Six highlights, one compact road trip, and a classic introduction to the Peak District."
+    },
+    {
+      "sceneId": "director-payoff",
+      "text": "Save this route for your next trip to England."
+    }
+  ],
+  "geoRoutes": {
+    "peak-district-drive": {
+      "type": "LineString",
+      "mode": "driving",
+      "coordinates": [
+        [
+          -1.6995,
+          53.3659
+        ],
+        [
+          -1.6935,
+          53.3574
+        ],
+        [
+          -1.6904,
+          53.3488
+        ],
+        [
+          -1.7118,
+          53.349
+        ],
+        [
+          -1.743,
+          53.3489
+        ],
+        [
+          -1.76,
+          53.3472
+        ],
+        [
+          -1.7778,
+          53.3433
+        ],
+        [
+          -1.7902,
+          53.3421
+        ],
+        [
+          -1.7987,
+          53.3448
+        ],
+        [
+          -1.805,
+          53.3481
+        ],
+        [
+          -1.809603,
+          53.349312
+        ],
+        [
+          -1.829,
+          53.347
+        ],
+        [
+          -1.849,
+          53.337
+        ],
+        [
+          -1.853,
+          53.324
+        ],
+        [
+          -1.826,
+          53.311
+        ],
+        [
+          -1.811,
+          53.309
+        ],
+        [
+          -1.789,
+          53.294
+        ],
+        [
+          -1.772,
+          53.279
+        ],
+        [
+          -1.751,
+          53.262
+        ],
+        [
+          -1.736,
+          53.251
+        ],
+        [
+          -1.724896,
+          53.240962
+        ],
+        [
+          -1.71,
+          53.23
+        ],
+        [
+          -1.706,
+          53.224
+        ],
+        [
+          -1.687,
+          53.218
+        ],
+        [
+          -1.669054,
+          53.209864
+        ],
+        [
+          -1.645,
+          53.226
+        ],
+        [
+          -1.616,
+          53.249
+        ],
+        [
+          -1.635,
+          53.267
+        ],
+        [
+          -1.638,
+          53.295
+        ],
+        [
+          -1.65,
+          53.33
+        ],
+        [
+          -1.642,
+          53.341
+        ],
+        [
+          -1.634167,
+          53.348611
+        ]
+      ],
+      "source": {
+        "name": "Editorial Peak District road alignment using public access guidance and georeferenced highlights; not turn-by-turn navigation",
+        "url": "https://visitpeakdistrict.com/itineraries/accessible-castleton-scenic-drive-in-the-hope-valley",
+        "license": "Editorial route compilation for animation; geographic context © OpenStreetMap contributors where referenced"
+      }
+    }
+  },
+  "scenes": []
+}
