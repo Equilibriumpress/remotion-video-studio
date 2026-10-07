@@ -59,6 +59,36 @@ for (const file of files) {
       }
     }
 
+
+    if (project.director) {
+      const roles = new Set(project.scenes.map((scene) => scene.role));
+      if (!roles.has('hook')) {
+        errors.push(`${file}: Premium Director output needs a hook beat`);
+      }
+      if (!roles.has('payoff')) {
+        errors.push(`${file}: Premium Director output needs a payoff beat`);
+      }
+
+      if (project.director.avoid.includes('back-to-back-maps')) {
+        const pureMapTypes = new Set([
+          'geo-route',
+          'maplibre-route',
+          'editorial-map',
+          'route-chapter',
+          'elevation-route',
+        ]);
+        for (let index = 1; index < project.scenes.length; index++) {
+          const previous = project.scenes[index - 1];
+          const current = project.scenes[index];
+          if (pureMapTypes.has(previous.type) && pureMapTypes.has(current.type)) {
+            errors.push(
+              `${file}: Premium Director emitted back-to-back map shots "${previous.id}" → "${current.id}"`,
+            );
+          }
+        }
+      }
+    }
+
     for (const [profileId, profile] of Object.entries(project.elevationProfiles ?? {})) {
       for (let i = 1; i < profile.samples.length; i++) {
         if (profile.samples[i].distanceKm <= profile.samples[i - 1].distanceKm) {
