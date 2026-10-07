@@ -5,7 +5,13 @@ A browser-first travel video studio and route storytelling engine built around R
 ## Workflow
 
 ```text
-ChatGPT / Codex
+Natural-language prompt
+      ↓
+ChatGPT / Codex · Premium Director
+      ↓
+Creative brief + story + sourced assets/route
+      ↓
+Deterministic shot compiler
       ↓
 GitHub project JSON + local media
       ↓
@@ -37,6 +43,7 @@ GitHub Actions performs only project validation and the static Vite build. It do
 - Scene-relative deterministic beat-sync pulses from precomputed beat timestamps
 - 12fps-style editorial map overlays while the base map/camera remains smooth
 - Local Remotion agent-skill layer for maps, motion direction, shot composition and interactivity
+- Premium Director compiler: prompt brief → narrative arc → shot roles → deterministic Remotion scenes
 - Animated SVG elevation profiles with distance, height and ascent progress
 - Auto-fitted route chapters sliced by cumulative geographic distance
 - Premium route-stop cards with photography, metadata and mini-route context
@@ -70,6 +77,7 @@ AGENTS.md                 ChatGPT/Codex authoring protocol
 - `three-globe-flight-demo` — experimental Tokyo → Singapore → Sydney 3D globe flight
 - `kyoto-morning-route` — calm photo-led Kyoto walking reel
 - `kyoto-auto-story` — the same route expressed as a compact story config with generated scenes
+- `kyoto-premium-director` — a retained natural-language prompt compiled into a premium hook/orient/travel/detail/payoff sequence
 - `scotland-roadtrip-showcase` — flowing multi-stop Highland journey
 - `studio-product-showcase` — product explainer
 
@@ -167,3 +175,14 @@ Scenes can define `beatSync` with precomputed scene-relative beat timestamps. Pr
 For editorial geography, `editorial-map` and `maplibre-route` accept `graphicFps`. Setting it to 12 gives route graphics a deliberate stepped cadence while the MapLibre fixed plate and follow camera remain smooth.
 
 The local agent protocol is in `skills/` and is adapted from Remotion Agent Skills 4.0.534 plus open-source motion-design references.
+
+
+## Prompt → Premium Director
+
+The studio now separates semantic direction from rendering. ChatGPT/Codex turns a natural-language request into a compact `director` brief plus factual `story`, route and asset data. The browser does **not** call an LLM. `src/project/premiumDirector.ts` deterministically expands that brief into a shot plan.
+
+The Director controls goal, target duration, narrative, pacing, visual language, map role, map engine, asset balance, hook, payoff and avoid rules. Generated scenes receive explicit roles: `hook`, `orient`, `travel`, `detail`, `bridge`, and `payoff`.
+
+This makes the creative translation reviewable: the Studio shows the original prompt, Director choices and scene roles. Build validation checks that Director outputs contain a hook/payoff and can reject back-to-back pure map shots when that rule is enabled.
+
+See `projects/kyoto-premium-director.json` for the reference example and `skills/premium-video-director/SKILL.md` for the authoring protocol.

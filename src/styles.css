@@ -360,3 +360,51 @@ h2 { font-size: clamp(22px, 3vw, 36px); }
   background: transparent;
   color: #cbd2dc;
 }
+
+
+.director-card {
+  margin-top: 18px;
+  padding: 14px;
+  border: 1px solid #2a313a;
+  border-radius: 12px;
+  background: #11161c;
+}
+
+.director-card blockquote {
+  margin: 0;
+  color: #d9e0e8;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.director-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.director-tags span {
+  padding: 5px 7px;
+  border-radius: 999px;
+  color: #aeb8c5;
+  background: #1b222a;
+  font-size: 10px;
+  text-transform: capitalize;
+}
+
+.director-payoff {
+  display: grid;
+  gap: 4px;
+  margin: 12px 0 0;
+  color: #8894a2;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.director-payoff strong {
+  color: #75d7de;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
