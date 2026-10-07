@@ -1,0 +1,83 @@
+{
+  "id": "three-globe-flight-demo",
+  "title": "Tokyo to Sydney · 3D Globe",
+  "template": "travel-story",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#071018",
+    "foreground": "#F8FAFC",
+    "muted": "#A7B4C2",
+    "accent": "#FFB703"
+  },
+  "scenes": [
+    {
+      "id": "globe-intro",
+      "type": "title",
+      "duration": 2.4,
+      "title": "Tokyo to Sydney",
+      "subtitle": "A lightweight 3D flight story built with Remotion Three",
+      "motion": "fade-rise",
+      "transition": "soft-zoom",
+      "transitionDuration": 0.5
+    },
+    {
+      "id": "globe-flight",
+      "type": "three-globe",
+      "duration": 8.2,
+      "title": "Across Asia to Australia",
+      "subtitle": "Tokyo → Singapore → Sydney",
+      "stops": [
+        {
+          "coordinates": [
+            139.6917,
+            35.6895
+          ],
+          "label": "Tokyo",
+          "detail": "Japan",
+          "icon": "city"
+        },
+        {
+          "coordinates": [
+            103.8198,
+            1.3521
+          ],
+          "label": "Singapore",
+          "detail": "Singapore",
+          "icon": "city"
+        },
+        {
+          "coordinates": [
+            151.2093,
+            -33.8688
+          ],
+          "label": "Sydney",
+          "detail": "Australia",
+          "icon": "city"
+        }
+      ],
+      "globeColor": "#10243A",
+      "routeColor": "#FFB703",
+      "markerColor": "#FFFFFF",
+      "atmosphereColor": "#65C7F7",
+      "arcHeight": 0.18,
+      "globeRotation": -128,
+      "cameraDistance": 3.55,
+      "autoRotate": 0.07,
+      "showGrid": true,
+      "showDetails": true,
+      "transition": "fade",
+      "transitionDuration": 0.45
+    },
+    {
+      "id": "globe-outro",
+      "type": "outro",
+      "duration": 2.6,
+      "title": "3D when it adds perspective",
+      "subtitle": "SVG routes remain the production default",
+      "motion": "cinematic-pull",
+      "transition": "soft-zoom",
+      "transitionDuration": 0.55
+    }
+  ]
+}
