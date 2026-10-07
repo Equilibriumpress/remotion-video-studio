@@ -103,6 +103,12 @@ const GlobeModel = ({
   );
   const visiblePoints = routePoints.slice(0, visibleCount);
   const marker = globeProgressPoint(routePoints, progress);
+  const markerAhead = globeProgressPoint(routePoints, Math.min(1, progress + 0.012));
+  const markerDirection = markerAhead.clone().sub(marker).normalize();
+  const markerQuaternion = new THREE.Quaternion().setFromUnitVectors(
+    new THREE.Vector3(0, 1, 0),
+    markerDirection.lengthSq() > 0 ? markerDirection : new THREE.Vector3(0, 1, 0),
+  );
 
   const rotationY =
     scene.globeRotation * Math.PI / 180 +
@@ -180,14 +186,29 @@ const GlobeModel = ({
           );
         })}
 
-        <mesh position={[marker.x, marker.y, marker.z]}>
-          <sphereGeometry args={[0.052, 20, 20]} />
-          <meshStandardMaterial
-            color={scene.markerColor}
-            emissive={scene.markerColor}
-            emissiveIntensity={1.25}
-          />
-        </mesh>
+        <group
+          position={[marker.x, marker.y, marker.z]}
+          quaternion={markerQuaternion}
+        >
+          <mesh>
+            <coneGeometry args={[0.045, 0.15, 4]} />
+            <meshStandardMaterial
+              color={scene.markerColor}
+              emissive={scene.markerColor}
+              emissiveIntensity={1.1}
+              metalness={0.18}
+              roughness={0.28}
+            />
+          </mesh>
+          <mesh position={[0, -0.025, 0]} scale={[2.8, 0.22, 0.7]}>
+            <boxGeometry args={[0.055, 0.055, 0.055]} />
+            <meshStandardMaterial
+              color={scene.markerColor}
+              emissive={scene.markerColor}
+              emissiveIntensity={0.75}
+            />
+          </mesh>
+        </group>
       </group>
     </>
   );
