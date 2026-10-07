@@ -1,6 +1,7 @@
 import {Easing, interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {EditorialMapScene, TravelHudScene, VideoProject} from '../../project/schema';
 import {resolveAsset} from '../../project/assets';
+import {quantizeFrame} from '../timing';
 
 type Point = {x: number; y: number};
 
@@ -104,8 +105,9 @@ export const EditorialMapSceneFrame = ({
   const stopPoints = projectCoordinates(scene.stops.map((stop) => stop.coordinates));
   const path = pathFromPoints(routePoints);
   const totalLength = Math.max(1, lineLength(routePoints));
+  const graphicFrame = quantizeFrame(frame, fps, scene.graphicFps);
   const animatedProgress = interpolate(
-    frame,
+    graphicFrame,
     [fps * 0.15, Math.max(fps * 0.8, durationInFrames * 0.78)],
     [0, scene.progress],
     {

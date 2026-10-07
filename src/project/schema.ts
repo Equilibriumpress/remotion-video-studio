@@ -42,6 +42,11 @@ const baseScene = z.object({
     shutterAngle: z.number().min(0).max(360).default(120),
     samples: z.number().int().min(2).max(12).default(5),
   }).optional(),
+  beatSync: z.object({
+    beats: z.array(z.number().nonnegative()).min(1).max(96),
+    strength: z.number().min(0.005).max(0.15).default(0.035),
+    decaySeconds: z.number().min(0.05).max(0.5).default(0.16),
+  }).optional(),
 });
 
 const titleScene = baseScene.extend({
@@ -325,6 +330,7 @@ const mapLibreRouteScene = baseScene.extend({
   routeColor: z.string().default('#111827'),
   markerColor: z.string().default('#ef4444'),
   showDetails: z.boolean().default(true),
+  graphicFps: z.number().min(6).max(60).default(30),
 });
 
 const editorialMapScene = baseScene.extend({
@@ -337,6 +343,7 @@ const editorialMapScene = baseScene.extend({
   stops: z.array(geoStopSchema).min(2).max(8),
   progress: z.number().min(0).max(1).default(1),
   showDetails: z.boolean().default(true),
+  graphicFps: z.number().min(6).max(60).default(30),
 });
 
 const travelHudScene = baseScene.extend({
@@ -607,12 +614,21 @@ const audioTrackSchema = z.object({
   loop: z.boolean().default(false),
 });
 
+const motionDirectionSchema = z.object({
+  personality: z.enum(['premium', 'corporate', 'playful', 'energetic']).default('premium'),
+  baseTimingSeconds: z.number().min(0.15).max(1.2).default(0.45),
+  focalPoint: z.enum(['left-third', 'center', 'right-third']).default('center'),
+  transitionFamily: z.enum(['fade', 'push', 'mask', 'mixed']).default('mixed'),
+  notes: z.string().max(500).optional(),
+});
+
 const projectObjectSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
   template: z.enum(['travel-story', 'explainer', 'data-story']),
   format: z.enum(['vertical', 'landscape', 'square', 'appstore-header', 'appstore-search']),
   fps: z.union([z.literal(24), z.literal(25), z.literal(30), z.literal(50), z.literal(60)]),
+  direction: motionDirectionSchema.optional(),
   theme: z.object({
     background: z.string().default('#0B0D10'),
     foreground: z.string().default('#F7F8FA'),
@@ -645,6 +661,7 @@ export const projectSchema = projectObjectSchema.superRefine((project, ctx) => {
 });
 
 export type MotionPreset = z.infer<typeof motionPresetSchema>;
+export type MotionDirection = z.infer<typeof motionDirectionSchema>;
 export type TransitionPreset = z.infer<typeof transitionPresetSchema>;
 export type VideoScene = z.infer<typeof sceneSchema>;
 export type GeoRouteGeometry = z.infer<typeof geoRouteSchema>;

@@ -135,6 +135,7 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
     fps,
     width,
     height,
+    direction: project.direction,
   });
   const transition = transitionValues({
     preset: scene.transition,

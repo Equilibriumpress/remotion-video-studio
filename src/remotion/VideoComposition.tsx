@@ -7,6 +7,7 @@ import {resolveAsset} from '../project/assets';
 import {TransitionSeries, type TransitionPresentation} from '@remotion/transitions';
 import {SceneFrame} from './SceneFrame';
 import {transitionPresentation, transitionTiming} from './officialTransitions';
+import {BeatSyncFrame} from './BeatSyncFrame';
 
 export type VideoCompositionProps = {
   project: VideoProject;
@@ -38,7 +39,7 @@ export const VideoComposition = ({project}: VideoCompositionProps) => {
           const frame = (
             <SceneFrame scene={scene} project={project} transitionInFrames={0} />
           );
-          const sceneContent = scene.motionBlur ? (
+          const motionBlurContent = scene.motionBlur ? (
             <CameraMotionBlur
               shutterAngle={scene.motionBlur.shutterAngle}
               samples={scene.motionBlur.samples}
@@ -46,6 +47,11 @@ export const VideoComposition = ({project}: VideoCompositionProps) => {
               {frame}
             </CameraMotionBlur>
           ) : frame;
+          const sceneContent = scene.beatSync ? (
+            <BeatSyncFrame beatSync={scene.beatSync}>
+              {motionBlurContent}
+            </BeatSyncFrame>
+          ) : motionBlurContent;
           const sequence = (
             <TransitionSeries.Sequence
               key={`scene-${scene.id}`}

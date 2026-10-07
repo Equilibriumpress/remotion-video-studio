@@ -33,6 +33,10 @@ GitHub Actions performs only project validation and the static Vite build. It do
 - Experimental MapLibre GL route flyovers with OpenFreeMap basemaps and SVG fallback
 - Experimental Remotion Three globe flights with deterministic great-circle arcs and a lightweight fallback
 - Cinematic camera presets with adjustable motion strength and per-scene transition duration
+- Project-level motion direction personalities: premium, corporate, playful and energetic
+- Scene-relative deterministic beat-sync pulses from precomputed beat timestamps
+- 12fps-style editorial map overlays while the base map/camera remains smooth
+- Local Remotion agent-skill layer for maps, motion direction, shot composition and interactivity
 - Animated SVG elevation profiles with distance, height and ascent progress
 - Auto-fitted route chapters sliced by cumulative geographic distance
 - Premium route-stop cards with photography, metadata and mini-route context
@@ -54,6 +58,7 @@ src/project/              Schema, catalog and asset handling
 src/remotion/             Reusable video composition and scenes
 src/render/               Browser export, profiles and preflight
 scripts/                  Build-time validation
+skills/                   Local Remotion agent skills
 AGENTS.md                 ChatGPT/Codex authoring protocol
 ```
 
@@ -151,3 +156,14 @@ For a normal new video, add only:
 Do not create a new React composition for each video. Add React code only when the studio needs a reusable new scene capability.
 
 See `AGENTS.md` for the full agent workflow.
+
+
+## Motion direction and cadence
+
+Projects can opt into a shared `direction` object to keep timing and visual energy consistent. The motion engine supports `premium`, `corporate`, `playful`, and `energetic` personalities.
+
+Scenes can define `beatSync` with precomputed scene-relative beat timestamps. Preview and browser export therefore remain deterministic: no real-time audio analysis runs during rendering.
+
+For editorial geography, `editorial-map` and `maplibre-route` accept `graphicFps`. Setting it to 12 gives route graphics a deliberate stepped cadence while the MapLibre fixed plate and follow camera remain smooth.
+
+The local agent protocol is in `skills/` and is adapted from Remotion Agent Skills 4.0.534 plus open-source motion-design references.

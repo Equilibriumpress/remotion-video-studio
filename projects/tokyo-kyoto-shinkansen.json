@@ -20,7 +20,17 @@
       "style": "zoom",
       "highlight": "Kyoto",
       "transition": "fade",
-      "align": "center"
+      "align": "center",
+      "beatSync": {
+        "beats": [
+          0.18,
+          0.82,
+          1.48,
+          2.14
+        ],
+        "strength": 0.022,
+        "decaySeconds": 0.14
+      }
     },
     {
       "id": "tk-train",
@@ -82,7 +92,8 @@
       "progress": 1,
       "showDetails": false,
       "transition": "map-reveal",
-      "transitionDuration": 0.7
+      "transitionDuration": 0.7,
+      "graphicFps": 12
     },
     {
       "id": "tk-route",
@@ -137,7 +148,8 @@
       "markerColor": "#FFFFFF",
       "showDetails": false,
       "transition": "split-grid",
-      "transitionDuration": 0.65
+      "transitionDuration": 0.65,
+      "graphicFps": 12
     },
     {
       "id": "tk-hud",
@@ -162,7 +174,17 @@
         }
       ],
       "transition": "photo-mask-reveal",
-      "transitionDuration": 0.6
+      "transitionDuration": 0.6,
+      "beatSync": {
+        "beats": [
+          0.22,
+          1.02,
+          1.82,
+          2.62
+        ],
+        "strength": 0.018,
+        "decaySeconds": 0.13
+      }
     },
     {
       "id": "tk-platform",
@@ -1562,5 +1584,12 @@
         "license": "CC BY 4.0"
       }
     }
+  },
+  "direction": {
+    "personality": "premium",
+    "baseTimingSeconds": 0.52,
+    "focalPoint": "center",
+    "transitionFamily": "mixed",
+    "notes": "Calm editorial rail story: smooth camera, stepped route graphics, restrained beat accents."
   }
 }

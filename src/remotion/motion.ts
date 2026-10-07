@@ -1,5 +1,5 @@
 import {interpolate, spring} from 'remotion';
-import type {MotionPreset, TransitionPreset} from '../project/schema';
+import type {MotionDirection, MotionPreset, TransitionPreset} from '../project/schema';
 
 const clamp = {
   extrapolateLeft: 'clamp' as const,
@@ -19,6 +19,7 @@ export const motionValues = ({
   fps,
   width,
   height,
+  direction,
 }: {
   preset?: MotionPreset;
   amount?: number;
@@ -27,15 +28,25 @@ export const motionValues = ({
   fps: number;
   width: number;
   height: number;
+  direction?: MotionDirection;
 }) => {
-  const enter = interpolate(frame, [0, Math.max(1, fps * 0.45)], [0, 1], clamp);
+  const profile = direction?.personality === 'premium'
+    ? {enterSeconds: Math.max(0.5, direction.baseTimingSeconds), intensity: 0.76, damping: 24, stiffness: 92}
+    : direction?.personality === 'corporate'
+      ? {enterSeconds: direction.baseTimingSeconds, intensity: 0.9, damping: 19, stiffness: 118}
+      : direction?.personality === 'playful'
+        ? {enterSeconds: Math.max(0.28, direction.baseTimingSeconds * 0.78), intensity: 1.06, damping: 11, stiffness: 138}
+        : direction?.personality === 'energetic'
+          ? {enterSeconds: Math.max(0.2, direction.baseTimingSeconds * 0.62), intensity: 1.18, damping: 12, stiffness: 168}
+          : {enterSeconds: 0.45, intensity: 1, damping: 16, stiffness: 120};
+  const enter = interpolate(frame, [0, Math.max(1, fps * profile.enterSeconds)], [0, 1], clamp);
   const progress = interpolate(frame, [0, Math.max(1, durationInFrames - 1)], [0, 1], clamp);
   const eased = smoothstep(progress);
-  const strength = Math.max(0.25, Math.min(2, amount));
+  const strength = Math.max(0.25, Math.min(2, amount)) * profile.intensity;
   const springIn = spring({
     frame,
     fps,
-    config: {damping: 16, mass: 0.8, stiffness: 120},
+    config: {damping: profile.damping, mass: 0.8, stiffness: profile.stiffness},
     durationInFrames: Math.max(12, Math.round(fps * 0.7)),
   });
 
