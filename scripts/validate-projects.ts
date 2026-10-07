@@ -15,6 +15,7 @@ const sceneAssets = (scene: VideoScene): string[] => {
     case 'photo-mask':
     case 'video':
     case 'caption-video':
+    case 'lottie':
       return [scene.src];
     case 'split-image':
       return [scene.leftSrc, scene.rightSrc];

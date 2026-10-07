@@ -124,6 +124,19 @@
       "transitionDuration": 0.55
     },
     {
+      "id": "premium-lottie",
+      "type": "lottie",
+      "duration": 3.6,
+      "src": "/media/premium/travel-pulse.json",
+      "title": "Reusable animated assets",
+      "subtitle": "Lottie for motion assets · Remotion Shapes for crisp SVG accents",
+      "loop": true,
+      "playbackRate": 1,
+      "size": 0.46,
+      "transition": "soft-zoom",
+      "transitionDuration": 0.5
+    },
+    {
       "id": "premium-outro",
       "type": "outro",
       "duration": 2.8,

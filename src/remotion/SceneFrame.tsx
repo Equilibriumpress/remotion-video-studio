@@ -14,6 +14,7 @@ import {LaunchSceneFrame} from './scenes/LaunchScenes';
 import {DataSceneFrame} from './scenes/DataScenes';
 import {FittedSvgText} from './svg/FittedSvgText';
 import {CaptionOverlay} from './CaptionOverlay';
+import {LottieSceneFrame} from './scenes/LottieScene';
 
 type Props = {
   scene: VideoScene;
@@ -176,6 +177,10 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
 
   if (scene.type === 'route-stop') {
     return <RouteStopSceneFrame scene={scene} project={project} />;
+  }
+
+  if (scene.type === 'lottie') {
+    return <LottieSceneFrame scene={scene} project={project} />;
   }
 
   if (
