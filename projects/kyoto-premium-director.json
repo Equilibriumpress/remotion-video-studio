@@ -1,0 +1,652 @@
+{
+  "id": "kyoto-premium-director",
+  "title": "Kyoto Morning · Prompt to Premium",
+  "template": "travel-story",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#181813",
+    "foreground": "#FEF9ED",
+    "muted": "#D1C4AE",
+    "accent": "#C9AA72"
+  },
+  "story": {
+    "routeId": "higashiyama-walk",
+    "title": "A quiet Kyoto morning",
+    "subtitle": "A premium morning route compiled from one prompt, real geography and selected photography",
+    "style": "editorial",
+    "vehicle": "walker",
+    "introImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg/1280px-JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg",
+    "outroTitle": "Kyoto, before the rush.",
+    "overview": true,
+    "chapters": true,
+    "stopCards": true,
+    "mapRotation": 0,
+    "mode": "replace",
+    "stops": [
+      {
+        "coordinates": [
+          135.7833391,
+          34.9954277
+        ],
+        "label": "Kiyomizu-dera",
+        "detail": "Morning light above Higashiyama",
+        "time": "06:15",
+        "icon": "temple",
+        "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg/1280px-JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg",
+        "body": "Begin above the old streets before the main visitor flow arrives."
+      },
+      {
+        "coordinates": [
+          135.7809445,
+          34.9964742
+        ],
+        "label": "Sannenzaka",
+        "detail": "Historic lanes",
+        "time": "07:15",
+        "icon": "city",
+        "body": "Continue downhill through the preserved lanes while shopfronts are still quiet."
+      },
+      {
+        "coordinates": [
+          135.7775257,
+          35.0037412
+        ],
+        "label": "Yasaka Shrine",
+        "detail": "Shrine stop",
+        "time": "08:00",
+        "icon": "temple",
+        "body": "Reach Yasaka as the neighbourhood wakes, then continue toward Gion."
+      },
+      {
+        "coordinates": [
+          135.7750665,
+          35.0038367
+        ],
+        "label": "Gion",
+        "detail": "Old Kyoto at street level",
+        "time": "09:00",
+        "icon": "city",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Streets_of_Gion%2C_Kyoto_-_Gion7712.jpg/1920px-Streets_of_Gion%2C_Kyoto_-_Gion7712.jpg",
+        "body": "Finish in Gion and slow the pace for the smaller streets and details."
+      }
+    ]
+  },
+  "geoRoutes": {
+    "higashiyama-walk": {
+      "type": "LineString",
+      "mode": "walking",
+      "coordinates": [
+        [
+          135.7833391,
+          34.9954277
+        ],
+        [
+          135.7831485,
+          34.9954647
+        ],
+        [
+          135.7829173,
+          34.9955133
+        ],
+        [
+          135.7826446,
+          34.9955999
+        ],
+        [
+          135.782294,
+          34.995717
+        ],
+        [
+          135.7818997,
+          34.9958342
+        ],
+        [
+          135.7814834,
+          34.9959604
+        ],
+        [
+          135.7810891,
+          34.9960866
+        ],
+        [
+          135.7807254,
+          34.9962011
+        ],
+        [
+          135.7808076,
+          34.9962092
+        ],
+        [
+          135.7808591,
+          34.9962849
+        ],
+        [
+          135.7809138,
+          34.9963751
+        ],
+        [
+          135.7809445,
+          34.9964742
+        ],
+        [
+          135.7809248,
+          34.9967897
+        ],
+        [
+          135.7808974,
+          34.9971322
+        ],
+        [
+          135.7808645,
+          34.9974387
+        ],
+        [
+          135.7808317,
+          34.9977271
+        ],
+        [
+          135.7808043,
+          34.9979984
+        ],
+        [
+          135.7804538,
+          34.9981237
+        ],
+        [
+          135.7801251,
+          34.9982319
+        ],
+        [
+          135.779825,
+          34.9983004
+        ],
+        [
+          135.7796431,
+          34.998322
+        ],
+        [
+          135.7793145,
+          34.9983761
+        ],
+        [
+          135.77901,
+          34.9984356
+        ],
+        [
+          135.7789202,
+          34.9985023
+        ],
+        [
+          135.7787712,
+          34.9985627
+        ],
+        [
+          135.7785412,
+          34.9985771
+        ],
+        [
+          135.7782772,
+          34.9985979
+        ],
+        [
+          135.7779847,
+          34.9986249
+        ],
+        [
+          135.7778248,
+          34.9986285
+        ],
+        [
+          135.7774961,
+          34.9986601
+        ],
+        [
+          135.7771905,
+          34.9987051
+        ],
+        [
+          135.7771894,
+          34.9999986
+        ],
+        [
+          135.7771894,
+          35.0012606
+        ],
+        [
+          135.7771894,
+          35.0025225
+        ],
+        [
+          135.7771927,
+          35.0037493
+        ],
+        [
+          135.7766198,
+          35.00377
+        ],
+        [
+          135.7759626,
+          35.0037988
+        ],
+        [
+          135.7750665,
+          35.0038367
+        ]
+      ],
+      "contextLines": [
+        [
+          [
+            135.7807035,
+            34.9992676
+          ],
+          [
+            135.7807167,
+            34.9990612
+          ],
+          [
+            135.780732,
+            34.9988629
+          ],
+          [
+            135.7807451,
+            34.9986826
+          ],
+          [
+            135.7807561,
+            34.9985203
+          ],
+          [
+            135.780767,
+            34.9983761
+          ],
+          [
+            135.7807802,
+            34.9982139
+          ],
+          [
+            135.7807933,
+            34.9980877
+          ],
+          [
+            135.7808043,
+            34.9979984
+          ]
+        ],
+        [
+          [
+            135.7799827,
+            35.0018753
+          ],
+          [
+            135.7799608,
+            35.0014408
+          ],
+          [
+            135.7799334,
+            35.000918
+          ],
+          [
+            135.7799115,
+            35.0005458
+          ],
+          [
+            135.7798896,
+            35.0001428
+          ],
+          [
+            135.7798677,
+            34.9997102
+          ],
+          [
+            135.7798447,
+            34.999264
+          ]
+        ],
+        [
+          [
+            135.7784963,
+            35.0027253
+          ],
+          [
+            135.7785258,
+            35.0021619
+          ],
+          [
+            135.7785696,
+            35.001531
+          ],
+          [
+            135.7786244,
+            35.0008099
+          ],
+          [
+            135.7786792,
+            35.0000888
+          ],
+          [
+            135.778723,
+            34.9993676
+          ],
+          [
+            135.7787712,
+            34.9985627
+          ]
+        ],
+        [
+          [
+            135.7775257,
+            35.0037412
+          ],
+          [
+            135.7777152,
+            35.0036943
+          ],
+          [
+            135.7779343,
+            35.0036222
+          ],
+          [
+            135.7781534,
+            35.003532
+          ],
+          [
+            135.7783506,
+            35.0034599
+          ],
+          [
+            135.7785379,
+            35.0033923
+          ]
+        ],
+        [
+          [
+            135.7750665,
+            35.0038367
+          ],
+          [
+            135.7749986,
+            35.0034239
+          ],
+          [
+            135.7749219,
+            35.0029552
+          ],
+          [
+            135.7748452,
+            35.0024864
+          ],
+          [
+            135.7747576,
+            35.0019997
+          ],
+          [
+            135.7746919,
+            35.0016932
+          ],
+          [
+            135.7746349,
+            35.0014679
+          ]
+        ],
+        [
+          [
+            135.7728812,
+            35.0058747
+          ],
+          [
+            135.7733336,
+            35.005836
+          ],
+          [
+            135.7737717,
+            35.005799
+          ],
+          [
+            135.7742099,
+            35.0057621
+          ],
+          [
+            135.7746327,
+            35.005726
+          ]
+        ],
+        [
+          [
+            135.7728297,
+            35.0052807
+          ],
+          [
+            135.7732678,
+            35.0053799
+          ],
+          [
+            135.773706,
+            35.0054754
+          ],
+          [
+            135.7741442,
+            35.0055728
+          ],
+          [
+            135.7745823,
+            35.0056683
+          ],
+          [
+            135.7748671,
+            35.0057314
+          ]
+        ],
+        [
+          [
+            135.7772113,
+            35.0050464
+          ],
+          [
+            135.7771927,
+            35.0037493
+          ],
+          [
+            135.7771894,
+            35.0025225
+          ],
+          [
+            135.7771894,
+            35.0012606
+          ],
+          [
+            135.7771894,
+            34.9999986
+          ],
+          [
+            135.7771905,
+            34.9987051
+          ],
+          [
+            135.7771456,
+            34.9981057
+          ],
+          [
+            135.7770821,
+            34.9976253
+          ],
+          [
+            135.7770142,
+            34.9967536
+          ],
+          [
+            135.7769484,
+            34.995672
+          ],
+          [
+            135.7769046,
+            34.9947706
+          ]
+        ],
+        [
+          [
+            135.7722382,
+            35.0038655
+          ],
+          [
+            135.7735527,
+            35.003852
+          ],
+          [
+            135.7750665,
+            35.0038367
+          ],
+          [
+            135.7759626,
+            35.0037988
+          ],
+          [
+            135.7766198,
+            35.00377
+          ],
+          [
+            135.7771927,
+            35.0037493
+          ],
+          [
+            135.7774304,
+            35.0037448
+          ]
+        ],
+        [
+          [
+            135.77901,
+            34.9984356
+          ],
+          [
+            135.7793145,
+            34.9983761
+          ],
+          [
+            135.7796431,
+            34.998322
+          ],
+          [
+            135.779825,
+            34.9983004
+          ],
+          [
+            135.7801251,
+            34.9982319
+          ],
+          [
+            135.7804538,
+            34.9981237
+          ],
+          [
+            135.7808043,
+            34.9979984
+          ]
+        ],
+        [
+          [
+            135.7808043,
+            34.9979984
+          ],
+          [
+            135.7808317,
+            34.9977271
+          ],
+          [
+            135.7808645,
+            34.9974387
+          ],
+          [
+            135.7808974,
+            34.9971322
+          ],
+          [
+            135.7809248,
+            34.9967897
+          ],
+          [
+            135.7809445,
+            34.9964742
+          ],
+          [
+            135.7809138,
+            34.9963751
+          ],
+          [
+            135.7808591,
+            34.9962849
+          ],
+          [
+            135.7808076,
+            34.9962092
+          ]
+        ],
+        [
+          [
+            135.7807254,
+            34.9962011
+          ],
+          [
+            135.7810891,
+            34.9960866
+          ],
+          [
+            135.7814834,
+            34.9959604
+          ],
+          [
+            135.7818997,
+            34.9958342
+          ],
+          [
+            135.782294,
+            34.995717
+          ],
+          [
+            135.7826446,
+            34.9955999
+          ],
+          [
+            135.7829173,
+            34.9955133
+          ],
+          [
+            135.7831485,
+            34.9954647
+          ],
+          [
+            135.7833391,
+            34.9954277
+          ]
+        ]
+      ],
+      "source": {
+        "name": "OpenStreetMap / Higashiyama survey",
+        "url": "https://github.com/PhiloLabs/fable51-worlds/blob/main/kyoto-higashiyama/src/data/route.js",
+        "license": "ODbL 1.0"
+      }
+    }
+  },
+  "director": {
+    "sourcePrompt": "Maak een premium verticale video van Kyoto vroeg in de ochtend. Rustig en elegant, met echte route, weinig tekst, mooie fotografie en een duidelijke aankomst in Gion. Ongeveer 35 seconden.",
+    "goal": "inspire",
+    "audience": "Travelers looking for an atmospheric Kyoto morning route",
+    "durationTarget": 35,
+    "narrative": "journey",
+    "pacing": "calm",
+    "visualLanguage": "editorial",
+    "mapRole": "hero",
+    "mapEngine": "editorial",
+    "assetBalance": "photo-led",
+    "hook": "Kyoto before the city wakes",
+    "payoff": "Arrive in Gion as the city comes alive",
+    "avoid": [
+      "back-to-back-maps",
+      "hard-cuts",
+      "dense-text",
+      "repeated-layouts",
+      "excessive-ui"
+    ]
+  },
+  "scenes": []
+}
