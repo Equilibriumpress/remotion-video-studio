@@ -32,8 +32,8 @@ assert.match(source, /canvasToObjectUrl/);
 assert.match(source, /snapshotReady/);
 assert.match(
   source,
-  /mapInstance\.remove\(\);\s*mapInstance = null;\s*finishLoading\(\);/,
-  'MapLibre should release WebGL after a successful snapshot',
+  /activeMap\.remove\(\);\s*if \(mapInstance === activeMap\) mapInstance = null;\s*finishLoading\(\);/,
+  'MapLibre should release WebGL after a successful decoded snapshot',
 );
 
 assert.match(helper, /MAX_MAP_PLATE_DIMENSION = 3072/);
