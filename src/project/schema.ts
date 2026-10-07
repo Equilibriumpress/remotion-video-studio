@@ -26,6 +26,9 @@ export const transitionPresetSchema = z.enum([
   'soft-zoom',
   'whip-left',
   'iris',
+  'map-reveal',
+  'photo-mask-reveal',
+  'split-grid',
 ]);
 
 const baseScene = z.object({
@@ -133,7 +136,7 @@ const kineticTitleScene = baseScene.extend({
   type: z.literal('kinetic-title'),
   text: z.string().min(1),
   kicker: z.string().optional(),
-  style: z.enum(['stacked', 'word-reveal', 'oversize']).default('stacked'),
+  style: z.enum(['stacked', 'word-reveal', 'oversize', 'split', 'zoom']).default('stacked'),
   align: z.enum(['left', 'center']).default('left'),
   highlight: z.string().optional(),
 });
@@ -305,11 +308,39 @@ const mapLibreRouteScene = baseScene.extend({
   progress: z.number().min(0).max(1).default(1),
   label: z.string().optional(),
   camera: z.enum(['follow', 'overview']).default('follow'),
+  cameraRouteId: z.string().min(1).optional(),
+  cameraLead: z.number().min(0).max(0.25).default(0.035),
+  cameraZoom: z.number().min(1).max(3).default(1.55),
+  cameraAnchorY: z.number().min(0.35).max(0.75).default(0.56),
   altitude: z.number().min(500).max(50000).default(8000),
   mapStyleUrl: z.string().url().default('https://tiles.openfreemap.org/styles/liberty'),
   routeColor: z.string().default('#111827'),
   markerColor: z.string().default('#ef4444'),
   showDetails: z.boolean().default(true),
+});
+
+const editorialMapScene = baseScene.extend({
+  type: z.literal('editorial-map'),
+  title: z.string().min(1),
+  kicker: z.string().optional(),
+  region: z.string().optional(),
+  stat: z.string().optional(),
+  routeId: z.string().min(1),
+  stops: z.array(geoStopSchema).min(2).max(8),
+  progress: z.number().min(0).max(1).default(1),
+  showDetails: z.boolean().default(true),
+});
+
+const travelHudScene = baseScene.extend({
+  type: z.literal('travel-hud'),
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  kicker: z.string().optional(),
+  src: z.string().optional(),
+  metrics: z.array(z.object({
+    label: z.string().min(1),
+    value: z.string().min(1),
+  })).min(2).max(4),
 });
 
 const threeGlobeScene = baseScene.extend({
@@ -494,6 +525,8 @@ export const sceneSchema = z.discriminatedUnion('type', [
   routeMapScene,
   geoRouteScene,
   mapLibreRouteScene,
+  editorialMapScene,
+  travelHudScene,
   threeGlobeScene,
   elevationRouteScene,
   routeChapterScene,
@@ -559,6 +592,8 @@ export type VideoScene = z.infer<typeof sceneSchema>;
 export type GeoRouteGeometry = z.infer<typeof geoRouteSchema>;
 export type GeoRouteScene = Extract<VideoScene, {type: 'geo-route'}>;
 export type MapLibreRouteScene = Extract<VideoScene, {type: 'maplibre-route'}>;
+export type EditorialMapScene = Extract<VideoScene, {type: 'editorial-map'}>;
+export type TravelHudScene = Extract<VideoScene, {type: 'travel-hud'}>;
 export type ThreeGlobeScene = Extract<VideoScene, {type: 'three-globe'}>;
 export type ElevationProfile = z.infer<typeof elevationProfileSchema>;
 export type ElevationRouteScene = Extract<VideoScene, {type: 'elevation-route'}>;

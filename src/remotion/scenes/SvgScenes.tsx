@@ -1,6 +1,7 @@
 import {useCurrentFrame, useVideoConfig} from 'remotion';
 import type {VideoProject, VideoScene} from '../../project/schema';
 import {resolveAsset} from '../../project/assets';
+import {PremiumKineticTitle} from './PremiumKineticTitle';
 import {
   CounterText,
   ImageFrame,
@@ -132,7 +133,17 @@ export const SvgSceneFrame = ({
             {scene.kicker.toUpperCase()}
           </text>
         ) : null}
-        {scene.style === 'oversize' ? (
+        {scene.style === 'split' || scene.style === 'zoom' ? (
+          <PremiumKineticTitle
+            scene={scene}
+            width={width}
+            height={height}
+            frame={frame}
+            fps={fps}
+            foreground={foreground}
+            accent={accent}
+          />
+        ) : scene.style === 'oversize' ? (
           <TrackingText
             text={scene.text.toUpperCase()}
             x={x}
