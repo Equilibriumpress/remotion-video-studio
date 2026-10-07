@@ -43,12 +43,48 @@ for (const file of files) {
     }
     projectIds.add(project.id);
 
+    // Georeferenced routes must be fully resolved at build time. Video frames
+    // never call external routing services or fetch tiles.
+    for (const [routeId, route] of Object.entries(project.geoRoutes ?? {})) {
+      if (route.coordinates.some((pos, i, coords) =>
+        i > 0 && pos[0] === coords[i - 1][0] && pos[1] === coords[i - 1][1]
+      )) {
+        errors.push(`${file}: geo route "${routeId}" has duplicated adjacent coordinates`);
+      }
+    }
+
     const sceneIds = new Set<string>();
     for (const scene of project.scenes) {
       if (sceneIds.has(scene.id)) {
         errors.push(`${file}: duplicate scene id "${scene.id}"`);
       }
       sceneIds.add(scene.id);
+
+      if (scene.type === 'geo-route') {
+        const route = project.geoRoutes?.[scene.routeId];
+        if (!route) {
+          errors.push(`${file}: geo scene "${scene.id}" references missing route "${scene.routeId}"`);
+        } else {
+          // Check that stop coordinates stay near the route corridor rather than
+          // concealing arbitrary normalized placement in a geographic scene.
+          const nearestKm = (lon: number, lat: number) => {
+            const rad = Math.PI / 180;
+            const distanceKm = ([x, y]: [number, number]) => {
+              const a = Math.sin((lat - y) * rad / 2) ** 2 +
+                Math.cos(lat * rad) * Math.cos(y * rad) *
+                Math.sin((lon - x) * rad / 2) ** 2;
+              return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            };
+            return Math.min(...route.coordinates.map(distanceKm));
+          };
+          for (const stop of scene.stops) {
+            const toleranceKm = route.mode === 'rail' ? 8 : route.mode === 'walking' ? 0.4 : 10;
+            if (nearestKm(stop.coordinates[0], stop.coordinates[1]) > toleranceKm) {
+              errors.push(`${file}: stop "${stop.label}" is outside geo route "${scene.routeId}" corridor`);
+            }
+          }
+        }
+      }
 
       if (scene.type === 'caption-video') {
         for (const caption of scene.captions) {
