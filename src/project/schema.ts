@@ -9,6 +9,10 @@ export const motionPresetSchema = z.enum([
   'pop',
   'drift-up',
   'zoom-out',
+  'cinematic-push',
+  'cinematic-pull',
+  'pan-and-zoom',
+  'float-horizontal',
 ]);
 
 export const transitionPresetSchema = z.enum([
@@ -18,13 +22,18 @@ export const transitionPresetSchema = z.enum([
   'slide-up',
   'wipe',
   'zoom',
+  'soft-zoom',
+  'whip-left',
+  'iris',
 ]);
 
 const baseScene = z.object({
   id: z.string().min(1),
   duration: z.number().positive(),
   motion: motionPresetSchema.optional(),
+  motionAmount: z.number().min(0.25).max(2).default(1),
   transition: transitionPresetSchema.optional(),
+  transitionDuration: z.number().min(0.15).max(1.5).optional(),
 });
 
 const titleScene = baseScene.extend({
@@ -408,7 +417,13 @@ export const sceneFrames = (scene: VideoScene, fps: number) =>
 export const transitionFrames = (scene: VideoScene, fps: number) =>
   !scene.transition || scene.transition === 'cut'
     ? 0
-    : Math.max(1, Math.min(Math.round(fps * 0.45), Math.floor(sceneFrames(scene, fps) / 3)));
+    : Math.max(
+        1,
+        Math.min(
+          Math.round(fps * (scene.transitionDuration ?? 0.45)),
+          Math.floor(sceneFrames(scene, fps) / 3),
+        ),
+      );
 
 export const sceneTimeline = (project: VideoProject) => {
   let cursor = 0;

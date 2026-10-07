@@ -116,6 +116,7 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
   const displayFont = isTravel ? 'Georgia, serif' : 'Inter, Arial, sans-serif';
   const motion = motionValues({
     preset: scene.motion,
+    amount: scene.motionAmount,
     frame,
     durationInFrames,
     fps,
@@ -130,6 +131,7 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
     height,
   });
   const clipId = `wipe-${scene.id.replace(/[^a-zA-Z0-9_-]/g, '')}`;
+  const irisId = `iris-${scene.id.replace(/[^a-zA-Z0-9_-]/g, '')}`;
   const lineProgress = interpolate(frame, [fps * 0.15, fps * 0.8], [0, 1], clamp);
   const springIn = spring({
     frame,
@@ -228,11 +230,24 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
         <clipPath id={clipId}>
           <rect width={width * transition.wipe} height={height} />
         </clipPath>
+        <clipPath id={irisId}>
+          <circle
+            cx={width / 2}
+            cy={height / 2}
+            r={Math.hypot(width, height) * 0.52 * transition.iris}
+          />
+        </clipPath>
       </defs>
       <g
         opacity={transition.opacity}
         transform={transition.transform}
-        clipPath={scene.transition === 'wipe' ? `url(#${clipId})` : undefined}
+        clipPath={
+          scene.transition === 'wipe'
+            ? `url(#${clipId})`
+            : scene.transition === 'iris'
+              ? `url(#${irisId})`
+              : undefined
+        }
       >
         {content}
       </g>

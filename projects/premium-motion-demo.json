@@ -19,8 +19,10 @@
       "kicker": "Premium motion",
       "title": "Stories should move",
       "subtitle": "Editorial layouts, cinematic motion and consistent transitions",
-      "motion": "slow-push",
-      "transition": "fade"
+      "motion": "cinematic-push",
+      "transition": "soft-zoom",
+      "motionAmount": 0.85,
+      "transitionDuration": 0.65
     },
     {
       "id": "premium-split",
@@ -30,8 +32,10 @@
       "rightSrc": "/media/premium/city.svg",
       "title": "Contrast creates rhythm",
       "caption": "Split-screen editorial scene",
-      "motion": "fade-rise",
-      "transition": "slide-left"
+      "motion": "pan-and-zoom",
+      "transition": "whip-left",
+      "motionAmount": 0.75,
+      "transitionDuration": 0.4
     },
     {
       "id": "premium-quote",
@@ -40,7 +44,9 @@
       "quote": "The template sets the visual language. The project supplies the story.",
       "attribution": "Remotion Video Studio",
       "motion": "drift-up",
-      "transition": "wipe"
+      "transition": "iris",
+      "motionAmount": 0.7,
+      "transitionDuration": 0.6
     },
     {
       "id": "premium-timeline",
@@ -48,22 +54,43 @@
       "duration": 4,
       "title": "One project, a complete narrative",
       "items": [
-        {"label": "Hook", "value": "0:00"},
-        {"label": "Context", "value": "0:04"},
-        {"label": "Evidence", "value": "0:08"},
-        {"label": "Payoff", "value": "0:12"}
+        {
+          "label": "Hook",
+          "value": "0:00"
+        },
+        {
+          "label": "Context",
+          "value": "0:04"
+        },
+        {
+          "label": "Evidence",
+          "value": "0:08"
+        },
+        {
+          "label": "Payoff",
+          "value": "0:12"
+        }
       ],
-      "transition": "slide-up"
+      "transition": "soft-zoom",
+      "transitionDuration": 0.5
     },
     {
       "id": "premium-comparison",
       "type": "comparison",
       "duration": 3.3,
       "title": "Browser-first production",
-      "left": {"label": "Video render in Actions", "value": "0 min"},
-      "right": {"label": "Local MP4 output", "value": "1080p"},
+      "left": {
+        "label": "Video render in Actions",
+        "value": "0 min"
+      },
+      "right": {
+        "label": "Local MP4 output",
+        "value": "1080p"
+      },
       "motion": "pop",
-      "transition": "zoom"
+      "transition": "whip-left",
+      "motionAmount": 0.8,
+      "transitionDuration": 0.35
     },
     {
       "id": "premium-chart",
@@ -71,13 +98,26 @@
       "duration": 4,
       "title": "A data scene with motion",
       "items": [
-        {"label": "Q1", "value": 42},
-        {"label": "Q2", "value": 58},
-        {"label": "Q3", "value": 76},
-        {"label": "Q4", "value": 91}
+        {
+          "label": "Q1",
+          "value": 42
+        },
+        {
+          "label": "Q2",
+          "value": 58
+        },
+        {
+          "label": "Q3",
+          "value": 76
+        },
+        {
+          "label": "Q4",
+          "value": 91
+        }
       ],
       "suffix": "%",
-      "transition": "fade"
+      "transition": "iris",
+      "transitionDuration": 0.55
     },
     {
       "id": "premium-outro",
@@ -85,8 +125,10 @@
       "duration": 2.8,
       "title": "Built for richer stories",
       "subtitle": "Motion presets + scene system + browser rendering",
-      "motion": "zoom-out",
-      "transition": "fade"
+      "motion": "cinematic-pull",
+      "transition": "soft-zoom",
+      "motionAmount": 0.8,
+      "transitionDuration": 0.7
     }
   ]
 }
