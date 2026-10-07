@@ -55,3 +55,36 @@ assert.ok(
 console.log(
   `Premium Director compiled ${project.scenes.length} scenes in ${durationSeconds.toFixed(1)}s from the source prompt.`,
 );
+
+
+const peakRaw = JSON.parse(
+  readFileSync('projects/peak-district-roadtrip.json', 'utf8'),
+);
+const peak = parseProject(peakRaw);
+const peakDuration = projectFrames(peak) / peak.fps;
+
+assert.ok(peak.director, 'Peak District project must use Premium Director');
+assert.equal(peak.director?.durationTarget, 60);
+assert.ok(
+  Math.abs(peakDuration - 60) <= 0.35,
+  `Peak District output should be 60s after transition overlap, got ${peakDuration.toFixed(2)}s`,
+);
+
+const peakSceneIds = new Set(peak.scenes.map((scene) => scene.id));
+assert.equal(peak.voiceoverScript?.length, 11);
+for (const cue of peak.voiceoverScript ?? []) {
+  assert.ok(
+    peakSceneIds.has(cue.sceneId),
+    `Voiceover cue must reference a generated scene: ${cue.sceneId}`,
+  );
+}
+
+assert.ok(
+  peak.scenes.some((scene) => scene.type === 'editorial-map' && scene.role === 'orient'),
+  'Peak District roadtrip should include an editorial orientation map',
+);
+assert.equal(peak.scenes.at(-1)?.role, 'payoff');
+
+console.log(
+  `Peak District Director compiled ${peak.scenes.length} scenes in ${peakDuration.toFixed(2)}s with ${peak.voiceoverScript?.length ?? 0} voiceover cues.`,
+);
