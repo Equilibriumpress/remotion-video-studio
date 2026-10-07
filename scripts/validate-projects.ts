@@ -43,6 +43,18 @@ for (const file of files) {
     }
     projectIds.add(project.id);
 
+    for (const [profileId, profile] of Object.entries(project.elevationProfiles ?? {})) {
+      for (let i = 1; i < profile.samples.length; i++) {
+        if (profile.samples[i].distanceKm <= profile.samples[i - 1].distanceKm) {
+          errors.push(`${file}: elevation profile "${profileId}" distances must increase`);
+          break;
+        }
+      }
+      if (profile.routeId && !project.geoRoutes?.[profile.routeId]) {
+        errors.push(`${file}: elevation profile "${profileId}" references missing route "${profile.routeId}"`);
+      }
+    }
+
     // Georeferenced routes must be fully resolved at build time. Video frames
     // never call external routing services or fetch tiles.
     for (const [routeId, route] of Object.entries(project.geoRoutes ?? {})) {
@@ -59,6 +71,10 @@ for (const file of files) {
         errors.push(`${file}: duplicate scene id "${scene.id}"`);
       }
       sceneIds.add(scene.id);
+
+      if (scene.type === 'elevation-route' && !project.elevationProfiles?.[scene.profileId]) {
+        errors.push(`${file}: elevation scene "${scene.id}" references missing profile "${scene.profileId}"`);
+      }
 
       if (scene.type === 'geo-route') {
         const route = project.geoRoutes?.[scene.routeId];
