@@ -270,6 +270,14 @@ const elevationProfileSchema = z.object({
 });
 
 
+const appStoreCreativeScene = baseScene.extend({
+  type: z.literal('appstore-creative'),
+  routeId: z.string().min(1),
+  photoSrc: z.string().min(1),
+  secondaryPhotoSrc: z.string().optional(),
+  mapRotation: z.number().min(-180).max(180).default(0),
+});
+
 const geoRouteScene = baseScene.extend({
   type: z.literal('geo-route'),
   title: z.string().min(1),
@@ -523,6 +531,7 @@ export const sceneSchema = z.discriminatedUnion('type', [
   donutChartScene,
   barLineChartScene,
   routeMapScene,
+  appStoreCreativeScene,
   geoRouteScene,
   mapLibreRouteScene,
   editorialMapScene,
@@ -553,7 +562,7 @@ const projectObjectSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
   template: z.enum(['travel-story', 'explainer', 'data-story']),
-  format: z.enum(['vertical', 'landscape', 'square']),
+  format: z.enum(['vertical', 'landscape', 'square', 'appstore-header', 'appstore-search']),
   fps: z.union([z.literal(24), z.literal(25), z.literal(30), z.literal(50), z.literal(60)]),
   theme: z.object({
     background: z.string().default('#0B0D10'),
@@ -590,6 +599,7 @@ export type MotionPreset = z.infer<typeof motionPresetSchema>;
 export type TransitionPreset = z.infer<typeof transitionPresetSchema>;
 export type VideoScene = z.infer<typeof sceneSchema>;
 export type GeoRouteGeometry = z.infer<typeof geoRouteSchema>;
+export type AppStoreCreativeScene = Extract<VideoScene, {type: 'appstore-creative'}>;
 export type GeoRouteScene = Extract<VideoScene, {type: 'geo-route'}>;
 export type MapLibreRouteScene = Extract<VideoScene, {type: 'maplibre-route'}>;
 export type EditorialMapScene = Extract<VideoScene, {type: 'editorial-map'}>;
@@ -615,6 +625,8 @@ export const parseProject = (value: unknown): VideoProject => {
 };
 
 export const getDimensions = (format: VideoProject['format']) => {
+  if (format === 'appstore-header') return {width: 3840, height: 1646};
+  if (format === 'appstore-search') return {width: 1920, height: 1280};
   if (format === 'landscape') return {width: 1920, height: 1080};
   if (format === 'square') return {width: 1080, height: 1080};
   return {width: 1080, height: 1920};

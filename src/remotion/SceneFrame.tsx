@@ -17,6 +17,7 @@ import {FittedSvgText} from './svg/FittedSvgText';
 import {CaptionOverlay} from './CaptionOverlay';
 import {LottieSceneFrame} from './scenes/LottieScene';
 import {EditorialMapSceneFrame, TravelHudSceneFrame} from './scenes/EditorialScenes';
+import {AppStoreCreativeSceneFrame} from './scenes/AppStoreCreativeScene';
 
 type Props = {
   scene: VideoScene;
@@ -159,6 +160,10 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
     scene.type === 'cta'
   ) {
     return <LaunchSceneFrame scene={scene} project={project} />;
+  }
+
+  if (scene.type === 'appstore-creative') {
+    return <AppStoreCreativeSceneFrame scene={scene} project={project} />;
   }
 
   if (scene.type === 'geo-route') {
