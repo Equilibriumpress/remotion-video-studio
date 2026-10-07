@@ -9,6 +9,7 @@ import {GeoRouteSceneFrame} from './scenes/GeoRouteScene';
 import {ElevationRouteSceneFrame} from './scenes/ElevationScenes';
 import {RouteChapterSceneFrame} from './scenes/RouteChapterScene';
 import {RouteStopSceneFrame} from './scenes/RouteStopScene';
+import {MapLibreRouteSceneFrame} from './scenes/MapLibreRouteScene';
 import {LaunchSceneFrame} from './scenes/LaunchScenes';
 import {DataSceneFrame} from './scenes/DataScenes';
 
@@ -157,6 +158,10 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
 
   if (scene.type === 'geo-route') {
     return <GeoRouteSceneFrame scene={scene} project={project} />;
+  }
+
+  if (scene.type === 'maplibre-route') {
+    return <MapLibreRouteSceneFrame scene={scene} project={project} />;
   }
 
   if (scene.type === 'elevation-route') {
