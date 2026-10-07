@@ -17,9 +17,10 @@
       "duration": 2.7,
       "text": "Tokyo to Kyoto",
       "kicker": "JAPAN / BY RAIL",
-      "style": "word-reveal",
+      "style": "zoom",
       "highlight": "Kyoto",
-      "transition": "fade"
+      "transition": "fade",
+      "align": "center"
     },
     {
       "id": "tk-train",
@@ -30,17 +31,17 @@
       "title": "Leave Tokyo behind",
       "subtitle": "A fast route across central Japan",
       "motion": "slow-push",
-      "transition": "fade"
+      "transition": "photo-mask-reveal",
+      "transitionDuration": 0.65
     },
     {
-      "id": "tk-route",
-      "type": "geo-route",
-      "duration": 5,
-      "title": "Tokyo → Kyoto",
-      "distance": "476 km by rail",
-      "style": "clean",
-      "showDetails": true,
-      "transition": "slide-up",
+      "id": "tk-editorial-overview",
+      "type": "editorial-map",
+      "duration": 3.7,
+      "title": "Across central Japan",
+      "kicker": "TOKAIDO CORRIDOR",
+      "region": "HONSHU",
+      "stat": "Tokyo → Kyoto",
       "routeId": "tokaido-rail",
       "stops": [
         {
@@ -78,9 +79,90 @@
           "icon": "station"
         }
       ],
-      "mapRotation": -60,
       "progress": 1,
-      "camera": "overview"
+      "showDetails": false,
+      "transition": "map-reveal",
+      "transitionDuration": 0.7
+    },
+    {
+      "id": "tk-route",
+      "type": "maplibre-route",
+      "duration": 6.8,
+      "title": "Tokyo → Kyoto",
+      "routeId": "tokaido-rail",
+      "stops": [
+        {
+          "coordinates": [
+            139.7671,
+            35.6812
+          ],
+          "label": "Tokyo",
+          "detail": "Start",
+          "icon": "station"
+        },
+        {
+          "coordinates": [
+            139.6176,
+            35.5075
+          ],
+          "label": "Shin-Yokohama",
+          "icon": "station"
+        },
+        {
+          "coordinates": [
+            136.8815,
+            35.1709
+          ],
+          "label": "Nagoya",
+          "icon": "station"
+        },
+        {
+          "coordinates": [
+            135.7588,
+            34.9858
+          ],
+          "label": "Kyoto",
+          "detail": "Arrival",
+          "icon": "station"
+        }
+      ],
+      "progress": 1,
+      "label": "Tokaido Shinkansen · 476 km",
+      "camera": "follow",
+      "cameraRouteId": "tokaido-camera",
+      "cameraLead": 0.045,
+      "cameraZoom": 1.82,
+      "cameraAnchorY": 0.56,
+      "routeColor": "#75D7DE",
+      "markerColor": "#FFFFFF",
+      "showDetails": false,
+      "transition": "split-grid",
+      "transitionDuration": 0.65
+    },
+    {
+      "id": "tk-hud",
+      "type": "travel-hud",
+      "duration": 3.4,
+      "title": "Tokyo to Kyoto",
+      "subtitle": "A fast crossing of central Honshu",
+      "kicker": "TOKAIDO SHINKANSEN",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Tokyo_Station_Shinkansen_Bullet_Train_18-09-2024.jpg/1280px-Tokyo_Station_Shinkansen_Bullet_Train_18-09-2024.jpg",
+      "metrics": [
+        {
+          "label": "rail distance",
+          "value": "476 km"
+        },
+        {
+          "label": "route",
+          "value": "Tokaido"
+        },
+        {
+          "label": "key stops",
+          "value": "4"
+        }
+      ],
+      "transition": "photo-mask-reveal",
+      "transitionDuration": 0.6
     },
     {
       "id": "tk-platform",
@@ -89,7 +171,8 @@
       "title": "Tokyo Station",
       "subtitle": "Tokaido Shinkansen",
       "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Tokyo_Station_Shinkansen_Bullet_Train_18-09-2024.jpg/1280px-Tokyo_Station_Shinkansen_Bullet_Train_18-09-2024.jpg",
-      "transition": "fade"
+      "transition": "map-reveal",
+      "transitionDuration": 0.55
     },
     {
       "id": "tk-final-leg",
@@ -201,7 +284,8 @@
       "title": "From speed to stillness",
       "subtitle": "Temples, lanes and a new chapter",
       "motion": "slow-push",
-      "transition": "fade"
+      "transition": "photo-mask-reveal",
+      "transitionDuration": 0.65
     },
     {
       "id": "tk-arrival",
@@ -1395,6 +1479,85 @@
       ],
       "source": {
         "name": "Japan MLIT N02 railway (FY2025)",
+        "url": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-2025.html",
+        "license": "CC BY 4.0"
+      }
+    },
+    "tokaido-camera": {
+      "type": "LineString",
+      "mode": "rail",
+      "coordinates": [
+        [
+          139.7671,
+          35.6812
+        ],
+        [
+          139.67807,
+          35.58366
+        ],
+        [
+          139.36462,
+          35.38718
+        ],
+        [
+          139.13195,
+          35.18484
+        ],
+        [
+          138.81556,
+          35.13889
+        ],
+        [
+          138.4058,
+          34.97974
+        ],
+        [
+          138.0783,
+          34.77176
+        ],
+        [
+          137.836,
+          34.70347
+        ],
+        [
+          137.61672,
+          34.68674
+        ],
+        [
+          137.32216,
+          34.80076
+        ],
+        [
+          136.94287,
+          35.06496
+        ],
+        [
+          136.85942,
+          35.20072
+        ],
+        [
+          136.66489,
+          35.33356
+        ],
+        [
+          136.45942,
+          35.35634
+        ],
+        [
+          136.27649,
+          35.2578
+        ],
+        [
+          135.9243,
+          34.97076
+        ],
+        [
+          135.7588,
+          34.9858
+        ]
+      ],
+      "source": {
+        "name": "Derived camera path from Japan MLIT N02 railway (FY2025)",
         "url": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N02-2025.html",
         "license": "CC BY 4.0"
       }
