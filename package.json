@@ -27,7 +27,10 @@
     "@remotion/motion-blur": "4.0.533",
     "@remotion/lottie": "4.0.533",
     "@remotion/shapes": "4.0.533",
-    "lottie-web": "5.13.0"
+    "lottie-web": "5.13.0",
+    "@remotion/three": "4.0.533",
+    "@react-three/fiber": "9.2.0",
+    "three": "0.178.0"
   },
   "devDependencies": {
     "@types/react": "^19.1.16",
@@ -35,6 +38,7 @@
     "@vitejs/plugin-react": "6.1.2",
     "typescript": "^5.9.2",
     "vite": "8.3.2",
-    "tsx": "^4.20.6"
+    "tsx": "^4.20.6",
+    "@types/three": "0.170.0"
   }
 }
