@@ -1,3 +1,4 @@
+import {cutPath, getLength} from '@remotion/paths';
 import {interpolate, spring} from 'remotion';
 
 const clamp = {
@@ -57,7 +58,6 @@ export const AnimatedLine = ({
 export const RoutePath = ({
   d,
   progress,
-  length = 1400,
   stroke,
   strokeWidth = 9,
   casing,
@@ -68,32 +68,35 @@ export const RoutePath = ({
   stroke: string;
   strokeWidth?: number;
   casing?: string;
-}) => (
-  <g>
-    {casing ? (
+}) => {
+  const clamped = Math.max(0, Math.min(1, progress));
+  const totalLength = getLength(d);
+  const visiblePath = cutPath(d, totalLength * clamped);
+
+  return (
+    <g>
+      {casing ? (
+        <path
+          d={d}
+          fill="none"
+          stroke={casing}
+          strokeWidth={strokeWidth + 8}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity={0.65}
+        />
+      ) : null}
       <path
-        d={d}
+        d={visiblePath}
         fill="none"
-        stroke={casing}
-        strokeWidth={strokeWidth + 8}
+        stroke={stroke}
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
-        opacity={0.65}
       />
-    ) : null}
-    <path
-      d={d}
-      fill="none"
-      stroke={stroke}
-      strokeWidth={strokeWidth}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      pathLength={length}
-      strokeDasharray={length}
-      strokeDashoffset={length * (1 - Math.max(0, Math.min(1, progress)))}
-    />
-  </g>
-);
+    </g>
+  );
+};
 
 export const LocationPin = ({
   x,
