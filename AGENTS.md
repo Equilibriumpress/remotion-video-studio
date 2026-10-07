@@ -35,13 +35,37 @@ Create premium travel videos and route stories that preview and render from GitH
 A project is done when validation passes, the Pages preview plays from first to last frame, asset preflight succeeds and a Draft MP4 renders in a supported browser.
 
 
+## Agent skill layer
+
+Before changing Remotion code or project JSON, read `skills/remotion-best-practices/SKILL.md`. The local skills adapt Remotion 4.0.534 Agent Skills to this browser-first repository and add project-specific map, motion-direction, shot-composition and interactivity rules.
+
+Upstream references:
+- Remotion Agent Skills 4.0.534: https://github.com/remotion-dev/remotion/tree/main/packages/skills/skills
+- Motion design craft: https://github.com/iart-ai/motion-design-skills
+- Editorial maps: https://github.com/iart-ai/map-animation-skills
+- Motion graphics QA patterns: https://github.com/haidrrrry/claude-remotion-skill
+
+Native Remotion Studio `Interactive.withSchema()` is useful for JSX-authored connected compositions, but this repository remains JSON-first. Do not replace project JSON with JSX solely for Studio source write-back. Expose editability through Zod and the Pages UI first.
+
+### Motion direction
+
+Projects may define a top-level `direction` object with `personality`, `baseTimingSeconds`, `focalPoint`, `transitionFamily` and optional notes. The motion engine uses the personality to tune entrance speed, spring behavior and overall movement intensity. Keep one primary motion idea per shot.
+
+### Beat sync
+
+Scenes may define `beatSync` with scene-relative beat timestamps, strength and decay. Beat detection happens before rendering; never analyze audio on the render clock.
+
+### Editorial cadence
+
+`editorial-map` and `maplibre-route` support `graphicFps`. Use `graphicFps: 12` for stepped editorial overlays while keeping the composition and MapLibre camera/plate smooth.
+
 ## Premium motion system
 
 Prefer scene + motion + transition composition over custom React for content videos.
 
 ### Scene library
 
-Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `geo-route`, `maplibre-route`, `three-globe`, `elevation-route`, `route-chapter`, `route-stop`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `lottie`, `video`, `caption-video`, `outro`.
+Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `geo-route`, `maplibre-route`, `editorial-map`, `travel-hud`, `three-globe`, `three-vehicle`, `audio-reactive`, `elevation-route`, `route-chapter`, `route-stop`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `lottie`, `video`, `caption-video`, `caption-demo`, `appstore-creative`, `outro`.
 
 ### Motion presets
 
@@ -57,7 +81,7 @@ Limit one project to two or three transition styles unless the brief asks for a 
 
 ### Media
 
-For browser-rendered video, use `video` or `caption-video` with local assets under `public/media/<project-id>/`. Use `caption-video` captions as scene-relative seconds. The renderer converts these segments to the official Remotion `Caption[]` model and groups them with `createTikTokStyleCaptions()`. Choose `captionStyle: "basic"`, `"tiktok"`, or `"word-highlight"`; use `combineTokensWithinMilliseconds` and optional `breakOnSilenceAfterMilliseconds` to control page rhythm.
+For browser-rendered video, use `video` or `caption-video` with local assets under `public/media/<project-id>/`. Use `caption-video` captions as scene-relative seconds. The renderer converts these segments to the official Remotion `Caption[]` model and groups them with `createTikTokStyleCaptions()`. Choose `captionStyle: "basic"`, `"tiktok"`, `"word-highlight"`, `"editorial-highlight"`, `"karaoke"`, `"pill"`, or `"cinematic"`; use `combineTokensWithinMilliseconds`, optional `breakOnSilenceAfterMilliseconds`, `emphasisWords`, and `captionPosition` to control page rhythm.
 
 Project-level `audio.music` and `audio.voiceover` are supported. Keep audio local and use explicit volume values.
 
@@ -66,7 +90,7 @@ Use `lottie` for small reusable animated assets such as route pulses, compass fl
 
 ### SVG typography and image treatments
 
-For `kinetic-title`, choose `style`: `stacked`, `word-reveal`, or `oversize`. Use `highlight` for one emphasized word and `align` for left or centered layouts.
+For `kinetic-title`, choose `style`: `stacked`, `word-reveal`, `oversize`, `split`, or `zoom`. Use `highlight` for one emphasized word and `align` for left or centered layouts.
 
 For `photo-mask`, choose `shape`: `portrait`, `circle`, or `window`. Optional `treatment` values are `natural`, `warm`, and `dark`. Optional `frame` values are `none`, `thin`, and `offset`.
 
@@ -87,7 +111,7 @@ Use `maplibre-route` only when a real basemap materially improves the story. Map
 
 Project the committed `geoRoutes` geometry after the plate is ready and animate the route, marker and labels with Remotion/SVG. For `camera: "follow"`, move the oversized plate and its overlays with the same CSS transform. Do not use per-frame `map.jumpTo()` in the default implementation. Do not call `map.remove()` during scene cleanup.
 
-Keep `interactive: false`, `fadeDuration: 0` and `preserveDrawingBuffer: true`. Treat MapLibre resource errors as diagnostic unless initialization ultimately times out. The preview diagnostics should expose WebGL, worker configuration, style-loaded and idle status. Every MapLibre project must retain the geographically equivalent SVG fallback because browser MP4 capture of WebGL still depends on experimental HTML-in-canvas support.
+Keep `interactive: false`, `fadeDuration: 0` and `preserveDrawingBuffer: true`. The route overlay may intentionally run at a lower `graphicFps` while camera/plate movement remains smooth. Treat MapLibre resource errors as diagnostic unless initialization ultimately times out. The preview diagnostics should expose WebGL, worker configuration, style-loaded and idle status. Every MapLibre project must retain the geographically equivalent SVG fallback because browser MP4 capture of WebGL still depends on experimental HTML-in-canvas support.
 
 Use `geo-route` for videos portraying a real railway, pedestrian route or road trip. Provide a top-level `geoRoutes` entry containing WGS84 `LineString` coordinates in `[longitude, latitude]` order, a route mode (`rail`, `walking`, `driving`) and source attribution. Scenes reference a `routeId` plus georeferenced `stops`. Reuse the route across scenes and vary `progress`, `style`, and `mapRotation` to tell the story. Use `camera: "follow"` with a restrained `cameraZoom` for movement-led sequences and `camera: "overview"` for orientation or arrival scenes. When `distance` is omitted, the scene derives route kilometres from the committed coordinates. The map draws SVG from precomputed geographic data; it does not fetch tiles or call live routing APIs during render. Optional `contextLines` must also be geographically sourced.
 
