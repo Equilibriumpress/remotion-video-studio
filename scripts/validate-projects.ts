@@ -1,6 +1,6 @@
 import {existsSync, readFileSync, readdirSync} from 'node:fs';
 import {resolve} from 'node:path';
-import {projectSchema, type VideoProject, type VideoScene} from '../src/project/schema';
+import {parseProject, type VideoProject, type VideoScene} from '../src/project/schema';
 
 const root = process.cwd();
 const projectDir = resolve(root, 'projects');
@@ -37,12 +37,24 @@ const projectAssets = (project: VideoProject) => {
 for (const file of files) {
   try {
     const raw = JSON.parse(readFileSync(resolve(projectDir, file), 'utf8'));
-    const project = projectSchema.parse(raw);
+    const project = parseProject(raw);
 
     if (projectIds.has(project.id)) {
       errors.push(`${file}: duplicate project id "${project.id}"`);
     }
     projectIds.add(project.id);
+
+    if (project.story) {
+      if (!project.geoRoutes?.[project.story.routeId]) {
+        errors.push(`${file}: travel story references missing route "${project.story.routeId}"`);
+      }
+      if (
+        project.story.elevationProfileId &&
+        !project.elevationProfiles?.[project.story.elevationProfileId]
+      ) {
+        errors.push(`${file}: travel story references missing elevation profile "${project.story.elevationProfileId}"`);
+      }
+    }
 
     for (const [profileId, profile] of Object.entries(project.elevationProfiles ?? {})) {
       for (let i = 1; i < profile.samples.length; i++) {

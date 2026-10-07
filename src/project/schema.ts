@@ -1,4 +1,5 @@
 import {z} from 'zod';
+import {composeTravelSequence} from './travelSequence';
 
 export const motionPresetSchema = z.enum([
   'none',
@@ -221,6 +222,31 @@ const geoStopSchema = z.object({
   icon: z.enum(['pin', 'temple', 'nature', 'station', 'city']).default('pin'),
 });
 
+const storyStopSchema = geoStopSchema.extend({
+  src: z.string().optional(),
+  body: z.string().optional(),
+  time: z.string().optional(),
+  distance: z.string().optional(),
+  number: z.string().optional(),
+});
+
+const travelStoryConfigSchema = z.object({
+  routeId: z.string().min(1),
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  style: z.enum(['cinematic', 'editorial', 'clean']).default('cinematic'),
+  vehicle: z.enum(['train', 'car', 'walker', 'bike', 'plane']).optional(),
+  stops: z.array(storyStopSchema).min(2).max(8),
+  introImage: z.string().optional(),
+  outroTitle: z.string().optional(),
+  elevationProfileId: z.string().optional(),
+  overview: z.boolean().default(true),
+  chapters: z.boolean().default(true),
+  stopCards: z.boolean().default(true),
+  mapRotation: z.number().min(-180).max(180).default(0),
+  mode: z.enum(['replace', 'append']).default('replace'),
+});
+
 const elevationSampleSchema = z.object({
   distanceKm: z.number().nonnegative(),
   elevationM: z.number(),
@@ -437,7 +463,7 @@ const audioTrackSchema = z.object({
   loop: z.boolean().default(false),
 });
 
-export const projectSchema = z.object({
+const projectObjectSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
   template: z.enum(['travel-story', 'explainer', 'data-story']),
@@ -456,11 +482,22 @@ export const projectSchema = z.object({
   }),
   geoRoutes: z.record(z.string(), geoRouteSchema).optional(),
   elevationProfiles: z.record(z.string(), elevationProfileSchema).optional(),
+  story: travelStoryConfigSchema.optional(),
   audio: z.object({
     music: audioTrackSchema.optional(),
     voiceover: audioTrackSchema.optional(),
   }).optional(),
-  scenes: z.array(sceneSchema).min(1),
+  scenes: z.array(sceneSchema).default([]),
+});
+
+export const projectSchema = projectObjectSchema.superRefine((project, ctx) => {
+  if (project.scenes.length === 0 && !project.story) {
+    ctx.addIssue({
+      code: 'custom',
+      path: ['scenes'],
+      message: 'A project needs explicit scenes or a travel story configuration',
+    });
+  }
 });
 
 export type MotionPreset = z.infer<typeof motionPresetSchema>;
@@ -474,7 +511,17 @@ export type RouteChapterScene = Extract<VideoScene, {type: 'route-chapter'}>;
 export type RouteStopScene = Extract<VideoScene, {type: 'route-stop'}>;
 export type VideoProject = z.infer<typeof projectSchema>;
 
-export const parseProject = (value: unknown): VideoProject => projectSchema.parse(value);
+export const parseProject = (value: unknown): VideoProject => {
+  const parsed = projectSchema.parse(value);
+  if (!parsed.story) return parsed;
+  const generated = z.array(sceneSchema).parse(composeTravelSequence(parsed));
+  return {
+    ...parsed,
+    scenes: parsed.story.mode === 'append'
+      ? [...parsed.scenes, ...generated]
+      : generated,
+  };
+};
 
 export const getDimensions = (format: VideoProject['format']) => {
   if (format === 'landscape') return {width: 1920, height: 1080};

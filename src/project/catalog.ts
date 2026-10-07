@@ -5,6 +5,7 @@ import premiumMotionDemo from '../../projects/premium-motion-demo.json';
 import kyotoPremiumShowcase from '../../projects/kyoto-premium-showcase.json';
 import tokyoKyotoShinkansen from '../../projects/tokyo-kyoto-shinkansen.json';
 import kyotoMorningRoute from '../../projects/kyoto-morning-route.json';
+import kyotoAutoStory from '../../projects/kyoto-auto-story.json';
 import scotlandRoadtripShowcase from '../../projects/scotland-roadtrip-showcase.json';
 import studioProductShowcase from '../../projects/studio-product-showcase.json';
 import {parseProject, type VideoProject} from './schema';
@@ -17,6 +18,7 @@ export const projects: VideoProject[] = [
   parseProject(kyotoPremiumShowcase),
   parseProject(tokyoKyotoShinkansen),
   parseProject(kyotoMorningRoute),
+  parseProject(kyotoAutoStory),
   parseProject(scotlandRoadtripShowcase),
   parseProject(studioProductShowcase),
 ];
