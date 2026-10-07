@@ -165,18 +165,56 @@ const VehicleGlyph = ({
 const pathData = (points: Point[]) =>
   points.map((point, i) => `${i === 0 ? 'M' : 'L'}${point.x.toFixed(2)},${point.y.toFixed(2)}`).join(' ');
 
-export const routeDistanceKm = (route: ReadonlyArray<Position>) => {
+const geoDistanceKm = (a: Position, b: Position) => {
   const rad = Math.PI / 180;
-  return route.slice(1).reduce((total, point, index) => {
-    const previous = route[index];
-    const dLat = (point[1] - previous[1]) * rad;
-    const dLon = (point[0] - previous[0]) * rad;
-    const a =
-      Math.sin(dLat / 2) ** 2 +
-      Math.cos(previous[1] * rad) * Math.cos(point[1] * rad) *
-      Math.sin(dLon / 2) ** 2;
-    return total + 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  }, 0);
+  const dLat = (b[1] - a[1]) * rad;
+  const dLon = (b[0] - a[0]) * rad;
+  const value =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(a[1] * rad) * Math.cos(b[1] * rad) *
+    Math.sin(dLon / 2) ** 2;
+  return 6371 * 2 * Math.atan2(Math.sqrt(value), Math.sqrt(1 - value));
+};
+
+export const routeDistanceKm = (route: ReadonlyArray<Position>) =>
+  route.slice(1).reduce((total, point, index) => total + geoDistanceKm(route[index], point), 0);
+
+export const sliceGeoRouteByProgress = (
+  route: ReadonlyArray<Position>,
+  startProgress: number,
+  endProgress: number,
+): Position[] => {
+  const start = constrain(Math.min(startProgress, endProgress));
+  const end = constrain(Math.max(startProgress, endProgress));
+  const segmentLengths = route.slice(1).map((point, index) => geoDistanceKm(route[index], point));
+  const cumulative = [0];
+  for (const length of segmentLengths) cumulative.push(cumulative[cumulative.length - 1] + length);
+  const total = cumulative[cumulative.length - 1] || 1;
+  const startDistance = total * start;
+  const endDistance = total * end;
+
+  const interpolateAt = (target: number): Position => {
+    for (let i = 0; i < segmentLengths.length; i++) {
+      if (target <= cumulative[i + 1]) {
+        const span = Math.max(0.0000001, segmentLengths[i]);
+        const t = constrain((target - cumulative[i]) / span);
+        return [
+          route[i][0] + (route[i + 1][0] - route[i][0]) * t,
+          route[i][1] + (route[i + 1][1] - route[i][1]) * t,
+        ];
+      }
+    }
+    return route[route.length - 1];
+  };
+
+  const result: Position[] = [interpolateAt(startDistance)];
+  for (let i = 1; i < route.length - 1; i++) {
+    if (cumulative[i] > startDistance && cumulative[i] < endDistance) {
+      result.push(route[i]);
+    }
+  }
+  result.push(interpolateAt(endDistance));
+  return result;
 };
 
 export const GeoRouteSceneFrame = ({
