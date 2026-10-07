@@ -6,16 +6,18 @@ Create premium travel videos and route stories that preview and render from GitH
 
 ## New video workflow
 
-1. Read `src/project/schema.ts`.
-2. Prefer `travel-story` for travel and routes. Use `explainer` for product videos. Keep `data-story` for technical compatibility and internal experiments.
-3. For a standard geographic travel video, prefer a top-level `story` configuration so route, stops and media generate the sequence. Use explicit `scenes` for bespoke edits or unsupported structures.
-4. Create one JSON file in `projects/`.
-5. Use existing licensed remote photo URLs when browser asset preflight and export work. Keep source credits. Local files under `public/media/<project-id>/` remain an option when an external host fails.
-6. Use repository-relative paths for media stored in this repository.
-7. Register the project in `src/project/catalog.ts`.
-8. Run `npm run validate`.
-9. Run `npm run build`.
-10. Open a PR with a short description of the video and any new scene capability.
+1. Read `skills/premium-video-director/SKILL.md` when the user starts with a natural-language video prompt.
+2. Read `src/project/schema.ts`.
+3. Prefer `travel-story` for travel and routes. Use `explainer` for product videos. Keep `data-story` for technical compatibility and internal experiments.
+4. For prompt-led travel videos, prefer top-level `director` + `story`: ChatGPT/Codex interprets the prompt once, then the deterministic Premium Director compiler creates the shot sequence.
+5. Use plain `story` when the user wants a straightforward route sequence without creative direction, and explicit `scenes` for bespoke edits or unsupported structures.
+6. Create one JSON file in `projects/`.
+7. Use existing licensed remote photo URLs when browser asset preflight and export work. Keep source credits. Local files under `public/media/<project-id>/` remain an option when an external host fails.
+8. Use repository-relative paths for media stored in this repository.
+9. Register the project in `src/project/catalog.ts`.
+10. Run `npm run validate`.
+11. Run `npm run build`.
+12. Open a PR with a short description of the prompt, creative direction, compiled shot arc and any new scene capability.
 
 ## Rules
 
@@ -58,6 +60,24 @@ Scenes may define `beatSync` with scene-relative beat timestamps, strength and d
 ### Editorial cadence
 
 `editorial-map` and `maplibre-route` support `graphicFps`. Use `graphicFps: 12` for stepped editorial overlays while keeping the composition and MapLibre camera/plate smooth.
+
+### Prompt → Premium Director → Remotion
+
+Do not translate a free-form prompt directly into scene types. First create a `director` brief with:
+- source prompt
+- goal and audience
+- target duration
+- narrative arc
+- pacing and visual language
+- map role / engine
+- asset balance
+- one-sentence hook
+- one-sentence payoff
+- explicit avoid rules
+
+The repository then compiles `director + story` into scene roles: `hook`, `orient`, `travel`, `detail`, `bridge`, and `payoff`. The Studio displays the retained source prompt and scene roles so the translation can be reviewed.
+
+Premium Director currently targets geographic travel stories. Do not pretend that the browser is semantically interpreting the natural-language prompt: the agent performs that interpretation during authoring; the browser compiler is deterministic.
 
 ## Premium motion system
 
