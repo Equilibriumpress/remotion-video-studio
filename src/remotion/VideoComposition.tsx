@@ -3,8 +3,9 @@ import {AbsoluteFill, useVideoConfig} from 'remotion';
 import type {VideoProject} from '../project/schema';
 import {sceneFrames} from '../project/schema';
 import {resolveAsset} from '../project/assets';
+import {TransitionSeries} from '@remotion/transitions';
 import {SceneFrame} from './SceneFrame';
-import {OfficialTransition, TransitionSequence, TransitionSeries} from './officialTransitions';
+import {transitionPresentation, transitionTiming} from './officialTransitions';
 
 export type VideoCompositionProps = {
   project: VideoProject;
@@ -34,19 +35,26 @@ export const VideoComposition = ({project}: VideoCompositionProps) => {
         {project.scenes.flatMap((scene, index) => {
           const durationInFrames = sceneFrames(scene, project.fps);
           const sequence = (
-            <TransitionSequence key={`scene-${scene.id}`} durationInFrames={durationInFrames}>
+            <TransitionSeries.Sequence
+              key={`scene-${scene.id}`}
+              durationInFrames={durationInFrames}
+              premountFor={Math.min(20, durationInFrames)}
+            >
               <SceneFrame scene={scene} project={project} transitionInFrames={0} />
-            </TransitionSequence>
+            </TransitionSeries.Sequence>
           );
+
           if (index === 0) return [sequence];
 
+          const presentation = transitionPresentation(scene.transition, width, height);
+          const timing = transitionTiming(scene, project.fps);
+          if (!presentation || !timing) return [sequence];
+
           return [
-            <OfficialTransition
+            <TransitionSeries.Transition
               key={`transition-${scene.id}`}
-              scene={scene}
-              fps={project.fps}
-              width={width}
-              height={height}
+              presentation={presentation}
+              timing={timing}
             />,
             sequence,
           ];
