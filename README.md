@@ -30,6 +30,7 @@ GitHub Actions performs only project validation and the static Vite build. It do
 - Asset preflight for local and supported remote images
 - Zod project schema
 - Geographically anchored SVG routes with precomputed railway, walking and road geometry
+- Cinematic camera presets with adjustable motion strength and per-scene transition duration
 - Title, Image, Text, Stat, List and Outro scenes
 - Travel Story and Explainer templates, with Data Story support for technical compatibility
 - Dedicated browser render test project
