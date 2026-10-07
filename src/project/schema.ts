@@ -326,7 +326,7 @@ const mapLibreRouteScene = baseScene.extend({
   camera: z.enum(['follow', 'overview']).default('follow'),
   cameraRouteId: z.string().min(1).optional(),
   cameraLead: z.number().min(0).max(0.25).default(0.035),
-  cameraZoom: z.number().min(1).max(3).default(1.55),
+  cameraZoom: z.number().min(1).max(1.5).default(1.3),
   cameraAnchorY: z.number().min(0.35).max(0.75).default(0.56),
   altitude: z.number().min(500).max(50000).default(8000),
   mapStyleUrl: z.string().url().default('https://tiles.openfreemap.org/styles/liberty'),
