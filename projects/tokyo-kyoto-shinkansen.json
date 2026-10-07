@@ -92,6 +92,23 @@
       "transition": "fade"
     },
     {
+      "id": "tk-final-leg",
+      "type": "route-chapter",
+      "duration": 4.2,
+      "kicker": "FINAL RAIL LEG",
+      "title": "Nagoya → Kyoto",
+      "subtitle": "The route narrows to one final chapter",
+      "routeId": "tokaido-rail",
+      "startProgress": 0.765,
+      "endProgress": 1,
+      "startLabel": "Nagoya",
+      "endLabel": "Kyoto",
+      "style": "clean",
+      "mapRotation": -38,
+      "transition": "soft-zoom",
+      "transitionDuration": 0.55
+    },
+    {
       "id": "tk-progress",
       "type": "geo-route",
       "duration": 4.2,

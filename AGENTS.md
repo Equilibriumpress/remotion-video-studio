@@ -40,7 +40,7 @@ Prefer scene + motion + transition composition over custom React for content vid
 
 ### Scene library
 
-Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `geo-route`, `elevation-route`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `video`, `caption-video`, `outro`.
+Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `geo-route`, `elevation-route`, `route-chapter`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `video`, `caption-video`, `outro`.
 
 ### Motion presets
 
@@ -77,6 +77,8 @@ Use `geo-route` for videos portraying a real railway, pedestrian route or road t
 For movement-led route scenes, add `vehicle` with type `train`, `car`, `walker`, `bike`, or `plane`. The glyph follows the same progress value as the route and rotates from the local path bearing. Keep vehicle graphics SVG-only so browser export remains deterministic.
 
 Use `elevation-route` when measured or sourced elevation samples are available. Store reusable samples in `elevationProfiles`, keep distances strictly increasing, and label synthetic/test data explicitly. The scene animates distance, current elevation and cumulative ascent without runtime terrain requests.
+
+Use `route-chapter` to focus a long trip on one geographic leg. `startProgress` and `endProgress` are measured along cumulative route distance, then the segment is automatically fitted to the frame. This avoids index-based slicing on uneven GeoJSON geometries.
 
 - `tokyo-kyoto-shinkansen`: Japan MLIT FY2025 rail track, already reduced to an animated line.
 - `kyoto-morning-route`: measured and OpenStreetMap-based streets of Southern Higashiyama.

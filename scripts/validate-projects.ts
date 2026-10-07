@@ -76,6 +76,15 @@ for (const file of files) {
         errors.push(`${file}: elevation scene "${scene.id}" references missing profile "${scene.profileId}"`);
       }
 
+      if (scene.type === 'route-chapter') {
+        if (!project.geoRoutes?.[scene.routeId]) {
+          errors.push(`${file}: route chapter "${scene.id}" references missing route "${scene.routeId}"`);
+        }
+        if (scene.endProgress <= scene.startProgress) {
+          errors.push(`${file}: route chapter "${scene.id}" must end after it starts`);
+        }
+      }
+
       if (scene.type === 'geo-route') {
         const route = project.geoRoutes?.[scene.routeId];
         if (!route) {
