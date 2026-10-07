@@ -74,6 +74,8 @@ Prefer restrained combinations. One strong mask or kinetic treatment per sequenc
 
 Use `geo-route` for videos portraying a real railway, pedestrian route or road trip. Provide a top-level `geoRoutes` entry containing WGS84 `LineString` coordinates in `[longitude, latitude]` order, a route mode (`rail`, `walking`, `driving`) and source attribution. Scenes reference a `routeId` plus georeferenced `stops`. Reuse the route across scenes and vary `progress`, `style`, and `mapRotation` to tell the story. Use `camera: "follow"` with a restrained `cameraZoom` for movement-led sequences and `camera: "overview"` for orientation or arrival scenes. When `distance` is omitted, the scene derives route kilometres from the committed coordinates. The map draws SVG from precomputed geographic data; it does not fetch tiles or call live routing APIs during render. Optional `contextLines` must also be geographically sourced.
 
+For movement-led route scenes, add `vehicle` with type `train`, `car`, `walker`, `bike`, or `plane`. The glyph follows the same progress value as the route and rotates from the local path bearing. Keep vehicle graphics SVG-only so browser export remains deterministic.
+
 - `tokyo-kyoto-shinkansen`: Japan MLIT FY2025 rail track, already reduced to an animated line.
 - `kyoto-morning-route`: measured and OpenStreetMap-based streets of Southern Higashiyama.
 - `scotland-roadtrip-showcase`: geographical town/road waypoints remain indicative until fully road-snapped; the optional one-time authoring command `npm run routes:scotland` fetches a Valhalla route and saves the road geometry in the project JSON. Do not call these illustrative waypoint links exact navigable roads.

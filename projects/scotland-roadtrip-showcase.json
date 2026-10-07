@@ -168,7 +168,14 @@
           "icon": "city"
         }
       ],
-      "mapRotation": 0
+      "mapRotation": 0,
+      "vehicle": {
+        "type": "car",
+        "scale": 1,
+        "showPulse": true
+      },
+      "camera": "follow",
+      "cameraZoom": 1.28
     },
     {
       "id": "sc-callout1",
@@ -251,7 +258,14 @@
           "icon": "city"
         }
       ],
-      "mapRotation": 0
+      "mapRotation": 0,
+      "vehicle": {
+        "type": "car",
+        "scale": 1,
+        "showPulse": true
+      },
+      "camera": "follow",
+      "cameraZoom": 1.28
     },
     {
       "id": "sc-castle",

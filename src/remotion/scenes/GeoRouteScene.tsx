@@ -73,11 +73,93 @@ const alongPath = (points: Point[], ratio: number) => {
   for (let i = 0; i < lengths.length; i++) {
     if (left <= lengths[i]) {
       const t = lengths[i] === 0 ? 0 : left / lengths[i];
-      return {x: points[i].x + (points[i + 1].x - points[i].x) * t, y: points[i].y + (points[i + 1].y - points[i].y) * t};
+      const dx = points[i + 1].x - points[i].x;
+      const dy = points[i + 1].y - points[i].y;
+      return {
+        x: points[i].x + dx * t,
+        y: points[i].y + dy * t,
+        bearing: Math.atan2(dy, dx) * 180 / Math.PI,
+      };
     }
     left -= lengths[i];
   }
-  return points[points.length - 1];
+  const last = points[points.length - 1];
+  const previous = points[Math.max(0, points.length - 2)];
+  return {
+    ...last,
+    bearing: Math.atan2(last.y - previous.y, last.x - previous.x) * 180 / Math.PI,
+  };
+};
+
+const VehicleGlyph = ({
+  type,
+  x,
+  y,
+  bearing,
+  size,
+  color,
+  ring,
+}: {
+  type: 'train' | 'car' | 'walker' | 'bike' | 'plane';
+  x: number;
+  y: number;
+  bearing: number;
+  size: number;
+  color: string;
+  ring: string;
+}) => {
+  const transform = `translate(${x} ${y}) rotate(${bearing})`;
+  if (type === 'walker') {
+    return (
+      <g transform={transform}>
+        <circle cx={0} cy={-size * 0.25} r={size * 0.13} fill={color} stroke={ring} strokeWidth={size * 0.06} />
+        <path d={`M0,${-size * 0.08} L0,${size * 0.18} M0,${size * 0.02} L${size * 0.2},${size * 0.12} M0,${size * 0.18} L${size * 0.18},${size * 0.4} M0,${size * 0.18} L${-size * 0.16},${size * 0.42}`} fill="none" stroke={color} strokeWidth={size * 0.12} strokeLinecap="round" />
+      </g>
+    );
+  }
+  if (type === 'bike') {
+    return (
+      <g transform={transform}>
+        <circle cx={-size * 0.28} cy={size * 0.14} r={size * 0.2} fill="none" stroke={color} strokeWidth={size * 0.08} />
+        <circle cx={size * 0.28} cy={size * 0.14} r={size * 0.2} fill="none" stroke={color} strokeWidth={size * 0.08} />
+        <path d={`M${-size * 0.28},${size * 0.14} L0,${-size * 0.12} L${size * 0.12},${size * 0.14} L${-size * 0.08},${size * 0.14} Z M0,${-size * 0.12} L${size * 0.2},${-size * 0.24}`} fill="none" stroke={color} strokeWidth={size * 0.07} strokeLinejoin="round" />
+      </g>
+    );
+  }
+  if (type === 'plane') {
+    return (
+      <g transform={transform}>
+        <path d={`M${size * 0.52},0 L${-size * 0.08},${-size * 0.12} L${-size * 0.42},${-size * 0.42} L${-size * 0.18},${-size * 0.04} L${-size * 0.48},0 L${-size * 0.18},${size * 0.04} L${-size * 0.42},${size * 0.42} L${-size * 0.08},${size * 0.12} Z`} fill={color} stroke={ring} strokeWidth={size * 0.05} strokeLinejoin="round" />
+      </g>
+    );
+  }
+  const isTrain = type === 'train';
+  return (
+    <g transform={transform}>
+      <rect
+        x={-size * (isTrain ? 0.48 : 0.38)}
+        y={-size * (isTrain ? 0.2 : 0.24)}
+        width={size * (isTrain ? 0.96 : 0.76)}
+        height={size * (isTrain ? 0.4 : 0.48)}
+        rx={size * 0.16}
+        fill={color}
+        stroke={ring}
+        strokeWidth={size * 0.055}
+      />
+      {isTrain ? (
+        <>
+          <rect x={size * 0.08} y={-size * 0.11} width={size * 0.22} height={size * 0.22} rx={size * 0.05} fill={ring} opacity={0.8} />
+          <line x1={-size * 0.22} y1={-size * 0.14} x2={-size * 0.22} y2={size * 0.14} stroke={ring} strokeWidth={size * 0.045} />
+        </>
+      ) : (
+        <>
+          <circle cx={-size * 0.22} cy={size * 0.27} r={size * 0.09} fill={ring} />
+          <circle cx={size * 0.22} cy={size * 0.27} r={size * 0.09} fill={ring} />
+          <path d={`M${-size * 0.18},${-size * 0.2} L${-size * 0.02},${-size * 0.38} L${size * 0.22},${-size * 0.38} L${size * 0.34},${-size * 0.2}`} fill={color} stroke={ring} strokeWidth={size * 0.05} strokeLinejoin="round" />
+        </>
+      )}
+    </g>
+  );
 };
 
 const pathData = (points: Point[]) =>
@@ -184,8 +266,22 @@ export const GeoRouteSceneFrame = ({
           </g>
         );
       })}
-      <circle cx={marker.x} cy={marker.y} r={width * 0.064} fill={accent} opacity={0.14} />
-      <LocationPin x={marker.x} y={marker.y} size={width * 0.065} fill={foreground} ring={accent} progress={enter} />
+      {scene.vehicle?.showPulse !== false ? (
+        <circle cx={marker.x} cy={marker.y} r={width * 0.064} fill={accent} opacity={0.14} />
+      ) : null}
+      {scene.vehicle ? (
+        <VehicleGlyph
+          type={scene.vehicle.type}
+          x={marker.x}
+          y={marker.y}
+          bearing={marker.bearing}
+          size={width * 0.07 * scene.vehicle.scale}
+          color={scene.vehicle.color ?? foreground}
+          ring={accent}
+        />
+      ) : (
+        <LocationPin x={marker.x} y={marker.y} size={width * 0.065} fill={foreground} ring={accent} progress={enter} />
+      )}
       </g>
       <text x={pad} y={height * 0.13} fill={foreground} fontSize={width * 0.049} fontWeight={820}>{scene.title}</text>
       <text x={pad} y={height * 0.175} fill={muted} fontSize={size * 0.58} fontWeight={700} letterSpacing={3}>
