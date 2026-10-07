@@ -38,6 +38,7 @@ assert.match(
 
 assert.match(helper, /MAX_MAP_PLATE_DIMENSION = 3072/);
 assert.match(helper, /MAX_MAP_CAMERA_ZOOM = 1\.35/);
+assert.match(helper, /supported = safeLimit >= compositionMax/);
 assert.match(helper, /WEBGL_lose_context/);
 assert.match(helper, /canvas\.toBlob/);
 
@@ -57,7 +58,7 @@ assert.match(
 );
 assert.match(
   renderPanel,
-  /allowHtmlInCanvas:\s*usesThree/,
+  /allowHtmlInCanvas:\s*usesExperimentalCanvas/,
   'Only live Three.js canvas scenes should opt into HTML-in-canvas capture',
 );
 
