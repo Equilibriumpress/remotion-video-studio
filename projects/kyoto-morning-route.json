@@ -1,0 +1,192 @@
+{
+  "id": "kyoto-morning-route",
+  "title": "Kyoto Morning Route · Editorial Reel",
+  "template": "travel-story",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#181813",
+    "foreground": "#FEF9ED",
+    "muted": "#D1C4AE",
+    "accent": "#C9AA72"
+  },
+  "scenes": [
+    {
+      "id": "km-intro",
+      "type": "kinetic-title",
+      "duration": 2.8,
+      "text": "A quiet Kyoto morning",
+      "kicker": "KYOTO / 06:15",
+      "style": "word-reveal",
+      "highlight": "Kyoto",
+      "transition": "fade"
+    },
+    {
+      "id": "km-temple",
+      "type": "hero-image",
+      "duration": 4.3,
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg/1280px-JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg",
+      "kicker": "HIGASHIYAMA / EARLY",
+      "title": "Start at Kiyomizu",
+      "subtitle": "Morning light above the old streets",
+      "motion": "slow-push",
+      "transition": "fade"
+    },
+    {
+      "id": "km-map",
+      "type": "route-map",
+      "duration": 5.2,
+      "title": "Four stops before noon",
+      "distance": "Approx. 3 km walking route",
+      "style": "watercolor",
+      "showDetails": true,
+      "points": [
+        {
+          "x": 0.78,
+          "y": 0.81,
+          "label": "Kiyomizu-dera",
+          "icon": "temple",
+          "detail": "06:15"
+        },
+        {
+          "x": 0.6,
+          "y": 0.63,
+          "label": "Sannenzaka",
+          "icon": "city",
+          "detail": "07:15"
+        },
+        {
+          "x": 0.42,
+          "y": 0.4,
+          "label": "Yasaka Shrine",
+          "icon": "temple",
+          "detail": "08:00"
+        },
+        {
+          "x": 0.27,
+          "y": 0.24,
+          "label": "Gion",
+          "icon": "city",
+          "detail": "09:00"
+        }
+      ],
+      "transition": "fade"
+    },
+    {
+      "id": "km-streets",
+      "type": "photo-mask",
+      "duration": 4.1,
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Streets_of_Gion%2C_Kyoto_-_Gion7712.jpg/1920px-Streets_of_Gion%2C_Kyoto_-_Gion7712.jpg",
+      "title": "Side streets in soft light",
+      "caption": "Gion · Kyoto",
+      "shape": "window",
+      "treatment": "warm",
+      "frame": "offset",
+      "transition": "fade"
+    },
+    {
+      "id": "km-progress",
+      "type": "progress-route",
+      "duration": 4.5,
+      "title": "Walk the old lanes",
+      "progress": 0.62,
+      "label": "Higashiyama → Gion",
+      "style": "watercolor",
+      "showDetails": false,
+      "points": [
+        {
+          "x": 0.78,
+          "y": 0.81,
+          "label": "Kiyomizu",
+          "icon": "temple"
+        },
+        {
+          "x": 0.6,
+          "y": 0.63,
+          "label": "Sannenzaka",
+          "icon": "city"
+        },
+        {
+          "x": 0.42,
+          "y": 0.4,
+          "label": "Yasaka",
+          "icon": "temple"
+        },
+        {
+          "x": 0.27,
+          "y": 0.24,
+          "label": "Gion",
+          "icon": "city"
+        }
+      ],
+      "transition": "wipe"
+    },
+    {
+      "id": "km-gion",
+      "type": "lower-third",
+      "duration": 3.2,
+      "title": "Gion",
+      "subtitle": "Take time for the smaller streets",
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Streets_of_Gion%2C_Kyoto_-_Gion7712.jpg/1920px-Streets_of_Gion%2C_Kyoto_-_Gion7712.jpg",
+      "transition": "fade"
+    },
+    {
+      "id": "km-still",
+      "type": "photo-mask",
+      "duration": 4,
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg/1280px-JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg",
+      "title": "Look beyond the main street",
+      "caption": "Historic Kyoto · morning",
+      "shape": "portrait",
+      "treatment": "natural",
+      "frame": "thin",
+      "transition": "fade"
+    },
+    {
+      "id": "km-complete",
+      "type": "progress-route",
+      "duration": 3.2,
+      "title": "The morning loop",
+      "progress": 1,
+      "label": "Four places · one morning",
+      "style": "watercolor",
+      "showDetails": false,
+      "points": [
+        {
+          "x": 0.78,
+          "y": 0.81,
+          "label": "Kiyomizu",
+          "icon": "temple"
+        },
+        {
+          "x": 0.6,
+          "y": 0.63,
+          "label": "Sannenzaka",
+          "icon": "city"
+        },
+        {
+          "x": 0.42,
+          "y": 0.4,
+          "label": "Yasaka",
+          "icon": "temple"
+        },
+        {
+          "x": 0.27,
+          "y": 0.24,
+          "label": "Gion",
+          "icon": "city"
+        }
+      ],
+      "transition": "slide-up"
+    },
+    {
+      "id": "km-end",
+      "type": "outro",
+      "duration": 2.7,
+      "title": "Kyoto, at your pace.",
+      "subtitle": "A photo-led morning walking story",
+      "motion": "fade-rise",
+      "transition": "fade"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "id": "tokyo-kyoto-shinkansen",
+  "title": "Tokyo to Kyoto · Shinkansen",
+  "template": "travel-story",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#09151C",
+    "foreground": "#F6FAFC",
+    "muted": "#AABAC4",
+    "accent": "#75D7DE"
+  },
+  "scenes": [
+    {
+      "id": "tk-intro",
+      "type": "kinetic-title",
+      "duration": 2.7,
+      "text": "Tokyo to Kyoto",
+      "kicker": "JAPAN / BY RAIL",
+      "style": "word-reveal",
+      "highlight": "Kyoto",
+      "transition": "fade"
+    },
+    {
+      "id": "tk-train",
+      "type": "hero-image",
+      "duration": 3.5,
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Tokyo_Station_Shinkansen_Bullet_Train_18-09-2024.jpg/1280px-Tokyo_Station_Shinkansen_Bullet_Train_18-09-2024.jpg",
+      "kicker": "TOKAIDO SHINKANSEN",
+      "title": "Leave Tokyo behind",
+      "subtitle": "A fast route across central Japan",
+      "motion": "slow-push",
+      "transition": "fade"
+    },
+    {
+      "id": "tk-route",
+      "type": "route-map",
+      "duration": 5,
+      "title": "Tokyo → Kyoto",
+      "distance": "Approx. 475 km by rail",
+      "style": "clean",
+      "showDetails": true,
+      "points": [
+        {
+          "x": 0.85,
+          "y": 0.16,
+          "label": "Tokyo",
+          "icon": "station",
+          "detail": "Depart"
+        },
+        {
+          "x": 0.7,
+          "y": 0.31,
+          "label": "Shin-Yokohama",
+          "icon": "station"
+        },
+        {
+          "x": 0.48,
+          "y": 0.52,
+          "label": "Nagoya",
+          "icon": "station"
+        },
+        {
+          "x": 0.2,
+          "y": 0.81,
+          "label": "Kyoto",
+          "icon": "station",
+          "detail": "Arrive"
+        }
+      ],
+      "transition": "slide-up"
+    },
+    {
+      "id": "tk-platform",
+      "type": "lower-third",
+      "duration": 2.8,
+      "title": "Tokyo Station",
+      "subtitle": "Tokaido Shinkansen",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Tokyo_Station_Shinkansen_Bullet_Train_18-09-2024.jpg/1280px-Tokyo_Station_Shinkansen_Bullet_Train_18-09-2024.jpg",
+      "transition": "fade"
+    },
+    {
+      "id": "tk-progress",
+      "type": "progress-route",
+      "duration": 4.2,
+      "title": "The journey west",
+      "progress": 0.72,
+      "label": "Tokyo → Nagoya → Kyoto",
+      "style": "clean",
+      "showDetails": false,
+      "points": [
+        {
+          "x": 0.85,
+          "y": 0.16,
+          "label": "Tokyo",
+          "icon": "station"
+        },
+        {
+          "x": 0.7,
+          "y": 0.31,
+          "label": "Yokohama",
+          "icon": "station"
+        },
+        {
+          "x": 0.48,
+          "y": 0.52,
+          "label": "Nagoya",
+          "icon": "station"
+        },
+        {
+          "x": 0.2,
+          "y": 0.81,
+          "label": "Kyoto",
+          "icon": "station"
+        }
+      ],
+      "transition": "wipe"
+    },
+    {
+      "id": "tk-time",
+      "type": "callout",
+      "duration": 3.2,
+      "value": "~2h 15m",
+      "title": "City to city",
+      "body": "A typical Nozomi journey from Tokyo to Kyoto. Actual schedules vary.",
+      "transition": "fade"
+    },
+    {
+      "id": "tk-kyoto",
+      "type": "hero-image",
+      "duration": 4.4,
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg/1280px-JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg",
+      "kicker": "ARRIVAL / KYOTO",
+      "title": "From speed to stillness",
+      "subtitle": "Temples, lanes and a new chapter",
+      "motion": "slow-push",
+      "transition": "fade"
+    },
+    {
+      "id": "tk-arrival",
+      "type": "progress-route",
+      "duration": 3.5,
+      "title": "Welcome to Kyoto",
+      "progress": 1,
+      "label": "Route complete",
+      "style": "clean",
+      "showDetails": false,
+      "points": [
+        {
+          "x": 0.85,
+          "y": 0.16,
+          "label": "Tokyo",
+          "icon": "station"
+        },
+        {
+          "x": 0.48,
+          "y": 0.52,
+          "label": "Nagoya",
+          "icon": "station"
+        },
+        {
+          "x": 0.2,
+          "y": 0.81,
+          "label": "Kyoto",
+          "icon": "station"
+        }
+      ],
+      "transition": "slide-up"
+    },
+    {
+      "id": "tk-end",
+      "type": "outro",
+      "duration": 2.8,
+      "title": "Tokyo → Kyoto",
+      "subtitle": "Approx. 475 km · Shinkansen",
+      "motion": "fade-rise",
+      "transition": "fade"
+    }
+  ]
+}

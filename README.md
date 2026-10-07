@@ -1,6 +1,6 @@
 # Remotion Video Studio
 
-A browser-first, data-driven video studio built around Remotion.
+A browser-first travel video studio and route storytelling engine built around Remotion.
 
 ## Workflow
 
@@ -30,7 +30,7 @@ GitHub Actions performs only project validation and the static Vite build. It do
 - Local asset preflight
 - Zod project schema
 - Title, Image, Text, Stat, List and Outro scenes
-- Travel Story, Explainer and Data Story templates
+- Travel Story and Explainer templates, with Data Story support for technical compatibility
 - Dedicated browser render test project
 - Responsive Pages interface
 
@@ -45,6 +45,16 @@ src/render/               Browser export, profiles and preflight
 scripts/                  Build-time validation
 AGENTS.md                 ChatGPT/Codex authoring protocol
 ```
+
+## Travel showcase projects
+
+- `kyoto-premium-showcase` — travel editorial storytelling
+- `tokyo-kyoto-shinkansen` — clean station-to-station rail route
+- `kyoto-morning-route` — calm photo-led Kyoto walking reel
+- `scotland-roadtrip-showcase` — flowing multi-stop Highland journey
+- `studio-product-showcase` — product explainer
+
+Production still requires local media copies, asset preflight and a browser Draft render. See `projects/IMAGE-CREDITS.md` for the source photographs used in the new travel examples.
 
 ## Local development
 

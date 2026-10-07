@@ -2,12 +2,12 @@
 
 ## Goal
 
-Create data-driven videos that preview and render from GitHub Pages. Keep final video rendering on the user's device. GitHub Actions only validates and builds the static site.
+Create premium travel videos and route stories that preview and render from GitHub Pages. Keep final video rendering on the user's device. GitHub Actions only validates and builds the static site.
 
 ## New video workflow
 
 1. Read `src/project/schema.ts`.
-2. Choose one existing template: `travel-story`, `explainer`, or `data-story`.
+2. Prefer `travel-story` for travel and routes. Use `explainer` for product videos. Keep `data-story` for technical compatibility and internal experiments.
 3. Create one JSON file in `projects/`.
 4. Put local media in `public/media/<project-id>/`.
 5. Use repository-relative media paths such as `/media/<project-id>/photo.jpg`.
@@ -81,7 +81,9 @@ Do not introduce map tiles or WebGL into these scenes.
 Use these projects as composition references:
 
 - `kyoto-premium-showcase` for photography + route + editorial masks.
-- `utrecht-data-showcase` for pure SVG data storytelling. Its values are explicitly synthetic demo data.
+- `tokyo-kyoto-shinkansen` for clean station-to-station route explainers, journey progress and train imagery.
+- `kyoto-morning-route` for watercolor walking routes, editorial image masks and calm pacing.
+- `scotland-roadtrip-showcase` for flow-style maps, multi-stop routes and landscape-led travel films.
 - `studio-product-showcase` for kinetic typography and explainer pacing.
 
 
@@ -102,6 +104,12 @@ For travel stories, prefer `route-map` with a deliberate map style:
 
 Route points may use `icon`: `pin`, `temple`, `nature`, `station`, or `city`. Use `detail` for a short time, distance, or contextual cue. The route engine performs a subtle zoom-out while drawing the line and moving the active marker.
 
+
+### Travel-first positioning
+
+Position the studio as a travel video studio and route storytelling engine. Prioritize destination footage or licensed photos, SVG route animation, stop callouts and concise captions. The public catalog highlights travel examples plus one product explainer. Keep research-only data scenes out of the public showcase list.
+
+New image-led showcase files should use same-origin assets under `public/media/<project-id>/` before release-quality MP4 export. Existing Wikimedia-hosted showcase references are transitional. Preserve source, creator and license attribution in project documentation. The local asset preflight and browser Draft render remain mandatory release checks.
 
 ### Combined data motion
 
