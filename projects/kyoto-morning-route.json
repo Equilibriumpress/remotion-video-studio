@@ -104,7 +104,7 @@
       "label": "Higashiyama → Gion",
       "style": "watercolor",
       "showDetails": false,
-      "transition": "wipe",
+      "transition": "soft-zoom",
       "routeId": "higashiyama-walk",
       "stops": [
         {
@@ -144,7 +144,14 @@
           "icon": "city"
         }
       ],
-      "mapRotation": 0
+      "mapRotation": 0,
+      "vehicle": {
+        "type": "walker",
+        "scale": 0.95,
+        "showPulse": false
+      },
+      "camera": "follow",
+      "cameraZoom": 1.34
     },
     {
       "id": "km-gion",
