@@ -47,7 +47,7 @@ Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title
 
 Use one of: `none`, `fade-rise`, `slow-push`, `pan-left`, `pan-right`, `pop`, `drift-up`, `zoom-out`, `cinematic-push`, `cinematic-pull`, `pan-and-zoom`, `float-horizontal`.
 
-Use `cinematic-push`, `cinematic-pull`, and `pan-and-zoom` for slower photo-led travel sequences. Use `slow-push` and `zoom-out` mainly for visual media. Use `fade-rise`, `pop` and `drift-up` for typography and data. Set `motionAmount` between roughly 0.6 and 1.1 for restrained travel edits.
+Use `cinematic-push`, `cinematic-pull`, and `pan-and-zoom` for slower photo-led travel sequences. Use `slow-push` and `zoom-out` mainly for visual media. Use `fade-rise`, `pop` and `drift-up` for typography and data. Set `motionAmount` between roughly 0.6 and 1.1 for restrained travel edits. Use optional `motionBlur` only on fast movement or whip-style scenes; start around 4–5 samples and a 90–140° shutter angle. Keep it off for static typography and most route maps because every sample increases browser render work.
 
 ### Transition presets
 

@@ -1,4 +1,5 @@
 import {Audio} from '@remotion/media';
+import {CameraMotionBlur} from '@remotion/motion-blur';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
 import type {VideoProject} from '../project/schema';
 import {sceneFrames} from '../project/schema';
@@ -34,13 +35,24 @@ export const VideoComposition = ({project}: VideoCompositionProps) => {
       <TransitionSeries>
         {project.scenes.flatMap((scene, index) => {
           const durationInFrames = sceneFrames(scene, project.fps);
+          const frame = (
+            <SceneFrame scene={scene} project={project} transitionInFrames={0} />
+          );
+          const sceneContent = scene.motionBlur ? (
+            <CameraMotionBlur
+              shutterAngle={scene.motionBlur.shutterAngle}
+              samples={scene.motionBlur.samples}
+            >
+              {frame}
+            </CameraMotionBlur>
+          ) : frame;
           const sequence = (
             <TransitionSeries.Sequence
               key={`scene-${scene.id}`}
               durationInFrames={durationInFrames}
               premountFor={Math.min(20, durationInFrames)}
             >
-              <SceneFrame scene={scene} project={project} transitionInFrames={0} />
+              {sceneContent}
             </TransitionSeries.Sequence>
           );
 

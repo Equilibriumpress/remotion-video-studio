@@ -35,7 +35,11 @@
       "motion": "pan-and-zoom",
       "transition": "whip-left",
       "motionAmount": 0.75,
-      "transitionDuration": 0.4
+      "transitionDuration": 0.4,
+      "motionBlur": {
+        "shutterAngle": 110,
+        "samples": 4
+      }
     },
     {
       "id": "premium-quote",

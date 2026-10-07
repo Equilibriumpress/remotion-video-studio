@@ -35,6 +35,10 @@ const baseScene = z.object({
   motionAmount: z.number().min(0.25).max(2).default(1),
   transition: transitionPresetSchema.optional(),
   transitionDuration: z.number().min(0.15).max(1.5).optional(),
+  motionBlur: z.object({
+    shutterAngle: z.number().min(0).max(360).default(120),
+    samples: z.number().int().min(2).max(12).default(5),
+  }).optional(),
 });
 
 const titleScene = baseScene.extend({
