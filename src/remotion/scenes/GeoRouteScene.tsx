@@ -83,6 +83,20 @@ const alongPath = (points: Point[], ratio: number) => {
 const pathData = (points: Point[]) =>
   points.map((point, i) => `${i === 0 ? 'M' : 'L'}${point.x.toFixed(2)},${point.y.toFixed(2)}`).join(' ');
 
+export const routeDistanceKm = (route: ReadonlyArray<Position>) => {
+  const rad = Math.PI / 180;
+  return route.slice(1).reduce((total, point, index) => {
+    const previous = route[index];
+    const dLat = (point[1] - previous[1]) * rad;
+    const dLon = (point[0] - previous[0]) * rad;
+    const a =
+      Math.sin(dLat / 2) ** 2 +
+      Math.cos(previous[1] * rad) * Math.cos(point[1] * rad) *
+      Math.sin(dLon / 2) ** 2;
+    return total + 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }, 0);
+};
+
 export const GeoRouteSceneFrame = ({
   scene,
   project,
@@ -114,6 +128,19 @@ export const GeoRouteSceneFrame = ({
     stop,
     ...closestOnPath(points, projected.toScreen(stop.coordinates)),
   }));
+  const cameraProgress = scene.camera === 'follow'
+    ? progress01(frame, fps * 0.18, Math.max(fps * 1.1, durationInFrames * 0.58))
+    : 0;
+  const cameraScale = 1 + (scene.cameraZoom - 1) * cameraProgress;
+  const mapCenterX = width / 2;
+  const mapCenterY = height * 0.54;
+  const focusX = mapCenterX + (marker.x - mapCenterX) * cameraProgress;
+  const focusY = mapCenterY + (marker.y - mapCenterY) * cameraProgress;
+  const cameraTransform =
+    `translate(${mapCenterX} ${mapCenterY}) scale(${cameraScale}) translate(${-focusX} ${-focusY})`;
+  const computedDistance = routeDistanceKm(route.coordinates);
+  const distanceLabel = scene.distance ??
+    `${computedDistance < 10 ? computedDistance.toFixed(1) : Math.round(computedDistance)} km`;
 
   return (
     <svg viewBox={`0 0 ${width} ${height}`} width="100%" height="100%">
@@ -125,6 +152,7 @@ export const GeoRouteSceneFrame = ({
         </radialGradient>
       </defs>
       <circle cx={width * 0.5} cy={height * 0.55} r={width * 0.78} fill={`url(#geo-halo-${scene.id})`} />
+      <g transform={cameraTransform}>
       {/* Georeferenced context lines only; no invented roads or tile requests. */}
       {route.contextLines?.map((line, index) => (
         <path
@@ -158,6 +186,7 @@ export const GeoRouteSceneFrame = ({
       })}
       <circle cx={marker.x} cy={marker.y} r={width * 0.064} fill={accent} opacity={0.14} />
       <LocationPin x={marker.x} y={marker.y} size={width * 0.065} fill={foreground} ring={accent} progress={enter} />
+      </g>
       <text x={pad} y={height * 0.13} fill={foreground} fontSize={width * 0.049} fontWeight={820}>{scene.title}</text>
       <text x={pad} y={height * 0.175} fill={muted} fontSize={size * 0.58} fontWeight={700} letterSpacing={3}>
         {route.mode.toUpperCase()} · GEO ROUTE
@@ -174,7 +203,7 @@ export const GeoRouteSceneFrame = ({
           <text x={width - pad * 1.45} y={height * 0.889} fill={foreground} textAnchor="middle" fontSize={size * 0.48} fontWeight={750}>{Math.round(drawn * 100)}%</text>
         </>
       ) : null}
-      {scene.distance ? <LabelChip x={width-pad} y={height*0.87} text={scene.distance} foreground={background} background={accent} fontSize={size * 0.56} anchor="end" opacity={enter} /> : null}
+      <LabelChip x={width-pad} y={height*0.87} text={distanceLabel} foreground={background} background={accent} fontSize={size * 0.56} anchor="end" opacity={enter} />
       {scene.label ? <text x={pad} y={height * 0.9} fill={foreground} fontSize={size * 0.64} fontWeight={650}>{scene.label}</text> : null}
       <text x={pad} y={height * 0.962} fill={muted} fontSize={size * 0.42} fontWeight={600}>
         Map data: {route.source.name} · {route.source.license}
