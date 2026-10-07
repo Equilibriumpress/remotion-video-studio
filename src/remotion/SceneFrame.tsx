@@ -16,6 +16,7 @@ import {DataSceneFrame} from './scenes/DataScenes';
 import {FittedSvgText} from './svg/FittedSvgText';
 import {CaptionOverlay} from './CaptionOverlay';
 import {LottieSceneFrame} from './scenes/LottieScene';
+import {EditorialMapSceneFrame, TravelHudSceneFrame} from './scenes/EditorialScenes';
 
 type Props = {
   scene: VideoScene;
@@ -166,6 +167,14 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
 
   if (scene.type === 'maplibre-route') {
     return <MapLibreRouteSceneFrame scene={scene} project={project} />;
+  }
+
+  if (scene.type === 'editorial-map') {
+    return <EditorialMapSceneFrame scene={scene} project={project} />;
+  }
+
+  if (scene.type === 'travel-hud') {
+    return <TravelHudSceneFrame scene={scene} project={project} />;
   }
 
   if (scene.type === 'three-globe') {
