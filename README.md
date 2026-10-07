@@ -27,8 +27,9 @@ GitHub Actions performs only project validation and the static Vite build. It do
 - Client-side H.264 MP4 rendering
 - Draft and Standard render profiles
 - Browser capability check
-- Local asset preflight
+- Asset preflight for local and supported remote images
 - Zod project schema
+- Geographically anchored SVG routes with precomputed railway, walking and road geometry
 - Title, Image, Text, Stat, List and Outro scenes
 - Travel Story and Explainer templates, with Data Story support for technical compatibility
 - Dedicated browser render test project
@@ -54,7 +55,13 @@ AGENTS.md                 ChatGPT/Codex authoring protocol
 - `scotland-roadtrip-showcase` — flowing multi-stop Highland journey
 - `studio-product-showcase` — product explainer
 
-Production still requires local media copies, asset preflight and a browser Draft render. See `projects/IMAGE-CREDITS.md` for the source photographs used in the new travel examples.
+Production requires successful image preflight and a browser Draft render. Remote Wikimedia photographs may remain in use when export works. See `projects/IMAGE-CREDITS.md` for source credits.
+
+## Geographic route format
+
+`geo-route` scenes use a committed `geoRoutes` dictionary in each video JSON. Route geometries follow GeoJSON `LineString` coordinate order: `[longitude, latitude]`. Add labelled stops with geographic coordinates, choose `clean`, `watercolor`, or `flow`, and animate a fraction using `progress`. The renderer fits, projects and (optionally) rotates the whole route while retaining a correct north compass. No map tiles, WebGL or routing calls run during video playback.
+
+The Tokyo–Kyoto sample reuses a 281-point Tōkaidō rail alignment sourced from Japanese MLIT N02 FY2025 railway data. Kyoto Morning follows OSM-based historic street centre-lines. Scotland currently uses indicative geographical waypoints rather than exact road-snapped paths. To replace its waypoint line with detailed OpenStreetMap driving geometry, run `npm run routes:scotland` once on a networked authoring machine and commit the updated JSON. The script calls Valhalla once, simplifies the resulting line and needs no GitHub Actions render minutes. Public Valhalla demos have usage limits. Sources and licenses are recorded inside project route data and shown in map scenes.
 
 ## Local development
 
