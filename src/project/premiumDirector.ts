@@ -346,7 +346,7 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
         label: `${titleCaseMode(route.mode)} · ${totalKm < 10 ? totalKm.toFixed(1) : Math.round(totalKm)} km`,
         camera: 'follow',
         cameraLead: 0.04,
-        cameraZoom: 1.55,
+        cameraZoom: 1.3,
         cameraAnchorY: 0.56,
         showDetails: false,
         graphicFps: 12,
