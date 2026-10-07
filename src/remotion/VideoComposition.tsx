@@ -1,16 +1,17 @@
 import {Audio} from '@remotion/media';
-import {AbsoluteFill, Sequence} from 'remotion';
+import {AbsoluteFill, useVideoConfig} from 'remotion';
 import type {VideoProject} from '../project/schema';
-import {sceneTimeline} from '../project/schema';
+import {sceneFrames} from '../project/schema';
 import {resolveAsset} from '../project/assets';
 import {SceneFrame} from './SceneFrame';
+import {OfficialTransition, TransitionSequence, TransitionSeries} from './officialTransitions';
 
 export type VideoCompositionProps = {
   project: VideoProject;
 };
 
 export const VideoComposition = ({project}: VideoCompositionProps) => {
-  const timeline = sceneTimeline(project);
+  const {width, height} = useVideoConfig();
 
   return (
     <AbsoluteFill style={{backgroundColor: project.theme.background}}>
@@ -29,20 +30,28 @@ export const VideoComposition = ({project}: VideoCompositionProps) => {
         />
       ) : null}
 
-      {timeline.map(({scene, from, durationInFrames, transitionInFrames}) => (
-        <Sequence
-          key={scene.id}
-          from={from}
-          durationInFrames={durationInFrames}
-          premountFor={Math.min(20, durationInFrames)}
-        >
-          <SceneFrame
-            scene={scene}
-            project={project}
-            transitionInFrames={transitionInFrames}
-          />
-        </Sequence>
-      ))}
+      <TransitionSeries>
+        {project.scenes.flatMap((scene, index) => {
+          const durationInFrames = sceneFrames(scene, project.fps);
+          const sequence = (
+            <TransitionSequence key={`scene-${scene.id}`} durationInFrames={durationInFrames}>
+              <SceneFrame scene={scene} project={project} transitionInFrames={0} />
+            </TransitionSequence>
+          );
+          if (index === 0) return [sequence];
+
+          return [
+            <OfficialTransition
+              key={`transition-${scene.id}`}
+              scene={scene}
+              fps={project.fps}
+              width={width}
+              height={height}
+            />,
+            sequence,
+          ];
+        })}
+      </TransitionSeries>
     </AbsoluteFill>
   );
 };
