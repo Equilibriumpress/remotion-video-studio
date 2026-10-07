@@ -1,0 +1,283 @@
+{
+  "id": "scotland-roadtrip-showcase",
+  "title": "Scotland Highlands · Road Trip",
+  "template": "travel-story",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#0D171A",
+    "foreground": "#F5F8F2",
+    "muted": "#B2C3BF",
+    "accent": "#E4B87F"
+  },
+  "scenes": [
+    {
+      "id": "sc-intro",
+      "type": "kinetic-title",
+      "duration": 2.7,
+      "text": "Roads through the Highlands",
+      "kicker": "SCOTLAND / 3-DAY ROAD TRIP",
+      "style": "word-reveal",
+      "highlight": "Highlands",
+      "transition": "fade"
+    },
+    {
+      "id": "sc-glencoe",
+      "type": "hero-image",
+      "duration": 4.3,
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/The_A82_in_the_Pass_of_Glencoe_-_geograph.org.uk_-_6479132.jpg/1280px-The_A82_in_the_Pass_of_Glencoe_-_geograph.org.uk_-_6479132.jpg",
+      "kicker": "DAY 1 / GLENCOE",
+      "title": "Into the Highlands",
+      "subtitle": "A82 · mountains and wide valleys",
+      "motion": "slow-push",
+      "transition": "fade"
+    },
+    {
+      "id": "sc-route",
+      "type": "route-map",
+      "duration": 5.3,
+      "title": "Edinburgh to Skye",
+      "distance": "6 places · 3 days",
+      "style": "flow",
+      "showDetails": false,
+      "points": [
+        {
+          "x": 0.81,
+          "y": 0.84,
+          "label": "Edinburgh",
+          "icon": "city"
+        },
+        {
+          "x": 0.6,
+          "y": 0.68,
+          "label": "Glencoe",
+          "icon": "nature"
+        },
+        {
+          "x": 0.43,
+          "y": 0.54,
+          "label": "Fort William",
+          "icon": "city"
+        },
+        {
+          "x": 0.2,
+          "y": 0.41,
+          "label": "Glenfinnan",
+          "icon": "nature"
+        },
+        {
+          "x": 0.39,
+          "y": 0.24,
+          "label": "Eilean Donan",
+          "icon": "pin"
+        },
+        {
+          "x": 0.16,
+          "y": 0.13,
+          "label": "Portree",
+          "icon": "city"
+        }
+      ],
+      "transition": "slide-up"
+    },
+    {
+      "id": "sc-a82",
+      "type": "photo-mask",
+      "duration": 3.7,
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/The_A82_in_the_Pass_of_Glencoe_-_geograph.org.uk_-_6479132.jpg/1280px-The_A82_in_the_Pass_of_Glencoe_-_geograph.org.uk_-_6479132.jpg",
+      "title": "A82 through Glencoe",
+      "caption": "Day 1 · mountain roads",
+      "shape": "window",
+      "treatment": "dark",
+      "frame": "thin",
+      "transition": "fade"
+    },
+    {
+      "id": "sc-leg1",
+      "type": "progress-route",
+      "duration": 4.2,
+      "title": "Day 1 · Head west",
+      "progress": 0.43,
+      "label": "Edinburgh → Fort William",
+      "style": "flow",
+      "showDetails": false,
+      "points": [
+        {
+          "x": 0.81,
+          "y": 0.84,
+          "label": "Edinburgh",
+          "icon": "city"
+        },
+        {
+          "x": 0.6,
+          "y": 0.68,
+          "label": "Glencoe",
+          "icon": "nature"
+        },
+        {
+          "x": 0.43,
+          "y": 0.54,
+          "label": "Fort William",
+          "icon": "city"
+        },
+        {
+          "x": 0.2,
+          "y": 0.41,
+          "label": "Glenfinnan",
+          "icon": "nature"
+        },
+        {
+          "x": 0.39,
+          "y": 0.24,
+          "label": "Eilean Donan",
+          "icon": "pin"
+        },
+        {
+          "x": 0.16,
+          "y": 0.13,
+          "label": "Portree",
+          "icon": "city"
+        }
+      ],
+      "transition": "wipe"
+    },
+    {
+      "id": "sc-callout1",
+      "type": "callout",
+      "duration": 2.9,
+      "value": "~30 km",
+      "title": "Glencoe → Fort William",
+      "body": "A short driving leg. Allow additional time for viewpoint stops.",
+      "transition": "slide-left"
+    },
+    {
+      "id": "sc-viaduct",
+      "type": "hero-image",
+      "duration": 4.2,
+      "src": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Glenfinnan_viaduct.jpg",
+      "kicker": "DAY 2 / GLENFINNAN",
+      "title": "Follow the Highland roads",
+      "subtitle": "A stop near Glenfinnan Viaduct",
+      "motion": "slow-push",
+      "transition": "fade"
+    },
+    {
+      "id": "sc-leg2",
+      "type": "progress-route",
+      "duration": 4.1,
+      "title": "Day 2 · Toward the islands",
+      "progress": 0.82,
+      "label": "Glenfinnan → Eilean Donan",
+      "style": "flow",
+      "showDetails": false,
+      "points": [
+        {
+          "x": 0.81,
+          "y": 0.84,
+          "label": "Edinburgh",
+          "icon": "city"
+        },
+        {
+          "x": 0.6,
+          "y": 0.68,
+          "label": "Glencoe",
+          "icon": "nature"
+        },
+        {
+          "x": 0.43,
+          "y": 0.54,
+          "label": "Fort William",
+          "icon": "city"
+        },
+        {
+          "x": 0.2,
+          "y": 0.41,
+          "label": "Glenfinnan",
+          "icon": "nature"
+        },
+        {
+          "x": 0.39,
+          "y": 0.24,
+          "label": "Eilean Donan",
+          "icon": "pin"
+        },
+        {
+          "x": 0.16,
+          "y": 0.13,
+          "label": "Portree",
+          "icon": "city"
+        }
+      ],
+      "transition": "slide-up"
+    },
+    {
+      "id": "sc-castle",
+      "type": "hero-image",
+      "duration": 4.3,
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Eilean_Donan_Castle.jpg/1280px-Eilean_Donan_Castle.jpg",
+      "kicker": "DAY 3 / LOCH DUICH",
+      "title": "Eilean Donan",
+      "subtitle": "Continue over the bridge to Skye",
+      "motion": "slow-push",
+      "transition": "fade"
+    },
+    {
+      "id": "sc-endroute",
+      "type": "progress-route",
+      "duration": 3.8,
+      "title": "Arrive on Skye",
+      "progress": 1,
+      "label": "Portree · journey complete",
+      "style": "flow",
+      "showDetails": false,
+      "points": [
+        {
+          "x": 0.81,
+          "y": 0.84,
+          "label": "Edinburgh",
+          "icon": "city"
+        },
+        {
+          "x": 0.6,
+          "y": 0.68,
+          "label": "Glencoe",
+          "icon": "nature"
+        },
+        {
+          "x": 0.43,
+          "y": 0.54,
+          "label": "Fort William",
+          "icon": "city"
+        },
+        {
+          "x": 0.2,
+          "y": 0.41,
+          "label": "Glenfinnan",
+          "icon": "nature"
+        },
+        {
+          "x": 0.39,
+          "y": 0.24,
+          "label": "Eilean Donan",
+          "icon": "pin"
+        },
+        {
+          "x": 0.16,
+          "y": 0.13,
+          "label": "Portree",
+          "icon": "city"
+        }
+      ],
+      "transition": "fade"
+    },
+    {
+      "id": "sc-end",
+      "type": "outro",
+      "duration": 2.7,
+      "title": "Take the scenic route.",
+      "subtitle": "Scotland · Highlands to Isle of Skye",
+      "motion": "fade-rise",
+      "transition": "fade"
+    }
+  ]
+}
