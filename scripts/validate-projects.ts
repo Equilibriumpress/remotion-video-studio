@@ -107,6 +107,16 @@ for (const file of files) {
         errors.push(`${file}: MapLibre scene "${scene.id}" references missing route "${scene.routeId}"`);
       }
 
+      if (scene.type === 'three-globe') {
+        for (let stopIndex = 1; stopIndex < scene.stops.length; stopIndex++) {
+          const previous = scene.stops[stopIndex - 1].coordinates;
+          const current = scene.stops[stopIndex].coordinates;
+          if (previous[0] === current[0] && previous[1] === current[1]) {
+            errors.push(`${file}: Three globe scene "${scene.id}" has duplicate adjacent stops`);
+          }
+        }
+      }
+
       if (scene.type === 'geo-route') {
         const route = project.geoRoutes?.[scene.routeId];
         if (!route) {
