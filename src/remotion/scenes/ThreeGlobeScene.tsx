@@ -1,5 +1,5 @@
 import {ThreeCanvas} from '@remotion/three';
-import {useMemo, useRef} from 'react';
+import {useMemo} from 'react';
 import {
   AbsoluteFill,
   interpolate,
@@ -7,7 +7,6 @@ import {
   useVideoConfig,
 } from 'remotion';
 import * as THREE from 'three';
-import type {Group} from 'three';
 import type {ThreeGlobeScene, VideoProject} from '../../project/schema';
 import {
   globeProgressPoint,
@@ -27,8 +26,7 @@ const canUseWebGl = () => {
     const canvas = document.createElement('canvas');
     return Boolean(
       canvas.getContext('webgl2') ||
-      canvas.getContext('webgl') ||
-      canvas.getContext('experimental-webgl'),
+      canvas.getContext('webgl'),
     );
   } catch {
     return false;
@@ -79,8 +77,6 @@ const GlobeModel = ({
 }) => {
   const frame = useCurrentFrame();
   const {fps, durationInFrames} = useVideoConfig();
-  const groupRef = useRef<Group>(null);
-
   const routePoints = useMemo(
     () => multiStopGlobeArc({
       stops: scene.stops.map((stop) => stop.coordinates),
@@ -120,10 +116,7 @@ const GlobeModel = ({
       <directionalLight position={[3.5, 2.4, 4.5]} intensity={2.2} />
       <pointLight position={[-3, -1.5, 2]} intensity={0.8} color={scene.atmosphereColor} />
 
-      <group
-        ref={groupRef}
-        rotation={[-0.14, rotationY, 0]}
-      >
+      <group rotation={[-0.14, rotationY, 0]}>
         <mesh>
           <sphereGeometry args={[1.2, 64, 64]} />
           <meshStandardMaterial
@@ -239,7 +232,29 @@ const ThreeGlobeFallback = ({
   const routePath = `M ${routeStartX} ${routeY} Q ${cx} ${controlY} ${routeEndX} ${routeY}`;
 
   return (
-    <AbsoluteFill style={{backgroundColor: project.theme.background}}>
+    <AbsoluteFill
+      style={{
+        backgroundColor: project.theme.background,
+        color: project.theme.foreground,
+        fontFamily: 'Inter, Arial, sans-serif',
+      }}
+    >
+      <div
+        style={{
+          position: 'absolute',
+          left: width * 0.065,
+          right: width * 0.065,
+          top: height * 0.06,
+          zIndex: 2,
+        }}
+      >
+        <div style={{color: project.theme.accent, fontSize: width * 0.018, fontWeight: 850}}>
+          3D GLOBE FALLBACK
+        </div>
+        <div style={{fontSize: width * 0.052, fontWeight: 880, marginTop: height * 0.012}}>
+          {scene.title}
+        </div>
+      </div>
       <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`}>
         <circle cx={cx} cy={cy} r={radius} fill={scene.globeColor} />
         <circle
