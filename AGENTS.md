@@ -57,7 +57,7 @@ Limit one project to two or three transition styles unless the brief asks for a 
 
 ### Media
 
-For browser-rendered video, use `video` or `caption-video` with local assets under `public/media/<project-id>/`. Use `caption-video` captions as scene-relative seconds.
+For browser-rendered video, use `video` or `caption-video` with local assets under `public/media/<project-id>/`. Use `caption-video` captions as scene-relative seconds. The renderer converts these segments to the official Remotion `Caption[]` model and groups them with `createTikTokStyleCaptions()`. Choose `captionStyle: "basic"`, `"tiktok"`, or `"word-highlight"`; use `combineTokensWithinMilliseconds` and optional `breakOnSilenceAfterMilliseconds` to control page rhythm.
 
 Project-level `audio.music` and `audio.voiceover` are supported. Keep audio local and use explicit volume values.
 
