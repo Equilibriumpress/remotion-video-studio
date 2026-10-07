@@ -36,6 +36,7 @@ GitHub Actions performs only project validation and the static Vite build. It do
 - Auto-fitted route chapters sliced by cumulative geographic distance
 - Premium route-stop cards with photography, metadata and mini-route context
 - Travel Sequence Composer: route + stops + media → generated Remotion scenes
+- Remotion caption pages with basic, TikTok-style and active-word highlighting
 - Title, Image, Text, Stat, List and Outro scenes
 - Travel Story and Explainer templates, with Data Story support for technical compatibility
 - Dedicated browser render test project
