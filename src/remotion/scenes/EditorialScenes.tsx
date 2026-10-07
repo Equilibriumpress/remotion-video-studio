@@ -11,14 +11,12 @@ const mercatorY = (lat: number) => {
   return Math.log(Math.tan(Math.PI / 4 + rad / 2));
 };
 
-const projectRoute = (
-  coordinates: ReadonlyArray<readonly [number, number]>,
+const createProjector = (
+  referenceCoordinates: ReadonlyArray<readonly [number, number]>,
   width: number,
   height: number,
-): Point[] => {
-  if (coordinates.length < 2) return [];
-
-  const projected = coordinates.map(([lon, lat]) => ({x: lon, y: mercatorY(lat)}));
+) => {
+  const projected = referenceCoordinates.map(([lon, lat]) => ({x: lon, y: mercatorY(lat)}));
   const xs = projected.map((point) => point.x);
   const ys = projected.map((point) => point.y);
   const minX = Math.min(...xs);
@@ -40,10 +38,14 @@ const projectRoute = (
   const offsetX = left + (areaWidth - usedWidth) / 2;
   const offsetY = top + (areaHeight - usedHeight) / 2;
 
-  return projected.map((point) => ({
-    x: offsetX + (point.x - minX) * scale,
-    y: offsetY + usedHeight - (point.y - minY) * scale,
-  }));
+  return (coordinates: ReadonlyArray<readonly [number, number]>): Point[] =>
+    coordinates.map(([lon, lat]) => {
+      const y = mercatorY(lat);
+      return {
+        x: offsetX + (lon - minX) * scale,
+        y: offsetY + usedHeight - (y - minY) * scale,
+      };
+    });
 };
 
 const pathFromPoints = (points: Point[]) =>
@@ -97,8 +99,9 @@ export const EditorialMapSceneFrame = ({
     return <div style={{width: '100%', height: '100%', background, color: foreground}}>Missing route: {scene.routeId}</div>;
   }
 
-  const routePoints = projectRoute(route.coordinates, width, height);
-  const stopPoints = projectRoute(scene.stops.map((stop) => stop.coordinates), width, height);
+  const projectCoordinates = createProjector(route.coordinates, width, height);
+  const routePoints = projectCoordinates(route.coordinates);
+  const stopPoints = projectCoordinates(scene.stops.map((stop) => stop.coordinates));
   const path = pathFromPoints(routePoints);
   const totalLength = Math.max(1, lineLength(routePoints));
   const animatedProgress = interpolate(
@@ -219,7 +222,7 @@ export const TravelHudSceneFrame = ({
 }) => {
   const frame = useCurrentFrame();
   const {width, height, fps} = useVideoConfig();
-  const {background, foreground, muted, accent} = project.theme;
+  const {background, muted, accent} = project.theme;
   const enter = interpolate(frame, [0, fps * 0.75], [0, 1], {
     extrapolateLeft: 'clamp',
     extrapolateRight: 'clamp',
