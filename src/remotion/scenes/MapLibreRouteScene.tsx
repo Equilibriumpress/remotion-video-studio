@@ -102,6 +102,7 @@ export const MapLibreRouteSceneFrame = ({
 
   const [webglProbe] = useState(probeWebGl);
   const {
+    supported: plateSupported,
     safeCameraZoom,
     safeLimit,
     plateScale,
@@ -156,6 +157,12 @@ export const MapLibreRouteSceneFrame = ({
 
     if (!webglProbe.available) {
       setFallbackReason('WebGL unavailable');
+      finishLoading();
+      return;
+    }
+
+    if (!plateSupported) {
+      setFallbackReason(`composition exceeds safe MapLibre canvas limit (${safeLimit}px)`);
       finishLoading();
       return;
     }
@@ -321,6 +328,7 @@ export const MapLibreRouteSceneFrame = ({
     isRendering,
     loadingHandle,
     plateHeight,
+    plateSupported,
     plateWidth,
     route,
     safeLimit,
