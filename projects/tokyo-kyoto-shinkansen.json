@@ -79,7 +79,8 @@
         }
       ],
       "mapRotation": -60,
-      "progress": 1
+      "progress": 1,
+      "camera": "overview"
     },
     {
       "id": "tk-platform",
@@ -99,7 +100,7 @@
       "label": "Tokyo → Nagoya → Kyoto",
       "style": "clean",
       "showDetails": false,
-      "transition": "wipe",
+      "transition": "slide-left",
       "routeId": "tokaido-rail",
       "stops": [
         {
@@ -137,7 +138,9 @@
           "icon": "station"
         }
       ],
-      "mapRotation": -60
+      "mapRotation": -60,
+      "camera": "follow",
+      "cameraZoom": 1.36
     },
     {
       "id": "tk-time",
@@ -206,7 +209,8 @@
           "icon": "station"
         }
       ],
-      "mapRotation": -60
+      "mapRotation": -60,
+      "camera": "overview"
     },
     {
       "id": "tk-end",
