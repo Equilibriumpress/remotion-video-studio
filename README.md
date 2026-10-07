@@ -30,6 +30,7 @@ GitHub Actions performs only project validation and the static Vite build. It do
 - Asset preflight for local and supported remote images
 - Zod project schema
 - Geographically anchored SVG routes with precomputed railway, walking and road geometry
+- Experimental MapLibre GL route flyovers with OpenFreeMap basemaps and SVG fallback
 - Cinematic camera presets with adjustable motion strength and per-scene transition duration
 - Animated SVG elevation profiles with distance, height and ascent progress
 - Auto-fitted route chapters sliced by cumulative geographic distance
@@ -56,6 +57,7 @@ AGENTS.md                 ChatGPT/Codex authoring protocol
 
 - `kyoto-premium-showcase` — travel editorial storytelling
 - `tokyo-kyoto-shinkansen` — clean station-to-station rail route
+- `maplibre-route-demo` — experimental live-basemap Tokyo–Kyoto flyover
 - `kyoto-morning-route` — calm photo-led Kyoto walking reel
 - `kyoto-auto-story` — the same route expressed as a compact story config with generated scenes
 - `scotland-roadtrip-showcase` — flowing multi-stop Highland journey
@@ -68,6 +70,14 @@ Production requires successful image preflight and a browser Draft render. Remot
 `geo-route` scenes use a committed `geoRoutes` dictionary in each video JSON. Route geometries follow GeoJSON `LineString` coordinate order: `[longitude, latitude]`. Add labelled stops with geographic coordinates, choose `clean`, `watercolor`, or `flow`, and animate a fraction using `progress`. The renderer fits, projects and (optionally) rotates the whole route while retaining a correct north compass. `camera: "follow"` moves a lightweight SVG camera along the active route marker; `cameraZoom` controls the follow scale. If a scene omits `distance`, the renderer derives kilometres from the stored WGS84 line. No map tiles, WebGL or routing calls run during video playback.
 
 The Tokyo–Kyoto sample reuses a 281-point Tōkaidō rail alignment sourced from Japanese MLIT N02 FY2025 railway data. Kyoto Morning follows OSM-based historic street centre-lines. Scotland currently uses indicative geographical waypoints rather than exact road-snapped paths. To replace its waypoint line with detailed OpenStreetMap driving geometry, run `npm run routes:scotland` once on a networked authoring machine and commit the updated JSON. The script calls Valhalla once, simplifies the resulting line and needs no GitHub Actions render minutes. Public Valhalla demos have usage limits. Sources and licenses are recorded inside project route data and shown in map scenes.
+
+## Experimental MapLibre renderer
+
+`maplibre-route` is a separate experimental scene type based on Remotion's official MapLibre example. It reuses the same committed `geoRoutes` data as the SVG renderer, but draws a live OpenFreeMap basemap with MapLibre GL, reveals the route as GeoJSON, moves a marker along the line and updates the camera deterministically from the Remotion frame.
+
+The stable default remains `geo-route`. MapLibre introduces WebGL, network-fetched map style/tiles and HTML canvas. Player preview therefore has more runtime dependencies than the SVG scene. Client-side MP4 export enables Remotion's experimental `allowHtmlInCanvas` option only when a project contains `maplibre-route`. Chromium is the preferred export browser. If MapLibre cannot initialize, the scene falls back to the existing geographic SVG renderer.
+
+The reference project uses OpenFreeMap's public Liberty style and the same 281-point Japanese MLIT Tōkaidō alignment used by the standard Tokyo–Kyoto example. No API token or secret is required.
 
 ## Travel Sequence Composer
 
