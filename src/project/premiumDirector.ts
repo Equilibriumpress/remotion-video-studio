@@ -284,6 +284,7 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
 
   const detailCandidates = stops.filter((stop, index) =>
     index < stops.length - 1 &&
+    !(index === 0 && stop.src && stop.src === heroSrc) &&
     Boolean(stop.src || stop.body || stop.detail || stop.time),
   );
   const maxDetails =
