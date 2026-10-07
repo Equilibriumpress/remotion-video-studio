@@ -267,6 +267,22 @@ const elevationRouteScene = baseScene.extend({
   showStats: z.boolean().default(true),
 });
 
+const routeChapterScene = baseScene.extend({
+  type: z.literal('route-chapter'),
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  kicker: z.string().optional(),
+  routeId: z.string().min(1),
+  startProgress: z.number().min(0).max(1).default(0),
+  endProgress: z.number().min(0).max(1).default(1),
+  startLabel: z.string().optional(),
+  endLabel: z.string().optional(),
+  distance: z.string().optional(),
+  travelTime: z.string().optional(),
+  mapRotation: z.number().min(-180).max(180).default(0),
+  style: z.enum(['clean', 'watercolor', 'flow']).default('clean'),
+});
+
 const routeMapScene = baseScene.extend({
   type: z.literal('route-map'),
   title: z.string().min(1),
@@ -386,6 +402,7 @@ export const sceneSchema = z.discriminatedUnion('type', [
   routeMapScene,
   geoRouteScene,
   elevationRouteScene,
+  routeChapterScene,
   locationCardScene,
   progressRouteScene,
   mapOverlayScene,
@@ -436,6 +453,7 @@ export type GeoRouteGeometry = z.infer<typeof geoRouteSchema>;
 export type GeoRouteScene = Extract<VideoScene, {type: 'geo-route'}>;
 export type ElevationProfile = z.infer<typeof elevationProfileSchema>;
 export type ElevationRouteScene = Extract<VideoScene, {type: 'elevation-route'}>;
+export type RouteChapterScene = Extract<VideoScene, {type: 'route-chapter'}>;
 export type VideoProject = z.infer<typeof projectSchema>;
 
 export const parseProject = (value: unknown): VideoProject => projectSchema.parse(value);
