@@ -1,5 +1,6 @@
 import {z} from 'zod';
 import {composeTravelSequence} from './travelSequence';
+import {composePremiumSequence} from './premiumDirector';
 
 export const motionPresetSchema = z.enum([
   'none',
@@ -47,6 +48,8 @@ const baseScene = z.object({
     strength: z.number().min(0.005).max(0.15).default(0.035),
     decaySeconds: z.number().min(0.05).max(0.5).default(0.16),
   }).optional(),
+  role: z.enum(['hook', 'orient', 'travel', 'detail', 'bridge', 'payoff']).optional(),
+  directorNote: z.string().max(240).optional(),
 });
 
 const titleScene = baseScene.extend({
@@ -614,6 +617,33 @@ const audioTrackSchema = z.object({
   loop: z.boolean().default(false),
 });
 
+
+const premiumDirectorSchema = z.object({
+  sourcePrompt: z.string().min(8).max(1400),
+  goal: z.enum(['inspire', 'explain', 'promote', 'document']).default('inspire'),
+  audience: z.string().max(160).optional(),
+  durationTarget: z.number().min(15).max(75).default(35),
+  narrative: z.enum(['journey', 'discovery', 'contrast', 'guide']).default('journey'),
+  pacing: z.enum(['calm', 'balanced', 'dynamic']).default('balanced'),
+  visualLanguage: z.enum(['editorial', 'cinematic', 'minimal', 'energetic']).default('cinematic'),
+  mapRole: z.enum(['none', 'orient', 'hero']).default('orient'),
+  mapEngine: z.enum(['svg', 'editorial', 'maplibre']).default('editorial'),
+  assetBalance: z.enum(['photo-led', 'balanced', 'map-led']).default('balanced'),
+  hook: z.string().min(1).max(140),
+  payoff: z.string().min(1).max(180),
+  avoid: z.array(z.enum([
+    'back-to-back-maps',
+    'hard-cuts',
+    'dense-text',
+    'repeated-layouts',
+    'excessive-ui',
+  ])).max(5).default([
+    'back-to-back-maps',
+    'dense-text',
+    'repeated-layouts',
+  ]),
+});
+
 const motionDirectionSchema = z.object({
   personality: z.enum(['premium', 'corporate', 'playful', 'energetic']).default('premium'),
   baseTimingSeconds: z.number().min(0.15).max(1.2).default(0.45),
@@ -629,6 +659,7 @@ const projectObjectSchema = z.object({
   format: z.enum(['vertical', 'landscape', 'square', 'appstore-header', 'appstore-search']),
   fps: z.union([z.literal(24), z.literal(25), z.literal(30), z.literal(50), z.literal(60)]),
   direction: motionDirectionSchema.optional(),
+  director: premiumDirectorSchema.optional(),
   theme: z.object({
     background: z.string().default('#0B0D10'),
     foreground: z.string().default('#F7F8FA'),
@@ -658,10 +689,18 @@ export const projectSchema = projectObjectSchema.superRefine((project, ctx) => {
       message: 'A project needs explicit scenes or a travel story configuration',
     });
   }
+  if (project.director && !project.story) {
+    ctx.addIssue({
+      code: 'custom',
+      path: ['director'],
+      message: 'Premium Director currently requires a travel story configuration',
+    });
+  }
 });
 
 export type MotionPreset = z.infer<typeof motionPresetSchema>;
 export type MotionDirection = z.infer<typeof motionDirectionSchema>;
+export type PremiumDirector = z.infer<typeof premiumDirectorSchema>;
 export type TransitionPreset = z.infer<typeof transitionPresetSchema>;
 export type VideoScene = z.infer<typeof sceneSchema>;
 export type GeoRouteGeometry = z.infer<typeof geoRouteSchema>;
@@ -684,9 +723,38 @@ export type VideoProject = z.infer<typeof projectSchema>;
 export const parseProject = (value: unknown): VideoProject => {
   const parsed = projectSchema.parse(value);
   if (!parsed.story) return parsed;
-  const generated = z.array(sceneSchema).parse(composeTravelSequence(parsed));
+  const generated = z.array(sceneSchema).parse(
+    parsed.director ? composePremiumSequence(parsed) : composeTravelSequence(parsed),
+  );
+  const derivedDirection = parsed.direction ?? (
+    parsed.director
+      ? {
+          personality:
+            parsed.director.visualLanguage === 'energetic' || parsed.director.pacing === 'dynamic'
+              ? 'energetic' as const
+              : parsed.director.visualLanguage === 'minimal'
+                ? 'corporate' as const
+                : 'premium' as const,
+          baseTimingSeconds:
+            parsed.director.pacing === 'calm'
+              ? 0.58
+              : parsed.director.pacing === 'dynamic'
+                ? 0.32
+                : 0.46,
+          focalPoint: 'center' as const,
+          transitionFamily:
+            parsed.director.visualLanguage === 'editorial'
+              ? 'mask' as const
+              : parsed.director.pacing === 'dynamic'
+                ? 'mixed' as const
+                : 'fade' as const,
+          notes: `Derived from Premium Director: ${parsed.director.visualLanguage} / ${parsed.director.pacing}`,
+        }
+      : undefined
+  );
   return {
     ...parsed,
+    direction: derivedDirection,
     scenes: parsed.story.mode === 'append'
       ? [...parsed.scenes, ...generated]
       : generated,
