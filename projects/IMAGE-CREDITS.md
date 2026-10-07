@@ -10,5 +10,10 @@ These examples currently refer to Wikimedia Commons image URLs. This matches the
 | The A82 in the Pass of Glencoe | Scotland | Steve Daniels, CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:The_A82_in_the_Pass_of_Glencoe_-_geograph.org.uk_-_6479132.jpg |
 | Glenfinnan viaduct | Scotland | Plaxton/Flaxton, public domain as stated on Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Glenfinnan_viaduct.jpg |
 | Eilean Donan Castle | Scotland | JC83, public domain as stated on Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Eilean_Donan_Castle.jpg |
+| Ladybower from Bamford Edge | Peak District | Will Robson, CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Ladybower_from_Bamford_Edge.jpg |
+| Mam Tor (25247426697) | Peak District | Mark Rickaby, CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Mam_Tor_(25247426697).jpg |
+| Monsal Head, Peak District, Derbyshire, UK (14588024369) | Peak District | Joe Hunt, CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Monsal_Head,_Peak_District,_Derbyshire,_UK_(14588024369).jpg |
+| Bakewell - River Wye | Peak District | Ian Rob, CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Bakewell_-River_Wye_-_geograph.org.uk_-_5456920.jpg |
+| Stanage Edge in the Peak District | Peak District | Douglal, CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Stanage_Edge_in_the_Peak_District.jpg |
 
 Geographic route examples use committed source geometry with attribution and render as lightweight SVG. Some captions such as travel time remain editorial examples. Confirm current journey details before publishing as travel advice.

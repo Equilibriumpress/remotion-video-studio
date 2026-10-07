@@ -652,6 +652,11 @@ const motionDirectionSchema = z.object({
   notes: z.string().max(500).optional(),
 });
 
+const voiceoverCueSchema = z.object({
+  sceneId: z.string().min(1),
+  text: z.string().min(1).max(500),
+});
+
 const projectObjectSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
@@ -678,6 +683,7 @@ const projectObjectSchema = z.object({
     music: audioTrackSchema.optional(),
     voiceover: audioTrackSchema.optional(),
   }).optional(),
+  voiceoverScript: z.array(voiceoverCueSchema).max(64).optional(),
   scenes: z.array(sceneSchema).default([]),
 });
 

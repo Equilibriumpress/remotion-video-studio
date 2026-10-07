@@ -71,6 +71,18 @@ const titleCaseMode = (mode: string) =>
 
 const roundOne = (value: number) => Math.round(value * 10) / 10;
 
+const transitionOverlapSeconds = (
+  scene: Record<string, unknown>,
+  duration: number,
+) => {
+  const transition = scene.transition;
+  if (!transition || transition === 'cut') return 0;
+  const requested = typeof scene.transitionDuration === 'number'
+    ? scene.transitionDuration
+    : 0.45;
+  return Math.min(requested, duration / 3);
+};
+
 const applyTargetDuration = (
   drafts: DraftScene[],
   target: number,
@@ -80,10 +92,29 @@ const applyTargetDuration = (
   const pacingMin = pacing === 'calm' ? 2.8 : pacing === 'dynamic' ? 1.9 : 2.3;
   const pacingMax = pacing === 'calm' ? 6.4 : pacing === 'dynamic' ? 4.6 : 5.6;
 
-  return drafts.map(({scene, weight}) => ({
-    ...scene,
-    duration: roundOne(clamp(weight * target / baseline, pacingMin, pacingMax)),
-  }));
+  const build = (grossTarget: number) =>
+    drafts.map(({scene, weight}) => ({
+      ...scene,
+      duration: roundOne(clamp(weight * grossTarget / baseline, pacingMin, pacingMax)),
+    }));
+
+  const timelineSeconds = (scenes: Array<Record<string, unknown> & {duration: number}>) =>
+    scenes.reduce((sum, scene, index) => {
+      const overlap = index === 0 ? 0 : transitionOverlapSeconds(scene, scene.duration);
+      return sum + scene.duration - overlap;
+    }, 0);
+
+  let low = target;
+  let high = target * 2;
+
+  for (let i = 0; i < 24; i++) {
+    const mid = (low + high) / 2;
+    const duration = timelineSeconds(build(mid));
+    if (duration < target) low = mid;
+    else high = mid;
+  }
+
+  return build(high);
 };
 
 export const composePremiumSequence = (project: VideoProject): unknown[] => {
@@ -216,7 +247,11 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
         title: `${first.label} → ${last.label}`,
         kicker: 'ROUTE ORIENTATION',
         region: story.title.toUpperCase(),
-        stat: totalKm < 10 ? `${totalKm.toFixed(1)} km` : `${Math.round(totalKm)} km`,
+        stat: route.mode === 'driving'
+          ? `${stops.length} highlights`
+          : totalKm < 10
+            ? `${totalKm.toFixed(1)} km`
+            : `${Math.round(totalKm)} km`,
         routeId: story.routeId,
         stops: geoStops,
         progress: 1,
@@ -249,6 +284,7 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
 
   const detailCandidates = stops.filter((stop, index) =>
     index < stops.length - 1 &&
+    !(index === 0 && stop.src && stop.src === heroSrc) &&
     Boolean(stop.src || stop.body || stop.detail || stop.time),
   );
   const maxDetails =
