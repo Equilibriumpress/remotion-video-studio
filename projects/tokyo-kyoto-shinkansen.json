@@ -174,6 +174,25 @@
       "transition": "fade"
     },
     {
+      "id": "tk-kyoto-stop",
+      "type": "route-stop",
+      "duration": 4.2,
+      "kicker": "STOP 04 / ARRIVAL",
+      "title": "Kyoto",
+      "subtitle": "From platform to old streets",
+      "body": "The high-speed rail story ends here. The next movement is slower: temples, lanes and neighbourhoods on foot.",
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg/1280px-JP_%E6%97%A5%E6%9C%AC_Japan_%E4%BA%AC%E9%83%BD_Kyoto_%E6%9D%B1%E5%B1%B1%E5%8D%80_Higashiyama-ku_%E6%B8%85%E6%B0%B4%E5%AF%BA_Kiyomizu-dera_Temple_terrace_view_morning_June_2026_N13P_232.jpg",
+      "number": "04",
+      "time": "Arrival",
+      "distance": "476 km from Tokyo by rail",
+      "routeId": "tokaido-rail",
+      "routeProgress": 1,
+      "mapRotation": -60,
+      "layout": "photo-map",
+      "transition": "soft-zoom",
+      "transitionDuration": 0.55
+    },
+    {
       "id": "tk-kyoto",
       "type": "hero-image",
       "duration": 4.4,
