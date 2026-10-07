@@ -17,6 +17,9 @@ import {FittedSvgText} from './svg/FittedSvgText';
 import {CaptionOverlay} from './CaptionOverlay';
 import {LottieSceneFrame} from './scenes/LottieScene';
 import {EditorialMapSceneFrame, TravelHudSceneFrame} from './scenes/EditorialScenes';
+import {CaptionDemoSceneFrame} from './scenes/CaptionDemoScene';
+import {AudioReactiveSceneFrame} from './scenes/AudioReactiveScene';
+import {ThreeVehicleSceneFrame} from './scenes/ThreeVehicleScene';
 
 type Props = {
   scene: VideoScene;
@@ -179,6 +182,18 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
 
   if (scene.type === 'three-globe') {
     return <ThreeGlobeSceneFrame scene={scene} project={project} />;
+  }
+
+  if (scene.type === 'three-vehicle') {
+    return <ThreeVehicleSceneFrame scene={scene} project={project} />;
+  }
+
+  if (scene.type === 'audio-reactive') {
+    return <AudioReactiveSceneFrame scene={scene} project={project} />;
+  }
+
+  if (scene.type === 'caption-demo') {
+    return <CaptionDemoSceneFrame scene={scene} project={project} />;
   }
 
   if (scene.type === 'elevation-route') {
