@@ -32,6 +32,7 @@ GitHub Actions performs only project validation and the static Vite build. It do
 - Geographically anchored SVG routes with precomputed railway, walking and road geometry
 - Cinematic camera presets with adjustable motion strength and per-scene transition duration
 - Animated SVG elevation profiles with distance, height and ascent progress
+- Auto-fitted route chapters sliced by cumulative geographic distance
 - Title, Image, Text, Stat, List and Outro scenes
 - Travel Story and Explainer templates, with Data Story support for technical compatibility
 - Dedicated browser render test project
