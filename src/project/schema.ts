@@ -221,6 +221,8 @@ const geoRouteScene = baseScene.extend({
   label: z.string().optional(),
   distance: z.string().optional(),
   mapRotation: z.number().min(-180).max(180).default(0),
+  camera: z.enum(['overview', 'follow']).default('overview'),
+  cameraZoom: z.number().min(1).max(2.2).default(1.28),
   style: z.enum(['clean', 'watercolor', 'flow']).default('clean'),
   showDetails: z.boolean().default(true),
 });
