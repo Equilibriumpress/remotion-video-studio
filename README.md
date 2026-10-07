@@ -86,11 +86,13 @@ The reference project uses city-centre coordinates only to demonstrate geographi
 
 ## Experimental MapLibre renderer
 
-`maplibre-route` is a separate experimental scene type based on Remotion's official MapLibre example. It reuses the same committed `geoRoutes` data as the SVG renderer, but draws a live OpenFreeMap basemap with MapLibre GL, reveals the route as GeoJSON, moves a marker along the line and updates the camera deterministically from the Remotion frame.
+`maplibre-route` uses MapLibre GL JS 6 as a **fixed basemap plate** rather than a live per-frame camera. Vite bundles the MapLibre worker explicitly with `?worker&url`, the worker count is fixed at one, and the map waits for style load + `idle` once before Remotion continues.
 
-The stable default remains `geo-route`. MapLibre introduces WebGL, network-fetched map style/tiles and HTML canvas. Player preview therefore has more runtime dependencies than the SVG scene. Client-side MP4 export enables Remotion's experimental `allowHtmlInCanvas` option only when a project contains `maplibre-route`. Chromium is the preferred export browser. If MapLibre cannot initialize, the scene falls back to the existing geographic SVG renderer.
+After that initial load, the real committed `geoRoutes` geometry is projected onto the frozen map and rendered as a Remotion/SVG overlay. Route reveal and marker position are therefore frame-driven without asking MapLibre to reload tiles or move its camera. `camera: "follow"` translates the oversized plate with CSS while `camera: "overview"` keeps it centred.
 
-The reference project uses OpenFreeMap's public Liberty style and the same 281-point Japanese MLIT Tōkaidō alignment used by the standard Tokyo–Kyoto example. No API token or secret is required.
+This design intentionally avoids per-frame `map.jumpTo()`, source mutation and explicit `map.remove()` cleanup, which are fragile in Remotion/browser capture. A preview-only diagnostics panel reports WebGL, worker URL, style load, idle state and recent MapLibre resource errors. An 8-second initialization timeout falls back to the geographically equivalent SVG `geo-route` scene.
+
+The basemap is still WebGL, so browser MP4 export requires Remotion HTML-in-canvas capture and remains Chromium-first. SVG `geo-route` stays the production-safe route renderer.
 
 ## Travel Sequence Composer
 

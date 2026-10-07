@@ -7,7 +7,7 @@ export type AssetCheck = {
   message: string;
 };
 
-type AssetRef = {source: string; kind: 'image' | 'media'};
+type AssetRef = {source: string; kind: 'image' | 'media' | 'map-style'};
 
 const sceneAssets = (scene: VideoScene): AssetRef[] => {
   switch (scene.type) {
@@ -27,6 +27,8 @@ const sceneAssets = (scene: VideoScene): AssetRef[] => {
     case 'map-overlay':
     case 'lower-third':
       return scene.src ? [{source: scene.src, kind: 'image'}] : [];
+    case 'maplibre-route':
+      return [{source: scene.mapStyleUrl, kind: 'map-style'}];
     default:
       return [];
   }
@@ -45,6 +47,17 @@ const checkMedia = async (source: string) => {
   try {
     const response = await fetch(source, {method: 'HEAD'});
     return response.ok;
+  } catch {
+    return false;
+  }
+};
+
+const checkMapStyle = async (source: string) => {
+  try {
+    const response = await fetch(source, {method: 'GET', mode: 'cors'});
+    if (!response.ok) return false;
+    const style = await response.json();
+    return Boolean(style && typeof style === 'object' && 'sources' in style);
   } catch {
     return false;
   }
@@ -71,7 +84,7 @@ export const checkProjectAssets = async (project: VideoProject): Promise<AssetCh
       }
     })();
 
-    if (external && !trustedRemote) {
+    if (external && !trustedRemote && ref.kind !== 'map-style') {
       checks.push({
         source: ref.source,
         ok: false,
@@ -80,11 +93,17 @@ export const checkProjectAssets = async (project: VideoProject): Promise<AssetCh
       continue;
     }
 
-    const ok = ref.kind === 'image' ? await loadImage(resolved) : await checkMedia(resolved);
+    const ok = ref.kind === 'image'
+      ? await loadImage(resolved)
+      : ref.kind === 'map-style'
+        ? await checkMapStyle(ref.source)
+        : await checkMedia(resolved);
     checks.push({
       source: ref.source,
       ok,
-      message: ok ? 'Ready' : 'Asset failed to load',
+      message: ok
+        ? ref.kind === 'map-style' ? 'Map style reachable' : 'Ready'
+        : ref.kind === 'map-style' ? 'Map style failed to load' : 'Asset failed to load',
     });
   }
 

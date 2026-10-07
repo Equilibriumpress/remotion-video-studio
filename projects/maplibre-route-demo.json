@@ -64,7 +64,7 @@
         }
       ],
       "progress": 1,
-      "label": "Live OpenFreeMap basemap · camera follows the real MLIT rail alignment",
+      "label": "Fixed OpenFreeMap plate · Remotion SVG route overlay · real MLIT rail alignment",
       "camera": "follow",
       "altitude": 11500,
       "mapStyleUrl": "https://tiles.openfreemap.org/styles/liberty",
@@ -78,7 +78,7 @@
       "type": "outro",
       "duration": 2.5,
       "title": "MapLibre experiment",
-      "subtitle": "SVG remains the production-safe fallback for browser export",
+      "subtitle": "MapLibre loads once; Remotion animates the route and camera plate deterministically",
       "motion": "fade-rise",
       "transition": "fade"
     }
