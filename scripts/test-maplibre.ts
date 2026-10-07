@@ -42,4 +42,15 @@ assert.match(
   'Follow motion should be applied to the fixed plate with CSS transforms',
 );
 
+assert.match(
+  source,
+  /pitch:\s*0/,
+  'The fixed plate should stay flat to avoid an apparent entry fly-in',
+);
+assert.match(
+  source,
+  /opacity:\s*ready\s*\?\s*1\s*:\s*0/,
+  'The basemap must remain hidden until fitBounds and idle have completed',
+);
+
 console.log('MapLibre v2: worker, lifecycle and fixed-plate invariants validated.');
