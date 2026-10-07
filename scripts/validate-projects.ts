@@ -133,12 +133,17 @@ for (const file of files) {
       }
 
       if (scene.type === 'caption-video') {
-        for (const caption of scene.captions) {
+        for (let captionIndex = 0; captionIndex < scene.captions.length; captionIndex++) {
+          const caption = scene.captions[captionIndex];
           if (caption.end <= caption.start) {
             errors.push(`${file}: caption "${caption.text}" ends before it starts`);
           }
           if (caption.end > scene.duration) {
             errors.push(`${file}: caption "${caption.text}" exceeds scene duration`);
+          }
+          const previous = captionIndex > 0 ? scene.captions[captionIndex - 1] : null;
+          if (previous && caption.start < previous.start) {
+            errors.push(`${file}: captions in "${scene.id}" must be sorted by start time`);
           }
         }
       }
