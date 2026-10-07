@@ -185,6 +185,46 @@ const routePointSchema = z.object({
   icon: z.enum(['pin', 'temple', 'nature', 'station', 'city']).default('pin'),
 });
 
+
+// Geographic routes use GeoJSON longitude/latitude coordinates, not scene-space X/Y.
+// The geometry is committed with the project so every exported frame is deterministic.
+export const geoCoordinateSchema = z.tuple([
+  z.number().min(-180).max(180),
+  z.number().min(-90).max(90),
+]);
+
+const geoRouteSchema = z.object({
+  type: z.literal('LineString'),
+  coordinates: z.array(geoCoordinateSchema).min(2).max(5000),
+  mode: z.enum(['rail', 'walking', 'driving']),
+  contextLines: z.array(z.array(geoCoordinateSchema).min(2).max(2000)).max(60).optional(),
+  source: z.object({
+    name: z.string().min(1),
+    url: z.string().url(),
+    license: z.string().min(1),
+  }),
+});
+
+const geoStopSchema = z.object({
+  coordinates: geoCoordinateSchema,
+  label: z.string().min(1),
+  detail: z.string().optional(),
+  icon: z.enum(['pin', 'temple', 'nature', 'station', 'city']).default('pin'),
+});
+
+const geoRouteScene = baseScene.extend({
+  type: z.literal('geo-route'),
+  title: z.string().min(1),
+  routeId: z.string().min(1),
+  stops: z.array(geoStopSchema).min(2).max(8),
+  progress: z.number().min(0).max(1).default(1),
+  label: z.string().optional(),
+  distance: z.string().optional(),
+  mapRotation: z.number().min(-180).max(180).default(0),
+  style: z.enum(['clean', 'watercolor', 'flow']).default('clean'),
+  showDetails: z.boolean().default(true),
+});
+
 const routeMapScene = baseScene.extend({
   type: z.literal('route-map'),
   title: z.string().min(1),
@@ -302,6 +342,7 @@ export const sceneSchema = z.discriminatedUnion('type', [
   donutChartScene,
   barLineChartScene,
   routeMapScene,
+  geoRouteScene,
   locationCardScene,
   progressRouteScene,
   mapOverlayScene,
@@ -336,6 +377,7 @@ export const projectSchema = z.object({
     muted: '#AEB6C2',
     accent: '#78E08F',
   }),
+  geoRoutes: z.record(z.string(), geoRouteSchema).optional(),
   audio: z.object({
     music: audioTrackSchema.optional(),
     voiceover: audioTrackSchema.optional(),
@@ -346,6 +388,8 @@ export const projectSchema = z.object({
 export type MotionPreset = z.infer<typeof motionPresetSchema>;
 export type TransitionPreset = z.infer<typeof transitionPresetSchema>;
 export type VideoScene = z.infer<typeof sceneSchema>;
+export type GeoRouteGeometry = z.infer<typeof geoRouteSchema>;
+export type GeoRouteScene = Extract<VideoScene, {type: 'geo-route'}>;
 export type VideoProject = z.infer<typeof projectSchema>;
 
 export const parseProject = (value: unknown): VideoProject => projectSchema.parse(value);
