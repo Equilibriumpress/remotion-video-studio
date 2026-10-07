@@ -37,11 +37,64 @@
       ]
     },
     {
+      "id": "travel-elevation",
+      "type": "elevation-route",
+      "duration": 4.2,
+      "title": "Read the route at a glance",
+      "profileId": "editorial-demo-profile",
+      "progress": 1,
+      "label": "Illustrative elevation data · not a Kyoto measurement",
+      "showStats": true,
+      "transition": "soft-zoom"
+    },
+    {
       "id": "travel-outro",
       "type": "outro",
       "duration": 2,
       "title": "Kyoto, slowly",
       "subtitle": "Travel story template"
     }
-  ]
+  ],
+  "elevationProfiles": {
+    "editorial-demo-profile": {
+      "samples": [
+        {
+          "distanceKm": 0,
+          "elevationM": 42,
+          "label": "Start"
+        },
+        {
+          "distanceKm": 1.2,
+          "elevationM": 58
+        },
+        {
+          "distanceKm": 2.4,
+          "elevationM": 79,
+          "label": "Ridge"
+        },
+        {
+          "distanceKm": 3.8,
+          "elevationM": 61
+        },
+        {
+          "distanceKm": 5.1,
+          "elevationM": 96,
+          "label": "High point"
+        },
+        {
+          "distanceKm": 6.7,
+          "elevationM": 72
+        },
+        {
+          "distanceKm": 8,
+          "elevationM": 48,
+          "label": "Finish"
+        }
+      ],
+      "source": {
+        "name": "Illustrative profile for renderer demonstration",
+        "license": "Synthetic demo data"
+      }
+    }
+  }
 }
