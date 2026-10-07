@@ -293,6 +293,21 @@ const elevationRouteScene = baseScene.extend({
   showStats: z.boolean().default(true),
 });
 
+const mapLibreRouteScene = baseScene.extend({
+  type: z.literal('maplibre-route'),
+  title: z.string().min(1),
+  routeId: z.string().min(1),
+  stops: z.array(geoStopSchema).min(2).max(8),
+  progress: z.number().min(0).max(1).default(1),
+  label: z.string().optional(),
+  camera: z.enum(['follow', 'overview']).default('follow'),
+  altitude: z.number().min(500).max(50000).default(8000),
+  mapStyleUrl: z.string().url().default('https://tiles.openfreemap.org/styles/liberty'),
+  routeColor: z.string().default('#111827'),
+  markerColor: z.string().default('#ef4444'),
+  showDetails: z.boolean().default(true),
+});
+
 const routeChapterScene = baseScene.extend({
   type: z.literal('route-chapter'),
   title: z.string().min(1),
@@ -443,6 +458,7 @@ export const sceneSchema = z.discriminatedUnion('type', [
   barLineChartScene,
   routeMapScene,
   geoRouteScene,
+  mapLibreRouteScene,
   elevationRouteScene,
   routeChapterScene,
   routeStopScene,
@@ -505,6 +521,7 @@ export type TransitionPreset = z.infer<typeof transitionPresetSchema>;
 export type VideoScene = z.infer<typeof sceneSchema>;
 export type GeoRouteGeometry = z.infer<typeof geoRouteSchema>;
 export type GeoRouteScene = Extract<VideoScene, {type: 'geo-route'}>;
+export type MapLibreRouteScene = Extract<VideoScene, {type: 'maplibre-route'}>;
 export type ElevationProfile = z.infer<typeof elevationProfileSchema>;
 export type ElevationRouteScene = Extract<VideoScene, {type: 'elevation-route'}>;
 export type RouteChapterScene = Extract<VideoScene, {type: 'route-chapter'}>;
