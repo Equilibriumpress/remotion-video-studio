@@ -313,8 +313,6 @@ export const MapLibreRouteSceneFrame = ({
     ? getPointAtLength(cameraPath, cameraDistance) ?? projectedCameraRoute[0]
     : projectedCameraRoute[0] ?? markerPoint;
 
-  const marginX = Math.max(0, (plateWidth - width) / 2);
-  const marginY = Math.max(0, (plateHeight - height) / 2);
   const desiredX = width * 0.5;
   const desiredY = height * scene.cameraAnchorY;
   const rawDx = cameraPoint ? desiredX - (plateLeft + cameraPoint.x) : 0;
@@ -331,11 +329,13 @@ export const MapLibreRouteSceneFrame = ({
         },
       )
     : 0;
-  const dx = clamp(rawDx, -marginX, marginX) * followStrength;
-  const dy = clamp(rawDy, -marginY, marginY) * followStrength;
   const cameraScale = scene.camera === 'follow'
     ? 1 + (scene.cameraZoom - 1) * followStrength
     : 1;
+  const marginX = Math.max(0, (plateWidth * cameraScale - width) / 2);
+  const marginY = Math.max(0, (plateHeight * cameraScale - height) / 2);
+  const dx = clamp(rawDx, -marginX, marginX) * followStrength;
+  const dy = clamp(rawDy, -marginY, marginY) * followStrength;
 
   const {foreground, muted, accent} = project.theme;
   const start = scene.stops[0]?.label;
