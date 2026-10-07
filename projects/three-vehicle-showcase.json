@@ -1,0 +1,59 @@
+{
+  "id": "three-vehicle-showcase",
+  "title": "3D Travel Vehicles",
+  "template": "travel-story",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#071016",
+    "foreground": "#F6FAFC",
+    "muted": "#9FB0BC",
+    "accent": "#75D7DE"
+  },
+  "scenes": [
+    {
+      "id": "vehicle-train",
+      "type": "three-vehicle",
+      "duration": 5.5,
+      "title": "Shinkansen motion",
+      "subtitle": "Procedural 3D train · no external model",
+      "vehicle": "train",
+      "vehicleColor": "#F8FAFC",
+      "accentColor": "#4BC4D2",
+      "pathStyle": "curve",
+      "cameraAngle": "low",
+      "showTrail": true,
+      "transition": "fade"
+    },
+    {
+      "id": "vehicle-plane",
+      "type": "three-vehicle",
+      "duration": 5.5,
+      "title": "Flight transition",
+      "subtitle": "Lightweight Three.js aircraft",
+      "vehicle": "plane",
+      "vehicleColor": "#F8FAFC",
+      "accentColor": "#F2C14E",
+      "pathStyle": "s-curve",
+      "cameraAngle": "three-quarter",
+      "showTrail": true,
+      "transition": "split-grid",
+      "transitionDuration": 0.6
+    },
+    {
+      "id": "vehicle-car",
+      "type": "three-vehicle",
+      "duration": 5.5,
+      "title": "Road trip scene",
+      "subtitle": "Reusable car primitive for route stories",
+      "vehicle": "car",
+      "vehicleColor": "#EAF2F8",
+      "accentColor": "#FF7A59",
+      "pathStyle": "straight",
+      "cameraAngle": "side",
+      "showTrail": true,
+      "transition": "map-reveal",
+      "transitionDuration": 0.55
+    }
+  ]
+}

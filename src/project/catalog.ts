@@ -10,6 +10,9 @@ import scotlandRoadtripShowcase from '../../projects/scotland-roadtrip-showcase.
 import mapLibreRouteDemo from '../../projects/maplibre-route-demo.json';
 import threeGlobeFlightDemo from '../../projects/three-globe-flight-demo.json';
 import studioProductShowcase from '../../projects/studio-product-showcase.json';
+import captionStylesShowcase from '../../projects/caption-styles-showcase.json';
+import audioReactiveShowcase from '../../projects/audio-reactive-showcase.json';
+import threeVehicleShowcase from '../../projects/three-vehicle-showcase.json';
 import pereLachaiseAppStoreHeader from '../../projects/perelachaise-appstore-header.json';
 import pereLachaiseAppStoreSearch from '../../projects/perelachaise-appstore-search.json';
 import {parseProject, type VideoProject} from './schema';
@@ -27,6 +30,9 @@ export const projects: VideoProject[] = [
   parseProject(mapLibreRouteDemo),
   parseProject(threeGlobeFlightDemo),
   parseProject(studioProductShowcase),
+  parseProject(captionStylesShowcase),
+  parseProject(audioReactiveShowcase),
+  parseProject(threeVehicleShowcase),
   parseProject(pereLachaiseAppStoreHeader),
   parseProject(pereLachaiseAppStoreSearch),
 ];

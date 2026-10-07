@@ -487,21 +487,67 @@ const videoScene = baseScene.extend({
   trimBefore: z.number().nonnegative().optional(),
 });
 
+const captionStyleSchema = z.enum([
+  'basic',
+  'tiktok',
+  'word-highlight',
+  'editorial-highlight',
+  'karaoke',
+  'pill',
+  'cinematic',
+]);
+
+const captionSegmentSchema = z.object({
+  text: z.string().min(1),
+  start: z.number().nonnegative(),
+  end: z.number().positive(),
+  pageBreakAfter: z.boolean().optional(),
+});
+
+const captionOptions = {
+  captionStyle: captionStyleSchema.default('word-highlight'),
+  captionPosition: z.enum(['bottom', 'center']).default('bottom'),
+  emphasisWords: z.array(z.string().min(1)).max(16).default([]),
+  combineTokensWithinMilliseconds: z.number().int().min(150).max(3000).default(1100),
+  breakOnSilenceAfterMilliseconds: z.number().int().min(0).max(3000).optional(),
+  captions: z.array(captionSegmentSchema).min(1),
+};
+
 const captionVideoScene = baseScene.extend({
   type: z.literal('caption-video'),
   src: z.string().min(1),
   muted: z.boolean().default(false),
   loop: z.boolean().default(false),
   trimBefore: z.number().nonnegative().optional(),
-  captionStyle: z.enum(['basic', 'tiktok', 'word-highlight']).default('word-highlight'),
-  combineTokensWithinMilliseconds: z.number().int().min(150).max(3000).default(1100),
-  breakOnSilenceAfterMilliseconds: z.number().int().min(0).max(3000).optional(),
-  captions: z.array(z.object({
-    text: z.string().min(1),
-    start: z.number().nonnegative(),
-    end: z.number().positive(),
-    pageBreakAfter: z.boolean().optional(),
-  })).min(1),
+  ...captionOptions,
+});
+
+const captionDemoScene = baseScene.extend({
+  type: z.literal('caption-demo'),
+  title: z.string().optional(),
+  background: z.enum(['dark', 'paper', 'gradient']).default('dark'),
+  ...captionOptions,
+});
+
+const audioReactiveScene = baseScene.extend({
+  type: z.literal('audio-reactive'),
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  mode: z.enum(['bars', 'pulse', 'orbit']).default('bars'),
+  energy: z.array(z.number().min(0).max(1)).min(8).max(240),
+  sensitivity: z.number().min(0.4).max(2).default(1),
+});
+
+const threeVehicleScene = baseScene.extend({
+  type: z.literal('three-vehicle'),
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  vehicle: z.enum(['train', 'plane', 'car']),
+  vehicleColor: z.string().default('#F8FAFC'),
+  accentColor: z.string().default('#75D7DE'),
+  pathStyle: z.enum(['straight', 'curve', 's-curve']).default('curve'),
+  cameraAngle: z.enum(['low', 'side', 'three-quarter']).default('three-quarter'),
+  showTrail: z.boolean().default(true),
 });
 
 const outroScene = baseScene.extend({
@@ -549,6 +595,9 @@ export const sceneSchema = z.discriminatedUnion('type', [
   lottieScene,
   videoScene,
   captionVideoScene,
+  captionDemoScene,
+  audioReactiveScene,
+  threeVehicleScene,
   outroScene,
 ]);
 
@@ -605,6 +654,9 @@ export type MapLibreRouteScene = Extract<VideoScene, {type: 'maplibre-route'}>;
 export type EditorialMapScene = Extract<VideoScene, {type: 'editorial-map'}>;
 export type TravelHudScene = Extract<VideoScene, {type: 'travel-hud'}>;
 export type ThreeGlobeScene = Extract<VideoScene, {type: 'three-globe'}>;
+export type CaptionDemoScene = Extract<VideoScene, {type: 'caption-demo'}>;
+export type AudioReactiveScene = Extract<VideoScene, {type: 'audio-reactive'}>;
+export type ThreeVehicleScene = Extract<VideoScene, {type: 'three-vehicle'}>;
 export type ElevationProfile = z.infer<typeof elevationProfileSchema>;
 export type ElevationRouteScene = Extract<VideoScene, {type: 'elevation-route'}>;
 export type RouteChapterScene = Extract<VideoScene, {type: 'route-chapter'}>;
