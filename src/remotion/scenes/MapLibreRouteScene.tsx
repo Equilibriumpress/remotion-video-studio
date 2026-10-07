@@ -159,7 +159,7 @@ export const MapLibreRouteSceneFrame = ({
         style: scene.mapStyleUrl,
         center: coordinates[0],
         zoom: 5,
-        pitch: scene.camera === 'follow' ? 30 : 16,
+        pitch: 0,
         bearing: 0,
         interactive: false,
         attributionControl: false,
@@ -295,9 +295,13 @@ export const MapLibreRouteSceneFrame = ({
   const followStrength = scene.camera === 'follow'
     ? interpolate(
         frame,
-        [fps * 0.15, Math.max(fps * 0.9, durationInFrames * 0.32)],
+        [fps * 0.65, Math.max(fps * 1.4, durationInFrames * 0.38)],
         [0, 1],
-        {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
+        {
+          extrapolateLeft: 'clamp',
+          extrapolateRight: 'clamp',
+          easing: Easing.inOut(Easing.cubic),
+        },
       )
     : 0;
   const dx = clamp(rawDx, -marginX, marginX) * followStrength;
@@ -317,6 +321,7 @@ export const MapLibreRouteSceneFrame = ({
           top: plateTop,
           width: plateWidth,
           height: plateHeight,
+          opacity: ready ? 1 : 0,
           transform: `translate3d(${dx}px, ${dy}px, 0)`,
           willChange: scene.camera === 'follow' ? 'transform' : undefined,
         }}
