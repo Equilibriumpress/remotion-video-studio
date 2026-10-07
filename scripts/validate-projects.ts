@@ -19,6 +19,8 @@ const sceneAssets = (scene: VideoScene): string[] => {
       return [scene.src];
     case 'split-image':
       return [scene.leftSrc, scene.rightSrc];
+    case 'appstore-creative':
+      return [scene.photoSrc, ...(scene.secondaryPhotoSrc ? [scene.secondaryPhotoSrc] : [])];
     case 'map-overlay':
     case 'lower-third':
     case 'route-stop':
@@ -115,6 +117,10 @@ for (const file of files) {
             errors.push(`${file}: Three globe scene "${scene.id}" has duplicate adjacent stops`);
           }
         }
+      }
+
+      if (scene.type === 'appstore-creative' && !project.geoRoutes?.[scene.routeId]) {
+        errors.push(`${file}: App Store creative scene "${scene.id}" references missing route "${scene.routeId}"`);
       }
 
       if (scene.type === 'geo-route') {
