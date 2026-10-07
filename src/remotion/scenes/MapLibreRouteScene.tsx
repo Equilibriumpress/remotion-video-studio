@@ -20,6 +20,7 @@ import {
 import type {MapLibreRouteScene, VideoProject} from '../../project/schema';
 import {GeoRouteSceneFrame} from './GeoRouteScene';
 import {quantizeFrame} from '../timing';
+import {canvasToObjectUrl, mapPlateDimensions, probeWebGl} from '../mapLibreSnapshot';
 
 type Position = [number, number];
 type Point = {x: number; y: number};
@@ -29,6 +30,9 @@ type Diagnostics = {
   workerConfigured: boolean;
   styleLoaded: boolean;
   idle: boolean;
+  snapshotReady: boolean;
+  maxRenderbufferSize: number;
+  maxTextureSize: number;
   errors: string[];
 };
 
@@ -43,16 +47,6 @@ const toPath = (points: ReadonlyArray<Point>) =>
   points.length < 2
     ? ''
     : `M ${points.map((point) => `${point.x.toFixed(2)} ${point.y.toFixed(2)}`).join(' L ')}`;
-
-const hasWebGl = () => {
-  if (typeof document === 'undefined') return false;
-  try {
-    const canvas = document.createElement('canvas');
-    return Boolean(canvas.getContext('webgl2') || canvas.getContext('webgl'));
-  } catch {
-    return false;
-  }
-};
 
 const routeBounds = (coordinates: ReadonlyArray<Position>) =>
   coordinates.reduce(
@@ -106,26 +100,44 @@ export const MapLibreRouteSceneFrame = ({
     [cameraRoute, route],
   );
 
-  const plateScale = scene.camera === 'follow'
-    ? Math.max(1.72, scene.cameraZoom + 0.32)
-    : 1.18;
-  const plateWidth = Math.round(width * plateScale);
-  const plateHeight = Math.round(height * plateScale);
+  const [webglProbe] = useState(probeWebGl);
+  const {
+    supported: plateSupported,
+    safeCameraZoom,
+    safeLimit,
+    plateScale,
+    plateWidth,
+    plateHeight,
+  } = mapPlateDimensions({
+    width,
+    height,
+    follow: scene.camera === 'follow',
+    requestedZoom: scene.cameraZoom,
+    webglLimit: Math.min(
+      webglProbe.maxRenderbufferSize || 3072,
+      webglProbe.maxTextureSize || 3072,
+    ),
+  });
   const plateLeft = (width - plateWidth) / 2;
   const plateTop = (height - plateHeight) / 2;
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const snapshotUrlRef = useRef<string | null>(null);
   const loadingResolvedRef = useRef(false);
   const [loadingHandle] = useState(() => delayRender('Loading fixed MapLibre plate'));
   const [projectedRoute, setProjectedRoute] = useState<Point[]>([]);
   const [projectedCameraRoute, setProjectedCameraRoute] = useState<Point[]>([]);
   const [projectedStops, setProjectedStops] = useState<Point[]>([]);
+  const [snapshotUrl, setSnapshotUrl] = useState<string | null>(null);
   const [fallbackReason, setFallbackReason] = useState<string | null>(null);
   const [diagnostics, setDiagnostics] = useState<Diagnostics>(() => ({
-    webgl: hasWebGl(),
+    webgl: webglProbe.available,
     workerConfigured: Boolean(workerUrl),
     styleLoaded: false,
     idle: false,
+    snapshotReady: false,
+    maxRenderbufferSize: webglProbe.maxRenderbufferSize,
+    maxTextureSize: webglProbe.maxTextureSize,
     errors: [],
   }));
 
@@ -143,8 +155,14 @@ export const MapLibreRouteSceneFrame = ({
       return;
     }
 
-    if (!diagnostics.webgl) {
+    if (!webglProbe.available) {
       setFallbackReason('WebGL unavailable');
+      finishLoading();
+      return;
+    }
+
+    if (!plateSupported) {
+      setFallbackReason(`composition exceeds safe MapLibre canvas limit (${safeLimit}px)`);
       finishLoading();
       return;
     }
@@ -156,11 +174,16 @@ export const MapLibreRouteSceneFrame = ({
     }
 
     let disposed = false;
+    let snapshotComplete = false;
     let mapInstance: maplibregl.Map | null = null;
+    let mapCanvas: HTMLCanvasElement | null = null;
 
     const timeout = window.setTimeout(() => {
       if (disposed || loadingResolvedRef.current) return;
       setFallbackReason('map/style load timed out');
+      mapCanvas?.removeEventListener('webglcontextlost', onContextLost);
+      mapInstance?.remove();
+      mapInstance = null;
       finishLoading();
     }, 8000);
 
@@ -175,6 +198,13 @@ export const MapLibreRouteSceneFrame = ({
         interactive: false,
         attributionControl: false,
         fadeDuration: 0,
+        pixelRatio: 1,
+        maxCanvasSize: [safeLimit, safeLimit],
+        maxTileCacheSize: 96,
+        maxTileCacheZoomLevels: 1,
+        cancelPendingTileRequestsWhileZooming: true,
+        renderWorldCopies: false,
+        localIdeographFontFamily: 'sans-serif',
         canvasContextAttributes: {
           preserveDrawingBuffer: true,
         },
@@ -186,9 +216,20 @@ export const MapLibreRouteSceneFrame = ({
       return;
     }
 
+    mapCanvas = mapInstance.getCanvas();
+    const onContextLost = (event: Event) => {
+      event.preventDefault();
+      if (disposed || snapshotComplete) return;
+      setFallbackReason('WebGL context lost');
+      mapInstance?.remove();
+      mapInstance = null;
+      finishLoading();
+    };
+    mapCanvas.addEventListener('webglcontextlost', onContextLost, {once: true});
+
     mapInstance.on('error', (event) => {
       const message = event?.error?.message ?? 'MapLibre resource error';
-      if (!disposed) {
+      if (!disposed && !snapshotComplete) {
         setDiagnostics((current) => ({
           ...current,
           errors: [...current.errors.slice(-3), message],
@@ -207,28 +248,57 @@ export const MapLibreRouteSceneFrame = ({
         maxZoom: 11.5,
       });
 
-      mapInstance.once('idle', () => {
+      mapInstance.once('idle', async () => {
         if (disposed || !mapInstance) return;
+        const activeMap = mapInstance;
 
         const routePoints = coordinates.map(([lon, lat]) => {
-          const point = mapInstance!.project([lon, lat]);
+          const point = activeMap.project([lon, lat]);
           return {x: point.x, y: point.y};
         });
         const cameraPoints = cameraCoordinates.map(([lon, lat]) => {
-          const point = mapInstance!.project([lon, lat]);
+          const point = activeMap.project([lon, lat]);
           return {x: point.x, y: point.y};
         });
         const stopPoints = scene.stops.map((stop) => {
-          const point = mapInstance!.project(stop.coordinates);
+          const point = activeMap.project(stop.coordinates);
           return {x: point.x, y: point.y};
         });
 
-        setProjectedRoute(routePoints);
-        setProjectedCameraRoute(cameraPoints);
-        setProjectedStops(stopPoints);
-        setDiagnostics((current) => ({...current, idle: true}));
-        window.clearTimeout(timeout);
-        finishLoading();
+        try {
+          const url = await canvasToObjectUrl(activeMap.getCanvas());
+          if (disposed) {
+            URL.revokeObjectURL(url);
+            return;
+          }
+
+          snapshotComplete = true;
+          snapshotUrlRef.current = url;
+          setProjectedRoute(routePoints);
+          setProjectedCameraRoute(cameraPoints);
+          setProjectedStops(stopPoints);
+          setSnapshotUrl(url);
+          setDiagnostics((current) => ({
+            ...current,
+            idle: true,
+            snapshotReady: true,
+          }));
+          window.clearTimeout(timeout);
+          mapCanvas?.removeEventListener('webglcontextlost', onContextLost);
+          activeMap.remove();
+          if (mapInstance === activeMap) mapInstance = null;
+          finishLoading();
+        } catch (error) {
+          if (disposed) return;
+          setFallbackReason(
+            error instanceof Error ? error.message : 'MapLibre snapshot failed',
+          );
+          window.clearTimeout(timeout);
+          mapCanvas?.removeEventListener('webglcontextlost', onContextLost);
+          activeMap.remove();
+          if (mapInstance === activeMap) mapInstance = null;
+          finishLoading();
+        }
       });
 
       mapInstance.triggerRepaint();
@@ -237,22 +307,36 @@ export const MapLibreRouteSceneFrame = ({
     return () => {
       disposed = true;
       window.clearTimeout(timeout);
+      mapCanvas?.removeEventListener('webglcontextlost', onContextLost);
       finishLoading();
-      // Deliberately do not call map.remove() here. Remotion can premount/unmount
-      // scenes while capturing frames; explicit disposal can invalidate the canvas.
+
+      if (!snapshotComplete && !isRendering && mapInstance) {
+        // In the long-lived Player, abandoned map loads must release their WebGL
+        // context. During Remotion rendering, delayRender keeps the scene mounted
+        // until the snapshot path has completed, so cleanup removal is avoided.
+        mapInstance.remove();
+      }
+
+      if (snapshotUrlRef.current) {
+        URL.revokeObjectURL(snapshotUrlRef.current);
+        snapshotUrlRef.current = null;
+      }
     };
   }, [
     cameraCoordinates,
     continueRender,
     coordinates,
-    diagnostics.webgl,
+    isRendering,
     loadingHandle,
     plateHeight,
+    plateSupported,
     plateWidth,
     route,
+    safeLimit,
     scene.camera,
     scene.mapStyleUrl,
     scene.stops,
+    webglProbe.available,
   ]);
 
   if (!route) {
@@ -342,7 +426,7 @@ export const MapLibreRouteSceneFrame = ({
       )
     : 0;
   const cameraScale = scene.camera === 'follow'
-    ? 1 + (scene.cameraZoom - 1) * followStrength
+    ? 1 / safeCameraZoom + (1 - 1 / safeCameraZoom) * followStrength
     : 1;
   const marginX = Math.max(0, (plateWidth * cameraScale - width) / 2);
   const marginY = Math.max(0, (plateHeight * cameraScale - height) / 2);
@@ -355,7 +439,9 @@ export const MapLibreRouteSceneFrame = ({
   const ready =
     projectedRoute.length >= 2 &&
     projectedCameraRoute.length >= 2 &&
-    diagnostics.idle;
+    diagnostics.idle &&
+    diagnostics.snapshotReady &&
+    Boolean(snapshotUrl);
 
   return (
     <AbsoluteFill style={{backgroundColor: '#dbeafe', overflow: 'hidden'}}>
@@ -374,15 +460,30 @@ export const MapLibreRouteSceneFrame = ({
           willChange: scene.camera === 'follow' ? 'transform' : undefined,
         }}
       >
-        <div
-          ref={containerRef}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: plateWidth,
-            height: plateHeight,
-          }}
-        />
+        {snapshotUrl ? (
+          <img
+            alt=""
+            src={snapshotUrl}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: plateWidth,
+              height: plateHeight,
+              objectFit: 'fill',
+              userSelect: 'none',
+            }}
+          />
+        ) : (
+          <div
+            ref={containerRef}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: plateWidth,
+              height: plateHeight,
+            }}
+          />
+        )}
 
         {ready ? (
           <svg
@@ -467,7 +568,7 @@ export const MapLibreRouteSceneFrame = ({
             color: accent,
           }}
         >
-          MAPLIBRE · FIXED PLATE
+          MAPLIBRE · SNAPSHOT PLATE
         </div>
         <div
           style={{
@@ -550,9 +651,13 @@ export const MapLibreRouteSceneFrame = ({
           <span>Worker URL {diagnostics.workerConfigured ? '✓' : '×'}</span>
           <span>Style {diagnostics.styleLoaded ? '✓' : '…'}</span>
           <span>Idle plate {diagnostics.idle ? '✓' : '…'}</span>
+          <span>Snapshot {diagnostics.snapshotReady ? '✓ WebGL released' : '…'}</span>
+          <span>Canvas {plateWidth}×{plateHeight} · 1× DPR</span>
+          <span>GPU limit {Math.min(diagnostics.maxRenderbufferSize || safeLimit, diagnostics.maxTextureSize || safeLimit)} px</span>
           <span>Errors {diagnostics.errors.length}</span>
           <span>Camera route {scene.cameraRouteId ? 'dedicated' : 'route + lead'}</span>
-          <span>Lead {(scene.cameraLead * 100).toFixed(1)}% · zoom {scene.cameraZoom.toFixed(2)}×</span>
+          <span>Lead {(scene.cameraLead * 100).toFixed(1)}% · safe zoom {safeCameraZoom.toFixed(2)}×</span>
+          <span>Plate scale {plateScale.toFixed(2)}× · CSS scale ≤ 1</span>
           <span>Overlay cadence {scene.graphicFps.toFixed(0)} fps · camera smooth</span>
           {diagnostics.errors.length > 0 ? (
             <span style={{maxWidth: width * 0.34, color: '#FCA5A5'}}>
@@ -574,7 +679,7 @@ export const MapLibreRouteSceneFrame = ({
             fontWeight: 700,
           }}
         >
-          Loading fixed map plate…
+          Preparing map snapshot…
         </div>
       ) : null}
     </AbsoluteFill>

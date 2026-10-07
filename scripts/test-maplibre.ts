@@ -5,52 +5,61 @@ const pkg = JSON.parse(readFileSync('package.json', 'utf8')) as {
   dependencies?: Record<string, string>;
 };
 const source = readFileSync('src/remotion/scenes/MapLibreRouteScene.tsx', 'utf8');
+const helper = readFileSync('src/remotion/mapLibreSnapshot.ts', 'utf8');
+const renderPanel = readFileSync('src/render/RenderPanel.tsx', 'utf8');
 
 assert.equal(
   pkg.dependencies?.['maplibre-gl'],
   '6.4.1',
   'MapLibre must stay pinned while the browser renderer is experimental',
 );
-assert.match(
-  source,
-  /maplibre-gl-worker\.mjs\?worker&url/,
-  'Vite must bundle the MapLibre v6 worker explicitly',
-);
-assert.match(
-  source,
-  /setWorkerUrl\(workerUrl\)/,
-  'MapLibre worker URL must be configured before maps are created',
-);
-assert.match(
-  source,
-  /setWorkerCount\(1\)/,
-  'Browser video maps should use one MapLibre worker',
-);
-assert.doesNotMatch(
-  source,
-  /mapInstance\.remove\(/,
-  'Do not explicitly remove MapLibre during Remotion scene cleanup',
-);
+assert.match(source, /maplibre-gl-worker\.mjs\?worker&url/);
+assert.match(source, /setWorkerUrl\(workerUrl\)/);
+assert.match(source, /setWorkerCount\(1\)/);
+
 assert.doesNotMatch(
   source,
   /calculateCameraOptionsFromTo|\.jumpTo\(/,
   'The fixed-plate renderer must not move the live map camera per frame',
 );
+assert.match(source, /pixelRatio:\s*1/);
+assert.match(source, /maxCanvasSize:\s*\[safeLimit, safeLimit\]/);
+assert.match(source, /maxTileCacheSize:\s*96/);
+assert.match(source, /maxTileCacheZoomLevels:\s*1/);
+assert.match(source, /localIdeographFontFamily:\s*'sans-serif'/);
+assert.match(source, /webglcontextlost/);
+assert.match(source, /canvasToObjectUrl/);
+assert.match(source, /snapshotReady/);
 assert.match(
   source,
-  /translate3d/,
-  'Follow motion should be applied to the fixed plate with CSS transforms',
+  /activeMap\.remove\(\);\s*if \(mapInstance === activeMap\) mapInstance = null;\s*finishLoading\(\);/,
+  'MapLibre should release WebGL after a successful decoded snapshot',
 );
+
+assert.match(helper, /MAX_MAP_PLATE_DIMENSION = 3072/);
+assert.match(helper, /MAX_MAP_CAMERA_ZOOM = 1\.35/);
+assert.match(helper, /supported = safeLimit >= compositionMax/);
+assert.match(helper, /WEBGL_lose_context/);
+assert.match(helper, /canvas\.toBlob/);
 
 assert.match(
   source,
-  /pitch:\s*0/,
-  'The fixed plate should stay flat to avoid an apparent entry fly-in',
+  /1 \/ safeCameraZoom \+ \(1 - 1 \/ safeCameraZoom\) \* followStrength/,
+  'Fixed plate CSS scale should approach 1 from below and never upscale above 1',
+);
+assert.match(source, /translate3d/);
+assert.match(source, /pitch:\s*0/);
+assert.match(source, /opacity:\s*ready\s*\?\s*1\s*:\s*0/);
+
+assert.match(
+  renderPanel,
+  /const usesExperimentalCanvas = usesThree;/,
+  'MapLibre snapshots should not enable experimental HTML-in-canvas capture',
 );
 assert.match(
-  source,
-  /opacity:\s*ready\s*\?\s*1\s*:\s*0/,
-  'The basemap must remain hidden until fitBounds and idle have completed',
+  renderPanel,
+  /allowHtmlInCanvas:\s*usesExperimentalCanvas/,
+  'Only live Three.js canvas scenes should opt into HTML-in-canvas capture',
 );
 
-console.log('MapLibre v2: worker, lifecycle and fixed-plate invariants validated.');
+console.log('MapLibre v3: bounded snapshot, memory, lifecycle and fixed-plate invariants validated.');

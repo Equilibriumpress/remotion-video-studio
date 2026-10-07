@@ -36,7 +36,7 @@ GitHub Actions performs only project validation and the static Vite build. It do
 - Asset preflight for local and supported remote images
 - Zod project schema
 - Geographically anchored SVG routes with precomputed railway, walking and road geometry
-- Experimental MapLibre GL route flyovers with OpenFreeMap basemaps and SVG fallback
+- Bounded MapLibre snapshot route flyovers with OpenFreeMap basemaps and SVG fallback
 - Experimental Remotion Three globe flights with deterministic great-circle arcs and a lightweight fallback
 - Cinematic camera presets with adjustable motion strength and per-scene transition duration
 - Project-level motion direction personalities: premium, corporate, playful and energetic
@@ -73,7 +73,7 @@ AGENTS.md                 ChatGPT/Codex authoring protocol
 
 - `kyoto-premium-showcase` — travel editorial storytelling
 - `tokyo-kyoto-shinkansen` — clean station-to-station rail route
-- `maplibre-route-demo` — experimental live-basemap Tokyo–Kyoto flyover
+- `maplibre-route-demo` — bounded MapLibre snapshot Tokyo–Kyoto flyover
 - `three-globe-flight-demo` — experimental Tokyo → Singapore → Sydney 3D globe flight
 - `kyoto-morning-route` — calm photo-led Kyoto walking reel
 - `kyoto-auto-story` — the same route expressed as a compact story config with generated scenes
@@ -97,15 +97,15 @@ The scene is deliberately separate from `geo-route`. SVG remains the production 
 
 The reference project uses city-centre coordinates only to demonstrate geographic scale. Its route is explicitly labelled as a great-circle visualization rather than a navigable airline route.
 
-## Experimental MapLibre renderer
+## MapLibre snapshot renderer
 
-`maplibre-route` uses MapLibre GL JS 6 as a **fixed basemap plate** rather than a live per-frame camera. Vite bundles the MapLibre worker explicitly with `?worker&url`, the worker count is fixed at one, and the map waits for style load + `idle` once before Remotion continues.
+`maplibre-route` now uses MapLibre GL JS only as a **preparation renderer**. The worker count is one, device-pixel-ratio is forced to 1, the live canvas is capped conservatively, and tile cache is restricted. Once style load + `idle` complete, the committed route/camera/stops are projected and the MapLibre canvas is captured to a static bitmap.
 
-After that initial load, the real committed `geoRoutes` geometry is projected onto the frozen map and rendered as a Remotion/SVG overlay. Route reveal and marker position are therefore frame-driven without asking MapLibre to reload tiles or move its camera. `camera: "follow"` translates the oversized plate with CSS while `camera: "overview"` keeps it centred.
+The WebGL map is then released. Video frames contain only that bitmap plus deterministic Remotion/SVG route overlays and CSS transforms. `camera: "follow"` pans and gently pushes the bitmap plate; CSS scale approaches 1 from below and never enlarges the prepared map beyond its native snapshot resolution.
 
-This design intentionally avoids per-frame `map.jumpTo()`, source mutation and explicit `map.remove()` cleanup, which are fragile in Remotion/browser capture. A preview-only diagnostics panel reports WebGL, worker URL, style load, idle state and recent MapLibre resource errors. An 8-second initialization timeout falls back to the geographically equivalent SVG `geo-route` scene.
+This removes the two largest failure modes of the previous implementation: oversized high-DPR WebGL buffers and a live WebGL context surviving for the full scene or across Player remounts. MapLibre export no longer enables Remotion's experimental HTML-in-canvas capture. A context loss, snapshot failure or initialization timeout automatically falls back to the equivalent SVG `geo-route` scene.
 
-The basemap is still WebGL, so browser MP4 export requires Remotion HTML-in-canvas capture and remains Chromium-first. SVG `geo-route` stays the production-safe route renderer.
+The project safety cap is 3072 px for either live canvas dimension, with a default MapLibre follow zoom of 1.3. Diagnostics report GPU limits, actual plate dimensions, snapshot status and safe zoom.
 
 ## Travel Sequence Composer
 

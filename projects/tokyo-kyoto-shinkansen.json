@@ -142,7 +142,7 @@
       "camera": "follow",
       "cameraRouteId": "tokaido-camera",
       "cameraLead": 0.045,
-      "cameraZoom": 1.82,
+      "cameraZoom": 1.3,
       "cameraAnchorY": 0.56,
       "routeColor": "#75D7DE",
       "markerColor": "#FFFFFF",

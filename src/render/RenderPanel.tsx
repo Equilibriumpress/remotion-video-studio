@@ -15,14 +15,16 @@ type RenderState = 'idle' | 'checking' | 'rendering' | 'done' | 'error';
 export const RenderPanel = ({project}: Props) => {
   const usesMapLibre = project.scenes.some((scene) => scene.type === 'maplibre-route');
   const usesThree = project.scenes.some((scene) => scene.type === 'three-globe');
-  const usesExperimentalCanvas = usesMapLibre || usesThree;
+  const usesExperimentalCanvas = usesThree;
   const [profile, setProfile] = useState<RenderProfile>('draft');
   const [state, setState] = useState<RenderState>('idle');
   const [progress, setProgress] = useState(0);
   const [message, setMessage] = useState(
-    usesExperimentalCanvas
-      ? `Experimental ${usesThree ? '3D/WebGL' : 'MapLibre'} export · Chromium recommended`
-      : 'Ready for browser render',
+    usesThree
+      ? 'Experimental 3D/WebGL export · Chromium recommended'
+      : usesMapLibre
+        ? 'MapLibre snapshot export · WebGL is released before frame capture'
+        : 'Ready for browser render',
   );
   const [assets, setAssets] = useState<AssetCheck[]>([]);
   const controllerRef = useRef<AbortController | null>(null);
@@ -123,7 +125,7 @@ export const RenderPanel = ({project}: Props) => {
       <div className="render-head">
         <div>
           <p className="eyebrow">Export</p>
-          <h3>{usesThree ? 'Browser MP4 · experimental 3D' : usesMapLibre ? 'Browser MP4 · experimental map' : 'Browser MP4'}</h3>
+          <h3>{usesThree ? 'Browser MP4 · experimental 3D' : usesMapLibre ? 'Browser MP4 · snapshot map' : 'Browser MP4'}</h3>
         </div>
         <span className={`render-state ${state}`}>{state}</span>
       </div>
@@ -165,8 +167,9 @@ export const RenderPanel = ({project}: Props) => {
 
       {usesMapLibre ? (
         <p className="render-note">
-          MapLibre renders one fixed WebGL basemap plate; route reveal and follow motion are Remotion/SVG + CSS.
-          MP4 export still needs HTML-in-canvas capture for the basemap. Preview diagnostics show worker/style/idle state.
+          MapLibre is used only to prepare one bounded static basemap snapshot. After the style reaches idle,
+          the WebGL canvas is converted to an image and released; route reveal and follow motion then use
+          Remotion/SVG + CSS. Map exports therefore use the normal DOM compositor instead of experimental HTML-in-canvas capture.
         </p>
       ) : null}
       {usesThree ? (
