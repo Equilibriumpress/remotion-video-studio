@@ -12,6 +12,7 @@ import {RouteStopSceneFrame} from './scenes/RouteStopScene';
 import {MapLibreRouteSceneFrame} from './scenes/MapLibreRouteScene';
 import {LaunchSceneFrame} from './scenes/LaunchScenes';
 import {DataSceneFrame} from './scenes/DataScenes';
+import {FittedSvgText} from './svg/FittedSvgText';
 
 type Props = {
   scene: VideoScene;
@@ -312,14 +313,16 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
               {scene.kicker.toUpperCase()}
             </text>
           ) : null}
-          <Lines
-            lines={wrap(scene.title, 18)}
+          <FittedSvgText
+            value={scene.title}
             x={pad}
             y={height * 0.68}
-            fontSize={titleSize * 1.05}
-            lineHeight={titleSize * 1.02}
+            maxWidth={width - pad * 2}
+            maxLines={2}
+            maxFontSize={titleSize * 1.05}
             fill="#FFFFFF"
             family={displayFont}
+            weight={800}
           />
           {scene.subtitle ? (
             <Lines
@@ -571,7 +574,17 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
     <>
       {common}
       <g opacity={motion.opacity} transform={motion.transform}>
-        <Lines lines={wrap(title, 20)} x={pad} y={height * 0.43} fontSize={titleSize} lineHeight={titleSize * 1.06} fill={foreground} family={displayFont} />
+        <FittedSvgText
+          value={title}
+          x={pad}
+          y={height * 0.43}
+          maxWidth={width - pad * 2}
+          maxLines={3}
+          maxFontSize={titleSize}
+          fill={foreground}
+          family={displayFont}
+          weight={800}
+        />
         {subtitle ? (
           <Lines lines={wrap(subtitle, 34)} x={pad} y={height * 0.68} fontSize={bodySize} lineHeight={bodySize * 1.35} fill={muted} weight={500} />
         ) : null}
