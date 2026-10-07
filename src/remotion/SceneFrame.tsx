@@ -10,6 +10,7 @@ import {ElevationRouteSceneFrame} from './scenes/ElevationScenes';
 import {RouteChapterSceneFrame} from './scenes/RouteChapterScene';
 import {RouteStopSceneFrame} from './scenes/RouteStopScene';
 import {MapLibreRouteSceneFrame} from './scenes/MapLibreRouteScene';
+import {ThreeGlobeSceneFrame} from './scenes/ThreeGlobeScene';
 import {LaunchSceneFrame} from './scenes/LaunchScenes';
 import {DataSceneFrame} from './scenes/DataScenes';
 import {FittedSvgText} from './svg/FittedSvgText';
@@ -165,6 +166,10 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
 
   if (scene.type === 'maplibre-route') {
     return <MapLibreRouteSceneFrame scene={scene} project={project} />;
+  }
+
+  if (scene.type === 'three-globe') {
+    return <ThreeGlobeSceneFrame scene={scene} project={project} />;
   }
 
   if (scene.type === 'elevation-route') {
