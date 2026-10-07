@@ -13,10 +13,15 @@ type Props = {
 type RenderState = 'idle' | 'checking' | 'rendering' | 'done' | 'error';
 
 export const RenderPanel = ({project}: Props) => {
+  const usesMapLibre = project.scenes.some((scene) => scene.type === 'maplibre-route');
   const [profile, setProfile] = useState<RenderProfile>('draft');
   const [state, setState] = useState<RenderState>('idle');
   const [progress, setProgress] = useState(0);
-  const [message, setMessage] = useState('Ready for browser render');
+  const [message, setMessage] = useState(
+    usesMapLibre
+      ? 'Experimental MapLibre export · Chromium recommended'
+      : 'Ready for browser render',
+  );
   const [assets, setAssets] = useState<AssetCheck[]>([]);
   const controllerRef = useRef<AbortController | null>(null);
 
@@ -77,7 +82,7 @@ export const RenderPanel = ({project}: Props) => {
         muted: !hasAudio,
         scale,
         signal: controller.signal,
-        allowHtmlInCanvas: false,
+        allowHtmlInCanvas: usesMapLibre,
         onProgress: ({progress: value}) => setProgress(value),
       });
 
@@ -116,7 +121,7 @@ export const RenderPanel = ({project}: Props) => {
       <div className="render-head">
         <div>
           <p className="eyebrow">Export</p>
-          <h3>Browser MP4</h3>
+          <h3>{usesMapLibre ? 'Browser MP4 · experimental map' : 'Browser MP4'}</h3>
         </div>
         <span className={`render-state ${state}`}>{state}</span>
       </div>
@@ -154,6 +159,13 @@ export const RenderPanel = ({project}: Props) => {
             </div>
           ))}
         </div>
+      ) : null}
+
+      {usesMapLibre ? (
+        <p className="render-note">
+          MapLibre preview uses WebGL. MP4 export enables Remotion HTML-in-canvas only for this project.
+          If capture is unsupported, use the SVG route project as the production fallback.
+        </p>
       ) : null}
 
       <div className="render-actions">
