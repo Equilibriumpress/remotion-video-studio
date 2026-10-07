@@ -140,7 +140,12 @@
       ],
       "mapRotation": -60,
       "camera": "follow",
-      "cameraZoom": 1.36
+      "cameraZoom": 1.36,
+      "vehicle": {
+        "type": "train",
+        "scale": 1.08,
+        "showPulse": true
+      }
     },
     {
       "id": "tk-time",
