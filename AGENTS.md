@@ -40,7 +40,7 @@ Prefer scene + motion + transition composition over custom React for content vid
 
 ### Scene library
 
-Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `video`, `caption-video`, `outro`.
+Use: `title`, `image`, `hero-image`, `split-image`, `photo-mask`, `kinetic-title`, `chapter-number`, `lower-third`, `callout`, `text`, `quote`, `stat`, `list`, `timeline`, `comparison`, `chart`, `line-chart`, `donut-chart`, `geo-route`, `elevation-route`, `route-map`, `location-card`, `progress-route`, `map-overlay`, `video`, `caption-video`, `outro`.
 
 ### Motion presets
 
@@ -75,6 +75,8 @@ Prefer restrained combinations. One strong mask or kinetic treatment per sequenc
 Use `geo-route` for videos portraying a real railway, pedestrian route or road trip. Provide a top-level `geoRoutes` entry containing WGS84 `LineString` coordinates in `[longitude, latitude]` order, a route mode (`rail`, `walking`, `driving`) and source attribution. Scenes reference a `routeId` plus georeferenced `stops`. Reuse the route across scenes and vary `progress`, `style`, and `mapRotation` to tell the story. Use `camera: "follow"` with a restrained `cameraZoom` for movement-led sequences and `camera: "overview"` for orientation or arrival scenes. When `distance` is omitted, the scene derives route kilometres from the committed coordinates. The map draws SVG from precomputed geographic data; it does not fetch tiles or call live routing APIs during render. Optional `contextLines` must also be geographically sourced.
 
 For movement-led route scenes, add `vehicle` with type `train`, `car`, `walker`, `bike`, or `plane`. The glyph follows the same progress value as the route and rotates from the local path bearing. Keep vehicle graphics SVG-only so browser export remains deterministic.
+
+Use `elevation-route` when measured or sourced elevation samples are available. Store reusable samples in `elevationProfiles`, keep distances strictly increasing, and label synthetic/test data explicitly. The scene animates distance, current elevation and cumulative ascent without runtime terrain requests.
 
 - `tokyo-kyoto-shinkansen`: Japan MLIT FY2025 rail track, already reduced to an animated line.
 - `kyoto-morning-route`: measured and OpenStreetMap-based streets of Southern Higashiyama.
