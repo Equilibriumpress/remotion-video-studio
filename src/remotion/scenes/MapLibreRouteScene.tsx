@@ -19,6 +19,7 @@ import {
 } from 'remotion';
 import type {MapLibreRouteScene, VideoProject} from '../../project/schema';
 import {GeoRouteSceneFrame} from './GeoRouteScene';
+import {quantizeFrame} from '../timing';
 
 type Position = [number, number];
 type Point = {x: number; y: number};
@@ -277,8 +278,19 @@ export const MapLibreRouteSceneFrame = ({
     );
   }
 
-  const progress = interpolate(
+  const graphicFrame = quantizeFrame(frame, fps, scene.graphicFps);
+  const smoothProgress = interpolate(
     frame,
+    [fps * 0.08, Math.max(fps * 0.6, durationInFrames * 0.86)],
+    [0.001, Math.max(0.001, scene.progress)],
+    {
+      extrapolateLeft: 'clamp',
+      extrapolateRight: 'clamp',
+      easing: Easing.inOut(Easing.cubic),
+    },
+  );
+  const overlayProgress = interpolate(
+    graphicFrame,
     [fps * 0.08, Math.max(fps * 0.6, durationInFrames * 0.86)],
     [0.001, Math.max(0.001, scene.progress)],
     {
@@ -293,9 +305,9 @@ export const MapLibreRouteSceneFrame = ({
   const pathLength = path ? getLength(path) : 0;
   const cameraPathLength = cameraPath ? getLength(cameraPath) : 0;
   const visiblePath = pathLength > 0
-    ? cutPath(path, pathLength * clamp01(progress))
+    ? cutPath(path, pathLength * clamp01(overlayProgress))
     : '';
-  const markerDistance = pathLength * clamp01(progress);
+  const markerDistance = pathLength * clamp01(overlayProgress);
   const markerPoint = path
     ? getPointAtLength(path, markerDistance) ?? projectedRoute[0]
     : projectedRoute[0];
@@ -402,8 +414,8 @@ export const MapLibreRouteSceneFrame = ({
                 <circle
                   cx={point.x}
                   cy={point.y}
-                  r={index / Math.max(1, projectedStops.length - 1) <= progress + 0.02 ? 10 : 7}
-                  fill={index / Math.max(1, projectedStops.length - 1) <= progress + 0.02
+                  r={index / Math.max(1, projectedStops.length - 1) <= overlayProgress + 0.02 ? 10 : 7}
+                  fill={index / Math.max(1, projectedStops.length - 1) <= overlayProgress + 0.02
                     ? scene.markerColor
                     : '#94A3B8'}
                   stroke="#FFFFFF"
@@ -541,6 +553,7 @@ export const MapLibreRouteSceneFrame = ({
           <span>Errors {diagnostics.errors.length}</span>
           <span>Camera route {scene.cameraRouteId ? 'dedicated' : 'route + lead'}</span>
           <span>Lead {(scene.cameraLead * 100).toFixed(1)}% · zoom {scene.cameraZoom.toFixed(2)}×</span>
+          <span>Overlay cadence {scene.graphicFps.toFixed(0)} fps · camera smooth</span>
           {diagnostics.errors.length > 0 ? (
             <span style={{maxWidth: width * 0.34, color: '#FCA5A5'}}>
               {diagnostics.errors[diagnostics.errors.length - 1]}
