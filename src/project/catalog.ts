@@ -8,6 +8,7 @@ import kyotoMorningRoute from '../../projects/kyoto-morning-route.json';
 import kyotoAutoStory from '../../projects/kyoto-auto-story.json';
 import scotlandRoadtripShowcase from '../../projects/scotland-roadtrip-showcase.json';
 import mapLibreRouteDemo from '../../projects/maplibre-route-demo.json';
+import threeGlobeFlightDemo from '../../projects/three-globe-flight-demo.json';
 import studioProductShowcase from '../../projects/studio-product-showcase.json';
 import {parseProject, type VideoProject} from './schema';
 
@@ -22,6 +23,7 @@ export const projects: VideoProject[] = [
   parseProject(kyotoAutoStory),
   parseProject(scotlandRoadtripShowcase),
   parseProject(mapLibreRouteDemo),
+  parseProject(threeGlobeFlightDemo),
   parseProject(studioProductShowcase),
 ];
 
