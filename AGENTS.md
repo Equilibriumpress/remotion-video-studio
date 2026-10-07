@@ -8,13 +8,14 @@ Create premium travel videos and route stories that preview and render from GitH
 
 1. Read `src/project/schema.ts`.
 2. Prefer `travel-story` for travel and routes. Use `explainer` for product videos. Keep `data-story` for technical compatibility and internal experiments.
-3. Create one JSON file in `projects/`.
-4. Use existing licensed remote photo URLs when browser asset preflight and export work. Keep source credits. Local files under `public/media/<project-id>/` remain an option when an external host fails.
-5. Use repository-relative paths for media stored in this repository.
-6. Register the project in `src/project/catalog.ts`.
-7. Run `npm run validate`.
-8. Run `npm run build`.
-9. Open a PR with a short description of the video and any new scene capability.
+3. For a standard geographic travel video, prefer a top-level `story` configuration so route, stops and media generate the sequence. Use explicit `scenes` for bespoke edits or unsupported structures.
+4. Create one JSON file in `projects/`.
+5. Use existing licensed remote photo URLs when browser asset preflight and export work. Keep source credits. Local files under `public/media/<project-id>/` remain an option when an external host fails.
+6. Use repository-relative paths for media stored in this repository.
+7. Register the project in `src/project/catalog.ts`.
+8. Run `npm run validate`.
+9. Run `npm run build`.
+10. Open a PR with a short description of the video and any new scene capability.
 
 ## Rules
 
@@ -81,6 +82,10 @@ Use `elevation-route` when measured or sourced elevation samples are available. 
 Use `route-chapter` to focus a long trip on one geographic leg. `startProgress` and `endProgress` are measured along cumulative route distance, then the segment is automatically fitted to the frame. This avoids index-based slicing on uneven GeoJSON geometries.
 
 Use `route-stop` for editorial arrival, POI and waypoint moments. Layouts are `editorial`, `minimal`, `split`, and `photo-map`. When `routeId` and `routeProgress` are provided, the stop card includes a mini-map rendered from the same committed GeoJSON source.
+
+### Travel Sequence Composer
+
+Use a top-level `story` object for conventional route-led travel videos. Provide a sourced `routeId`, 2–8 georeferenced stops, optional photographs and concise editorial copy. The composer derives stop progress from the actual route and generates reusable scene types instead of a second rendering system. `mode: "replace"` makes the generated sequence the project timeline, while `mode: "append"` adds it after explicit scenes. Generated scenes still pass schema, asset and geographic validation. Do not supply invented route, elevation, time or distance data as factual travel information.
 
 - `tokyo-kyoto-shinkansen`: Japan MLIT FY2025 rail track, already reduced to an animated line.
 - `kyoto-morning-route`: measured and OpenStreetMap-based streets of Southern Higashiyama.
