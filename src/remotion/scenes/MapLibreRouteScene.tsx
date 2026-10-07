@@ -319,7 +319,7 @@ export const MapLibreRouteSceneFrame = ({
   // The route marker and the camera deliberately use separate progress values.
   // This follows the same principle as Remotion's Mapbox route example while
   // keeping our browser renderer on one already-loaded MapLibre plate.
-  const cameraProgress = clamp01(progress + scene.cameraLead);
+  const cameraProgress = clamp01(smoothProgress + scene.cameraLead);
   const cameraDistance = cameraPathLength * cameraProgress;
   const cameraPoint = cameraPath
     ? getPointAtLength(cameraPath, cameraDistance) ?? projectedCameraRoute[0]
