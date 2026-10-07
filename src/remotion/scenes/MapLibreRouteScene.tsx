@@ -93,12 +93,21 @@ export const MapLibreRouteSceneFrame = ({
   const {delayRender, continueRender} = useDelayRender();
 
   const route = project.geoRoutes?.[scene.routeId];
+  const cameraRoute = scene.cameraRouteId
+    ? project.geoRoutes?.[scene.cameraRouteId]
+    : route;
   const coordinates = useMemo(
     () => (route?.coordinates ?? []) as Position[],
     [route],
   );
+  const cameraCoordinates = useMemo(
+    () => (cameraRoute?.coordinates ?? route?.coordinates ?? []) as Position[],
+    [cameraRoute, route],
+  );
 
-  const plateScale = scene.camera === 'follow' ? 1.42 : 1.18;
+  const plateScale = scene.camera === 'follow'
+    ? Math.max(1.72, scene.cameraZoom + 0.32)
+    : 1.18;
   const plateWidth = Math.round(width * plateScale);
   const plateHeight = Math.round(height * plateScale);
   const plateLeft = (width - plateWidth) / 2;
@@ -108,6 +117,7 @@ export const MapLibreRouteSceneFrame = ({
   const loadingResolvedRef = useRef(false);
   const [loadingHandle] = useState(() => delayRender('Loading fixed MapLibre plate'));
   const [projectedRoute, setProjectedRoute] = useState<Point[]>([]);
+  const [projectedCameraRoute, setProjectedCameraRoute] = useState<Point[]>([]);
   const [projectedStops, setProjectedStops] = useState<Point[]>([]);
   const [fallbackReason, setFallbackReason] = useState<string | null>(null);
   const [diagnostics, setDiagnostics] = useState<Diagnostics>(() => ({
@@ -203,12 +213,17 @@ export const MapLibreRouteSceneFrame = ({
           const point = mapInstance!.project([lon, lat]);
           return {x: point.x, y: point.y};
         });
+        const cameraPoints = cameraCoordinates.map(([lon, lat]) => {
+          const point = mapInstance!.project([lon, lat]);
+          return {x: point.x, y: point.y};
+        });
         const stopPoints = scene.stops.map((stop) => {
           const point = mapInstance!.project(stop.coordinates);
           return {x: point.x, y: point.y};
         });
 
         setProjectedRoute(routePoints);
+        setProjectedCameraRoute(cameraPoints);
         setProjectedStops(stopPoints);
         setDiagnostics((current) => ({...current, idle: true}));
         window.clearTimeout(timeout);
@@ -226,6 +241,7 @@ export const MapLibreRouteSceneFrame = ({
       // scenes while capturing frames; explicit disposal can invalidate the canvas.
     };
   }, [
+    cameraCoordinates,
     continueRender,
     coordinates,
     diagnostics.webgl,
@@ -273,7 +289,9 @@ export const MapLibreRouteSceneFrame = ({
   );
 
   const path = toPath(projectedRoute);
+  const cameraPath = toPath(projectedCameraRoute);
   const pathLength = path ? getLength(path) : 0;
+  const cameraPathLength = cameraPath ? getLength(cameraPath) : 0;
   const visiblePath = pathLength > 0
     ? cutPath(path, pathLength * clamp01(progress))
     : '';
@@ -286,16 +304,25 @@ export const MapLibreRouteSceneFrame = ({
     : {x: 1, y: 0};
   const markerBearing = Math.atan2(markerTangent.y, markerTangent.x) * 180 / Math.PI;
 
-  const marginX = (plateWidth - width) / 2;
-  const marginY = (plateHeight - height) / 2;
+  // The route marker and the camera deliberately use separate progress values.
+  // This follows the same principle as Remotion's Mapbox route example while
+  // keeping our browser renderer on one already-loaded MapLibre plate.
+  const cameraProgress = clamp01(progress + scene.cameraLead);
+  const cameraDistance = cameraPathLength * cameraProgress;
+  const cameraPoint = cameraPath
+    ? getPointAtLength(cameraPath, cameraDistance) ?? projectedCameraRoute[0]
+    : projectedCameraRoute[0] ?? markerPoint;
+
+  const marginX = Math.max(0, (plateWidth - width) / 2);
+  const marginY = Math.max(0, (plateHeight - height) / 2);
   const desiredX = width * 0.5;
-  const desiredY = height * 0.56;
-  const rawDx = markerPoint ? desiredX - (plateLeft + markerPoint.x) : 0;
-  const rawDy = markerPoint ? desiredY - (plateTop + markerPoint.y) : 0;
+  const desiredY = height * scene.cameraAnchorY;
+  const rawDx = cameraPoint ? desiredX - (plateLeft + cameraPoint.x) : 0;
+  const rawDy = cameraPoint ? desiredY - (plateTop + cameraPoint.y) : 0;
   const followStrength = scene.camera === 'follow'
     ? interpolate(
         frame,
-        [fps * 0.65, Math.max(fps * 1.4, durationInFrames * 0.38)],
+        [fps * 0.12, Math.max(fps * 0.75, durationInFrames * 0.24)],
         [0, 1],
         {
           extrapolateLeft: 'clamp',
@@ -306,11 +333,17 @@ export const MapLibreRouteSceneFrame = ({
     : 0;
   const dx = clamp(rawDx, -marginX, marginX) * followStrength;
   const dy = clamp(rawDy, -marginY, marginY) * followStrength;
+  const cameraScale = scene.camera === 'follow'
+    ? 1 + (scene.cameraZoom - 1) * followStrength
+    : 1;
 
   const {foreground, muted, accent} = project.theme;
   const start = scene.stops[0]?.label;
   const end = scene.stops[scene.stops.length - 1]?.label;
-  const ready = projectedRoute.length >= 2 && diagnostics.idle;
+  const ready =
+    projectedRoute.length >= 2 &&
+    projectedCameraRoute.length >= 2 &&
+    diagnostics.idle;
 
   return (
     <AbsoluteFill style={{backgroundColor: '#dbeafe', overflow: 'hidden'}}>
@@ -322,7 +355,10 @@ export const MapLibreRouteSceneFrame = ({
           width: plateWidth,
           height: plateHeight,
           opacity: ready ? 1 : 0,
-          transform: `translate3d(${dx}px, ${dy}px, 0)`,
+          transform: `translate3d(${dx}px, ${dy}px, 0) scale(${cameraScale})`,
+          transformOrigin: cameraPoint
+            ? `${cameraPoint.x}px ${cameraPoint.y}px`
+            : '50% 50%',
           willChange: scene.camera === 'follow' ? 'transform' : undefined,
         }}
       >
@@ -503,7 +539,8 @@ export const MapLibreRouteSceneFrame = ({
           <span>Style {diagnostics.styleLoaded ? '✓' : '…'}</span>
           <span>Idle plate {diagnostics.idle ? '✓' : '…'}</span>
           <span>Errors {diagnostics.errors.length}</span>
-          <span>Camera CSS plate</span>
+          <span>Camera route {scene.cameraRouteId ? 'dedicated' : 'route + lead'}</span>
+          <span>Lead {(scene.cameraLead * 100).toFixed(1)}% · zoom {scene.cameraZoom.toFixed(2)}×</span>
           {diagnostics.errors.length > 0 ? (
             <span style={{maxWidth: width * 0.34, color: '#FCA5A5'}}>
               {diagnostics.errors[diagnostics.errors.length - 1]}
