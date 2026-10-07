@@ -1,0 +1,141 @@
+{
+  "id": "caption-styles-showcase",
+  "title": "Premium Caption Styles",
+  "template": "travel-story",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#071016",
+    "foreground": "#F7FAFC",
+    "muted": "#A8B7C2",
+    "accent": "#F2C14E"
+  },
+  "scenes": [
+    {
+      "id": "captions-editorial",
+      "type": "caption-demo",
+      "duration": 4.8,
+      "title": "Editorial emphasis",
+      "background": "paper",
+      "captionStyle": "editorial-highlight",
+      "captionPosition": "center",
+      "emphasisWords": [
+        "Kyoto",
+        "dawn"
+      ],
+      "combineTokensWithinMilliseconds": 1300,
+      "captions": [
+        {
+          "text": "Kyoto feels different",
+          "start": 0.2,
+          "end": 1.55
+        },
+        {
+          "text": "before the city wakes",
+          "start": 1.55,
+          "end": 3
+        },
+        {
+          "text": "walk at dawn",
+          "start": 3,
+          "end": 4.45
+        }
+      ],
+      "transition": "fade"
+    },
+    {
+      "id": "captions-karaoke",
+      "type": "caption-demo",
+      "duration": 4.8,
+      "title": "Karaoke progress",
+      "background": "gradient",
+      "captionStyle": "karaoke",
+      "captionPosition": "center",
+      "emphasisWords": [],
+      "combineTokensWithinMilliseconds": 1500,
+      "captions": [
+        {
+          "text": "Tokyo to Kyoto",
+          "start": 0.2,
+          "end": 1.55
+        },
+        {
+          "text": "one smooth line west",
+          "start": 1.55,
+          "end": 3.05
+        },
+        {
+          "text": "watch the journey unfold",
+          "start": 3.05,
+          "end": 4.45
+        }
+      ],
+      "transition": "photo-mask-reveal",
+      "transitionDuration": 0.55
+    },
+    {
+      "id": "captions-pill",
+      "type": "caption-demo",
+      "duration": 4.8,
+      "title": "Active word pills",
+      "background": "dark",
+      "captionStyle": "pill",
+      "captionPosition": "bottom",
+      "emphasisWords": [
+        "route",
+        "story"
+      ],
+      "combineTokensWithinMilliseconds": 1200,
+      "captions": [
+        {
+          "text": "Every route has a rhythm",
+          "start": 0.15,
+          "end": 1.75
+        },
+        {
+          "text": "every stop adds context",
+          "start": 1.75,
+          "end": 3.15
+        },
+        {
+          "text": "turn it into a story",
+          "start": 3.15,
+          "end": 4.5
+        }
+      ],
+      "transition": "split-grid",
+      "transitionDuration": 0.55
+    },
+    {
+      "id": "captions-cinematic",
+      "type": "caption-demo",
+      "duration": 4.8,
+      "title": "Cinematic captions",
+      "background": "gradient",
+      "captionStyle": "cinematic",
+      "captionPosition": "center",
+      "emphasisWords": [
+        "Japan"
+      ],
+      "combineTokensWithinMilliseconds": 1400,
+      "captions": [
+        {
+          "text": "A quiet morning",
+          "start": 0.2,
+          "end": 1.6
+        },
+        {
+          "text": "somewhere in Japan",
+          "start": 1.6,
+          "end": 3.05
+        },
+        {
+          "text": "before the first train",
+          "start": 3.05,
+          "end": 4.45
+        }
+      ],
+      "transition": "fade"
+    }
+  ]
+}
