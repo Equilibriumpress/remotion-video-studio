@@ -250,22 +250,23 @@ export const MapLibreRouteSceneFrame = ({
 
       mapInstance.once('idle', async () => {
         if (disposed || !mapInstance) return;
+        const activeMap = mapInstance;
 
         const routePoints = coordinates.map(([lon, lat]) => {
-          const point = mapInstance!.project([lon, lat]);
+          const point = activeMap.project([lon, lat]);
           return {x: point.x, y: point.y};
         });
         const cameraPoints = cameraCoordinates.map(([lon, lat]) => {
-          const point = mapInstance!.project([lon, lat]);
+          const point = activeMap.project([lon, lat]);
           return {x: point.x, y: point.y};
         });
         const stopPoints = scene.stops.map((stop) => {
-          const point = mapInstance!.project(stop.coordinates);
+          const point = activeMap.project(stop.coordinates);
           return {x: point.x, y: point.y};
         });
 
         try {
-          const url = await canvasToObjectUrl(mapInstance.getCanvas());
+          const url = await canvasToObjectUrl(activeMap.getCanvas());
           if (disposed) {
             URL.revokeObjectURL(url);
             return;
@@ -284,8 +285,8 @@ export const MapLibreRouteSceneFrame = ({
           }));
           window.clearTimeout(timeout);
           mapCanvas?.removeEventListener('webglcontextlost', onContextLost);
-          mapInstance.remove();
-          mapInstance = null;
+          activeMap.remove();
+          if (mapInstance === activeMap) mapInstance = null;
           finishLoading();
         } catch (error) {
           if (disposed) return;
@@ -294,8 +295,8 @@ export const MapLibreRouteSceneFrame = ({
           );
           window.clearTimeout(timeout);
           mapCanvas?.removeEventListener('webglcontextlost', onContextLost);
-          mapInstance.remove();
-          mapInstance = null;
+          activeMap.remove();
+          if (mapInstance === activeMap) mapInstance = null;
           finishLoading();
         }
       });
