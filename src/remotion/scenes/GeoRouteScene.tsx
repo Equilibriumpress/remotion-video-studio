@@ -219,8 +219,8 @@ export const GeoRouteSceneFrame = ({
   const revealed = progress01(frame, fps * 0.14, Math.max(fps * 0.7, durationInFrames * 0.78));
   const drawn = revealed * scene.progress;
   const markerDistance = pathLength * constrain(drawn);
-  const markerPoint = getPointAtLength(path, markerDistance);
-  const markerTangent = getTangentAtLength(path, markerDistance);
+  const markerPoint = getPointAtLength(path, markerDistance) ?? points[0];
+  const markerTangent = getTangentAtLength(path, markerDistance) ?? {x: 1, y: 0};
   const marker = {
     x: markerPoint.x,
     y: markerPoint.y,
