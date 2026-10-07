@@ -31,6 +31,7 @@ GitHub Actions performs only project validation and the static Vite build. It do
 - Zod project schema
 - Geographically anchored SVG routes with precomputed railway, walking and road geometry
 - Experimental MapLibre GL route flyovers with OpenFreeMap basemaps and SVG fallback
+- Experimental Remotion Three globe flights with deterministic great-circle arcs and a lightweight fallback
 - Cinematic camera presets with adjustable motion strength and per-scene transition duration
 - Animated SVG elevation profiles with distance, height and ascent progress
 - Auto-fitted route chapters sliced by cumulative geographic distance
@@ -61,6 +62,7 @@ AGENTS.md                 ChatGPT/Codex authoring protocol
 - `kyoto-premium-showcase` — travel editorial storytelling
 - `tokyo-kyoto-shinkansen` — clean station-to-station rail route
 - `maplibre-route-demo` — experimental live-basemap Tokyo–Kyoto flyover
+- `three-globe-flight-demo` — experimental Tokyo → Singapore → Sydney 3D globe flight
 - `kyoto-morning-route` — calm photo-led Kyoto walking reel
 - `kyoto-auto-story` — the same route expressed as a compact story config with generated scenes
 - `scotland-roadtrip-showcase` — flowing multi-stop Highland journey
@@ -73,6 +75,14 @@ Production requires successful image preflight and a browser Draft render. Remot
 `geo-route` scenes use a committed `geoRoutes` dictionary in each video JSON. Route geometries follow GeoJSON `LineString` coordinate order: `[longitude, latitude]`. Add labelled stops with geographic coordinates, choose `clean`, `watercolor`, or `flow`, and animate a fraction using `progress`. The renderer fits, projects and (optionally) rotates the whole route while retaining a correct north compass. `camera: "follow"` moves a lightweight SVG camera along the active route marker; `cameraZoom` controls the follow scale. If a scene omits `distance`, the renderer derives kilometres from the stored WGS84 line. No map tiles, WebGL or routing calls run during video playback.
 
 The Tokyo–Kyoto sample reuses a 281-point Tōkaidō rail alignment sourced from Japanese MLIT N02 FY2025 railway data. Kyoto Morning follows OSM-based historic street centre-lines. Scotland currently uses indicative geographical waypoints rather than exact road-snapped paths. To replace its waypoint line with detailed OpenStreetMap driving geometry, run `npm run routes:scotland` once on a networked authoring machine and commit the updated JSON. The script calls Valhalla once, simplifies the resulting line and needs no GitHub Actions render minutes. Public Valhalla demos have usage limits. Sources and licenses are recorded inside project route data and shown in map scenes.
+
+## Experimental Remotion Three globe
+
+`three-globe` is an opt-in React Three Fiber scene powered by `@remotion/three`. It builds the globe, latitude/longitude grid, city markers, great-circle route arcs and flight marker procedurally from geographic coordinates. No textures, 3D downloads or map tiles are required.
+
+The scene is deliberately separate from `geo-route`. SVG remains the production default for normal travel stories; use the 3D globe when global scale or aviation context materially improves the story. The Player requires WebGL. If WebGL is unavailable, the scene renders a lightweight 2D globe fallback. Client-side MP4 export enables Remotion's experimental HTML-in-canvas capture and is Chromium-first.
+
+The reference project uses city-centre coordinates only to demonstrate geographic scale. Its route is explicitly labelled as a great-circle visualization rather than a navigable airline route.
 
 ## Experimental MapLibre renderer
 
