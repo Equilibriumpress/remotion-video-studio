@@ -1,6 +1,12 @@
+import {
+  cutPath,
+  getLength,
+  getPointAtLength,
+  getTangentAtLength,
+} from '@remotion/paths';
 import * as maplibregl from 'maplibre-gl';
-import type {GeoJSONSource, Map} from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {
   AbsoluteFill,
@@ -8,58 +14,70 @@ import {
   interpolate,
   useCurrentFrame,
   useDelayRender,
+  useRemotionEnvironment,
   useVideoConfig,
 } from 'remotion';
 import type {MapLibreRouteScene, VideoProject} from '../../project/schema';
-import {GeoRouteSceneFrame, sliceGeoRouteByProgress} from './GeoRouteScene';
+import {GeoRouteSceneFrame} from './GeoRouteScene';
 
 type Position = [number, number];
+type Point = {x: number; y: number};
 
-const pointFeature = (coordinates: Position) => ({
-  type: 'Feature' as const,
-  properties: {},
-  geometry: {
-    type: 'Point' as const,
-    coordinates,
-  },
-});
-
-const lineFeature = (coordinates: Position[]) => ({
-  type: 'Feature' as const,
-  properties: {},
-  geometry: {
-    type: 'LineString' as const,
-    coordinates,
-  },
-});
-
-const last = <T,>(items: ReadonlyArray<T>) => items[items.length - 1];
-
-const cameraOptions = ({
-  map,
-  route,
-  progress,
-  altitude,
-}: {
-  map: Map;
-  route: ReadonlyArray<Position>;
-  progress: number;
-  altitude: number;
-}) => {
-  const targetSlice = sliceGeoRouteByProgress(route, 0, Math.max(0.001, progress));
-  const cameraSlice = sliceGeoRouteByProgress(route, 0, Math.max(0.001, progress - 0.055));
-  const target = last(targetSlice) as Position;
-  const camera = last(cameraSlice) as Position;
-
-  return map.calculateCameraOptionsFromTo(
-    new maplibregl.LngLat(camera[0], camera[1]),
-    altitude,
-    new maplibregl.LngLat(target[0], target[1]),
-  );
+type Diagnostics = {
+  webgl: boolean;
+  workerConfigured: boolean;
+  styleLoaded: boolean;
+  idle: boolean;
+  errors: string[];
 };
 
-const sourceData = (route: ReadonlyArray<Position>, progress: number) =>
-  lineFeature(sliceGeoRouteByProgress(route, 0, Math.max(0.001, progress)));
+maplibregl.setWorkerUrl(workerUrl);
+
+const clamp01 = (value: number) => Math.max(0, Math.min(1, value));
+const clamp = (value: number, min: number, max: number) =>
+  Math.max(min, Math.min(max, value));
+
+const toPath = (points: ReadonlyArray<Point>) =>
+  points.length < 2
+    ? ''
+    : `M ${points.map((point) => `${point.x.toFixed(2)} ${point.y.toFixed(2)}`).join(' L ')}`;
+
+const hasWebGl = () => {
+  if (typeof document === 'undefined') return false;
+  try {
+    const canvas = document.createElement('canvas');
+    return Boolean(canvas.getContext('webgl2') || canvas.getContext('webgl'));
+  } catch {
+    return false;
+  }
+};
+
+const routeBounds = (coordinates: ReadonlyArray<Position>) =>
+  coordinates.reduce(
+    (bounds, coordinate) => bounds.extend(coordinate),
+    new maplibregl.LngLatBounds(coordinates[0], coordinates[0]),
+  );
+
+const fallbackScene = (
+  scene: MapLibreRouteScene,
+  reason: string,
+): Extract<VideoProject['scenes'][number], {type: 'geo-route'}> => ({
+  id: scene.id,
+  type: 'geo-route',
+  duration: scene.duration,
+  motionAmount: scene.motionAmount,
+  transitionDuration: scene.transitionDuration,
+  title: scene.title,
+  routeId: scene.routeId,
+  stops: scene.stops,
+  progress: scene.progress,
+  label: `MapLibre fallback · ${reason}`,
+  mapRotation: 0,
+  camera: scene.camera,
+  cameraZoom: 1.28,
+  style: 'clean',
+  showDetails: scene.showDetails,
+});
 
 export const MapLibreRouteSceneFrame = ({
   scene,
@@ -69,13 +87,9 @@ export const MapLibreRouteSceneFrame = ({
   project: VideoProject;
 }) => {
   const frame = useCurrentFrame();
-  const {durationInFrames, height, width} = useVideoConfig();
+  const {durationInFrames, fps, height, width} = useVideoConfig();
+  const {isRendering} = useRemotionEnvironment();
   const {delayRender, continueRender} = useDelayRender();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const resolvedRef = useRef(false);
-  const [loadingHandle] = useState(() => delayRender('Loading MapLibre route scene'));
-  const [map, setMap] = useState<Map | null>(null);
-  const [loadError, setLoadError] = useState<string | null>(null);
 
   const route = project.geoRoutes?.[scene.routeId];
   const coordinates = useMemo(
@@ -83,53 +97,68 @@ export const MapLibreRouteSceneFrame = ({
     [route],
   );
 
-  const progress = interpolate(
-    frame,
-    [0, Math.max(1, durationInFrames - 1)],
-    [0.001, Math.max(0.001, scene.progress)],
-    {
-      extrapolateLeft: 'clamp',
-      extrapolateRight: 'clamp',
-      easing: Easing.inOut(Easing.cubic),
-    },
-  );
+  const plateScale = scene.camera === 'follow' ? 1.42 : 1.18;
+  const plateWidth = Math.round(width * plateScale);
+  const plateHeight = Math.round(height * plateScale);
+  const plateLeft = (width - plateWidth) / 2;
+  const plateTop = (height - plateHeight) / 2;
 
-  const altitude = interpolate(
-    progress,
-    [0, 0.14, 0.86, 1],
-    [
-      Math.max(900, scene.altitude * 0.52),
-      scene.altitude,
-      scene.altitude,
-      Math.max(900, scene.altitude * 0.62),
-    ],
-    {
-      extrapolateLeft: 'clamp',
-      extrapolateRight: 'clamp',
-      easing: Easing.inOut(Easing.cubic),
-    },
-  );
+  const containerRef = useRef<HTMLDivElement>(null);
+  const loadingResolvedRef = useRef(false);
+  const [loadingHandle] = useState(() => delayRender('Loading fixed MapLibre plate'));
+  const [projectedRoute, setProjectedRoute] = useState<Point[]>([]);
+  const [projectedStops, setProjectedStops] = useState<Point[]>([]);
+  const [fallbackReason, setFallbackReason] = useState<string | null>(null);
+  const [diagnostics, setDiagnostics] = useState<Diagnostics>(() => ({
+    webgl: hasWebGl(),
+    workerConfigured: Boolean(workerUrl),
+    styleLoaded: false,
+    idle: false,
+    errors: [],
+  }));
 
   useEffect(() => {
-    if (!containerRef.current || !route || coordinates.length < 2) {
-      return;
-    }
-
     const finishLoading = () => {
-      if (!resolvedRef.current) {
-        resolvedRef.current = true;
+      if (!loadingResolvedRef.current) {
+        loadingResolvedRef.current = true;
         continueRender(loadingHandle);
       }
     };
 
-    let mapInstance: Map;
+    if (!route || coordinates.length < 2) {
+      setFallbackReason('route unavailable');
+      finishLoading();
+      return;
+    }
+
+    if (!diagnostics.webgl) {
+      setFallbackReason('WebGL unavailable');
+      finishLoading();
+      return;
+    }
+
+    if (!containerRef.current) {
+      setFallbackReason('map container unavailable');
+      finishLoading();
+      return;
+    }
+
+    let disposed = false;
+    let mapInstance: maplibregl.Map | null = null;
+
+    const timeout = window.setTimeout(() => {
+      if (disposed || loadingResolvedRef.current) return;
+      setFallbackReason('map/style load timed out');
+      finishLoading();
+    }, 8000);
+
     try {
       mapInstance = new maplibregl.Map({
         container: containerRef.current,
         style: scene.mapStyleUrl,
         center: coordinates[0],
-        zoom: 10,
-        pitch: 62,
+        zoom: 5,
+        pitch: scene.camera === 'follow' ? 30 : 16,
         bearing: 0,
         interactive: false,
         attributionControl: false,
@@ -139,234 +168,272 @@ export const MapLibreRouteSceneFrame = ({
         },
       });
     } catch (error) {
-      setLoadError(error instanceof Error ? error.message : 'MapLibre failed to initialize');
+      window.clearTimeout(timeout);
+      setFallbackReason(error instanceof Error ? error.message : 'MapLibre initialization failed');
       finishLoading();
       return;
     }
 
-    const fail = (message: string) => {
-      setLoadError(message);
-      finishLoading();
-    };
-
     mapInstance.on('error', (event) => {
-      const message = event?.error?.message ?? 'MapLibre map error';
-      fail(message);
+      const message = event?.error?.message ?? 'MapLibre resource error';
+      if (!disposed) {
+        setDiagnostics((current) => ({
+          ...current,
+          errors: [...current.errors.slice(-3), message],
+        }));
+      }
     });
 
     mapInstance.on('load', () => {
-      mapInstance.addSource('travel-route', {
-        type: 'geojson',
-        data: sourceData(coordinates, 0.001),
-      });
+      if (disposed || !mapInstance) return;
 
-      mapInstance.addLayer({
-        id: 'travel-route-shadow',
-        type: 'line',
-        source: 'travel-route',
-        layout: {
-          'line-cap': 'round',
-          'line-join': 'round',
-        },
-        paint: {
-          'line-color': '#ffffff',
-          'line-opacity': 0.92,
-          'line-width': 10,
-        },
-      });
+      setDiagnostics((current) => ({...current, styleLoaded: true}));
 
-      mapInstance.addLayer({
-        id: 'travel-route-line',
-        type: 'line',
-        source: 'travel-route',
-        layout: {
-          'line-cap': 'round',
-          'line-join': 'round',
-        },
-        paint: {
-          'line-color': scene.routeColor,
-          'line-width': 6,
-        },
+      mapInstance.fitBounds(routeBounds(coordinates), {
+        padding: Math.round(Math.min(plateWidth, plateHeight) * 0.09),
+        duration: 0,
+        maxZoom: 11.5,
       });
-
-      mapInstance.addSource('travel-marker', {
-        type: 'geojson',
-        data: pointFeature(coordinates[0]),
-      });
-
-      mapInstance.addLayer({
-        id: 'travel-marker-dot',
-        type: 'circle',
-        source: 'travel-marker',
-        paint: {
-          'circle-color': scene.markerColor,
-          'circle-radius': 10,
-          'circle-stroke-color': '#ffffff',
-          'circle-stroke-width': 4,
-        },
-      });
-
-      if (scene.camera === 'overview') {
-        const bounds = coordinates.reduce(
-          (acc, coordinate) => acc.extend(coordinate),
-          new maplibregl.LngLatBounds(coordinates[0], coordinates[0]),
-        );
-        mapInstance.fitBounds(bounds, {
-          padding: Math.round(Math.min(width, height) * 0.12),
-          duration: 0,
-          maxZoom: 12.5,
-        });
-      } else {
-        mapInstance.jumpTo(
-          cameraOptions({
-            map: mapInstance,
-            route: coordinates,
-            progress: 0.001,
-            altitude: Math.max(900, scene.altitude * 0.52),
-          }),
-        );
-      }
 
       mapInstance.once('idle', () => {
-        setMap(mapInstance);
+        if (disposed || !mapInstance) return;
+
+        const routePoints = coordinates.map(([lon, lat]) => {
+          const point = mapInstance!.project([lon, lat]);
+          return {x: point.x, y: point.y};
+        });
+        const stopPoints = scene.stops.map((stop) => {
+          const point = mapInstance!.project(stop.coordinates);
+          return {x: point.x, y: point.y};
+        });
+
+        setProjectedRoute(routePoints);
+        setProjectedStops(stopPoints);
+        setDiagnostics((current) => ({...current, idle: true}));
+        window.clearTimeout(timeout);
         finishLoading();
       });
+
       mapInstance.triggerRepaint();
     });
 
     return () => {
-      mapInstance.remove();
+      disposed = true;
+      window.clearTimeout(timeout);
+      finishLoading();
+      // Deliberately do not call map.remove() here. Remotion can premount/unmount
+      // scenes while capturing frames; explicit disposal can invalidate the canvas.
     };
   }, [
     continueRender,
     coordinates,
-    height,
+    diagnostics.webgl,
     loadingHandle,
+    plateHeight,
+    plateWidth,
     route,
-    scene.altitude,
     scene.camera,
     scene.mapStyleUrl,
-    scene.markerColor,
-    scene.routeColor,
-    width,
-  ]);
-
-  useEffect(() => {
-    if (!map || loadError || coordinates.length < 2) {
-      return;
-    }
-
-    const handle = delayRender('Rendering MapLibre frame');
-    const partial = sourceData(coordinates, progress);
-    const marker = last(partial.geometry.coordinates) as Position;
-
-    map.getSource<GeoJSONSource>('travel-route')?.setData(partial);
-    map.getSource<GeoJSONSource>('travel-marker')?.setData(pointFeature(marker));
-
-    if (scene.camera === 'follow') {
-      map.jumpTo(
-        cameraOptions({
-          map,
-          route: coordinates,
-          progress,
-          altitude,
-        }),
-      );
-    }
-
-    let continued = false;
-    const finish = () => {
-      if (!continued) {
-        continued = true;
-        continueRender(handle);
-      }
-    };
-
-    map.once('idle', finish);
-    map.triggerRepaint();
-
-    const timeout = window.setTimeout(finish, 2500);
-    return () => {
-      window.clearTimeout(timeout);
-      finish();
-    };
-  }, [
-    altitude,
-    continueRender,
-    coordinates,
-    delayRender,
-    loadError,
-    map,
-    progress,
-    scene.camera,
+    scene.stops,
   ]);
 
   if (!route) {
     return (
-      <AbsoluteFill style={{backgroundColor: project.theme.background, color: project.theme.foreground, padding: 48}}>
+      <AbsoluteFill
+        style={{
+          backgroundColor: project.theme.background,
+          color: project.theme.foreground,
+          padding: 48,
+        }}
+      >
         Missing geographic route: {scene.routeId}
       </AbsoluteFill>
     );
   }
 
-  if (loadError) {
+  if (fallbackReason) {
     return (
       <GeoRouteSceneFrame
         project={project}
-        scene={{
-          id: scene.id,
-          type: 'geo-route',
-          duration: scene.duration,
-          motionAmount: scene.motionAmount,
-          transitionDuration: scene.transitionDuration,
-          title: scene.title,
-          routeId: scene.routeId,
-          stops: scene.stops,
-          progress: scene.progress,
-          label: scene.label ?? 'MapLibre unavailable · SVG fallback',
-          mapRotation: 0,
-          camera: scene.camera,
-          cameraZoom: 1.28,
-          style: 'clean',
-          showDetails: scene.showDetails,
-        }}
+        scene={fallbackScene(scene, fallbackReason)}
       />
     );
   }
 
+  const progress = interpolate(
+    frame,
+    [fps * 0.08, Math.max(fps * 0.6, durationInFrames * 0.86)],
+    [0.001, Math.max(0.001, scene.progress)],
+    {
+      extrapolateLeft: 'clamp',
+      extrapolateRight: 'clamp',
+      easing: Easing.inOut(Easing.cubic),
+    },
+  );
+
+  const path = toPath(projectedRoute);
+  const pathLength = path ? getLength(path) : 0;
+  const visiblePath = pathLength > 0
+    ? cutPath(path, pathLength * clamp01(progress))
+    : '';
+  const markerDistance = pathLength * clamp01(progress);
+  const markerPoint = path
+    ? getPointAtLength(path, markerDistance) ?? projectedRoute[0]
+    : projectedRoute[0];
+  const markerTangent = path
+    ? getTangentAtLength(path, markerDistance) ?? {x: 1, y: 0}
+    : {x: 1, y: 0};
+  const markerBearing = Math.atan2(markerTangent.y, markerTangent.x) * 180 / Math.PI;
+
+  const marginX = (plateWidth - width) / 2;
+  const marginY = (plateHeight - height) / 2;
+  const desiredX = width * 0.5;
+  const desiredY = height * 0.56;
+  const rawDx = markerPoint ? desiredX - (plateLeft + markerPoint.x) : 0;
+  const rawDy = markerPoint ? desiredY - (plateTop + markerPoint.y) : 0;
+  const followStrength = scene.camera === 'follow'
+    ? interpolate(
+        frame,
+        [fps * 0.15, Math.max(fps * 0.9, durationInFrames * 0.32)],
+        [0, 1],
+        {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'},
+      )
+    : 0;
+  const dx = clamp(rawDx, -marginX, marginX) * followStrength;
+  const dy = clamp(rawDy, -marginY, marginY) * followStrength;
+
   const {foreground, muted, accent} = project.theme;
   const start = scene.stops[0]?.label;
   const end = scene.stops[scene.stops.length - 1]?.label;
+  const ready = projectedRoute.length >= 2 && diagnostics.idle;
 
   return (
     <AbsoluteFill style={{backgroundColor: '#dbeafe', overflow: 'hidden'}}>
-      <div ref={containerRef} style={{height, position: 'absolute', width}} />
+      <div
+        style={{
+          position: 'absolute',
+          left: plateLeft,
+          top: plateTop,
+          width: plateWidth,
+          height: plateHeight,
+          transform: `translate3d(${dx}px, ${dy}px, 0)`,
+          willChange: scene.camera === 'follow' ? 'transform' : undefined,
+        }}
+      >
+        <div
+          ref={containerRef}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: plateWidth,
+            height: plateHeight,
+          }}
+        />
+
+        {ready ? (
+          <svg
+            width={plateWidth}
+            height={plateHeight}
+            viewBox={`0 0 ${plateWidth} ${plateHeight}`}
+            style={{position: 'absolute', inset: 0, overflow: 'visible', pointerEvents: 'none'}}
+          >
+            <path
+              d={path}
+              fill="none"
+              stroke="#FFFFFF"
+              strokeOpacity={0.92}
+              strokeWidth={12}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d={visiblePath}
+              fill="none"
+              stroke={scene.routeColor}
+              strokeWidth={7}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+
+            {projectedStops.map((point, index) => (
+              <g key={`${scene.stops[index]?.label ?? 'stop'}-${index}`}>
+                <circle
+                  cx={point.x}
+                  cy={point.y}
+                  r={index / Math.max(1, projectedStops.length - 1) <= progress + 0.02 ? 10 : 7}
+                  fill={index / Math.max(1, projectedStops.length - 1) <= progress + 0.02
+                    ? scene.markerColor
+                    : '#94A3B8'}
+                  stroke="#FFFFFF"
+                  strokeWidth={4}
+                />
+              </g>
+            ))}
+
+            {markerPoint ? (
+              <g
+                transform={`translate(${markerPoint.x} ${markerPoint.y}) rotate(${markerBearing})`}
+              >
+                <circle r={16} fill={scene.markerColor} stroke="#FFFFFF" strokeWidth={5} />
+                <path
+                  d="M -5 -7 L 9 0 L -5 7 Z"
+                  fill="#FFFFFF"
+                  transform="translate(2 0)"
+                />
+              </g>
+            ) : null}
+          </svg>
+        ) : null}
+      </div>
+
       <AbsoluteFill
         style={{
           pointerEvents: 'none',
           background:
-            'linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.05) 28%, rgba(0,0,0,0.06) 66%, rgba(0,0,0,0.62) 100%)',
+            'linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.04) 30%, rgba(0,0,0,0.04) 66%, rgba(0,0,0,0.60) 100%)',
         }}
       />
+
       <div
         style={{
           position: 'absolute',
           left: width * 0.065,
           right: width * 0.065,
           top: height * 0.06,
-          color: '#ffffff',
+          color: '#FFFFFF',
           fontFamily: 'Inter, Arial, sans-serif',
           textShadow: '0 2px 18px rgba(0,0,0,0.45)',
         }}
       >
-        <div style={{fontSize: width * 0.018, fontWeight: 850, letterSpacing: width * 0.0045, color: accent}}>
-          EXPERIMENTAL MAPLIBRE
+        <div
+          style={{
+            fontSize: width * 0.018,
+            fontWeight: 850,
+            letterSpacing: width * 0.0045,
+            color: accent,
+          }}
+        >
+          MAPLIBRE · FIXED PLATE
         </div>
-        <div style={{fontSize: width * 0.052, lineHeight: 1.04, fontWeight: 850, marginTop: height * 0.012}}>
+        <div
+          style={{
+            fontSize: width * 0.052,
+            lineHeight: 1.04,
+            fontWeight: 850,
+            marginTop: height * 0.012,
+          }}
+        >
           {scene.title}
         </div>
         {scene.label ? (
-          <div style={{fontSize: width * 0.024, color: '#f4f4f4', fontWeight: 650, marginTop: height * 0.012}}>
+          <div
+            style={{
+              fontSize: width * 0.024,
+              color: '#F4F4F4',
+              fontWeight: 650,
+              marginTop: height * 0.012,
+            }}
+          >
             {scene.label}
           </div>
         ) : null}
@@ -377,43 +444,83 @@ export const MapLibreRouteSceneFrame = ({
           style={{
             position: 'absolute',
             left: width * 0.065,
-            bottom: height * 0.095,
-            color: '#ffffff',
+            bottom: height * 0.085,
+            color: '#FFFFFF',
             fontFamily: 'Inter, Arial, sans-serif',
           }}
         >
           <div style={{fontSize: width * 0.029, fontWeight: 820}}>
             {start}{start && end ? ' → ' : ''}{end}
           </div>
-          <div style={{fontSize: width * 0.017, color: '#e5e7eb', marginTop: height * 0.012}}>
+          <div
+            style={{
+              fontSize: width * 0.016,
+              color: '#E5E7EB',
+              marginTop: height * 0.011,
+            }}
+          >
             Route: {route.source.name} · {route.source.license}
           </div>
-          <div style={{fontSize: width * 0.015, color: muted, marginTop: height * 0.008}}>
+          <div
+            style={{
+              fontSize: width * 0.014,
+              color: muted,
+              marginTop: height * 0.007,
+            }}
+          >
             Basemap: OpenFreeMap · © OpenStreetMap contributors
           </div>
         </div>
       ) : null}
 
-      <div
-        style={{
-          position: 'absolute',
-          right: width * 0.065,
-          bottom: height * 0.085,
-          width: width * 0.11,
-          height: width * 0.11,
-          borderRadius: '50%',
-          border: `2px solid ${foreground}`,
-          display: 'grid',
-          placeItems: 'center',
-          color: foreground,
-          background: 'rgba(0,0,0,0.28)',
-          fontFamily: 'Inter, Arial, sans-serif',
-          fontWeight: 850,
-          fontSize: width * 0.024,
-        }}
-      >
-        {Math.round(progress * 100)}%
-      </div>
+      {!isRendering ? (
+        <div
+          style={{
+            position: 'absolute',
+            right: width * 0.035,
+            bottom: height * 0.035,
+            display: 'grid',
+            gap: 5,
+            padding: `${height * 0.012}px ${width * 0.014}px`,
+            borderRadius: 12,
+            background: 'rgba(5,10,18,0.76)',
+            color: '#DDE7F0',
+            fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+            fontSize: Math.max(11, width * 0.011),
+            lineHeight: 1.25,
+            backdropFilter: 'blur(8px)',
+          }}
+        >
+          <strong style={{color: '#FFFFFF'}}>MapLibre diagnostics</strong>
+          <span>WebGL {diagnostics.webgl ? '✓' : '×'}</span>
+          <span>Worker URL {diagnostics.workerConfigured ? '✓' : '×'}</span>
+          <span>Style {diagnostics.styleLoaded ? '✓' : '…'}</span>
+          <span>Idle plate {diagnostics.idle ? '✓' : '…'}</span>
+          <span>Errors {diagnostics.errors.length}</span>
+          <span>Camera CSS plate</span>
+          {diagnostics.errors.length > 0 ? (
+            <span style={{maxWidth: width * 0.34, color: '#FCA5A5'}}>
+              {diagnostics.errors[diagnostics.errors.length - 1]}
+            </span>
+          ) : null}
+        </div>
+      ) : null}
+
+      {!ready ? (
+        <div
+          style={{
+            position: 'absolute',
+            left: width * 0.065,
+            bottom: height * 0.18,
+            color: foreground,
+            fontFamily: 'Inter, Arial, sans-serif',
+            fontSize: width * 0.018,
+            fontWeight: 700,
+          }}
+        >
+          Loading fixed map plate…
+        </div>
+      ) : null}
     </AbsoluteFill>
   );
 };
