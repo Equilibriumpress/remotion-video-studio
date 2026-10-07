@@ -1,5 +1,4 @@
-import type {ReactNode} from 'react';
-import {linearTiming, TransitionSeries} from '@remotion/transitions';
+import {linearTiming} from '@remotion/transitions';
 import {fade} from '@remotion/transitions/fade';
 import {iris} from '@remotion/transitions/iris';
 import {pushCut} from '@remotion/transitions/push-cut';
@@ -47,39 +46,9 @@ export const transitionPresentation = (
   }
 };
 
-export const OfficialTransition = ({
-  scene,
-  fps,
-  width,
-  height,
-}: {
-  scene: VideoScene;
-  fps: number;
-  width: number;
-  height: number;
-}) => {
+export const transitionTiming = (scene: VideoScene, fps: number) => {
   const durationInFrames = transitionFrames(scene, fps);
-  const presentation = transitionPresentation(scene.transition, width, height);
-  if (!presentation || durationInFrames <= 0) return null;
-
-  return (
-    <TransitionSeries.Transition
-      presentation={presentation}
-      timing={linearTiming({durationInFrames})}
-    />
-  );
+  return durationInFrames > 0
+    ? linearTiming({durationInFrames})
+    : null;
 };
-
-export const TransitionSequence = ({
-  durationInFrames,
-  children,
-}: {
-  durationInFrames: number;
-  children: ReactNode;
-}) => (
-  <TransitionSeries.Sequence durationInFrames={durationInFrames}>
-    {children}
-  </TransitionSeries.Sequence>
-);
-
-export {TransitionSeries};
