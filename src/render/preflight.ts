@@ -22,6 +22,7 @@ const sceneAssets = (scene: VideoScene): AssetRef[] => {
       ];
     case 'video':
     case 'caption-video':
+    case 'lottie':
       return [{source: scene.src, kind: 'media'}];
     case 'map-overlay':
     case 'lower-third':
