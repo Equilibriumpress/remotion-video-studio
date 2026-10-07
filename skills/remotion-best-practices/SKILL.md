@@ -11,13 +11,14 @@ Use this skill for every task that changes Remotion code, project JSON, maps, ca
 ## Required order
 
 1. Read `AGENTS.md` and `src/project/schema.ts`.
-2. Preserve the browser-first architecture: GitHub Pages previews and client-side rendering; Actions validate/build only.
-3. Prefer existing JSON scene types before adding React code.
-4. For maps, read `../remotion-maps/SKILL.md`.
-5. For motion direction, read `../remotion-motion-direction/SKILL.md`.
-6. For composition and safe areas, read `../remotion-shot-composition/SKILL.md`.
-7. For editability decisions, read `../remotion-interactivity/SKILL.md`.
-8. Validate/build before merge and inspect representative frames or browser previews.
+2. If the task starts from a free-form video request, read `../premium-video-director/SKILL.md` before selecting scenes.
+3. Preserve the browser-first architecture: GitHub Pages previews and client-side rendering; Actions validate/build only.
+4. Prefer existing JSON scene types before adding React code.
+5. For maps, read `../remotion-maps/SKILL.md`.
+6. For motion direction, read `../remotion-motion-direction/SKILL.md`.
+7. For composition and safe areas, read `../remotion-shot-composition/SKILL.md`.
+8. For editability decisions, read `../remotion-interactivity/SKILL.md`.
+9. Validate/build before merge and inspect representative frames or browser previews.
 
 All motion must derive from `useCurrentFrame()` and `useVideoConfig()`. Do not use CSS animations, timers, `requestAnimationFrame()`, or wall-clock timing.
 
