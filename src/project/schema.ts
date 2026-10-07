@@ -411,6 +411,16 @@ const ctaScene = baseScene.extend({
   action: z.string().optional(),
 });
 
+const lottieScene = baseScene.extend({
+  type: z.literal('lottie'),
+  src: z.string().min(1),
+  title: z.string().optional(),
+  subtitle: z.string().optional(),
+  loop: z.boolean().default(true),
+  playbackRate: z.number().min(0.25).max(4).default(1),
+  size: z.number().min(0.2).max(0.9).default(0.52),
+});
+
 const videoScene = baseScene.extend({
   type: z.literal('video'),
   src: z.string().min(1),
@@ -476,6 +486,7 @@ export const sceneSchema = z.discriminatedUnion('type', [
   launchHeroScene,
   featureGridScene,
   ctaScene,
+  lottieScene,
   videoScene,
   captionVideoScene,
   outroScene,
@@ -534,6 +545,7 @@ export type ElevationProfile = z.infer<typeof elevationProfileSchema>;
 export type ElevationRouteScene = Extract<VideoScene, {type: 'elevation-route'}>;
 export type RouteChapterScene = Extract<VideoScene, {type: 'route-chapter'}>;
 export type RouteStopScene = Extract<VideoScene, {type: 'route-stop'}>;
+export type LottieScene = Extract<VideoScene, {type: 'lottie'}>;
 export type VideoProject = z.infer<typeof projectSchema>;
 
 export const parseProject = (value: unknown): VideoProject => {
