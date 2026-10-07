@@ -221,6 +221,22 @@ const geoStopSchema = z.object({
   icon: z.enum(['pin', 'temple', 'nature', 'station', 'city']).default('pin'),
 });
 
+const elevationSampleSchema = z.object({
+  distanceKm: z.number().nonnegative(),
+  elevationM: z.number(),
+  label: z.string().optional(),
+});
+
+const elevationProfileSchema = z.object({
+  routeId: z.string().optional(),
+  samples: z.array(elevationSampleSchema).min(2).max(5000),
+  source: z.object({
+    name: z.string().min(1),
+    license: z.string().min(1).optional(),
+  }).optional(),
+});
+
+
 const geoRouteScene = baseScene.extend({
   type: z.literal('geo-route'),
   title: z.string().min(1),
@@ -240,6 +256,15 @@ const geoRouteScene = baseScene.extend({
   }).optional(),
   style: z.enum(['clean', 'watercolor', 'flow']).default('clean'),
   showDetails: z.boolean().default(true),
+});
+
+const elevationRouteScene = baseScene.extend({
+  type: z.literal('elevation-route'),
+  title: z.string().min(1),
+  profileId: z.string().min(1),
+  progress: z.number().min(0).max(1).default(1),
+  label: z.string().optional(),
+  showStats: z.boolean().default(true),
 });
 
 const routeMapScene = baseScene.extend({
@@ -360,6 +385,7 @@ export const sceneSchema = z.discriminatedUnion('type', [
   barLineChartScene,
   routeMapScene,
   geoRouteScene,
+  elevationRouteScene,
   locationCardScene,
   progressRouteScene,
   mapOverlayScene,
@@ -395,6 +421,7 @@ export const projectSchema = z.object({
     accent: '#78E08F',
   }),
   geoRoutes: z.record(z.string(), geoRouteSchema).optional(),
+  elevationProfiles: z.record(z.string(), elevationProfileSchema).optional(),
   audio: z.object({
     music: audioTrackSchema.optional(),
     voiceover: audioTrackSchema.optional(),
@@ -407,6 +434,8 @@ export type TransitionPreset = z.infer<typeof transitionPresetSchema>;
 export type VideoScene = z.infer<typeof sceneSchema>;
 export type GeoRouteGeometry = z.infer<typeof geoRouteSchema>;
 export type GeoRouteScene = Extract<VideoScene, {type: 'geo-route'}>;
+export type ElevationProfile = z.infer<typeof elevationProfileSchema>;
+export type ElevationRouteScene = Extract<VideoScene, {type: 'elevation-route'}>;
 export type VideoProject = z.infer<typeof projectSchema>;
 
 export const parseProject = (value: unknown): VideoProject => projectSchema.parse(value);
