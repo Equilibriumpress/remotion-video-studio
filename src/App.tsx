@@ -53,8 +53,24 @@ export const App = () => {
           <div className="project-facts">
             <div><span>Format</span><strong>{dimensions.width}×{dimensions.height}</strong></div>
             <div><span>Frames</span><strong>{durationInFrames}</strong></div>
-            <div><span>Source</span><strong>JSON</strong></div>
+            <div><span>Source</span><strong>{project.director ? 'Prompt → Director' : 'JSON'}</strong></div>
           </div>
+
+          {project.director ? (
+            <div className="director-card">
+              <p className="eyebrow">Director input</p>
+              <blockquote>{project.director.sourcePrompt}</blockquote>
+              <div className="director-tags">
+                <span>{project.director.visualLanguage}</span>
+                <span>{project.director.pacing}</span>
+                <span>{project.director.durationTarget}s target</span>
+              </div>
+              <p className="director-payoff">
+                <strong>Payoff</strong>
+                {project.director.payoff}
+              </p>
+            </div>
+          ) : null}
         </aside>
 
         <section className="workspace">
@@ -91,7 +107,7 @@ export const App = () => {
               <div className="scene-chip" key={scene.id}>
                 <span>{String(index + 1).padStart(2, '0')}</span>
                 <strong>{scene.type}</strong>
-                <small>{scene.duration}s</small>
+                <small>{scene.role ? `${scene.role} · ` : ''}{scene.duration}s</small>
               </div>
             ))}
           </div>
