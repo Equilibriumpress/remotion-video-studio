@@ -423,10 +423,14 @@ const captionVideoScene = baseScene.extend({
   muted: z.boolean().default(false),
   loop: z.boolean().default(false),
   trimBefore: z.number().nonnegative().optional(),
+  captionStyle: z.enum(['basic', 'tiktok', 'word-highlight']).default('word-highlight'),
+  combineTokensWithinMilliseconds: z.number().int().min(150).max(3000).default(1100),
+  breakOnSilenceAfterMilliseconds: z.number().int().min(0).max(3000).optional(),
   captions: z.array(z.object({
     text: z.string().min(1),
     start: z.number().nonnegative(),
     end: z.number().positive(),
+    pageBreakAfter: z.boolean().optional(),
   })).min(1),
 });
 

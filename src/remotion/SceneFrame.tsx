@@ -13,6 +13,7 @@ import {MapLibreRouteSceneFrame} from './scenes/MapLibreRouteScene';
 import {LaunchSceneFrame} from './scenes/LaunchScenes';
 import {DataSceneFrame} from './scenes/DataScenes';
 import {FittedSvgText} from './svg/FittedSvgText';
+import {CaptionOverlay} from './CaptionOverlay';
 
 type Props = {
   scene: VideoScene;
@@ -472,10 +473,6 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
       : scene.motion === 'slow-push'
         ? interpolate(frame, [0, Math.max(1, durationInFrames - 1)], [1.01, 1.08], clamp)
         : 1;
-    const activeCaption = scene.type === 'caption-video'
-      ? scene.captions.find((caption) => frame / fps >= caption.start && frame / fps < caption.end)
-      : undefined;
-
     return (
       <AbsoluteFill
         style={{
@@ -500,22 +497,10 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
           {scene.type === 'video' && scene.caption ? (
             <text x={pad} y={height - pad} fill="#F4F4F4" fontSize={bodySize * 0.72} fontWeight={650}>{scene.caption}</text>
           ) : null}
-          {activeCaption ? (
-            <>
-              <rect x={width * 0.09} y={height * 0.72} width={width * 0.82} height={height * 0.12} rx={height * 0.025} fill="rgba(0,0,0,0.68)" />
-              <text
-                x={width / 2}
-                y={height * 0.79}
-                fill="#FFFFFF"
-                fontSize={bodySize * 1.08}
-                fontWeight={850}
-                textAnchor="middle"
-              >
-                {activeCaption.text}
-              </text>
-            </>
-          ) : null}
         </svg>
+        {scene.type === 'caption-video' ? (
+          <CaptionOverlay scene={scene} project={project} />
+        ) : null}
       </AbsoluteFill>
     );
   }
