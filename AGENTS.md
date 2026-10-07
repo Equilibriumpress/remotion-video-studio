@@ -9,8 +9,8 @@ Create premium travel videos and route stories that preview and render from GitH
 1. Read `src/project/schema.ts`.
 2. Prefer `travel-story` for travel and routes. Use `explainer` for product videos. Keep `data-story` for technical compatibility and internal experiments.
 3. Create one JSON file in `projects/`.
-4. Put local media in `public/media/<project-id>/`.
-5. Use repository-relative media paths such as `/media/<project-id>/photo.jpg`.
+4. Use existing licensed remote photo URLs when browser asset preflight and export work. Keep source credits. Local files under `public/media/<project-id>/` remain an option when an external host fails.
+5. Use repository-relative paths for media stored in this repository.
 6. Register the project in `src/project/catalog.ts`.
 7. Run `npm run validate`.
 8. Run `npm run build`.
@@ -20,7 +20,7 @@ Create premium travel videos and route stories that preview and render from GitH
 
 - Do not create new React code for a normal content-only video.
 - Reuse existing scene types before adding a new one.
-- Do not hotlink remote images for rendered projects. Browser canvas export is more reliable with same-origin assets.
+- Licensed remote images are permitted when preview, preflight and video export work. Document the image sources; fall back to local media only if needed.
 - Keep scene IDs unique inside a project and project IDs unique across the repository.
 - Keep all `remotion` and `@remotion/*` packages on exactly the same version.
 - Do not add server rendering, Lambda, FFmpeg rendering or video rendering to GitHub Actions.
@@ -70,9 +70,18 @@ For `photo-mask`, choose `shape`: `portrait`, `circle`, or `window`. Optional `t
 Prefer restrained combinations. One strong mask or kinetic treatment per sequence is usually enough.
 
 
+### Geographically faithful routes
+
+Use `geo-route` for videos portraying a real railway, pedestrian route or road trip. Provide a top-level `geoRoutes` entry containing WGS84 `LineString` coordinates in `[longitude, latitude]` order, a route mode (`rail`, `walking`, `driving`) and source attribution. Scenes reference a `routeId` plus georeferenced `stops`. Reuse the route across scenes and vary `progress`, `style`, and `mapRotation` to tell the story. The map draws SVG from precomputed geographic data; it does not fetch tiles or call live routing APIs during render. Optional `contextLines` must also be geographically sourced.
+
+- `tokyo-kyoto-shinkansen`: Japan MLIT FY2025 rail track, already reduced to an animated line.
+- `kyoto-morning-route`: measured and OpenStreetMap-based streets of Southern Higashiyama.
+- `scotland-roadtrip-showcase`: geographical town/road waypoints remain indicative until fully road-snapped; the optional one-time authoring command `npm run routes:scotland` fetches a Valhalla route and saves the road geometry in the project JSON. Do not call these illustrative waypoint links exact navigable roads.
+- Always show appropriate map-data attribution within the video and the project documentation. Validate stops against the path; do not invent routes from arbitrary normalized positions.
+
 ### Lightweight SVG maps
 
-Use `route-map`, `location-card`, `progress-route`, and `map-overlay` for stylized geographic motion when a live basemap is unnecessary. Coordinates use normalized 0–1 scene space. Keep routes to a small number of meaningful stops and use `contextPath` only for lightweight SVG geography.
+Use `route-map`, `location-card`, `progress-route`, and `map-overlay` for stylized geographic motion when a live basemap is unnecessary. Legacy scenes use normalized 0–1 scene space. Do not present them as geographically exact. Keep routes to a small number of meaningful stops and use `contextPath` only for lightweight SVG geography.
 
 Do not introduce map tiles or WebGL into these scenes.
 
@@ -109,7 +118,7 @@ Route points may use `icon`: `pin`, `temple`, `nature`, `station`, or `city`. Us
 
 Position the studio as a travel video studio and route storytelling engine. Prioritize destination footage or licensed photos, SVG route animation, stop callouts and concise captions. The public catalog highlights travel examples plus one product explainer. Keep research-only data scenes out of the public showcase list.
 
-New image-led showcase files should use same-origin assets under `public/media/<project-id>/` before release-quality MP4 export. Existing Wikimedia-hosted showcase references are transitional. Preserve source, creator and license attribution in project documentation. The local asset preflight and browser Draft render remain mandatory release checks.
+Images may remain remote when they pass preflight and export tests. Preserve Wikimedia attribution. Preserve source, creator and license attribution in project documentation. The local asset preflight and browser Draft render remain mandatory release checks.
 
 ### Combined data motion
 
