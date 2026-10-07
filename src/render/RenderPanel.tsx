@@ -165,8 +165,8 @@ export const RenderPanel = ({project}: Props) => {
 
       {usesMapLibre ? (
         <p className="render-note">
-          MapLibre preview uses WebGL. MP4 export enables Remotion HTML-in-canvas only for this project.
-          If capture is unsupported, use the SVG route project as the production fallback.
+          MapLibre renders one fixed WebGL basemap plate; route reveal and follow motion are Remotion/SVG + CSS.
+          MP4 export still needs HTML-in-canvas capture for the basemap. Preview diagnostics show worker/style/idle state.
         </p>
       ) : null}
       {usesThree ? (
