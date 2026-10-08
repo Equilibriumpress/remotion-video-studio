@@ -1,6 +1,6 @@
 import {existsSync, readFileSync, readdirSync} from 'node:fs';
 import {resolve} from 'node:path';
-import {parseProject, type VideoProject, type VideoScene} from '../src/project/schema';
+import {parseProject, projectVisualScenes, type VideoProject, type VideoScene} from '../src/project/schema';
 
 const root = process.cwd();
 const projectDir = resolve(root, 'projects');
@@ -31,9 +31,13 @@ const sceneAssets = (scene: VideoScene): string[] => {
 };
 
 const projectAssets = (project: VideoProject) => {
-  const assets = project.scenes.flatMap(sceneAssets);
+  const assets = projectVisualScenes(project).flatMap(sceneAssets);
   if (project.audio?.music) assets.push(project.audio.music.src);
   if (project.audio?.voiceover) assets.push(project.audio.voiceover.src);
+  if (project.youtube?.music) assets.push(project.youtube.music.src);
+  if (project.youtube?.voiceover) assets.push(project.youtube.voiceover.src);
+  if (project.youtube?.endCard?.avatarSrc) assets.push(project.youtube.endCard.avatarSrc);
+  if (project.youtube?.thumbnail?.src) assets.push(project.youtube.thumbnail.src);
   return [...new Set(assets)];
 };
 
@@ -112,7 +116,7 @@ for (const file of files) {
     }
 
     const sceneIds = new Set<string>();
-    for (const scene of project.scenes) {
+    for (const scene of projectVisualScenes(project)) {
       if (sceneIds.has(scene.id)) {
         errors.push(`${file}: duplicate scene id "${scene.id}"`);
       }

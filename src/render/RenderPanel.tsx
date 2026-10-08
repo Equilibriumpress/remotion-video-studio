@@ -1,8 +1,8 @@
 import {useEffect, useRef, useState} from 'react';
 import {canRenderMediaOnWeb, renderMediaOnWeb} from '@remotion/web-renderer';
 import type {VideoProject} from '../project/schema';
-import {getDimensions, projectFrames, projectHasAudio} from '../project/schema';
-import {VideoComposition} from '../remotion/VideoComposition';
+import {getDimensions, projectFrames, projectHasAudio, projectVisualScenes} from '../project/schema';
+import {ProjectComposition} from '../remotion/ProjectComposition';
 import {checkProjectAssets, type AssetCheck} from './preflight';
 import {renderProfiles, type RenderProfile} from './profiles';
 
@@ -13,8 +13,9 @@ type Props = {
 type RenderState = 'idle' | 'checking' | 'rendering' | 'done' | 'error';
 
 export const RenderPanel = ({project}: Props) => {
-  const usesMapLibre = project.scenes.some((scene) => scene.type === 'maplibre-route');
-  const usesThree = project.scenes.some((scene) => scene.type === 'three-globe');
+  const visualScenes = projectVisualScenes(project);
+  const usesMapLibre = visualScenes.some((scene) => scene.type === 'maplibre-route');
+  const usesThree = visualScenes.some((scene) => scene.type === 'three-globe');
   const usesExperimentalCanvas = usesThree;
   const [profile, setProfile] = useState<RenderProfile>('draft');
   const [state, setState] = useState<RenderState>('idle');
@@ -74,7 +75,7 @@ export const RenderPanel = ({project}: Props) => {
 
       const result = await renderMediaOnWeb({
         composition: {
-          component: VideoComposition,
+          component: ProjectComposition,
           durationInFrames: projectFrames(project),
           fps: project.fps,
           width: dimensions.width,
@@ -168,6 +169,12 @@ export const RenderPanel = ({project}: Props) => {
         </div>
       ) : null}
 
+      {project.youtube ? (
+        <p className="render-note">
+          Long-form YouTube mode uses a continuous Series timeline with premounted chapters, independent B-roll/graphic Sequences,
+          chapter captions and an end card. Draft export is recommended first because long browser renders can be memory intensive.
+        </p>
+      ) : null}
       {usesMapLibre ? (
         <p className="render-note">
           MapLibre is used only to prepare one bounded static basemap snapshot. After the style reaches idle,

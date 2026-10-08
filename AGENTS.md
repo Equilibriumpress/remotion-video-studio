@@ -6,9 +6,9 @@ Create premium travel videos and route stories that preview and render from GitH
 
 ## New video workflow
 
-1. Read `skills/premium-video-director/SKILL.md` when the user starts with a natural-language video prompt.
+1. Read `skills/youtube-longform/SKILL.md` when the user requests a long-form YouTube video. Read `skills/premium-video-director/SKILL.md` for short prompt-led video.
 2. Read `src/project/schema.ts`.
-3. Prefer `travel-story` for travel and routes. Use `explainer` for product videos. Keep `data-story` for technical compatibility and internal experiments.
+3. Prefer `youtube-story` for long-form narrated YouTube work, `travel-story` for short travel and routes. Use `explainer` for product videos. Keep `data-story` for technical compatibility and internal experiments.
 4. For prompt-led travel videos, prefer top-level `director` + `story`: ChatGPT/Codex interprets the prompt once, then the deterministic Premium Director compiler creates the shot sequence.
 5. Use plain `story` when the user wants a straightforward route sequence without creative direction, and explicit `scenes` for bespoke edits or unsupported structures.
 6. Create one JSON file in `projects/`.
@@ -78,6 +78,21 @@ Do not translate a free-form prompt directly into scene types. First create a `d
 The repository then compiles `director + story` into scene roles: `hook`, `orient`, `travel`, `detail`, `bridge`, and `payoff`. The Studio displays the retained source prompt and scene roles so the translation can be reviewed.
 
 Premium Director currently targets geographic travel stories. Do not pretend that the browser is semantically interpreting the natural-language prompt: the agent performs that interpretation during authoring; the browser compiler is deterministic.
+
+### Long-form YouTube
+
+Long-form YouTube uses a separate composition architecture inspired by Remotion's official `packages/jonnys-videos/src/roller-skis` project. Do not flatten a 5–10 minute video into the short-form `TransitionSeries`.
+
+Use:
+- one continuous voiceover/music spine,
+- `Series.Sequence` chapters,
+- nested `Sequence` B-roll and motion-graphic inserts,
+- chapter-relative captions,
+- `premountFor={fps}` for chapters and media,
+- a dedicated end card,
+- thumbnail metadata.
+
+The compositor is `src/remotion/YouTubeComposition.tsx`; `ProjectComposition` selects it automatically when a project has a top-level `youtube` object. See `projects/peak-district-youtube-longform.json` for the reference project.
 
 ## Premium motion system
 

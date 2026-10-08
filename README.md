@@ -44,6 +44,7 @@ GitHub Actions performs only project validation and the static Vite build. It do
 - 12fps-style editorial map overlays while the base map/camera remains smooth
 - Local Remotion agent-skill layer for maps, motion direction, shot composition and interactivity
 - Premium Director compiler: prompt brief → narrative arc → shot roles → deterministic Remotion scenes
+- Long-form YouTube compositor using Remotion `Series` chapters + independent B-roll/motion `Sequence` overlays
 - Animated SVG elevation profiles with distance, height and ascent progress
 - Auto-fitted route chapters sliced by cumulative geographic distance
 - Premium route-stop cards with photography, metadata and mini-route context
@@ -80,6 +81,7 @@ AGENTS.md                 ChatGPT/Codex authoring protocol
 - `kyoto-premium-director` — a retained natural-language prompt compiled into a premium hook/orient/travel/detail/payoff sequence
 - `scotland-roadtrip-showcase` — flowing multi-stop Highland journey
 - `peak-district-roadtrip` — 60-second English Premium Director roadtrip through Ladybower, Castleton, Mam Tor, Monsal Head, Bakewell and Stanage Edge
+- `peak-district-youtube-longform` — 6:30 landscape YouTube cut using the official Roller Ski-style Series/B-roll/captions/end-card architecture
 - `studio-product-showcase` — product explainer
 
 Production requires successful image preflight and a browser Draft render. Remote Wikimedia photographs may remain in use when export works. See `projects/IMAGE-CREDITS.md` for source credits.
@@ -187,3 +189,19 @@ The Director controls goal, target duration, narrative, pacing, visual language,
 This makes the creative translation reviewable: the Studio shows the original prompt, Director choices and scene roles. Build validation checks that Director outputs contain a hook/payoff and can reject back-to-back pure map shots when that rule is enabled.
 
 See `projects/kyoto-premium-director.json` for the reference example and `skills/premium-video-director/SKILL.md` for the authoring protocol.
+
+
+## Long-form YouTube compositor
+
+Long-form projects use `template: "youtube-story"` and a top-level `youtube` timeline. This intentionally mirrors the architecture used by Remotion's own Roller Ski production in `packages/jonnys-videos/src/roller-skis`.
+
+`YouTubeComposition.tsx` uses:
+- one continuous voiceover/music layer,
+- `Series.Sequence` for consecutive named chapters,
+- nested `Sequence` overlays for B-roll and motion graphics,
+- chapter-relative captions that keep running while overlays change,
+- one-second chapter/media premounting,
+- a dedicated YouTube end card,
+- separate thumbnail metadata.
+
+Short-form videos continue to use `VideoComposition` and `TransitionSeries`; `ProjectComposition` routes between both renderers. The reference long-form project is `projects/peak-district-youtube-longform.json`, which is 6 minutes 30 seconds at 1920×1080/30fps.

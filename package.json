@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run validate && npm run test:geo && npm run test:three && npm run test:maplibre && npm run test:motion-system && npm run test:director && tsc -b && vite build",
+    "build": "npm run validate && npm run test:geo && npm run test:three && npm run test:maplibre && npm run test:motion-system && npm run test:director && npm run test:youtube && tsc -b && vite build",
     "preview": "vite preview",
     "validate": "tsx scripts/validate-projects.ts",
     "routes:scotland": "node scripts/refresh-scotland-route.mjs",
@@ -13,7 +13,8 @@
     "test:three": "tsx scripts/test-three-globe.ts",
     "test:maplibre": "tsx scripts/test-maplibre.ts",
     "test:motion-system": "tsx scripts/test-motion-system.ts",
-    "test:director": "tsx scripts/test-premium-director.ts"
+    "test:director": "tsx scripts/test-premium-director.ts",
+    "test:youtube": "tsx scripts/test-youtube-longform.ts"
   },
   "dependencies": {
     "@remotion/player": "4.0.534",
