@@ -19,22 +19,26 @@ The goal is not to map prompt nouns directly to scene types. First create a crea
    - Choose one visual language and one pacing profile.
    - Define the hook in one sentence.
    - Define the final payoff in one sentence.
-3. **Narrative arc**
+3. **Motion reference selection**
+   - Search the local source-pinned catalog with `npm run motion:find -- "Kyoto Japan editorial travel"` when a named animation example would sharpen visual direction.
+   - Consult `../remotion-scene-library/SKILL.md` for selection, licensing and per-scene browser QA.
+   - Treat matches as references only. Never claim an example works until its adapted composition passes browser preview and export.
+4. **Narrative arc**
    - Choose `journey`, `discovery`, `contrast`, or `guide`.
    - Give each beat one function: `hook`, `orient`, `travel`, `detail`, `bridge`, or `payoff`.
-4. **Asset strategy**
+5. **Asset strategy**
    - Select images for composition quality, not only topical relevance.
    - Prefer a strong opener and a different strong destination/payoff image.
    - Use factual sourced route geometry for geographic claims.
-5. **Map strategy**
+6. **Map strategy**
    - `mapRole: none`: photography/place storytelling carries the video.
    - `mapRole: orient`: one supporting map moment.
    - `mapRole: hero`: orientation plus one movement-led route shot.
    - Default to `editorial`; use `maplibre` only when the basemap materially improves the story.
-6. **Compile**
+7. **Compile**
    - Write a compact top-level `director` object plus `story`, route data and assets.
    - Let `src/project/premiumDirector.ts` produce the actual scene list.
-7. **QA**
+8. **QA**
    - No two pure map shots back-to-back unless explicitly requested.
    - Do not repeat the same layout simply because another waypoint exists.
    - One primary motion idea per shot.
@@ -73,6 +77,7 @@ The natural-language prompt is retained for traceability. The browser does not c
 ## Relationship to other skills
 
 After the Director spec exists:
+- use `../remotion-scene-library/SKILL.md` for optional 201-example motion inspiration,
 - use `../remotion-motion-direction/SKILL.md` for motion personality,
 - use `../remotion-shot-composition/SKILL.md` for frame hierarchy,
 - use `../remotion-maps/SKILL.md` for route rendering,
