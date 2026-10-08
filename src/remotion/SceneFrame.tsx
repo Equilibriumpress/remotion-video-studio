@@ -22,6 +22,7 @@ import {CaptionDemoSceneFrame} from './scenes/CaptionDemoScene';
 import {AudioReactiveSceneFrame} from './scenes/AudioReactiveScene';
 import {ThreeVehicleSceneFrame} from './scenes/ThreeVehicleScene';
 import {MotionDiagramSceneFrame} from './scenes/MotionDiagramScene';
+import {BitcoinExplainerSceneFrame} from './scenes/BitcoinExplainerScene';
 
 type Props = {
   scene: VideoScene;
@@ -154,6 +155,10 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
     config: {damping: 18, stiffness: 115, mass: 0.8},
     durationInFrames: Math.max(12, Math.round(fps * 0.75)),
   });
+
+  if (scene.type === 'bitcoin-explainer') {
+    return <BitcoinExplainerSceneFrame scene={scene} project={project} />;
+  }
 
   if (scene.type === 'motion-diagram') {
     return <MotionDiagramSceneFrame scene={scene} project={project} />;
