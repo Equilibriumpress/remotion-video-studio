@@ -12,6 +12,7 @@ import peakDistrictRoadtrip from '../../projects/peak-district-roadtrip.json';
 import originalNordicRoutes from '../../projects/roller-skis-original-nordic-routes.json';
 import originalLowerThird from '../../projects/roller-skis-original-lower-third.json';
 import peakDistrictYouTubeLongform from '../../projects/peak-district-youtube-longform.json';
+import peakDistrictAssetFree from '../../projects/peak-district-asset-free-youtube.json';
 import mapLibreRouteDemo from '../../projects/maplibre-route-demo.json';
 import threeGlobeFlightDemo from '../../projects/three-globe-flight-demo.json';
 import studioProductShowcase from '../../projects/studio-product-showcase.json';
@@ -37,6 +38,7 @@ export const projects: VideoProject[] = [
   parseProject(originalNordicRoutes),
   parseProject(originalLowerThird),
   parseProject(peakDistrictYouTubeLongform),
+  parseProject(peakDistrictAssetFree),
   parseProject(mapLibreRouteDemo),
   parseProject(threeGlobeFlightDemo),
   parseProject(studioProductShowcase),

@@ -230,3 +230,30 @@ from `reference/remotion-dev/remotion/packages/jonnys-videos/src/roller-skis/`:
 - **Roller Skis · Original Lower Third**: 108 frames at 30 fps, using the original entrance and exit animation. A compatibility adapter copies the original render logic but omits the unsupported interactivity schema registration.
 
 These are native Remotion compositions, not JSON recreations. The Nordic Routes component imports unchanged upstream code. The lower-third preserves upstream motion and visuals through a local compatibility adapter. Their small JSON project files contain selection metadata only. Preview and browser export share the same component. The full upstream film is not included as a working Studio project, because it uses external motion footage, audio, and more intensive WebGL rendering. See `reference/remotion-dev/remotion/UPSTREAM.md` for attribution and source.
+
+## Asset-free YouTube motion graphics
+
+The `peak-district-asset-free-youtube` project is a complete **3:20, 1920×1080**
+YouTube-oriented motion-graphics demonstration, with seven narrated-script chapters
+and a YouTube end card. It is a silent, caption-led example; scripts are supplied
+for a future recorded narration, not synthesized audio.
+
+- No video, photos, audio, tile requests, external fonts, heavy assets or WebGL.
+- Uses a new reusable `motion-diagram` scene: six-node route flows and three-node
+  arcs with progressively revealed connectors, deterministic progress pulses,
+  typography, chapter pacing and accessible source labels.
+- Reuses existing georeferenced SVG routes, kinetic titles, animated category
+  bar charts, chapter numbers, captions and end cards.
+- The Peak District route comes from the earlier editorial geometry and is
+  labelled **illustrative, not turn-by-turn navigation**.
+- Categorical bar counts describe the six chosen stops, not external statistics.
+- All scene data lives in `projects/peak-district-asset-free-youtube.json`.
+- Test: `npm run test:asset-free-youtube`.
+
+The references are methodological rather than copied code: MIT-licensed
+[sub-level/marketing-videos](https://github.com/sub-level/marketing-videos),
+[paper2video](https://github.com/Lunamos/paper2video) and the frame-driven
+long-form scene architecture in [BTC Explained](https://github.com/Shimmy0530/btc-explained).
+No upstream source code or media from these three projects is bundled.
+See `skills/asset-free-youtube/SKILL.md` for the authoring protocol.
+

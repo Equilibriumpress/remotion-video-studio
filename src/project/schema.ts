@@ -140,6 +140,19 @@ const photoMaskScene = baseScene.extend({
   frame: z.enum(['none', 'thin', 'offset']).default('none'),
 });
 
+// An entirely procedural travel/storyboard infographic. No fonts, images, WebGL or network needed.
+const motionDiagramScene = baseScene.extend({
+  type: z.literal('motion-diagram'),
+  title: z.string().min(1).max(90),
+  kicker: z.string().max(60).optional(),
+  layout: z.enum(['serpentine', 'arc']).default('serpentine'),
+  nodes: z.array(z.object({
+    label: z.string().min(1).max(36),
+    detail: z.string().max(54).optional(),
+  })).min(3).max(6),
+  footnote: z.string().max(120).optional(),
+});
+
 const kineticTitleScene = baseScene.extend({
   type: z.literal('kinetic-title'),
   text: z.string().min(1),
@@ -580,6 +593,7 @@ export const sceneSchema = z.discriminatedUnion('type', [
   chartScene,
   photoMaskScene,
   kineticTitleScene,
+  motionDiagramScene,
   chapterNumberScene,
   lowerThirdScene,
   calloutScene,

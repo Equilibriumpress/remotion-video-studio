@@ -108,3 +108,10 @@ The adaptation intentionally preserves these structural ideas from the official 
 - separate thumbnail metadata.
 
 Do not copy third-party community templates with unclear or noncommercial licenses into production.
+
+## Asset-free alternative
+
+For a full YouTube composition without video/media downloads, consult
+`skills/asset-free-youtube/SKILL.md`. The Peak District asset-free project
+shows SVG maps, motion diagrams, measured titles and chart inserts, while
+retaining this skill's Series/Sequence/captions/end-card architecture.

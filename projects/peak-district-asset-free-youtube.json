@@ -1,0 +1,890 @@
+{
+  "id": "peak-district-asset-free-youtube",
+  "title": "Peak District · Motion Graphics YouTube (No Video Assets)",
+  "template": "youtube-story",
+  "format": "landscape",
+  "fps": 30,
+  "theme": {
+    "background": "#101713",
+    "foreground": "#F6F3EA",
+    "muted": "#B9C0B3",
+    "accent": "#D7A85B"
+  },
+  "geoRoutes": {
+    "peak-district-drive": {
+      "type": "LineString",
+      "mode": "driving",
+      "coordinates": [
+        [
+          -1.6995,
+          53.3659
+        ],
+        [
+          -1.6935,
+          53.3574
+        ],
+        [
+          -1.6904,
+          53.3488
+        ],
+        [
+          -1.7118,
+          53.349
+        ],
+        [
+          -1.743,
+          53.3489
+        ],
+        [
+          -1.76,
+          53.3472
+        ],
+        [
+          -1.7778,
+          53.3433
+        ],
+        [
+          -1.7902,
+          53.3421
+        ],
+        [
+          -1.7987,
+          53.3448
+        ],
+        [
+          -1.805,
+          53.3481
+        ],
+        [
+          -1.809603,
+          53.349312
+        ],
+        [
+          -1.829,
+          53.347
+        ],
+        [
+          -1.849,
+          53.337
+        ],
+        [
+          -1.853,
+          53.324
+        ],
+        [
+          -1.826,
+          53.311
+        ],
+        [
+          -1.811,
+          53.309
+        ],
+        [
+          -1.789,
+          53.294
+        ],
+        [
+          -1.772,
+          53.279
+        ],
+        [
+          -1.751,
+          53.262
+        ],
+        [
+          -1.736,
+          53.251
+        ],
+        [
+          -1.724896,
+          53.240962
+        ],
+        [
+          -1.71,
+          53.23
+        ],
+        [
+          -1.706,
+          53.224
+        ],
+        [
+          -1.687,
+          53.218
+        ],
+        [
+          -1.669054,
+          53.209864
+        ],
+        [
+          -1.645,
+          53.226
+        ],
+        [
+          -1.616,
+          53.249
+        ],
+        [
+          -1.635,
+          53.267
+        ],
+        [
+          -1.638,
+          53.295
+        ],
+        [
+          -1.65,
+          53.33
+        ],
+        [
+          -1.642,
+          53.341
+        ],
+        [
+          -1.634167,
+          53.348611
+        ]
+      ],
+      "source": {
+        "name": "Editorial Peak District road alignment using public access guidance and georeferenced highlights; not turn-by-turn navigation",
+        "url": "https://visitpeakdistrict.com/itineraries/accessible-castleton-scenic-drive-in-the-hope-valley",
+        "license": "Editorial route compilation for animation; geographic context © OpenStreetMap contributors where referenced"
+      }
+    }
+  },
+  "scenes": [],
+  "youtube": {
+    "title": "The Peak District · An Illustrated Roadtrip",
+    "thumbnail": {
+      "title": "PEAK DISTRICT",
+      "subtitle": "6 stops · 100% motion graphics"
+    },
+    "endCard": {
+      "duration": 12,
+      "title": "Explore the next route",
+      "subtitle": "Travel maps, graphic stories and new destinations.",
+      "channelName": "Travel Guides",
+      "subscribeLabel": "Subscribe"
+    },
+    "chapters": [
+      {
+        "id": "asset-free-intro",
+        "title": "The journey",
+        "duration": 24,
+        "base": {
+          "id": "asset-free-shot-1",
+          "type": "kinetic-title",
+          "duration": 24,
+          "text": "PEAK DISTRICT",
+          "kicker": "A GRAPHIC ROADTRIP · ENGLAND",
+          "style": "oversize",
+          "align": "center"
+        },
+        "script": "A roadtrip through England's Peak District. Six distinctive places shape the journey. From water and villages to high gritstone edges. Follow an illustrated route, with no video footage.",
+        "overlays": [
+          {
+            "from": 5,
+            "scene": {
+              "id": "asset-free-shot-2",
+              "type": "motion-diagram",
+              "duration": 12,
+              "title": "Six places. One journey.",
+              "kicker": "ROUTE OVERVIEW",
+              "layout": "serpentine",
+              "nodes": [
+                {
+                  "label": "Ladybower Reservoir",
+                  "detail": "Landscape stop"
+                },
+                {
+                  "label": "Castleton",
+                  "detail": "Town stop"
+                },
+                {
+                  "label": "Mam Tor",
+                  "detail": "Landscape stop"
+                },
+                {
+                  "label": "Monsal Head",
+                  "detail": "Landscape stop"
+                },
+                {
+                  "label": "Bakewell",
+                  "detail": "Town stop"
+                },
+                {
+                  "label": "Stanage Edge",
+                  "detail": "Landscape stop"
+                }
+              ]
+            }
+          },
+          {
+            "from": 19,
+            "scene": {
+              "id": "asset-free-shot-3",
+              "type": "kinetic-title",
+              "duration": 4,
+              "text": "LET'S GO",
+              "kicker": "THE PEAK DISTRICT",
+              "style": "zoom",
+              "align": "center"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "A roadtrip through England's Peak District.",
+            "start": 0,
+            "end": 6,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Six distinctive places shape the journey.",
+            "start": 6,
+            "end": 12,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "From water and villages to high gritstone edges.",
+            "start": 12,
+            "end": 18,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Follow an illustrated route, with no video footage.",
+            "start": 18,
+            "end": 24,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "cinematic"
+      },
+      {
+        "id": "asset-free-ladybower",
+        "title": "Ladybower Reservoir",
+        "duration": 29,
+        "base": {
+          "id": "asset-free-shot-4",
+          "type": "motion-diagram",
+          "duration": 29,
+          "title": "A start beside the water",
+          "kicker": "CHAPTER 01",
+          "layout": "arc",
+          "nodes": [
+            {
+              "label": "Ladybower Reservoir",
+              "detail": "Water"
+            },
+            {
+              "label": "Woodland",
+              "detail": "Reservoir shores"
+            },
+            {
+              "label": "Hope Valley",
+              "detail": "South-westward route"
+            }
+          ]
+        },
+        "script": "Begin at Ladybower Reservoir. Water and woodland frame the opening stop. The road then turns toward the Hope Valley. Castleton is next.",
+        "overlays": [
+          {
+            "from": 8,
+            "scene": {
+              "id": "asset-free-shot-5",
+              "type": "geo-route",
+              "duration": 11,
+              "title": "From Ladybower toward Castleton",
+              "routeId": "peak-district-drive",
+              "stops": [
+                {
+                  "coordinates": [
+                    -1.6995,
+                    53.3659
+                  ],
+                  "label": "Ladybower Reservoir",
+                  "icon": "nature"
+                },
+                {
+                  "coordinates": [
+                    -1.7778,
+                    53.3433
+                  ],
+                  "label": "Castleton",
+                  "icon": "city"
+                }
+              ],
+              "progress": 1,
+              "camera": "overview",
+              "style": "clean",
+              "showDetails": false,
+              "label": "Editorial route · not turn-by-turn navigation"
+            }
+          },
+          {
+            "from": 21,
+            "scene": {
+              "id": "asset-free-shot-6",
+              "type": "callout",
+              "duration": 6,
+              "title": "Begin with the views",
+              "body": "Ladybower's wooded shores and open water set a calm pace."
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "Begin at Ladybower Reservoir.",
+            "start": 0,
+            "end": 7.3,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Water and woodland frame the opening stop.",
+            "start": 7.3,
+            "end": 14.5,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "The road then turns toward the Hope Valley.",
+            "start": 14.5,
+            "end": 21.8,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Castleton is next.",
+            "start": 21.8,
+            "end": 29,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "cinematic"
+      },
+      {
+        "id": "asset-free-castleton",
+        "title": "Castleton and Mam Tor",
+        "duration": 36,
+        "base": {
+          "id": "asset-free-shot-7",
+          "type": "geo-route",
+          "duration": 36,
+          "title": "Castleton to Mam Tor",
+          "routeId": "peak-district-drive",
+          "stops": [
+            {
+              "coordinates": [
+                -1.7778,
+                53.3433
+              ],
+              "label": "Castleton",
+              "icon": "city"
+            },
+            {
+              "coordinates": [
+                -1.809603,
+                53.349312
+              ],
+              "label": "Mam Tor",
+              "icon": "nature"
+            }
+          ],
+          "progress": 1,
+          "camera": "overview",
+          "style": "clean",
+          "showDetails": false,
+          "label": "Editorial route · not turn-by-turn navigation"
+        },
+        "script": "The next two highlights sit close together. Castleton is a stone village below the hills. Winnats Pass leads into the limestone landscape. Mam Tor offers wide views of the Hope Valley. This diagram is illustrative, not navigation.",
+        "overlays": [
+          {
+            "from": 0,
+            "scene": {
+              "id": "asset-free-shot-8",
+              "type": "chapter-number",
+              "duration": 7,
+              "number": "02",
+              "title": "Village to ridge",
+              "subtitle": "Castleton → Mam Tor"
+            }
+          },
+          {
+            "from": 9,
+            "scene": {
+              "id": "asset-free-shot-9",
+              "type": "motion-diagram",
+              "duration": 12,
+              "title": "A change in terrain",
+              "kicker": "FROM VILLAGE TO RIDGE",
+              "layout": "arc",
+              "nodes": [
+                {
+                  "label": "Castleton",
+                  "detail": "Stone village"
+                },
+                {
+                  "label": "Winnats Pass",
+                  "detail": "Limestone gorge"
+                },
+                {
+                  "label": "Mam Tor",
+                  "detail": "Open ridge views"
+                }
+              ]
+            }
+          },
+          {
+            "from": 25,
+            "scene": {
+              "id": "asset-free-shot-10",
+              "type": "kinetic-title",
+              "duration": 9,
+              "text": "UP INTO THE HILLS",
+              "kicker": "MAM TOR",
+              "style": "split",
+              "align": "center"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "The next two highlights sit close together.",
+            "start": 0,
+            "end": 7.2,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Castleton is a stone village below the hills.",
+            "start": 7.2,
+            "end": 14.4,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Winnats Pass leads into the limestone landscape.",
+            "start": 14.4,
+            "end": 21.6,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Mam Tor offers wide views of the Hope Valley.",
+            "start": 21.6,
+            "end": 28.8,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "This diagram is illustrative, not navigation.",
+            "start": 28.8,
+            "end": 36,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "cinematic"
+      },
+      {
+        "id": "asset-free-monsal",
+        "title": "Monsal Head",
+        "duration": 23,
+        "base": {
+          "id": "asset-free-shot-11",
+          "type": "motion-diagram",
+          "duration": 23,
+          "title": "Across limestone country",
+          "kicker": "CHAPTER 03",
+          "layout": "arc",
+          "nodes": [
+            {
+              "label": "White Peak",
+              "detail": "Limestone scenery"
+            },
+            {
+              "label": "Monsal Head",
+              "detail": "Valley viewpoint"
+            },
+            {
+              "label": "Headstone Viaduct",
+              "detail": "Railway heritage"
+            }
+          ]
+        },
+        "script": "The roadtrip continues south. Monsal Head overlooks the Wye valley. The viaduct gives the view its recognisable shape. Pause here for the changing landscape.",
+        "overlays": [
+          {
+            "from": 8,
+            "scene": {
+              "id": "asset-free-shot-12",
+              "type": "geo-route",
+              "duration": 11,
+              "title": "A route toward Monsal Head",
+              "routeId": "peak-district-drive",
+              "stops": [
+                {
+                  "coordinates": [
+                    -1.809603,
+                    53.349312
+                  ],
+                  "label": "Mam Tor",
+                  "icon": "nature"
+                },
+                {
+                  "coordinates": [
+                    -1.724896,
+                    53.240962
+                  ],
+                  "label": "Monsal Head",
+                  "icon": "nature"
+                }
+              ],
+              "progress": 1,
+              "camera": "overview",
+              "style": "clean",
+              "showDetails": false,
+              "label": "Editorial route · not turn-by-turn navigation"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "The roadtrip continues south.",
+            "start": 0,
+            "end": 5.8,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Monsal Head overlooks the Wye valley.",
+            "start": 5.8,
+            "end": 11.5,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "The viaduct gives the view its recognisable shape.",
+            "start": 11.5,
+            "end": 17.3,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Pause here for the changing landscape.",
+            "start": 17.3,
+            "end": 23,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "cinematic"
+      },
+      {
+        "id": "asset-free-bakewell",
+        "title": "Bakewell",
+        "duration": 25,
+        "base": {
+          "id": "asset-free-shot-13",
+          "type": "timeline",
+          "duration": 25,
+          "title": "A slower stop in Bakewell",
+          "items": [
+            {
+              "label": "Walk",
+              "value": "River Wye"
+            },
+            {
+              "label": "Explore",
+              "value": "Town centre"
+            },
+            {
+              "label": "Taste",
+              "value": "Bakewell pudding"
+            }
+          ]
+        },
+        "script": "Bakewell changes the pace. Walk beside the River Wye. Explore the town's stone streets. Make time for its famous pudding.",
+        "overlays": [
+          {
+            "from": 8,
+            "scene": {
+              "id": "asset-free-shot-14",
+              "type": "motion-diagram",
+              "duration": 12,
+              "title": "A pause between the hills",
+              "kicker": "CHAPTER 04",
+              "layout": "serpentine",
+              "nodes": [
+                {
+                  "label": "Riverside",
+                  "detail": "The River Wye"
+                },
+                {
+                  "label": "Town streets",
+                  "detail": "Stone buildings"
+                },
+                {
+                  "label": "Local food",
+                  "detail": "Bakewell pudding"
+                }
+              ]
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "Bakewell changes the pace.",
+            "start": 0,
+            "end": 6.3,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Walk beside the River Wye.",
+            "start": 6.3,
+            "end": 12.5,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Explore the town's stone streets.",
+            "start": 12.5,
+            "end": 18.8,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Make time for its famous pudding.",
+            "start": 18.8,
+            "end": 25,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "cinematic"
+      },
+      {
+        "id": "asset-free-stanage",
+        "title": "Stanage Edge",
+        "duration": 27,
+        "base": {
+          "id": "asset-free-shot-15",
+          "type": "motion-diagram",
+          "duration": 27,
+          "title": "The final open horizon",
+          "kicker": "CHAPTER 05",
+          "layout": "arc",
+          "nodes": [
+            {
+              "label": "Bakewell",
+              "detail": "Leave the town"
+            },
+            {
+              "label": "Hathersage",
+              "detail": "Back into Dark Peak"
+            },
+            {
+              "label": "Stanage Edge",
+              "detail": "Gritstone escarpment"
+            }
+          ]
+        },
+        "script": "Travel north again toward Hathersage. Stanage Edge runs above the moorland. The gritstone escarpment makes a fitting finale. Finish with open views across the Dark Peak.",
+        "overlays": [
+          {
+            "from": 7,
+            "scene": {
+              "id": "asset-free-shot-16",
+              "type": "geo-route",
+              "duration": 10,
+              "title": "The final journey to Stanage",
+              "routeId": "peak-district-drive",
+              "stops": [
+                {
+                  "coordinates": [
+                    -1.669054,
+                    53.209864
+                  ],
+                  "label": "Bakewell",
+                  "icon": "city"
+                },
+                {
+                  "coordinates": [
+                    -1.634167,
+                    53.348611
+                  ],
+                  "label": "Stanage Edge",
+                  "icon": "nature"
+                }
+              ],
+              "progress": 1,
+              "camera": "overview",
+              "style": "clean",
+              "showDetails": false,
+              "label": "Editorial route · not turn-by-turn navigation"
+            }
+          },
+          {
+            "from": 18,
+            "scene": {
+              "id": "asset-free-shot-17",
+              "type": "kinetic-title",
+              "duration": 8,
+              "text": "STANAGE EDGE",
+              "kicker": "THE FINALE",
+              "style": "zoom",
+              "align": "center"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "Travel north again toward Hathersage.",
+            "start": 0,
+            "end": 6.8,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Stanage Edge runs above the moorland.",
+            "start": 6.8,
+            "end": 13.5,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "The gritstone escarpment makes a fitting finale.",
+            "start": 13.5,
+            "end": 20.3,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Finish with open views across the Dark Peak.",
+            "start": 20.3,
+            "end": 27,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "cinematic"
+      },
+      {
+        "id": "asset-free-closing",
+        "title": "The full route",
+        "duration": 24,
+        "base": {
+          "id": "asset-free-shot-18",
+          "type": "editorial-map",
+          "duration": 24,
+          "title": "Six stops · one roadtrip",
+          "routeId": "peak-district-drive",
+          "stops": [
+            {
+              "coordinates": [
+                -1.6995,
+                53.3659
+              ],
+              "label": "Ladybower Reservoir",
+              "icon": "nature"
+            },
+            {
+              "coordinates": [
+                -1.7778,
+                53.3433
+              ],
+              "label": "Castleton",
+              "icon": "city"
+            },
+            {
+              "coordinates": [
+                -1.809603,
+                53.349312
+              ],
+              "label": "Mam Tor",
+              "icon": "nature"
+            },
+            {
+              "coordinates": [
+                -1.724896,
+                53.240962
+              ],
+              "label": "Monsal Head",
+              "icon": "nature"
+            },
+            {
+              "coordinates": [
+                -1.669054,
+                53.209864
+              ],
+              "label": "Bakewell",
+              "icon": "city"
+            },
+            {
+              "coordinates": [
+                -1.634167,
+                53.348611
+              ],
+              "label": "Stanage Edge",
+              "icon": "nature"
+            }
+          ],
+          "progress": 1,
+          "showDetails": false,
+          "graphicFps": 12
+        },
+        "script": "Six highlights, four kinds of places. One reservoir, two towns, two ridges and a viaduct. All locations are positioned geographically. The connecting road line is an editorial illustration.",
+        "overlays": [
+          {
+            "from": 6,
+            "scene": {
+              "id": "asset-free-shot-19",
+              "type": "chart",
+              "duration": 10,
+              "title": "Six highlights by type",
+              "items": [
+                {
+                  "label": "Water",
+                  "value": 1
+                },
+                {
+                  "label": "Towns",
+                  "value": 2
+                },
+                {
+                  "label": "Ridges",
+                  "value": 2
+                },
+                {
+                  "label": "Viaduct",
+                  "value": 1
+                }
+              ],
+              "suffix": ""
+            }
+          },
+          {
+            "from": 17,
+            "scene": {
+              "id": "asset-free-shot-20",
+              "type": "kinetic-title",
+              "duration": 6,
+              "text": "KEEP EXPLORING",
+              "kicker": "PEAK DISTRICT",
+              "style": "split",
+              "align": "center"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "Six highlights, four kinds of places.",
+            "start": 0,
+            "end": 6,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "One reservoir, two towns, two ridges and a viaduct.",
+            "start": 6,
+            "end": 12,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "All locations are positioned geographically.",
+            "start": 12,
+            "end": 18,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "The connecting road line is an editorial illustration.",
+            "start": 18,
+            "end": 24,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "cinematic"
+      }
+    ]
+  }
+}
