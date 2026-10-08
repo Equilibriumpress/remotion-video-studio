@@ -1,0 +1,924 @@
+{
+  "id": "peak-district-youtube-longform",
+  "title": "The Perfect Peak District Roadtrip · YouTube",
+  "template": "youtube-story",
+  "format": "landscape",
+  "fps": 30,
+  "theme": {
+    "background": "#101713",
+    "foreground": "#F6F3EA",
+    "muted": "#B9C0B3",
+    "accent": "#D7A85B"
+  },
+  "geoRoutes": {
+    "peak-district-drive": {
+      "type": "LineString",
+      "mode": "driving",
+      "coordinates": [
+        [
+          -1.6995,
+          53.3659
+        ],
+        [
+          -1.6935,
+          53.3574
+        ],
+        [
+          -1.6904,
+          53.3488
+        ],
+        [
+          -1.7118,
+          53.349
+        ],
+        [
+          -1.743,
+          53.3489
+        ],
+        [
+          -1.76,
+          53.3472
+        ],
+        [
+          -1.7778,
+          53.3433
+        ],
+        [
+          -1.7902,
+          53.3421
+        ],
+        [
+          -1.7987,
+          53.3448
+        ],
+        [
+          -1.805,
+          53.3481
+        ],
+        [
+          -1.809603,
+          53.349312
+        ],
+        [
+          -1.829,
+          53.347
+        ],
+        [
+          -1.849,
+          53.337
+        ],
+        [
+          -1.853,
+          53.324
+        ],
+        [
+          -1.826,
+          53.311
+        ],
+        [
+          -1.811,
+          53.309
+        ],
+        [
+          -1.789,
+          53.294
+        ],
+        [
+          -1.772,
+          53.279
+        ],
+        [
+          -1.751,
+          53.262
+        ],
+        [
+          -1.736,
+          53.251
+        ],
+        [
+          -1.724896,
+          53.240962
+        ],
+        [
+          -1.71,
+          53.23
+        ],
+        [
+          -1.706,
+          53.224
+        ],
+        [
+          -1.687,
+          53.218
+        ],
+        [
+          -1.669054,
+          53.209864
+        ],
+        [
+          -1.645,
+          53.226
+        ],
+        [
+          -1.616,
+          53.249
+        ],
+        [
+          -1.635,
+          53.267
+        ],
+        [
+          -1.638,
+          53.295
+        ],
+        [
+          -1.65,
+          53.33
+        ],
+        [
+          -1.642,
+          53.341
+        ],
+        [
+          -1.634167,
+          53.348611
+        ]
+      ],
+      "source": {
+        "name": "Editorial Peak District road alignment using public access guidance and georeferenced highlights; not turn-by-turn navigation",
+        "url": "https://visitpeakdistrict.com/itineraries/accessible-castleton-scenic-drive-in-the-hope-valley",
+        "license": "Editorial route compilation for animation; geographic context © OpenStreetMap contributors where referenced"
+      }
+    }
+  },
+  "youtube": {
+    "title": "The Perfect Peak District Roadtrip",
+    "thumbnail": {
+      "title": "6 PEAK DISTRICT STOPS",
+      "subtitle": "One unforgettable roadtrip",
+      "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Stanage_Edge_in_the_Peak_District.jpg/1280px-Stanage_Edge_in_the_Peak_District.jpg"
+    },
+    "endCard": {
+      "duration": 12,
+      "title": "Keep exploring England",
+      "subtitle": "Watch another roadtrip or save this route for later.",
+      "channelName": "Travel Guides",
+      "channelHandle": "Peak District roadtrips",
+      "subscribeLabel": "Subscribe"
+    },
+    "chapters": [
+      {
+        "id": "yt-opening",
+        "title": "Cold open",
+        "script": "The Peak District can feel huge on a map, but many of its best first-time highlights fit into one beautifully varied roadtrip. We begin beside Ladybower Reservoir, cross the Hope Valley through Castleton and Mam Tor, drop south to Monsal Head and Bakewell, then finish on the gritstone skyline at Stanage Edge.",
+        "duration": 30,
+        "base": {
+          "id": "yt-opening-base",
+          "type": "hero-image",
+          "duration": 30,
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Ladybower_from_Bamford_Edge.jpg/1280px-Ladybower_from_Bamford_Edge.jpg",
+          "kicker": "PEAK DISTRICT · ENGLAND",
+          "title": "The perfect Peak District roadtrip",
+          "subtitle": "Six highlights · one scenic loop",
+          "motion": "cinematic-push",
+          "motionAmount": 0.72
+        },
+        "overlays": [
+          {
+            "from": 11,
+            "scene": {
+              "id": "yt-opening-route",
+              "type": "editorial-map",
+              "duration": 8,
+              "title": "Six highlights · one route",
+              "kicker": "ROADTRIP OVERVIEW",
+              "region": "PEAK DISTRICT",
+              "stat": "6 stops",
+              "routeId": "peak-district-drive",
+              "stops": [
+                {
+                  "coordinates": [
+                    -1.6995,
+                    53.3659
+                  ],
+                  "label": "Ladybower Reservoir",
+                  "icon": "nature"
+                },
+                {
+                  "coordinates": [
+                    -1.7778,
+                    53.3433
+                  ],
+                  "label": "Castleton",
+                  "detail": "Stone village beneath Peveril Castle",
+                  "icon": "city"
+                },
+                {
+                  "coordinates": [
+                    -1.809603,
+                    53.349312
+                  ],
+                  "label": "Mam Tor",
+                  "detail": "Winnats Pass and the Great Ridge",
+                  "icon": "nature"
+                },
+                {
+                  "coordinates": [
+                    -1.724896,
+                    53.240962
+                  ],
+                  "label": "Monsal Head",
+                  "detail": "Viaduct and limestone dale",
+                  "icon": "nature"
+                },
+                {
+                  "coordinates": [
+                    -1.669054,
+                    53.209864
+                  ],
+                  "label": "Bakewell",
+                  "detail": "River town and local character",
+                  "icon": "city"
+                },
+                {
+                  "coordinates": [
+                    -1.634167,
+                    53.348611
+                  ],
+                  "label": "Stanage Edge",
+                  "detail": "Gritstone cliffs and big skies",
+                  "icon": "nature"
+                }
+              ],
+              "progress": 1,
+              "showDetails": false,
+              "graphicFps": 12
+            }
+          },
+          {
+            "from": 21,
+            "scene": {
+              "id": "yt-opening-title",
+              "type": "kinetic-title",
+              "duration": 5,
+              "text": "Water. Villages. Ridges. Big skies.",
+              "kicker": "WHAT THIS ROUTE DELIVERS",
+              "style": "split",
+              "align": "center",
+              "highlight": "Ridges."
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "The Peak District can feel huge on a map.",
+            "start": 1,
+            "end": 6,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "But many of its best first-time highlights fit into one beautifully varied roadtrip.",
+            "start": 6,
+            "end": 13,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "We begin beside Ladybower Reservoir, then cross the Hope Valley.",
+            "start": 13,
+            "end": 20,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "From there the route runs through Castleton, Mam Tor, Monsal Head and Bakewell.",
+            "start": 20,
+            "end": 26,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "The finale is Stanage Edge.",
+            "start": 26,
+            "end": 30,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "yt-ladybower",
+        "title": "Ladybower Reservoir",
+        "script": "Ladybower is an ideal opening because the landscape immediately feels spacious. The reservoir lies between wooded slopes and the higher Dark Peak, and the roads around it give you that first sense of movement. Rather than rushing on, stop for a viewpoint and let the landscape set the scale for the rest of the day.",
+        "duration": 52,
+        "base": {
+          "id": "yt-ladybower-base",
+          "type": "hero-image",
+          "duration": 52,
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Ladybower_from_Bamford_Edge.jpg/1280px-Ladybower_from_Bamford_Edge.jpg",
+          "kicker": "STOP 01",
+          "title": "Ladybower Reservoir",
+          "subtitle": "Water, woodland and the first big views",
+          "motion": "cinematic-pull",
+          "motionAmount": 0.65
+        },
+        "overlays": [
+          {
+            "from": 18,
+            "scene": {
+              "id": "yt-ladybower-hud",
+              "type": "travel-hud",
+              "duration": 9,
+              "title": "Ladybower Reservoir",
+              "subtitle": "A calm start in the Dark Peak",
+              "kicker": "ROADTRIP START",
+              "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Ladybower_from_Bamford_Edge.jpg/1280px-Ladybower_from_Bamford_Edge.jpg",
+              "metrics": [
+                {
+                  "label": "character",
+                  "value": "reservoir"
+                },
+                {
+                  "label": "pace",
+                  "value": "slow start"
+                },
+                {
+                  "label": "next",
+                  "value": "Castleton"
+                }
+              ]
+            }
+          },
+          {
+            "from": 35,
+            "scene": {
+              "id": "yt-ladybower-route",
+              "type": "geo-route",
+              "duration": 8,
+              "title": "Into the Hope Valley",
+              "routeId": "peak-district-drive",
+              "stops": [
+                {
+                  "coordinates": [
+                    -1.6995,
+                    53.3659
+                  ],
+                  "label": "Ladybower Reservoir",
+                  "icon": "nature"
+                },
+                {
+                  "coordinates": [
+                    -1.7778,
+                    53.3433
+                  ],
+                  "label": "Castleton",
+                  "icon": "city"
+                }
+              ],
+              "progress": 0.24,
+              "label": "Ladybower → Castleton",
+              "camera": "overview",
+              "style": "clean",
+              "showDetails": false
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "Ladybower is an ideal opening because the landscape immediately feels spacious.",
+            "start": 2,
+            "end": 10,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "The reservoir sits between wooded slopes and the higher Dark Peak.",
+            "start": 10,
+            "end": 19,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "The road gives the trip its first real sense of movement.",
+            "start": 19,
+            "end": 28,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Stop for a viewpoint rather than treating this as somewhere to rush through.",
+            "start": 28,
+            "end": 39,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "This is where the scale of the day starts to make sense.",
+            "start": 39,
+            "end": 52,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "yt-castleton-mamtor",
+        "title": "Castleton & Mam Tor",
+        "script": "Castleton changes the mood completely. Stone cottages and village streets sit beneath Peveril Castle, while the surrounding hills close in around the head of the valley. From here, the road toward Winnats Pass becomes one of the most dramatic driving moments of the trip. Mam Tor is not just a photo stop: even a short walk reveals why this ridge is one of the defining landscapes of the Peak District.",
+        "duration": 74,
+        "base": {
+          "id": "yt-castleton-base",
+          "type": "hero-image",
+          "duration": 74,
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Castleton_from_Peveril_Castle.jpg/1280px-Castleton_from_Peveril_Castle.jpg",
+          "kicker": "STOP 02",
+          "title": "Castleton",
+          "subtitle": "Stone streets beneath Peveril Castle",
+          "motion": "slow-push",
+          "motionAmount": 0.7
+        },
+        "overlays": [
+          {
+            "from": 20,
+            "scene": {
+              "id": "yt-mamtor-broll",
+              "type": "hero-image",
+              "duration": 18,
+              "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Mam_Tor_%2825247426697%29.jpg/1280px-Mam_Tor_%2825247426697%29.jpg",
+              "kicker": "STOP 03",
+              "title": "Mam Tor",
+              "subtitle": "Winnats Pass and the Great Ridge",
+              "motion": "pan-and-zoom",
+              "motionAmount": 0.74
+            }
+          },
+          {
+            "from": 42,
+            "scene": {
+              "id": "yt-mamtor-route",
+              "type": "route-stop",
+              "duration": 10,
+              "kicker": "THE CLIMB",
+              "title": "Castleton → Mam Tor",
+              "subtitle": "Through Winnats Pass",
+              "body": "One of the most dramatic transitions in the Hope Valley.",
+              "routeId": "peak-district-drive",
+              "routeProgress": 0.34,
+              "mapRotation": 0,
+              "layout": "minimal"
+            }
+          },
+          {
+            "from": 57,
+            "scene": {
+              "id": "yt-mamtor-callout",
+              "type": "callout",
+              "duration": 8,
+              "title": "Don't make this just a drive-by",
+              "body": "A short walk is enough to understand the scale of the ridge.",
+              "value": "MAM TOR"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "Castleton changes the mood completely.",
+            "start": 1,
+            "end": 7,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Stone cottages sit beneath Peveril Castle while the hills close in around the valley.",
+            "start": 7,
+            "end": 18,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "From here the road toward Winnats Pass becomes one of the trip's most dramatic driving moments.",
+            "start": 18,
+            "end": 31,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Then Mam Tor opens the landscape again.",
+            "start": 31,
+            "end": 39,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "This is more than a photo stop.",
+            "start": 39,
+            "end": 47,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Even a short walk begins to reveal the Great Ridge and the scale of the Hope Valley.",
+            "start": 47,
+            "end": 60,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "It is one of the defining landscapes of the Peak District.",
+            "start": 60,
+            "end": 74,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "yt-monsal",
+        "title": "Monsal Head",
+        "script": "After the Dark Peak drama, Monsal Head feels different again. The view looks across a limestone dale toward Headstone Viaduct, with the River Wye winding below. The reason to include it in this route is contrast: within a relatively short drive, the scenery changes from reservoir and gritstone ridges to a softer limestone valley.",
+        "duration": 50,
+        "base": {
+          "id": "yt-monsal-base",
+          "type": "hero-image",
+          "duration": 50,
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Monsal_Head%2C_Peak_District%2C_Derbyshire%2C_UK_%2814588024369%29.jpg/1280px-Monsal_Head%2C_Peak_District%2C_Derbyshire%2C_UK_%2814588024369%29.jpg",
+          "kicker": "STOP 04",
+          "title": "Monsal Head",
+          "subtitle": "The classic viaduct view",
+          "motion": "cinematic-push",
+          "motionAmount": 0.68
+        },
+        "overlays": [
+          {
+            "from": 17,
+            "scene": {
+              "id": "yt-monsal-location",
+              "type": "lower-third",
+              "duration": 7,
+              "title": "Monsal Head",
+              "subtitle": "Headstone Viaduct · River Wye"
+            }
+          },
+          {
+            "from": 31,
+            "scene": {
+              "id": "yt-monsal-contrast",
+              "type": "text",
+              "duration": 9,
+              "headline": "This is why the route works.",
+              "body": "Dark Peak drama gives way to a softer limestone valley."
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "After the Dark Peak drama, Monsal Head feels different again.",
+            "start": 2,
+            "end": 10,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "The view looks across a limestone dale toward Headstone Viaduct.",
+            "start": 10,
+            "end": 21,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Below, the River Wye winds through the valley.",
+            "start": 21,
+            "end": 29,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "The reason to include this stop is contrast.",
+            "start": 29,
+            "end": 37,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "In a short drive the landscape changes completely.",
+            "start": 37,
+            "end": 50,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "yt-bakewell",
+        "title": "Bakewell",
+        "script": "Bakewell is where the trip should slow down. After several landscape-heavy stops, a real town gives the film and the day a different texture. Walk by the River Wye, cross the old bridge, explore the stone streets and, if you want the obvious local ritual, try a Bakewell pudding. This chapter is less about spectacle and more about rhythm.",
+        "duration": 46,
+        "base": {
+          "id": "yt-bakewell-base",
+          "type": "hero-image",
+          "duration": 46,
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Bakewell_-River_Wye_-_geograph.org.uk_-_5456920.jpg/1280px-Bakewell_-River_Wye_-_geograph.org.uk_-_5456920.jpg",
+          "kicker": "STOP 05",
+          "title": "Bakewell",
+          "subtitle": "A pause between the big landscapes",
+          "motion": "slow-push",
+          "motionAmount": 0.62
+        },
+        "overlays": [
+          {
+            "from": 16,
+            "scene": {
+              "id": "yt-bakewell-card",
+              "type": "photo-mask",
+              "duration": 10,
+              "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Bakewell_-River_Wye_-_geograph.org.uk_-_5456920.jpg/1280px-Bakewell_-River_Wye_-_geograph.org.uk_-_5456920.jpg",
+              "title": "Slow the pace",
+              "caption": "River Wye · stone streets · Bakewell pudding",
+              "shape": "window",
+              "treatment": "natural",
+              "frame": "thin"
+            }
+          },
+          {
+            "from": 31,
+            "scene": {
+              "id": "yt-bakewell-list",
+              "type": "list",
+              "duration": 8,
+              "title": "A simple Bakewell stop",
+              "items": [
+                "Walk the river",
+                "Explore the centre",
+                "Try the local pudding"
+              ]
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "Bakewell is where the trip should slow down.",
+            "start": 1,
+            "end": 8,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "After several landscape-heavy stops, a real town changes the texture.",
+            "start": 8,
+            "end": 18,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Walk beside the River Wye and explore the stone streets.",
+            "start": 18,
+            "end": 28,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "And yes, this is the place for a Bakewell pudding.",
+            "start": 28,
+            "end": 36,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "This chapter is less about spectacle and more about rhythm.",
+            "start": 36,
+            "end": 46,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "yt-stanage",
+        "title": "Stanage Edge",
+        "script": "The final drive turns back toward the gritstone moors above Hathersage. Stanage Edge works as the ending because it feels exposed and expansive: a long escarpment, open moorland and huge skies. Give this stop more time than the others. Walk out onto the edge, let the roadtrip disappear behind you, and use the landscape itself as the payoff.",
+        "duration": 72,
+        "base": {
+          "id": "yt-stanage-base",
+          "type": "hero-image",
+          "duration": 72,
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Stanage_Edge_in_the_Peak_District.jpg/1280px-Stanage_Edge_in_the_Peak_District.jpg",
+          "kicker": "STOP 06 · FINALE",
+          "title": "Stanage Edge",
+          "subtitle": "Gritstone cliffs and big skies",
+          "motion": "cinematic-pull",
+          "motionAmount": 0.64
+        },
+        "overlays": [
+          {
+            "from": 14,
+            "scene": {
+              "id": "yt-stanage-route",
+              "type": "geo-route",
+              "duration": 9,
+              "title": "The final leg",
+              "routeId": "peak-district-drive",
+              "stops": [
+                {
+                  "coordinates": [
+                    -1.669054,
+                    53.209864
+                  ],
+                  "label": "Bakewell",
+                  "icon": "city"
+                },
+                {
+                  "coordinates": [
+                    -1.634167,
+                    53.348611
+                  ],
+                  "label": "Stanage Edge",
+                  "icon": "nature"
+                }
+              ],
+              "progress": 1,
+              "label": "Bakewell → Stanage Edge",
+              "camera": "overview",
+              "style": "clean",
+              "showDetails": false
+            }
+          },
+          {
+            "from": 33,
+            "scene": {
+              "id": "yt-stanage-quote",
+              "type": "quote",
+              "duration": 9,
+              "quote": "Let the landscape be the payoff.",
+              "attribution": "Peak District roadtrip"
+            }
+          },
+          {
+            "from": 50,
+            "scene": {
+              "id": "yt-stanage-title",
+              "type": "kinetic-title",
+              "duration": 8,
+              "text": "Finish with space.",
+              "kicker": "STANAGE EDGE",
+              "style": "oversize",
+              "align": "left",
+              "highlight": "space."
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "The final drive turns back toward the gritstone moors above Hathersage.",
+            "start": 2,
+            "end": 12,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Stanage Edge works as the ending because it feels exposed and expansive.",
+            "start": 12,
+            "end": 24,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "A long escarpment runs above open moorland under huge skies.",
+            "start": 24,
+            "end": 36,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Give this stop more time than the others.",
+            "start": 36,
+            "end": 45,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Walk out onto the edge and let the roadtrip disappear behind you.",
+            "start": 45,
+            "end": 59,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Here, the landscape itself becomes the payoff.",
+            "start": 59,
+            "end": 72,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "yt-closing",
+        "title": "Closing thoughts",
+        "script": "This is not a checklist of everything in the Peak District. It is a first roadtrip designed around contrast: water, village, ridge, limestone dale, market town and open moorland. If you have more time, slow it down further. But if you want one route that explains why the Peak District is such a rewarding place to explore, this is a very good place to start.",
+        "duration": 54,
+        "base": {
+          "id": "yt-closing-base",
+          "type": "hero-image",
+          "duration": 54,
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Stanage_Edge_in_the_Peak_District.jpg/1280px-Stanage_Edge_in_the_Peak_District.jpg",
+          "kicker": "CLOSING THOUGHTS",
+          "title": "One route. Six different landscapes.",
+          "subtitle": "A first roadtrip through the Peak District",
+          "motion": "cinematic-pull",
+          "motionAmount": 0.55
+        },
+        "overlays": [
+          {
+            "from": 18,
+            "scene": {
+              "id": "yt-closing-overview",
+              "type": "editorial-map",
+              "duration": 10,
+              "title": "The whole route",
+              "kicker": "RECAP",
+              "region": "PEAK DISTRICT",
+              "stat": "6 highlights",
+              "routeId": "peak-district-drive",
+              "stops": [
+                {
+                  "coordinates": [
+                    -1.6995,
+                    53.3659
+                  ],
+                  "label": "Ladybower Reservoir",
+                  "icon": "nature"
+                },
+                {
+                  "coordinates": [
+                    -1.7778,
+                    53.3433
+                  ],
+                  "label": "Castleton",
+                  "detail": "Stone village beneath Peveril Castle",
+                  "icon": "city"
+                },
+                {
+                  "coordinates": [
+                    -1.809603,
+                    53.349312
+                  ],
+                  "label": "Mam Tor",
+                  "detail": "Winnats Pass and the Great Ridge",
+                  "icon": "nature"
+                },
+                {
+                  "coordinates": [
+                    -1.724896,
+                    53.240962
+                  ],
+                  "label": "Monsal Head",
+                  "detail": "Viaduct and limestone dale",
+                  "icon": "nature"
+                },
+                {
+                  "coordinates": [
+                    -1.669054,
+                    53.209864
+                  ],
+                  "label": "Bakewell",
+                  "detail": "River town and local character",
+                  "icon": "city"
+                },
+                {
+                  "coordinates": [
+                    -1.634167,
+                    53.348611
+                  ],
+                  "label": "Stanage Edge",
+                  "detail": "Gritstone cliffs and big skies",
+                  "icon": "nature"
+                }
+              ],
+              "progress": 1,
+              "showDetails": false,
+              "graphicFps": 12
+            }
+          },
+          {
+            "from": 37,
+            "scene": {
+              "id": "yt-closing-cta",
+              "type": "text",
+              "duration": 9,
+              "headline": "Save the route.",
+              "body": "Then make it your own: stop longer, walk further, and leave space for the weather."
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "This is not a checklist of everything in the Peak District.",
+            "start": 2,
+            "end": 10,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "It is a first roadtrip built around contrast.",
+            "start": 10,
+            "end": 18,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Water, village, ridge, limestone dale, market town and open moorland.",
+            "start": 18,
+            "end": 30,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "If you have more time, slow the route down even further.",
+            "start": 30,
+            "end": 40,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "But for a first visit, this is a very good place to start.",
+            "start": 40,
+            "end": 54,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      }
+    ]
+  },
+  "scenes": []
+}
