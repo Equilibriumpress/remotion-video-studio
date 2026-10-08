@@ -857,13 +857,21 @@ export const projectFrames = (project: VideoProject) => {
   return last ? last.from + last.durationInFrames : 1;
 };
 
+export const projectVisualScenes = (project: VideoProject): VideoScene[] => [
+  ...project.scenes,
+  ...(project.youtube?.chapters.flatMap((chapter) => [
+    chapter.base,
+    ...chapter.overlays.map((overlay) => overlay.scene),
+  ]) ?? []),
+];
+
 export const projectHasAudio = (project: VideoProject) =>
   Boolean(
     project.audio?.music ||
     project.audio?.voiceover ||
     project.youtube?.music ||
     project.youtube?.voiceover ||
-    project.scenes.some(
+    projectVisualScenes(project).some(
       (scene) =>
         (scene.type === 'video' || scene.type === 'caption-video') &&
         scene.muted === false,
