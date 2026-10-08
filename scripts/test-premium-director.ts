@@ -71,7 +71,7 @@ assert.ok(
 );
 
 const peakSceneIds = new Set(peak.scenes.map((scene) => scene.id));
-assert.equal(peak.voiceoverScript?.length, 11);
+assert.equal(peak.voiceoverScript?.length, 10);
 for (const cue of peak.voiceoverScript ?? []) {
   assert.ok(
     peakSceneIds.has(cue.sceneId),
@@ -84,6 +84,49 @@ assert.ok(
   'Peak District roadtrip should include an editorial orientation map',
 );
 assert.equal(peak.scenes.at(-1)?.role, 'payoff');
+
+assert.ok(
+  peak.scenes.some((scene) => scene.id === 'director-detail-02' && scene.type === 'photo-mask'),
+  'Castleton must have its own photographic detail beat',
+);
+
+assert.ok(
+  !peak.scenes.some((scene) => scene.type === 'route-chapter'),
+  'Photo-led roadtrips should not add a third map chapter',
+);
+
+assert.ok(
+  !peak.scenes.some((scene) => scene.id === 'director-payoff-image'),
+  'Destination photography should not be repeated as a separate payoff image',
+);
+
+const peakArrival = peak.scenes.find((scene) => scene.id === 'director-arrival');
+assert.equal(peakArrival?.type, 'hero-image');
+assert.equal(peakArrival?.role, 'payoff');
+
+const mapTypes = new Set(['editorial-map', 'geo-route', 'maplibre-route', 'route-chapter']);
+assert.ok(
+  peak.scenes.filter((scene) => mapTypes.has(scene.type)).length <= 2,
+  'Peak District should keep map-led beats to two or fewer',
+);
+
+const peakDurations = peak.scenes.map((scene) => scene.duration);
+assert.ok(
+  Math.max(...peakDurations) - Math.min(...peakDurations) >= 2,
+  'Premium roadtrip pacing should vary shot lengths instead of flattening every shot',
+);
+
+const peakHook = peak.scenes.find((scene) => scene.id === 'director-hook');
+assert.ok(
+  peakHook?.type === 'kinetic-title' && !peakHook.kicker?.includes('PREMIUM DIRECTOR'),
+  'Exported hook must not expose internal authoring language',
+);
+
+const sceneFrameSource = readFileSync('src/remotion/SceneFrame.tsx', 'utf8');
+assert.ok(
+  !sceneFrameSource.includes('REMOTION VIDEO STUDIO'),
+  'Exported outro must not expose internal studio branding',
+);
 
 console.log(
   `Peak District Director compiled ${peak.scenes.length} scenes in ${peakDuration.toFixed(2)}s with ${peak.voiceoverScript?.length ?? 0} voiceover cues.`,

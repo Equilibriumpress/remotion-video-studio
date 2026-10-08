@@ -614,11 +614,7 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
           <Lines lines={wrap(subtitle, 34)} x={pad} y={height * 0.68} fontSize={bodySize} lineHeight={bodySize * 1.35} fill={muted} weight={500} />
         ) : null}
       </g>
-      {scene.type === 'outro' ? (
-        <text x={pad} y={height - pad} fill={accent} fontFamily="Inter, Arial, sans-serif" fontSize={smallSize} fontWeight={800} letterSpacing={2}>
-          REMOTION VIDEO STUDIO
-        </text>
-      ) : null}
+
     </>,
   );
 };

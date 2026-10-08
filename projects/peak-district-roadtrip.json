@@ -40,7 +40,7 @@
     "introImage": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Ladybower_from_Bamford_Edge.jpg/1280px-Ladybower_from_Bamford_Edge.jpg",
     "outroTitle": "Save this Peak District roadtrip.",
     "overview": true,
-    "chapters": true,
+    "chapters": false,
     "stopCards": true,
     "mapRotation": 0,
     "mode": "replace",
@@ -60,7 +60,10 @@
           53.3433
         ],
         "label": "Castleton",
-        "icon": "city"
+        "icon": "city",
+        "detail": "Stone village beneath Peveril Castle",
+        "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Castleton_from_Peveril_Castle.jpg/1280px-Castleton_from_Peveril_Castle.jpg",
+        "body": "Pause in Castleton for stone cottages, village streets and the dramatic hills at the head of the Hope Valley."
       },
       {
         "coordinates": [
@@ -112,23 +115,27 @@
   "voiceoverScript": [
     {
       "sceneId": "director-hook",
-      "text": "Welcome to the Peak District, where one road trip links reservoirs, villages, ridges and open moorland."
+      "text": "Six Peak District highlights, linked in one unforgettable road trip."
     },
     {
       "sceneId": "director-hero",
-      "text": "Start at Ladybower Reservoir, with water, woodland and wide Dark Peak views."
+      "text": "Start at Ladybower Reservoir, where water, woodland and wide Dark Peak views set the tone."
     },
     {
       "sceneId": "director-orient",
-      "text": "Then follow the Hope Valley to Castleton and climb toward Mam Tor."
+      "text": "The route crosses the Hope Valley, loops south through limestone country and finishes high above Hathersage."
     },
     {
-      "sceneId": "director-detail-03",
-      "text": "Winnats Pass brings the drama, before Mam Tor opens sweeping views across the valley."
+      "sceneId": "director-detail-02",
+      "text": "Castleton brings stone cottages, village streets and Peveril Castle above the valley."
     },
     {
       "sceneId": "director-travel",
-      "text": "Turn south through limestone country toward Monsal Dale."
+      "text": "From Castleton, the road climbs through dramatic limestone country toward Mam Tor."
+    },
+    {
+      "sceneId": "director-detail-03",
+      "text": "Winnats Pass brings the drama, before Mam Tor opens sweeping views across the Hope Valley."
     },
     {
       "sceneId": "director-detail-04",
@@ -136,23 +143,15 @@
     },
     {
       "sceneId": "director-detail-05",
-      "text": "Bakewell changes the rhythm: stone streets, riverside walks and the town's famous pudding."
-    },
-    {
-      "sceneId": "director-route-bridge",
-      "text": "For the final leg, head back toward the gritstone moors above Hathersage."
+      "text": "Bakewell changes the rhythm with stone streets, riverside walks and its famous pudding."
     },
     {
       "sceneId": "director-arrival",
-      "text": "Finish at Stanage Edge, where cliffs, big skies and open country create the perfect finale."
-    },
-    {
-      "sceneId": "director-payoff-image",
-      "text": "Six highlights, one compact road trip, and a classic introduction to the Peak District."
+      "text": "Finish at Stanage Edge, where gritstone cliffs and huge skies create the perfect finale."
     },
     {
       "sceneId": "director-payoff",
-      "text": "Save this route for your next trip to England."
+      "text": "Save this Peak District road trip for your next escape to England."
     }
   ],
   "geoRoutes": {

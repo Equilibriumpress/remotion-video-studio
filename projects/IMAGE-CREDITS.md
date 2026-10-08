@@ -11,6 +11,7 @@ These examples currently refer to Wikimedia Commons image URLs. This matches the
 | Glenfinnan viaduct | Scotland | Plaxton/Flaxton, public domain as stated on Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Glenfinnan_viaduct.jpg |
 | Eilean Donan Castle | Scotland | JC83, public domain as stated on Wikimedia Commons | https://commons.wikimedia.org/wiki/File:Eilean_Donan_Castle.jpg |
 | Ladybower from Bamford Edge | Peak District | Will Robson, CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Ladybower_from_Bamford_Edge.jpg |
+| Castleton from Peveril Castle | Peak District | Dave Pape, public domain | https://commons.wikimedia.org/wiki/File:Castleton_from_Peveril_Castle.jpg |
 | Mam Tor (25247426697) | Peak District | Mark Rickaby, CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Mam_Tor_(25247426697).jpg |
 | Monsal Head, Peak District, Derbyshire, UK (14588024369) | Peak District | Joe Hunt, CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Monsal_Head,_Peak_District,_Derbyshire,_UK_(14588024369).jpg |
 | Bakewell - River Wye | Peak District | Ian Rob, CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Bakewell_-River_Wye_-_geograph.org.uk_-_5456920.jpg |

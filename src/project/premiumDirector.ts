@@ -89,8 +89,8 @@ const applyTargetDuration = (
   pacing: 'calm' | 'balanced' | 'dynamic',
 ) => {
   const baseline = drafts.reduce((sum, draft) => sum + draft.weight, 0) || 1;
-  const pacingMin = pacing === 'calm' ? 2.8 : pacing === 'dynamic' ? 1.9 : 2.3;
-  const pacingMax = pacing === 'calm' ? 6.4 : pacing === 'dynamic' ? 4.6 : 5.6;
+  const pacingMin = pacing === 'calm' ? 2.4 : pacing === 'dynamic' ? 1.8 : 2.1;
+  const pacingMax = pacing === 'calm' ? 9.2 : pacing === 'dynamic' ? 5.4 : 7.4;
 
   const build = (grossTarget: number) =>
     drafts.map(({scene, weight}) => ({
@@ -157,7 +157,13 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
   const heroSrc = story.introImage ?? first.src;
   const lastSrc = last.src;
   const transitionDuration =
-    director.pacing === 'calm' ? 0.7 : director.pacing === 'dynamic' ? 0.38 : 0.55;
+    director.assetBalance === 'photo-led' && director.pacing === 'calm'
+      ? 0.5
+      : director.pacing === 'calm'
+        ? 0.7
+        : director.pacing === 'dynamic'
+          ? 0.38
+          : 0.55;
   const photoMotion =
     director.visualLanguage === 'cinematic'
       ? 'cinematic-push'
@@ -169,11 +175,11 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
   const push = (weight: number, scene: Record<string, unknown>) =>
     drafts.push({weight, scene});
 
-  push(2.6, {
+  push(1.8, {
     id: 'director-hook',
     type: 'kinetic-title',
     text: director.hook,
-    kicker: `${director.goal.toUpperCase()} / PREMIUM DIRECTOR`,
+    kicker: story.title.toUpperCase(),
     style: director.visualLanguage === 'minimal' ? 'split' : 'zoom',
     align: 'center',
     highlight: story.title.split(' ').slice(-1)[0],
@@ -241,7 +247,7 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
 
   if (director.mapRole !== 'none') {
     if (director.mapEngine === 'editorial') {
-      push(3.7, {
+      push(director.assetBalance === 'photo-led' ? 2.8 : 3.7, {
         id: 'director-orient',
         type: 'editorial-map',
         title: `${first.label} → ${last.label}`,
@@ -263,7 +269,7 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
         directorNote: 'Orient once with an editorial map; do not let mapping dominate the opening.',
       });
     } else {
-      push(3.7, {
+      push(director.assetBalance === 'photo-led' ? 2.8 : 3.7, {
         id: 'director-orient',
         type: 'geo-route',
         title: `${first.label} → ${last.label}`,
@@ -289,7 +295,9 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
   );
   const maxDetails =
     director.assetBalance === 'photo-led'
-      ? 3
+      ? director.durationTarget >= 50
+        ? 4
+        : 3
       : director.assetBalance === 'map-led'
         ? 1
         : 2;
@@ -309,14 +317,18 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
       director.visualLanguage !== 'minimal' &&
       index > 0
     ) {
-      push(3.4, {
+      push(director.assetBalance === 'photo-led' ? 3.0 : 3.4, {
         id: `director-detail-${String(index + 1).padStart(2, '0')}`,
         type: 'photo-mask',
         src: stop.src,
         title: stop.label,
         caption: stop.detail ?? stop.body,
         shape: director.visualLanguage === 'editorial' ? 'window' : 'portrait',
-        treatment: director.visualLanguage === 'cinematic' ? 'dark' : 'natural',
+        treatment: director.assetBalance === 'photo-led'
+          ? 'natural'
+          : director.visualLanguage === 'cinematic'
+            ? 'dark'
+            : 'natural',
         frame: 'thin',
         transition: 'photo-mask-reveal',
         transitionDuration,
@@ -326,7 +338,7 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
       return;
     }
 
-    push(3.4, {
+    push(director.assetBalance === 'photo-led' ? 3.0 : 3.4, {
       id: `director-detail-${String(index + 1).padStart(2, '0')}`,
       type: 'route-stop',
       kicker: index === 0 ? 'START' : 'DETAIL',
@@ -372,7 +384,7 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
       : undefined;
 
     if (director.mapEngine === 'maplibre') {
-      push(5.2, {
+      push(director.assetBalance === 'photo-led' ? 2.8 : 5.2, {
         id: 'director-travel',
         type: 'maplibre-route',
         title: `${first.label} → ${last.label}`,
@@ -392,7 +404,7 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
         directorNote: 'Use the map as the movement hero: smooth camera, stepped editorial overlays.',
       });
     } else {
-      push(4.8, {
+      push(director.assetBalance === 'photo-led' ? 2.8 : 4.8, {
         id: 'director-travel',
         type: 'geo-route',
         title: 'On the route',
@@ -420,6 +432,7 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
 
   if (
     story.chapters &&
+    director.assetBalance !== 'photo-led' &&
     director.durationTarget >= 30 &&
     stops.length >= 3
   ) {
@@ -448,7 +461,28 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
     }
   }
 
-  if (last.src || last.body || last.detail || last.time) {
+  const useDestinationHero = Boolean(
+    lastSrc &&
+    lastSrc !== heroSrc &&
+    director.assetBalance === 'photo-led',
+  );
+
+  if (useDestinationHero && lastSrc) {
+    push(5.6, {
+      id: 'director-arrival',
+      type: 'hero-image',
+      src: lastSrc,
+      kicker: last.label.toUpperCase(),
+      title: director.payoff,
+      subtitle: last.detail ?? story.outroTitle ?? story.subtitle,
+      motion: director.pacing === 'dynamic' ? 'cinematic-push' : 'cinematic-pull',
+      motionAmount: 0.78,
+      transition: 'fade',
+      transitionDuration,
+      role: 'payoff',
+      directorNote: 'Use one sustained destination hero instead of repeating the same arrival image.',
+    });
+  } else if (last.src || last.body || last.detail || last.time) {
     push(3.8, {
       id: 'director-arrival',
       type: 'route-stop',
@@ -473,7 +507,7 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
     });
   }
 
-  if (lastSrc && lastSrc !== heroSrc) {
+  if (!useDestinationHero && lastSrc && lastSrc !== heroSrc) {
     push(4.1, {
       id: 'director-payoff-image',
       type: 'hero-image',
@@ -490,7 +524,7 @@ export const composePremiumSequence = (project: VideoProject): unknown[] => {
     });
   }
 
-  push(2.6, {
+  push(2.0, {
     id: 'director-payoff',
     type: 'outro',
     title: story.outroTitle ?? director.payoff,
