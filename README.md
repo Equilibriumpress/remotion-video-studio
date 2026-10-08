@@ -205,3 +205,12 @@ Long-form projects use `template: "youtube-story"` and a top-level `youtube` tim
 - separate thumbnail metadata.
 
 Short-form videos continue to use `VideoComposition` and `TransitionSeries`; `ProjectComposition` routes between both renderers. The reference long-form project is `projects/peak-district-youtube-longform.json`, which is 6 minutes 30 seconds at 1920×1080/30fps.
+
+
+## Exact upstream Roller Ski reference
+
+The original Remotion Roller Ski example is vendored unchanged under:
+
+`reference/remotion-dev/remotion/packages/jonnys-videos/src/roller-skis/`
+
+It is pinned to upstream commit `5f253b8a298e10c8007677ba2bd8c541303603f0`. All 22 source files in that folder were verified by Git blob SHA to be byte-for-byte identical to upstream. The matching Remotion `LICENSE.md`, package README and an `UPSTREAM.md` provenance note are stored alongside it under `reference/remotion-dev/remotion/`.
