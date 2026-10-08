@@ -9,6 +9,7 @@ import kyotoAutoStory from '../../projects/kyoto-auto-story.json';
 import kyotoPremiumDirector from '../../projects/kyoto-premium-director.json';
 import scotlandRoadtripShowcase from '../../projects/scotland-roadtrip-showcase.json';
 import peakDistrictRoadtrip from '../../projects/peak-district-roadtrip.json';
+import peakDistrictYouTubeLongform from '../../projects/peak-district-youtube-longform.json';
 import mapLibreRouteDemo from '../../projects/maplibre-route-demo.json';
 import threeGlobeFlightDemo from '../../projects/three-globe-flight-demo.json';
 import studioProductShowcase from '../../projects/studio-product-showcase.json';
@@ -31,6 +32,7 @@ export const projects: VideoProject[] = [
   parseProject(kyotoPremiumDirector),
   parseProject(scotlandRoadtripShowcase),
   parseProject(peakDistrictRoadtrip),
+  parseProject(peakDistrictYouTubeLongform),
   parseProject(mapLibreRouteDemo),
   parseProject(threeGlobeFlightDemo),
   parseProject(studioProductShowcase),
