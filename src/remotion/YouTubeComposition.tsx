@@ -40,12 +40,14 @@ const ChapterCaptions = ({
 const OverlayFrame = ({
   scene,
   project,
+  durationInFrames,
 }: {
   scene: VideoScene;
   project: VideoProject;
+  durationInFrames: number;
 }) => {
   const frame = useCurrentFrame();
-  const {fps, durationInFrames} = useVideoConfig();
+  const {fps} = useVideoConfig();
   const fadeFrames = Math.min(Math.round(fps * 0.32), Math.floor(durationInFrames / 4));
   const opacity = interpolate(
     frame,
@@ -222,7 +224,11 @@ const Chapter = ({
             durationInFrames={durationInFrames}
             premountFor={Math.min(fps, durationInFrames)}
           >
-            <OverlayFrame scene={overlay.scene} project={project} />
+            <OverlayFrame
+              scene={overlay.scene}
+              project={project}
+              durationInFrames={durationInFrames}
+            />
           </Sequence>
         );
       })}
