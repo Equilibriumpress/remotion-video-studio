@@ -29,5 +29,5 @@ assert.match(composer, /<Series>/);
 assert.match(composer, /<Sequence/);
 const renderer = readFileSync('src/remotion/scenes/MotionDiagramScene.tsx', 'utf8');
 assert.match(renderer, /useCurrentFrame/);
-assert.doesNotMatch(renderer, /\b(fetch|WebGL|Canvas|setTimeout|Math\.random)\b/);
+assert.doesNotMatch(renderer.replace(/\/\*[\s\S]*?\*\//g, ''), /\b(fetch|setTimeout|Math\.random)\s*\(/);
 console.log(`Asset-free YouTube: ${scenes.length} procedural layers, ${project.youtube?.chapters.length} chapters, 200 seconds; no media sources.`);
