@@ -9,6 +9,7 @@ import {GeoRouteSceneFrame} from './scenes/GeoRouteScene';
 import {ElevationRouteSceneFrame} from './scenes/ElevationScenes';
 import {RouteChapterSceneFrame} from './scenes/RouteChapterScene';
 import {RouteStopSceneFrame} from './scenes/RouteStopScene';
+import {TravelReelHighlightSceneFrame} from './scenes/TravelReelHighlightScene';
 import {MapLibreRouteSceneFrame} from './scenes/MapLibreRouteScene';
 import {ThreeGlobeSceneFrame} from './scenes/ThreeGlobeScene';
 import {LaunchSceneFrame} from './scenes/LaunchScenes';
@@ -218,6 +219,10 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
 
   if (scene.type === 'route-chapter') {
     return <RouteChapterSceneFrame scene={scene} project={project} />;
+  }
+
+  if (scene.type === 'travel-reel-highlight') {
+    return <TravelReelHighlightSceneFrame scene={scene} project={project} />;
   }
 
   if (scene.type === 'route-stop') {

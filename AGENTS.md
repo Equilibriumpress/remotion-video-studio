@@ -217,3 +217,7 @@ Images may remain remote when they pass preflight and export tests. Preserve Wik
 ### Combined data motion
 
 Use `bar-line-chart` when two related series should be read together. The animation order is deliberate: bars grow first, the line draws second, labels follow, and the final line point receives a subtle pulse. This pattern is preferable to showing multiple disconnected chart scenes when the comparison belongs in one visual.
+
+## Vertical Travel Reels
+
+For TikTok/Reels travel films with no media, read `skills/vertical-travel-reel/SKILL.md`. The reusable `travel-reel-highlight` SVG scene, real `geoRoutes`, and top-level `reelCaptions` keep 9:16 footage deterministic and captions in platform-safe zones. Reference: `projects/kyoto-travel-reel.json`. Global reel captions are only supported on vertical, non-YouTube projects.

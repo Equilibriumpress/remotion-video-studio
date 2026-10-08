@@ -2,12 +2,13 @@ import {Audio} from '@remotion/media';
 import {CameraMotionBlur} from '@remotion/motion-blur';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
 import type {VideoProject} from '../project/schema';
-import {sceneFrames} from '../project/schema';
+import {projectFrames, sceneFrames} from '../project/schema';
 import {resolveAsset} from '../project/assets';
 import {TransitionSeries, type TransitionPresentation} from '@remotion/transitions';
 import {SceneFrame} from './SceneFrame';
 import {transitionPresentation, transitionTiming} from './officialTransitions';
 import {BeatSyncFrame} from './BeatSyncFrame';
+import {CaptionOverlay} from './CaptionOverlay';
 
 export type VideoCompositionProps = {
   project: VideoProject;
@@ -78,6 +79,24 @@ export const VideoComposition = ({project}: VideoCompositionProps) => {
           ];
         })}
       </TransitionSeries>
+      {project.reelCaptions ? (
+        <CaptionOverlay
+          project={project}
+          safeArea="vertical-reel"
+          scene={{
+            id: 'global-travel-reel-captions',
+            type: 'caption-demo',
+            duration: projectFrames(project) / project.fps,
+            motionAmount: 1,
+            background: 'dark',
+            captionStyle: project.reelCaptions.captionStyle,
+            captionPosition: 'bottom',
+            emphasisWords: project.reelCaptions.emphasisWords,
+            combineTokensWithinMilliseconds: project.reelCaptions.combineTokensWithinMilliseconds,
+            captions: project.reelCaptions.captions,
+          }}
+        />
+      ) : null}
     </AbsoluteFill>
   );
 };
