@@ -26,6 +26,7 @@ const ChapterCaptions = ({
     id: `youtube-captions-${chapter.id}`,
     type: 'caption-demo' as const,
     duration: chapter.duration,
+    motionAmount: 1,
     background: 'dark' as const,
     captionStyle: chapter.captionStyle,
     captionPosition: 'bottom' as const,
