@@ -527,6 +527,7 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
           muted={scene.muted}
           loop={scene.loop}
           trimBefore={trimBefore}
+          premountFor={fps}
           style={{width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${videoScale})`}}
         />
         <svg viewBox={`0 0 ${width} ${height}`} width="100%" height="100%" style={{position: 'absolute', inset: 0}}>
