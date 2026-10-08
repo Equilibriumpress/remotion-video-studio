@@ -727,10 +727,12 @@ const projectObjectSchema = z.object({
   }).optional(),
   voiceoverScript: z.array(voiceoverCueSchema).max(64).optional(),
   scenes: z.array(sceneSchema).default([]),
+  // The upstream reference is rendered directly, not converted into JSON scenes.
+  nativeComposition: z.enum(['roller-skis-nordic-routes', 'roller-skis-intro-lower-third']).optional(),
 });
 
 export const projectSchema = projectObjectSchema.superRefine((project, ctx) => {
-  if (project.scenes.length === 0 && !project.story && !project.youtube) {
+  if (project.scenes.length === 0 && !project.story && !project.youtube && !project.nativeComposition) {
     ctx.addIssue({
       code: 'custom',
       path: ['scenes'],
@@ -868,6 +870,9 @@ export const sceneTimeline = (project: VideoProject) => {
 };
 
 export const projectFrames = (project: VideoProject) => {
+  if (project.nativeComposition === 'roller-skis-nordic-routes') return 180;
+  if (project.nativeComposition === 'roller-skis-intro-lower-third') return 108;
+
   if (project.youtube) {
     const seconds =
       project.youtube.chapters.reduce((sum, chapter) => sum + chapter.duration, 0) +

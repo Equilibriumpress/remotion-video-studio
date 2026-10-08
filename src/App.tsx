@@ -95,7 +95,7 @@ export const App = () => {
               >
                 <span className="project-title">{item.title}</span>
                 <span className="project-meta">
-                  {item.format} · {item.youtube ? `${item.youtube.chapters.length} chapters` : `${item.scenes.length} scenes`}
+                  {item.format} · {item.nativeComposition ? 'upstream composition' : item.youtube ? `${item.youtube.chapters.length} chapters` : `${item.scenes.length} scenes`}
                 </span>
               </button>
             ))}
@@ -105,7 +105,7 @@ export const App = () => {
           <div className="project-facts">
             <div><span>Format</span><strong>{dimensions.width}×{dimensions.height}</strong></div>
             <div><span>Frames</span><strong>{durationInFrames}</strong></div>
-            <div><span>Source</span><strong>{project.youtube ? 'YouTube timeline' : project.director ? 'Prompt → Director' : 'JSON'}</strong></div>
+            <div><span>Source</span><strong>{project.nativeComposition ? 'Original Remotion' : project.youtube ? 'YouTube timeline' : project.director ? 'Prompt → Director' : 'JSON'}</strong></div>
           </div>
 
           {project.youtube ? (
@@ -175,7 +175,15 @@ export const App = () => {
           <RenderPanel key={project.id} project={project} />
 
           <div className="scene-strip" aria-label={project.youtube ? 'Chapter overview' : 'Scene overview'}>
-            {project.youtube
+            {project.nativeComposition
+              ? (
+                  <div className="scene-chip">
+                    <span>01</span>
+                    <strong>Unmodified upstream composition</strong>
+                    <small>Original Remotion source · {(durationInFrames / project.fps).toFixed(1)}s</small>
+                  </div>
+                )
+              : project.youtube
               ? project.youtube.chapters.map((chapter, index) => (
                   <div className="scene-chip" key={chapter.id}>
                     <span>{String(index + 1).padStart(2, '0')}</span>
