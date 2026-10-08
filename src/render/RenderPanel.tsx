@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {canRenderMediaOnWeb, renderMediaOnWeb} from '@remotion/web-renderer';
 import type {VideoProject} from '../project/schema';
 import {getDimensions, projectFrames, projectHasAudio} from '../project/schema';
@@ -28,6 +28,9 @@ export const RenderPanel = ({project}: Props) => {
   );
   const [assets, setAssets] = useState<AssetCheck[]>([]);
   const controllerRef = useRef<AbortController | null>(null);
+
+  // Switching videos unmounts the export panel. Stop an in-flight render.
+  useEffect(() => () => controllerRef.current?.abort(), []);
 
   const render = async () => {
     setState('checking');

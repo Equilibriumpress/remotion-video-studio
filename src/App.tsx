@@ -1,4 +1,4 @@
-import {useMemo, useState} from 'react';
+import {useMemo, useRef, useState, type CSSProperties} from 'react';
 import {Player} from '@remotion/player';
 import {projects} from './project/catalog';
 import {getDimensions, projectFrames} from './project/schema';
@@ -7,6 +7,10 @@ import {RenderPanel} from './render/RenderPanel';
 
 export const App = () => {
   const [projectId, setProjectId] = useState(projects[0].id);
+  const [query, setQuery] = useState('');
+  const [formatFilter, setFormatFilter] = useState('all');
+  const [libraryOpen, setLibraryOpen] = useState(false);
+  const libraryRef = useRef<HTMLElement>(null);
   const project = useMemo(
     () => projects.find((item) => item.id === projectId) ?? projects[0],
     [projectId],
@@ -14,6 +18,25 @@ export const App = () => {
   const dimensions = getDimensions(project.format);
   const durationInFrames = projectFrames(project);
   const durationSeconds = durationInFrames / project.fps;
+  const filteredProjects = useMemo(() => {
+    const search = query.trim().toLowerCase();
+    return projects.filter((item) =>
+      (formatFilter === 'all' || item.format === formatFilter) &&
+      (!search || `${item.title} ${item.template} ${item.format}`.toLowerCase().includes(search)),
+    );
+  }, [query, formatFilter]);
+  const playerStyle = {
+    aspectRatio: `${dimensions.width} / ${dimensions.height}`,
+    '--preview-fit-width': `${(58 * dimensions.width / dimensions.height).toFixed(2)}dvh`,
+  } as CSSProperties;
+
+  const selectProject = (id: string) => {
+    setProjectId(id);
+    setLibraryOpen(false);
+    if (window.matchMedia('(max-width: 1100px)').matches) {
+      window.requestAnimationFrame(() => libraryRef.current?.scrollIntoView({behavior: 'smooth', block: 'start'}));
+    }
+  };
 
   return (
     <main className="studio-shell">
@@ -30,25 +53,52 @@ export const App = () => {
       </header>
 
       <div className="studio-grid">
-        <aside className="sidebar">
+        <aside className="sidebar" ref={libraryRef}>
+          <button
+            className="library-toggle"
+            type="button"
+            aria-expanded={libraryOpen}
+            aria-controls="project-library"
+            onClick={() => setLibraryOpen((open) => !open)}
+          >
+            <span><small>Selected video</small><strong>{project.title}</strong></span>
+            <span className="library-toggle-action">{libraryOpen ? "Close library ↑" : "Change video ↓"}</span>
+          </button>
+          <div id="project-library" className={libraryOpen ? "library-body is-open" : "library-body"}>
           <div className="panel-heading">
             <span>Projects</span>
-            <span className="count">{projects.length}</span>
+            <span className="count">{filteredProjects.length}/{projects.length}</span>
           </div>
 
-          <div className="project-list">
-            {projects.map((item) => (
+          <div className="project-controls">
+            <label className="sr-only" htmlFor="project-search">Search projects</label>
+            <input id="project-search" type="search" placeholder="Search videos…" value={query} onChange={(event) => setQuery(event.target.value)} />
+            <label className="sr-only" htmlFor="project-format">Filter by video format</label>
+            <select id="project-format" value={formatFilter} onChange={(event) => setFormatFilter(event.target.value)}>
+              <option value="all">All formats</option>
+              <option value="vertical">Vertical 9:16</option>
+              <option value="landscape">Landscape 16:9</option>
+              <option value="square">Square 1:1</option>
+              <option value="appstore-header">App Store header</option>
+              <option value="appstore-search">App Store search</option>
+            </select>
+          </div>
+
+          <nav className="project-list" aria-label="Available videos">
+            {filteredProjects.map((item) => (
               <button
                 className={item.id === project.id ? 'project-button active' : 'project-button'}
                 key={item.id}
-                onClick={() => setProjectId(item.id)}
+                onClick={() => selectProject(item.id)}
+                aria-current={item.id === project.id ? "true" : undefined}
                 type="button"
               >
                 <span className="project-title">{item.title}</span>
                 <span className="project-meta">{item.format} · {item.scenes.length} scenes</span>
               </button>
             ))}
-          </div>
+            {filteredProjects.length === 0 ? <p className="project-empty">No videos match your search.</p> : null}
+          </nav>
 
           <div className="project-facts">
             <div><span>Format</span><strong>{dimensions.width}×{dimensions.height}</strong></div>
@@ -71,6 +121,7 @@ export const App = () => {
               </p>
             </div>
           ) : null}
+          </div>
         </aside>
 
         <section className="workspace">
@@ -85,9 +136,10 @@ export const App = () => {
           <div className="player-stage">
             <div
               className="player-wrap"
-              style={{aspectRatio: `${dimensions.width} / ${dimensions.height}`}}
+              style={playerStyle}
             >
               <Player
+                key={project.id}
                 component={VideoComposition}
                 inputProps={{project}}
                 durationInFrames={durationInFrames}
@@ -100,7 +152,7 @@ export const App = () => {
             </div>
           </div>
 
-          <RenderPanel project={project} />
+          <RenderPanel key={project.id} project={project} />
 
           <div className="scene-strip" aria-label="Scene overview">
             {project.scenes.map((scene, index) => (
