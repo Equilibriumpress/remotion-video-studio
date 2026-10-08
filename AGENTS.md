@@ -6,6 +6,9 @@ Create premium travel videos and route stories that preview and render from GitH
 
 ## New video workflow
 
+Before designing motion from a prompt, consult skills/remotion-scene-library/SKILL.md and search the pinned 201-entry background catalog if a motion technique beyond existing presets would improve the story. The catalog is authoring-only. Do not load it in the browser or imply all 201 source components are already runnable. Integrate and validate selected examples individually.
+
+
 1. Read `skills/youtube-longform/SKILL.md` when the user requests a long-form YouTube video. Read `skills/premium-video-director/SKILL.md` for short prompt-led video.
 2. Read `src/project/schema.ts`.
 3. Prefer `youtube-story` for long-form narrated YouTube work, `travel-story` for short travel and routes. Use `explainer` for product videos. Keep `data-story` for technical compatibility and internal experiments.
