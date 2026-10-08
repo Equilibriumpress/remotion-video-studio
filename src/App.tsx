@@ -108,6 +108,24 @@ export const App = () => {
             <div><span>Source</span><strong>{project.youtube ? 'YouTube timeline' : project.director ? 'Prompt → Director' : 'JSON'}</strong></div>
           </div>
 
+          {project.youtube ? (
+            <div className="director-card">
+              <p className="eyebrow">YouTube structure</p>
+              <blockquote>{project.youtube.title}</blockquote>
+              <div className="director-tags">
+                <span>{project.youtube.chapters.length} chapters</span>
+                <span>{Math.round(durationSeconds / 6) / 10} min</span>
+                <span>Series + B-roll Sequences</span>
+              </div>
+              {project.youtube.thumbnail ? (
+                <p className="director-payoff">
+                  <strong>Thumbnail</strong>
+                  {project.youtube.thumbnail.title}
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+
           {project.director ? (
             <div className="director-card">
               <p className="eyebrow">Director input</p>
