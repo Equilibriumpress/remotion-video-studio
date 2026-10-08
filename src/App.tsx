@@ -2,7 +2,7 @@ import {useMemo, useRef, useState, type CSSProperties} from 'react';
 import {Player} from '@remotion/player';
 import {projects} from './project/catalog';
 import {getDimensions, projectFrames} from './project/schema';
-import {VideoComposition} from './remotion/VideoComposition';
+import {ProjectComposition} from './remotion/ProjectComposition';
 import {RenderPanel} from './render/RenderPanel';
 
 export const App = () => {
@@ -94,7 +94,9 @@ export const App = () => {
                 type="button"
               >
                 <span className="project-title">{item.title}</span>
-                <span className="project-meta">{item.format} · {item.scenes.length} scenes</span>
+                <span className="project-meta">
+                  {item.format} · {item.youtube ? `${item.youtube.chapters.length} chapters` : `${item.scenes.length} scenes`}
+                </span>
               </button>
             ))}
             {filteredProjects.length === 0 ? <p className="project-empty">No videos match your search.</p> : null}
@@ -103,7 +105,7 @@ export const App = () => {
           <div className="project-facts">
             <div><span>Format</span><strong>{dimensions.width}×{dimensions.height}</strong></div>
             <div><span>Frames</span><strong>{durationInFrames}</strong></div>
-            <div><span>Source</span><strong>{project.director ? 'Prompt → Director' : 'JSON'}</strong></div>
+            <div><span>Source</span><strong>{project.youtube ? 'YouTube timeline' : project.director ? 'Prompt → Director' : 'JSON'}</strong></div>
           </div>
 
           {project.director ? (
@@ -140,7 +142,7 @@ export const App = () => {
             >
               <Player
                 key={project.id}
-                component={VideoComposition}
+                component={ProjectComposition}
                 inputProps={{project}}
                 durationInFrames={durationInFrames}
                 compositionWidth={dimensions.width}
@@ -154,14 +156,22 @@ export const App = () => {
 
           <RenderPanel key={project.id} project={project} />
 
-          <div className="scene-strip" aria-label="Scene overview">
-            {project.scenes.map((scene, index) => (
-              <div className="scene-chip" key={scene.id}>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <strong>{scene.type}</strong>
-                <small>{scene.role ? `${scene.role} · ` : ''}{scene.duration}s</small>
-              </div>
-            ))}
+          <div className="scene-strip" aria-label={project.youtube ? 'Chapter overview' : 'Scene overview'}>
+            {project.youtube
+              ? project.youtube.chapters.map((chapter, index) => (
+                  <div className="scene-chip" key={chapter.id}>
+                    <span>{String(index + 1).padStart(2, '0')}</span>
+                    <strong>{chapter.title}</strong>
+                    <small>{chapter.duration}s · {chapter.overlays.length} overlays</small>
+                  </div>
+                ))
+              : project.scenes.map((scene, index) => (
+                  <div className="scene-chip" key={scene.id}>
+                    <span>{String(index + 1).padStart(2, '0')}</span>
+                    <strong>{scene.type}</strong>
+                    <small>{scene.role ? `${scene.role} · ` : ''}{scene.duration}s</small>
+                  </div>
+                ))}
           </div>
         </section>
       </div>
