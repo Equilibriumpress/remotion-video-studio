@@ -115,12 +115,12 @@ export const TravelReelHighlightSceneFrame = ({scene, project}: {scene: Highligh
         opacity={enter}>
         {motif}
       </g>
-      <rect x={x} y={h * 0.585} width={w * 0.78} height={h * 0.117}
+      <rect x={x} y={h * 0.565} width={w * 0.78} height={h * 0.107}
         rx={w * 0.024} fill={fg} fillOpacity={0.043}
         stroke={accent} strokeOpacity={0.30} strokeWidth={2}/>
-      <text x={x + w * 0.032} y={h * 0.609} fill={accent} fontSize={w * 0.018}
+      <text x={x + w * 0.032} y={h * 0.589} fill={accent} fontSize={w * 0.018}
         fontWeight={850} letterSpacing={2.4}>THE WALK / ROUTE POSITION</text>
-      <g transform={`translate(${x + w * 0.035} ${h * 0.606})`}>
+      <g transform={`translate(${x + w * 0.035} ${h * 0.583})`}>
         <path d={track} fill="none" stroke={muted} strokeWidth={w * 0.004} strokeOpacity={0.38} strokeLinecap="round"/>
         <path d={track} fill="none" stroke={accent} strokeWidth={w * 0.007}
           strokeLinecap="round" pathLength={1} strokeDasharray={1}
