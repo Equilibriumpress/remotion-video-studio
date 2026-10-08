@@ -1,0 +1,15 @@
+{
+  "id": "roller-skis-original-lower-third",
+  "title": "Roller Skis · Original Lower Third",
+  "template": "explainer",
+  "format": "landscape",
+  "fps": 30,
+  "nativeComposition": "roller-skis-intro-lower-third",
+  "theme": {
+    "background": "#F7F6F2",
+    "foreground": "#292C29",
+    "muted": "#85847D",
+    "accent": "#4290F5"
+  },
+  "scenes": []
+}
