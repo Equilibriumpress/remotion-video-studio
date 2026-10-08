@@ -1,4 +1,4 @@
-import type {VideoProject, VideoScene} from '../project/schema';
+import {projectVisualScenes, type VideoProject, type VideoScene} from '../project/schema';
 import {resolveAsset} from '../project/assets';
 
 export type AssetCheck = {
@@ -64,10 +64,14 @@ const checkMapStyle = async (source: string) => {
 };
 
 export const checkProjectAssets = async (project: VideoProject): Promise<AssetCheck[]> => {
-  const refs: AssetRef[] = project.scenes.flatMap(sceneAssets);
+  const refs: AssetRef[] = projectVisualScenes(project).flatMap(sceneAssets);
 
   if (project.audio?.music) refs.push({source: project.audio.music.src, kind: 'media'});
   if (project.audio?.voiceover) refs.push({source: project.audio.voiceover.src, kind: 'media'});
+  if (project.youtube?.music) refs.push({source: project.youtube.music.src, kind: 'media'});
+  if (project.youtube?.voiceover) refs.push({source: project.youtube.voiceover.src, kind: 'media'});
+  if (project.youtube?.endCard?.avatarSrc) refs.push({source: project.youtube.endCard.avatarSrc, kind: 'image'});
+  if (project.youtube?.thumbnail?.src) refs.push({source: project.youtube.thumbnail.src, kind: 'image'});
 
   const unique = [...new Map(refs.map((ref) => [ref.source, ref])).values()];
   const checks: AssetCheck[] = [];
