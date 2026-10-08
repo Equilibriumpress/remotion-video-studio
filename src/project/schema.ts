@@ -665,6 +665,7 @@ const youtubeOverlaySchema = z.object({
 const youtubeChapterSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
+  script: z.string().max(4000).optional(),
   duration: z.number().min(2).max(180),
   base: sceneSchema,
   overlays: z.array(youtubeOverlaySchema).max(24).default([]),
