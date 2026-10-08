@@ -217,6 +217,7 @@ const Chapter = ({
         return (
           <Sequence
             key={overlay.scene.id}
+            name={overlay.scene.id}
             from={Math.round(overlay.from * fps)}
             durationInFrames={durationInFrames}
             premountFor={Math.min(fps, durationInFrames)}
