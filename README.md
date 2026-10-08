@@ -277,3 +277,33 @@ of [Shimmy0530/btc-explained](https://github.com/Shimmy0530/btc-explained).
 
 The Studio adaptation is original code and copy, **not a pixel-perfect
 reproduction of the unlicensed original**.
+
+## Kyoto Travel Reel — vertical SVG motion graphics
+
+`kyoto-travel-reel` is a ~40-second, English-language 9:16 TikTok/Reels
+example produced entirely from the project JSON and React/SVG:
+
+- Full-screen kinetic opening, OSM-aligned walking map, four illustrated
+  landmark spotlight scenes, moving route chapter, final route map, CTA.
+- New reusable `travel-reel-highlight` scene for text-led illustrated
+  stops (motifs are expressly **decorative abstractions**, not photographs).
+- New `reelCaptions` project-level schema: timed global TikTok-style words
+  remain visible through scene transitions and avoid the bottom 23% and
+  right 17% platform-interface zones.
+- 1080×1920, 30 fps; no images, music, video, external typography, MapLibre,
+  live API requests, routing calls or new JavaScript dependencies.
+- The 39-coordinate Higashiyama route is reused from `kyoto-morning-route`
+  with the original OpenStreetMap/ODbL attribution. It is a geographical
+  illustration, **not navigational directions**. Stops snap to real geometry.
+- Scripts and on-screen captions are silent by default. Adding an actual
+  narration requires recording/creating the audio and aligning captions
+  against that audio; caption times here are editorially paced estimates.
+
+Run `npm run test:travel-reel` or `npm run build`.
+See `skills/vertical-travel-reel/SKILL.md` for the authoring conventions.
+
+Technique references (independent implementation):
+[remotion-kinetic-kit](https://github.com/diegolopezislas13-jpg/remotion-kinetic-kit)
+(MIT) for cinematic pacing and kinetic type;
+[remotion-reels-starter](https://github.com/LeFrancilien/remotion-reels-starter)
+(MIT) for social-platform safe-zone design.

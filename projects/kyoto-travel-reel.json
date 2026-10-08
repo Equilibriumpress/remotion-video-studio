@@ -1,0 +1,965 @@
+{
+  "id": "kyoto-travel-reel",
+  "title": "Kyoto Before the Crowds · Travel Reel 9:16",
+  "template": "travel-story",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#141C1A",
+    "foreground": "#F8F4E9",
+    "muted": "#D5C8B3",
+    "accent": "#E8B976"
+  },
+  "direction": {
+    "personality": "energetic",
+    "baseTimingSeconds": 0.32,
+    "focalPoint": "center",
+    "transitionFamily": "mixed",
+    "notes": "TikTok/Reels safe zones; full-frame graphic motifs; short kinetic beats and real OSM walking geometry."
+  },
+  "geoRoutes": {
+    "higashiyama-walk": {
+      "type": "LineString",
+      "mode": "walking",
+      "coordinates": [
+        [
+          135.7833391,
+          34.9954277
+        ],
+        [
+          135.7831485,
+          34.9954647
+        ],
+        [
+          135.7829173,
+          34.9955133
+        ],
+        [
+          135.7826446,
+          34.9955999
+        ],
+        [
+          135.782294,
+          34.995717
+        ],
+        [
+          135.7818997,
+          34.9958342
+        ],
+        [
+          135.7814834,
+          34.9959604
+        ],
+        [
+          135.7810891,
+          34.9960866
+        ],
+        [
+          135.7807254,
+          34.9962011
+        ],
+        [
+          135.7808076,
+          34.9962092
+        ],
+        [
+          135.7808591,
+          34.9962849
+        ],
+        [
+          135.7809138,
+          34.9963751
+        ],
+        [
+          135.7809445,
+          34.9964742
+        ],
+        [
+          135.7809248,
+          34.9967897
+        ],
+        [
+          135.7808974,
+          34.9971322
+        ],
+        [
+          135.7808645,
+          34.9974387
+        ],
+        [
+          135.7808317,
+          34.9977271
+        ],
+        [
+          135.7808043,
+          34.9979984
+        ],
+        [
+          135.7804538,
+          34.9981237
+        ],
+        [
+          135.7801251,
+          34.9982319
+        ],
+        [
+          135.779825,
+          34.9983004
+        ],
+        [
+          135.7796431,
+          34.998322
+        ],
+        [
+          135.7793145,
+          34.9983761
+        ],
+        [
+          135.77901,
+          34.9984356
+        ],
+        [
+          135.7789202,
+          34.9985023
+        ],
+        [
+          135.7787712,
+          34.9985627
+        ],
+        [
+          135.7785412,
+          34.9985771
+        ],
+        [
+          135.7782772,
+          34.9985979
+        ],
+        [
+          135.7779847,
+          34.9986249
+        ],
+        [
+          135.7778248,
+          34.9986285
+        ],
+        [
+          135.7774961,
+          34.9986601
+        ],
+        [
+          135.7771905,
+          34.9987051
+        ],
+        [
+          135.7771894,
+          34.9999986
+        ],
+        [
+          135.7771894,
+          35.0012606
+        ],
+        [
+          135.7771894,
+          35.0025225
+        ],
+        [
+          135.7771927,
+          35.0037493
+        ],
+        [
+          135.7766198,
+          35.00377
+        ],
+        [
+          135.7759626,
+          35.0037988
+        ],
+        [
+          135.7750665,
+          35.0038367
+        ]
+      ],
+      "contextLines": [
+        [
+          [
+            135.7807035,
+            34.9992676
+          ],
+          [
+            135.7807167,
+            34.9990612
+          ],
+          [
+            135.780732,
+            34.9988629
+          ],
+          [
+            135.7807451,
+            34.9986826
+          ],
+          [
+            135.7807561,
+            34.9985203
+          ],
+          [
+            135.780767,
+            34.9983761
+          ],
+          [
+            135.7807802,
+            34.9982139
+          ],
+          [
+            135.7807933,
+            34.9980877
+          ],
+          [
+            135.7808043,
+            34.9979984
+          ]
+        ],
+        [
+          [
+            135.7799827,
+            35.0018753
+          ],
+          [
+            135.7799608,
+            35.0014408
+          ],
+          [
+            135.7799334,
+            35.000918
+          ],
+          [
+            135.7799115,
+            35.0005458
+          ],
+          [
+            135.7798896,
+            35.0001428
+          ],
+          [
+            135.7798677,
+            34.9997102
+          ],
+          [
+            135.7798447,
+            34.999264
+          ]
+        ],
+        [
+          [
+            135.7784963,
+            35.0027253
+          ],
+          [
+            135.7785258,
+            35.0021619
+          ],
+          [
+            135.7785696,
+            35.001531
+          ],
+          [
+            135.7786244,
+            35.0008099
+          ],
+          [
+            135.7786792,
+            35.0000888
+          ],
+          [
+            135.778723,
+            34.9993676
+          ],
+          [
+            135.7787712,
+            34.9985627
+          ]
+        ],
+        [
+          [
+            135.7775257,
+            35.0037412
+          ],
+          [
+            135.7777152,
+            35.0036943
+          ],
+          [
+            135.7779343,
+            35.0036222
+          ],
+          [
+            135.7781534,
+            35.003532
+          ],
+          [
+            135.7783506,
+            35.0034599
+          ],
+          [
+            135.7785379,
+            35.0033923
+          ]
+        ],
+        [
+          [
+            135.7750665,
+            35.0038367
+          ],
+          [
+            135.7749986,
+            35.0034239
+          ],
+          [
+            135.7749219,
+            35.0029552
+          ],
+          [
+            135.7748452,
+            35.0024864
+          ],
+          [
+            135.7747576,
+            35.0019997
+          ],
+          [
+            135.7746919,
+            35.0016932
+          ],
+          [
+            135.7746349,
+            35.0014679
+          ]
+        ],
+        [
+          [
+            135.7728812,
+            35.0058747
+          ],
+          [
+            135.7733336,
+            35.005836
+          ],
+          [
+            135.7737717,
+            35.005799
+          ],
+          [
+            135.7742099,
+            35.0057621
+          ],
+          [
+            135.7746327,
+            35.005726
+          ]
+        ],
+        [
+          [
+            135.7728297,
+            35.0052807
+          ],
+          [
+            135.7732678,
+            35.0053799
+          ],
+          [
+            135.773706,
+            35.0054754
+          ],
+          [
+            135.7741442,
+            35.0055728
+          ],
+          [
+            135.7745823,
+            35.0056683
+          ],
+          [
+            135.7748671,
+            35.0057314
+          ]
+        ],
+        [
+          [
+            135.7772113,
+            35.0050464
+          ],
+          [
+            135.7771927,
+            35.0037493
+          ],
+          [
+            135.7771894,
+            35.0025225
+          ],
+          [
+            135.7771894,
+            35.0012606
+          ],
+          [
+            135.7771894,
+            34.9999986
+          ],
+          [
+            135.7771905,
+            34.9987051
+          ],
+          [
+            135.7771456,
+            34.9981057
+          ],
+          [
+            135.7770821,
+            34.9976253
+          ],
+          [
+            135.7770142,
+            34.9967536
+          ],
+          [
+            135.7769484,
+            34.995672
+          ],
+          [
+            135.7769046,
+            34.9947706
+          ]
+        ],
+        [
+          [
+            135.7722382,
+            35.0038655
+          ],
+          [
+            135.7735527,
+            35.003852
+          ],
+          [
+            135.7750665,
+            35.0038367
+          ],
+          [
+            135.7759626,
+            35.0037988
+          ],
+          [
+            135.7766198,
+            35.00377
+          ],
+          [
+            135.7771927,
+            35.0037493
+          ],
+          [
+            135.7774304,
+            35.0037448
+          ]
+        ],
+        [
+          [
+            135.77901,
+            34.9984356
+          ],
+          [
+            135.7793145,
+            34.9983761
+          ],
+          [
+            135.7796431,
+            34.998322
+          ],
+          [
+            135.779825,
+            34.9983004
+          ],
+          [
+            135.7801251,
+            34.9982319
+          ],
+          [
+            135.7804538,
+            34.9981237
+          ],
+          [
+            135.7808043,
+            34.9979984
+          ]
+        ],
+        [
+          [
+            135.7808043,
+            34.9979984
+          ],
+          [
+            135.7808317,
+            34.9977271
+          ],
+          [
+            135.7808645,
+            34.9974387
+          ],
+          [
+            135.7808974,
+            34.9971322
+          ],
+          [
+            135.7809248,
+            34.9967897
+          ],
+          [
+            135.7809445,
+            34.9964742
+          ],
+          [
+            135.7809138,
+            34.9963751
+          ],
+          [
+            135.7808591,
+            34.9962849
+          ],
+          [
+            135.7808076,
+            34.9962092
+          ]
+        ],
+        [
+          [
+            135.7807254,
+            34.9962011
+          ],
+          [
+            135.7810891,
+            34.9960866
+          ],
+          [
+            135.7814834,
+            34.9959604
+          ],
+          [
+            135.7818997,
+            34.9958342
+          ],
+          [
+            135.782294,
+            34.995717
+          ],
+          [
+            135.7826446,
+            34.9955999
+          ],
+          [
+            135.7829173,
+            34.9955133
+          ],
+          [
+            135.7831485,
+            34.9954647
+          ],
+          [
+            135.7833391,
+            34.9954277
+          ]
+        ]
+      ],
+      "source": {
+        "name": "OpenStreetMap / Higashiyama survey",
+        "url": "https://github.com/PhiloLabs/fable51-worlds/blob/main/kyoto-higashiyama/src/data/route.js",
+        "license": "ODbL 1.0"
+      }
+    }
+  },
+  "scenes": [
+    {
+      "id": "reel-kyoto-hook",
+      "type": "kinetic-title",
+      "duration": 3.6,
+      "text": "KYOTO AT DAWN",
+      "kicker": "THE CITY BEFORE THE CROWDS",
+      "style": "split",
+      "align": "center",
+      "highlight": "KYOTO",
+      "role": "hook",
+      "motion": "pop"
+    },
+    {
+      "id": "reel-kyoto-map-01",
+      "type": "geo-route",
+      "duration": 5.2,
+      "title": "Four stops before noon",
+      "routeId": "higashiyama-walk",
+      "stops": [
+        {
+          "coordinates": [
+            135.7833391,
+            34.9954277
+          ],
+          "label": "Kiyomizu-dera",
+          "icon": "temple"
+        },
+        {
+          "coordinates": [
+            135.7809445,
+            34.9964742
+          ],
+          "label": "Sannenzaka",
+          "icon": "city"
+        },
+        {
+          "coordinates": [
+            135.7775257,
+            35.0037412
+          ],
+          "label": "Yasaka Shrine",
+          "icon": "temple"
+        },
+        {
+          "coordinates": [
+            135.7750665,
+            35.0038367
+          ],
+          "label": "Gion",
+          "icon": "city"
+        }
+      ],
+      "progress": 1,
+      "style": "watercolor",
+      "label": "Kyoto · Higashiyama on foot",
+      "camera": "overview",
+      "showDetails": false,
+      "role": "orient",
+      "transition": "soft-zoom",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "reel-kyoto-stop-01",
+      "type": "travel-reel-highlight",
+      "duration": 5,
+      "routeId": "higashiyama-walk",
+      "stop": {
+        "coordinates": [
+          135.7833391,
+          34.9954277
+        ],
+        "label": "Kiyomizu-dera",
+        "icon": "temple"
+      },
+      "number": "01",
+      "title": "Kiyomizu-dera",
+      "kicker": "FIRST LIGHT",
+      "subtitle": "A hillside temple in Kyoto",
+      "motif": "temple",
+      "role": "detail",
+      "transition": "slide-up",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "reel-kyoto-stop-02",
+      "type": "travel-reel-highlight",
+      "duration": 5,
+      "routeId": "higashiyama-walk",
+      "stop": {
+        "coordinates": [
+          135.7809445,
+          34.9964742
+        ],
+        "label": "Sannenzaka",
+        "icon": "city"
+      },
+      "number": "02",
+      "title": "Sannenzaka",
+      "kicker": "OLD KYOTO",
+      "subtitle": "Narrow historic lanes",
+      "motif": "old-street",
+      "role": "detail",
+      "transition": "slide-up",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "reel-kyoto-map-02",
+      "type": "route-chapter",
+      "duration": 4.3,
+      "title": "Follow the old lanes",
+      "subtitle": "Higashiyama → Yasaka Shrine",
+      "routeId": "higashiyama-walk",
+      "startProgress": 0.29,
+      "endProgress": 0.82,
+      "startLabel": "Higashiyama",
+      "endLabel": "Yasaka area",
+      "style": "watercolor",
+      "role": "travel",
+      "transition": "soft-zoom",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "reel-kyoto-stop-03",
+      "type": "travel-reel-highlight",
+      "duration": 5,
+      "routeId": "higashiyama-walk",
+      "stop": {
+        "coordinates": [
+          135.7775257,
+          35.0037412
+        ],
+        "label": "Yasaka Shrine",
+        "icon": "temple"
+      },
+      "number": "03",
+      "title": "Yasaka Shrine",
+      "kicker": "A QUIETER MOMENT",
+      "subtitle": "A landmark at Gion's edge",
+      "motif": "torii",
+      "role": "detail",
+      "transition": "slide-up",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "reel-kyoto-stop-04",
+      "type": "travel-reel-highlight",
+      "duration": 5,
+      "routeId": "higashiyama-walk",
+      "stop": {
+        "coordinates": [
+          135.7750665,
+          35.0038367
+        ],
+        "label": "Gion",
+        "icon": "city"
+      },
+      "number": "04",
+      "title": "Gion",
+      "kicker": "FINAL STOP",
+      "subtitle": "Side streets and lantern light",
+      "motif": "lanterns",
+      "role": "detail",
+      "transition": "slide-up",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "reel-kyoto-finale-map",
+      "type": "editorial-map",
+      "duration": 5,
+      "title": "The morning route",
+      "kicker": "KYOTO / HIGASHIYAMA",
+      "region": "KYOTO",
+      "stat": "Four stops · one walk",
+      "routeId": "higashiyama-walk",
+      "stops": [
+        {
+          "coordinates": [
+            135.7833391,
+            34.9954277
+          ],
+          "label": "Kiyomizu-dera",
+          "icon": "temple"
+        },
+        {
+          "coordinates": [
+            135.7809445,
+            34.9964742
+          ],
+          "label": "Sannenzaka",
+          "icon": "city"
+        },
+        {
+          "coordinates": [
+            135.7775257,
+            35.0037412
+          ],
+          "label": "Yasaka Shrine",
+          "icon": "temple"
+        },
+        {
+          "coordinates": [
+            135.7750665,
+            35.0038367
+          ],
+          "label": "Gion",
+          "icon": "city"
+        }
+      ],
+      "progress": 1,
+      "graphicFps": 12,
+      "showDetails": false,
+      "role": "payoff",
+      "transition": "soft-zoom",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "reel-kyoto-payoff",
+      "type": "kinetic-title",
+      "duration": 4,
+      "text": "TAKE THE SLOW WAY",
+      "kicker": "SAVE THIS KYOTO WALK",
+      "style": "word-reveal",
+      "align": "center",
+      "highlight": "SLOW",
+      "role": "payoff",
+      "transition": "slide-up",
+      "transitionDuration": 0.3
+    }
+  ],
+  "reelCaptions": {
+    "captionStyle": "tiktok",
+    "combineTokensWithinMilliseconds": 900,
+    "emphasisWords": [
+      "Kyoto",
+      "Kiyomizu-dera",
+      "Sannenzaka",
+      "Yasaka",
+      "Gion",
+      "slow"
+    ],
+    "captions": [
+      {
+        "text": "Kyoto before the crowds.",
+        "start": 0.27,
+        "end": 1.55,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Take the slow way.",
+        "start": 1.75,
+        "end": 3.12,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Four stops, one morning.",
+        "start": 3.57,
+        "end": 5.63,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Follow the real lanes.",
+        "start": 5.83,
+        "end": 8.02,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Begin at Kiyomizu-dera.",
+        "start": 8.47,
+        "end": 10.43,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "A temple above the streets.",
+        "start": 10.63,
+        "end": 12.72,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Descend through Sannenzaka.",
+        "start": 13.17,
+        "end": 15.13,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Slow down in the old lanes.",
+        "start": 15.33,
+        "end": 17.42,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Keep walking toward Yasaka.",
+        "start": 17.87,
+        "end": 19.49,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "The route crosses Higashiyama.",
+        "start": 19.69,
+        "end": 21.42,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Find Yasaka Shrine.",
+        "start": 21.87,
+        "end": 23.83,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "A landmark at the edge of Gion.",
+        "start": 24.03,
+        "end": 26.12,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Finish among Gion's lanes.",
+        "start": 26.57,
+        "end": 28.53,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Enjoy the smaller details.",
+        "start": 28.73,
+        "end": 30.82,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Here is your Kyoto route.",
+        "start": 31.27,
+        "end": 33.23,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "All four stops, together.",
+        "start": 33.43,
+        "end": 35.52,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Save this morning walk.",
+        "start": 35.97,
+        "end": 37.59,
+        "pageBreakAfter": true
+      },
+      {
+        "text": "Explore Kyoto slowly.",
+        "start": 37.79,
+        "end": 39.52,
+        "pageBreakAfter": true
+      }
+    ]
+  },
+  "voiceoverScript": [
+    {
+      "sceneId": "reel-kyoto-hook",
+      "text": "Kyoto before the crowds. Take the slow way."
+    },
+    {
+      "sceneId": "reel-kyoto-map-01",
+      "text": "Four stops, one morning. Follow the real lanes."
+    },
+    {
+      "sceneId": "reel-kyoto-stop-01",
+      "text": "Begin at Kiyomizu-dera. A temple above the streets."
+    },
+    {
+      "sceneId": "reel-kyoto-stop-02",
+      "text": "Descend through Sannenzaka. Slow down in the old lanes."
+    },
+    {
+      "sceneId": "reel-kyoto-map-02",
+      "text": "Keep walking toward Yasaka. The route crosses Higashiyama."
+    },
+    {
+      "sceneId": "reel-kyoto-stop-03",
+      "text": "Find Yasaka Shrine. A landmark at the edge of Gion."
+    },
+    {
+      "sceneId": "reel-kyoto-stop-04",
+      "text": "Finish among Gion's lanes. Enjoy the smaller details."
+    },
+    {
+      "sceneId": "reel-kyoto-finale-map",
+      "text": "Here is your Kyoto route. All four stops, together."
+    },
+    {
+      "sceneId": "reel-kyoto-payoff",
+      "text": "Save this morning walk. Explore Kyoto slowly."
+    }
+  ]
+}

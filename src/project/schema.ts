@@ -417,6 +417,17 @@ const routeChapterScene = baseScene.extend({
   style: z.enum(['clean', 'watercolor', 'flow']).default('clean'),
 });
 
+const travelReelHighlightScene = baseScene.extend({
+  type: z.literal('travel-reel-highlight'),
+  routeId: z.string().min(1),
+  stop: geoStopSchema,
+  number: z.string().min(1).max(3),
+  title: z.string().min(1).max(58),
+  kicker: z.string().min(1).max(52),
+  subtitle: z.string().min(1).max(80),
+  motif: z.enum(['temple', 'old-street', 'torii', 'lanterns']),
+});
+
 const routeStopScene = baseScene.extend({
   type: z.literal('route-stop'),
   title: z.string().min(1),
@@ -621,6 +632,7 @@ export const sceneSchema = z.discriminatedUnion('type', [
   elevationRouteScene,
   routeChapterScene,
   routeStopScene,
+  travelReelHighlightScene,
   locationCardScene,
   progressRouteScene,
   mapOverlayScene,
@@ -723,6 +735,13 @@ const youtubeStorySchema = z.object({
   thumbnail: youtubeThumbnailSchema.optional(),
 });
 
+const reelCaptionsSchema = z.object({
+  captionStyle: captionStyleSchema.default('tiktok'),
+  combineTokensWithinMilliseconds: z.number().int().min(150).max(3000).default(900),
+  emphasisWords: z.array(z.string().min(1)).max(16).default([]),
+  captions: z.array(captionSegmentSchema).min(1).max(200),
+});
+
 const projectObjectSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
@@ -751,6 +770,7 @@ const projectObjectSchema = z.object({
     voiceover: audioTrackSchema.optional(),
   }).optional(),
   voiceoverScript: z.array(voiceoverCueSchema).max(64).optional(),
+  reelCaptions: reelCaptionsSchema.optional(),
   scenes: z.array(sceneSchema).default([]),
   // The upstream reference is rendered directly, not converted into JSON scenes.
   nativeComposition: z.enum(['roller-skis-nordic-routes', 'roller-skis-intro-lower-third']).optional(),
@@ -772,6 +792,14 @@ export const projectSchema = projectObjectSchema.superRefine((project, ctx) => {
     });
   }
 
+  if (project.reelCaptions && (project.format !== 'vertical' || project.youtube)) {
+    ctx.addIssue({code: 'custom', path: ['reelCaptions'], message: 'Global reel captions require a vertical non-YouTube project'});
+  }
+  project.reelCaptions?.captions.forEach((caption, index) => {
+    if (caption.end <= caption.start || (index > 0 && caption.start < project.reelCaptions!.captions[index - 1].end)) {
+      ctx.addIssue({code: 'custom', path: ['reelCaptions', 'captions', index], message: 'Reel caption segments must be ordered, non-overlapping and positive'});
+    }
+  });
   project.youtube?.chapters.forEach((chapter, chapterIndex) => {
     chapter.overlays.forEach((overlay, overlayIndex) => {
       if (overlay.from + overlay.scene.duration > chapter.duration + 0.001) {

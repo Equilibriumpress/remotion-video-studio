@@ -5,6 +5,7 @@ import premiumMotionDemo from '../../projects/premium-motion-demo.json';
 import kyotoPremiumShowcase from '../../projects/kyoto-premium-showcase.json';
 import tokyoKyotoShinkansen from '../../projects/tokyo-kyoto-shinkansen.json';
 import kyotoMorningRoute from '../../projects/kyoto-morning-route.json';
+import kyotoTravelReel from '../../projects/kyoto-travel-reel.json';
 import kyotoAutoStory from '../../projects/kyoto-auto-story.json';
 import kyotoPremiumDirector from '../../projects/kyoto-premium-director.json';
 import scotlandRoadtripShowcase from '../../projects/scotland-roadtrip-showcase.json';
@@ -32,6 +33,7 @@ export const projects: VideoProject[] = [
   parseProject(kyotoPremiumShowcase),
   parseProject(tokyoKyotoShinkansen),
   parseProject(kyotoMorningRoute),
+  parseProject(kyotoTravelReel),
   parseProject(kyotoAutoStory),
   parseProject(kyotoPremiumDirector),
   parseProject(scotlandRoadtripShowcase),

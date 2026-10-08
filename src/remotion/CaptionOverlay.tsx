@@ -13,9 +13,11 @@ const normalizeWord = (value: string) =>
 export const CaptionOverlay = ({
   scene,
   project,
+  safeArea = 'default',
 }: {
   scene: CaptionScene;
   project: VideoProject;
+  safeArea?: 'default' | 'vertical-reel';
 }) => {
   const frame = useCurrentFrame();
   const {fps, width, height} = useVideoConfig();
@@ -42,6 +44,7 @@ export const CaptionOverlay = ({
 
   const {accent} = project.theme;
   const vertical = height > width;
+  const socialSafe = vertical && safeArea === 'vertical-reel';
   const fontSize = width * (vertical ? 0.055 : 0.034);
   const basic = scene.captionStyle === 'basic';
   const cinematic = scene.captionStyle === 'cinematic';
@@ -60,11 +63,11 @@ export const CaptionOverlay = ({
     <div
       style={{
         position: 'absolute',
-        left: '6%',
-        right: '6%',
+        left: socialSafe ? '7%' : '6%',
+        right: socialSafe ? '17%' : '6%',
         ...(centered
           ? {top: '50%', transform: 'translateY(-50%)'}
-          : {bottom: vertical ? '12%' : '9%'}),
+          : {bottom: socialSafe ? '23%' : vertical ? '12%' : '9%'}),
         display: 'flex',
         justifyContent: 'center',
         pointerEvents: 'none',
@@ -78,7 +81,7 @@ export const CaptionOverlay = ({
           justifyContent: 'center',
           alignItems: 'baseline',
           gap: basic ? 0 : Math.max(6, width * 0.008),
-          maxWidth: vertical ? '94%' : '80%',
+          maxWidth: socialSafe ? '100%' : vertical ? '94%' : '80%',
           padding: cinematic || editorial
             ? 0
             : basic
