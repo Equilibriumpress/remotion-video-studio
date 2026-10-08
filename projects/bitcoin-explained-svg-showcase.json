@@ -1,0 +1,639 @@
+{
+  "id": "bitcoin-explained-svg-showcase",
+  "title": "Bitcoin Explained · 8-Scene SVG Example (Independent)",
+  "template": "youtube-story",
+  "format": "landscape",
+  "fps": 30,
+  "theme": {
+    "background": "#091626",
+    "foreground": "#F4F8FC",
+    "muted": "#AABFD0",
+    "accent": "#51BAE9"
+  },
+  "scenes": [],
+  "youtube": {
+    "title": "Bitcoin Explained · Procedural Motion Graphics",
+    "thumbnail": {
+      "title": "BITCOIN EXPLAINED",
+      "subtitle": "8 chapters · motion graphics only"
+    },
+    "chapters": [
+      {
+        "id": "btc-chapter-01",
+        "title": "A network without a centre",
+        "duration": 60,
+        "base": {
+          "id": "btc-independent-base-1",
+          "type": "bitcoin-explainer",
+          "duration": 60,
+          "mode": "network",
+          "title": "A network without a centre",
+          "kicker": "01 / BITCOIN NETWORK"
+        },
+        "script": "Bitcoin runs on a distributed network of connected participants. A node holds and checks its view of the public ledger. Information travels between peers instead of through one central server. Network connections change while the protocol's rules remain shared. Independent verification helps participants reject invalid transactions. This network provides the setting for each Bitcoin transfer.",
+        "overlays": [
+          {
+            "from": 35,
+            "scene": {
+              "id": "btc-original-graphic-1",
+              "type": "kinetic-title",
+              "duration": 8,
+              "text": "PEER TO PEER",
+              "kicker": "CHAPTER 01",
+              "style": "zoom",
+              "align": "center"
+            }
+          },
+          {
+            "from": 48,
+            "scene": {
+              "id": "btc-original-graphic-2",
+              "type": "callout",
+              "duration": 10,
+              "title": "A network without a centre",
+              "body": "Public peer-to-peer communication"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "Bitcoin runs on a distributed network of connected participants.",
+            "start": 0,
+            "end": 10,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "A node holds and checks its view of the public ledger.",
+            "start": 10,
+            "end": 20,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Information travels between peers instead of through one central server.",
+            "start": 20,
+            "end": 30,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Network connections change while the protocol's rules remain shared.",
+            "start": 30,
+            "end": 40,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Independent verification helps participants reject invalid transactions.",
+            "start": 40,
+            "end": 50,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "This network provides the setting for each Bitcoin transfer.",
+            "start": 50,
+            "end": 60,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "btc-chapter-02",
+        "title": "Wallets, keys and addresses",
+        "duration": 60,
+        "base": {
+          "id": "btc-independent-base-2",
+          "type": "bitcoin-explainer",
+          "duration": 60,
+          "mode": "wallets",
+          "title": "Wallets, keys and addresses",
+          "kicker": "02 / CONTROL OF FUNDS"
+        },
+        "script": "A wallet manages information used to control Bitcoin. A private key must remain secret. An address is information a sender uses when making a payment. Wallet software helps construct and authorize transactions. Losing access to the keys may prevent the owner from spending funds. A wallet does not contain physical coins.",
+        "overlays": [
+          {
+            "from": 35,
+            "scene": {
+              "id": "btc-original-graphic-3",
+              "type": "kinetic-title",
+              "duration": 8,
+              "text": "KEYS NOT COINS",
+              "kicker": "CHAPTER 02",
+              "style": "zoom",
+              "align": "center"
+            }
+          },
+          {
+            "from": 48,
+            "scene": {
+              "id": "btc-original-graphic-4",
+              "type": "callout",
+              "duration": 10,
+              "title": "Wallets, keys and addresses",
+              "body": "Keys manage spending authority"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "A wallet manages information used to control Bitcoin.",
+            "start": 0,
+            "end": 10,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "A private key must remain secret.",
+            "start": 10,
+            "end": 20,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "An address is information a sender uses when making a payment.",
+            "start": 20,
+            "end": 30,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Wallet software helps construct and authorize transactions.",
+            "start": 30,
+            "end": 40,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Losing access to the keys may prevent the owner from spending funds.",
+            "start": 40,
+            "end": 50,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "A wallet does not contain physical coins.",
+            "start": 50,
+            "end": 60,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "btc-chapter-03",
+        "title": "An authorized transaction",
+        "duration": 60,
+        "base": {
+          "id": "btc-independent-base-3",
+          "type": "bitcoin-explainer",
+          "duration": 60,
+          "mode": "transaction",
+          "title": "An authorized transaction",
+          "kicker": "03 / DIGITAL SIGNATURES"
+        },
+        "script": "A sender constructs a transaction with new outputs. An output states where value may be spent next. A digital signature demonstrates the right to authorize the spending. Other network participants check the required rules. The transaction is not yet confirmed merely because it was created. Next, the signed message is announced to the network.",
+        "overlays": [
+          {
+            "from": 35,
+            "scene": {
+              "id": "btc-original-graphic-5",
+              "type": "kinetic-title",
+              "duration": 8,
+              "text": "SIGNED TRANSFER",
+              "kicker": "CHAPTER 03",
+              "style": "zoom",
+              "align": "center"
+            }
+          },
+          {
+            "from": 48,
+            "scene": {
+              "id": "btc-original-graphic-6",
+              "type": "callout",
+              "duration": 10,
+              "title": "An authorized transaction",
+              "body": "A transfer is created and signed"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "A sender constructs a transaction with new outputs.",
+            "start": 0,
+            "end": 10,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "An output states where value may be spent next.",
+            "start": 10,
+            "end": 20,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "A digital signature demonstrates the right to authorize the spending.",
+            "start": 20,
+            "end": 30,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Other network participants check the required rules.",
+            "start": 30,
+            "end": 40,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "The transaction is not yet confirmed merely because it was created.",
+            "start": 40,
+            "end": 50,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Next, the signed message is announced to the network.",
+            "start": 50,
+            "end": 60,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "btc-chapter-04",
+        "title": "Broadcast and verification",
+        "duration": 60,
+        "base": {
+          "id": "btc-independent-base-4",
+          "type": "bitcoin-explainer",
+          "duration": 60,
+          "mode": "broadcast",
+          "title": "Broadcast and verification",
+          "kicker": "04 / NETWORK PROPAGATION"
+        },
+        "script": "Once broadcast, a transaction reaches connected peers. Nodes validate the transaction under consensus rules. Valid transactions may be relayed to additional peers. Propagation and confirmation are separate events. Some transactions reach different nodes at different moments. Confirmation requires inclusion in a block.",
+        "overlays": [
+          {
+            "from": 35,
+            "scene": {
+              "id": "btc-original-graphic-7",
+              "type": "kinetic-title",
+              "duration": 8,
+              "text": "SHARED WITH PEERS",
+              "kicker": "CHAPTER 04",
+              "style": "zoom",
+              "align": "center"
+            }
+          },
+          {
+            "from": 48,
+            "scene": {
+              "id": "btc-original-graphic-8",
+              "type": "callout",
+              "duration": 10,
+              "title": "Broadcast and verification",
+              "body": "Peers check and relay"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "Once broadcast, a transaction reaches connected peers.",
+            "start": 0,
+            "end": 10,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Nodes validate the transaction under consensus rules.",
+            "start": 10,
+            "end": 20,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Valid transactions may be relayed to additional peers.",
+            "start": 20,
+            "end": 30,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Propagation and confirmation are separate events.",
+            "start": 30,
+            "end": 40,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Some transactions reach different nodes at different moments.",
+            "start": 40,
+            "end": 50,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Confirmation requires inclusion in a block.",
+            "start": 50,
+            "end": 60,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "btc-chapter-05",
+        "title": "The public ledger",
+        "duration": 60,
+        "base": {
+          "id": "btc-independent-base-5",
+          "type": "bitcoin-explainer",
+          "duration": 60,
+          "mode": "blockchain",
+          "title": "The public ledger",
+          "kicker": "05 / LINKED BLOCKS"
+        },
+        "script": "Blocks contain groups of transactions. Each block references the previous block. Those links form an ordered history. The ledger is publicly inspectable. Network participants use common rules to validate the chain. New blocks extend the history over time.",
+        "overlays": [
+          {
+            "from": 35,
+            "scene": {
+              "id": "btc-original-graphic-9",
+              "type": "kinetic-title",
+              "duration": 8,
+              "text": "A PUBLIC HISTORY",
+              "kicker": "CHAPTER 05",
+              "style": "zoom",
+              "align": "center"
+            }
+          },
+          {
+            "from": 48,
+            "scene": {
+              "id": "btc-original-graphic-10",
+              "type": "callout",
+              "duration": 10,
+              "title": "The public ledger",
+              "body": "Blocks carry verified transactions"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "Blocks contain groups of transactions.",
+            "start": 0,
+            "end": 10,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Each block references the previous block.",
+            "start": 10,
+            "end": 20,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Those links form an ordered history.",
+            "start": 20,
+            "end": 30,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "The ledger is publicly inspectable.",
+            "start": 30,
+            "end": 40,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Network participants use common rules to validate the chain.",
+            "start": 40,
+            "end": 50,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "New blocks extend the history over time.",
+            "start": 50,
+            "end": 60,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "btc-chapter-06",
+        "title": "How confirmations grow",
+        "duration": 60,
+        "base": {
+          "id": "btc-independent-base-6",
+          "type": "bitcoin-explainer",
+          "duration": 60,
+          "mode": "confirmations",
+          "title": "How confirmations grow",
+          "kicker": "06 / BLOCK DEPTH"
+        },
+        "script": "A transaction has one confirmation when included in a block. Each later block adds another confirmation. More confirmations make changing the recorded history harder. Confirmation depth is a measure, not a guarantee of finality. Different situations call for different risk decisions. Here the six steps are illustrative, not live chain data.",
+        "overlays": [
+          {
+            "from": 35,
+            "scene": {
+              "id": "btc-original-graphic-11",
+              "type": "kinetic-title",
+              "duration": 8,
+              "text": "EVERY BLOCK COUNTS",
+              "kicker": "CHAPTER 06",
+              "style": "zoom",
+              "align": "center"
+            }
+          },
+          {
+            "from": 48,
+            "scene": {
+              "id": "btc-original-graphic-12",
+              "type": "callout",
+              "duration": 10,
+              "title": "How confirmations grow",
+              "body": "Additional blocks deepen a transaction"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "A transaction has one confirmation when included in a block.",
+            "start": 0,
+            "end": 10,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Each later block adds another confirmation.",
+            "start": 10,
+            "end": 20,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "More confirmations make changing the recorded history harder.",
+            "start": 20,
+            "end": 30,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Confirmation depth is a measure, not a guarantee of finality.",
+            "start": 30,
+            "end": 40,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Different situations call for different risk decisions.",
+            "start": 40,
+            "end": 50,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Here the six steps are illustrative, not live chain data.",
+            "start": 50,
+            "end": 60,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "btc-chapter-07",
+        "title": "Tracing without assumptions",
+        "duration": 60,
+        "base": {
+          "id": "btc-independent-base-7",
+          "type": "bitcoin-explainer",
+          "duration": 60,
+          "mode": "investigation",
+          "title": "Tracing without assumptions",
+          "kicker": "07 / RESEARCH & EVIDENCE"
+        },
+        "script": "Public transactions allow tracing between addresses and outputs. Analysts may examine patterns and possible connections. A common spending pattern does not by itself name a person. Attribution needs corroborating evidence beyond the blockchain. Investigators should separate observations from interpretations. A visible financial link is not proof of personal identity.",
+        "overlays": [
+          {
+            "from": 35,
+            "scene": {
+              "id": "btc-original-graphic-13",
+              "type": "kinetic-title",
+              "duration": 8,
+              "text": "VERIFY THE EVIDENCE",
+              "kicker": "CHAPTER 07",
+              "style": "zoom",
+              "align": "center"
+            }
+          },
+          {
+            "from": 48,
+            "scene": {
+              "id": "btc-original-graphic-14",
+              "type": "callout",
+              "duration": 10,
+              "title": "Tracing without assumptions",
+              "body": "Visible links need careful interpretation"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "Public transactions allow tracing between addresses and outputs.",
+            "start": 0,
+            "end": 10,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Analysts may examine patterns and possible connections.",
+            "start": 10,
+            "end": 20,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "A common spending pattern does not by itself name a person.",
+            "start": 20,
+            "end": 30,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Attribution needs corroborating evidence beyond the blockchain.",
+            "start": 30,
+            "end": 40,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Investigators should separate observations from interpretations.",
+            "start": 40,
+            "end": 50,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "A visible financial link is not proof of personal identity.",
+            "start": 50,
+            "end": 60,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      },
+      {
+        "id": "btc-chapter-08",
+        "title": "What the network reveals",
+        "duration": 60,
+        "base": {
+          "id": "btc-independent-base-8",
+          "type": "bitcoin-explainer",
+          "duration": 60,
+          "mode": "takeaway",
+          "title": "What the network reveals",
+          "kicker": "08 / KEY IDEAS"
+        },
+        "script": "Bitcoin uses a distributed network and a shared ledger. Private keys provide spending authority. Transactions are signed, broadcast and validated. Blocks record the public transaction history. Confirmations grow as new blocks are added. Traceability is useful, while identity claims require supporting evidence.",
+        "overlays": [
+          {
+            "from": 35,
+            "scene": {
+              "id": "btc-original-graphic-15",
+              "type": "kinetic-title",
+              "duration": 8,
+              "text": "CHECK THE CLAIMS",
+              "kicker": "CHAPTER 08",
+              "style": "zoom",
+              "align": "center"
+            }
+          },
+          {
+            "from": 48,
+            "scene": {
+              "id": "btc-original-graphic-16",
+              "type": "callout",
+              "duration": 10,
+              "title": "What the network reveals",
+              "body": "Eight chapters, three principles"
+            }
+          }
+        ],
+        "captions": [
+          {
+            "text": "Bitcoin uses a distributed network and a shared ledger.",
+            "start": 0,
+            "end": 10,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Private keys provide spending authority.",
+            "start": 10,
+            "end": 20,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Transactions are signed, broadcast and validated.",
+            "start": 20,
+            "end": 30,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Blocks record the public transaction history.",
+            "start": 30,
+            "end": 40,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Confirmations grow as new blocks are added.",
+            "start": 40,
+            "end": 50,
+            "pageBreakAfter": true
+          },
+          {
+            "text": "Traceability is useful, while identity claims require supporting evidence.",
+            "start": 50,
+            "end": 60,
+            "pageBreakAfter": true
+          }
+        ],
+        "captionStyle": "basic"
+      }
+    ]
+  }
+}

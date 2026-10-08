@@ -141,6 +141,16 @@ const photoMaskScene = baseScene.extend({
 });
 
 // An entirely procedural travel/storyboard infographic. No fonts, images, WebGL or network needed.
+// Original procedural SVG explanation, retaining the eight-part curriculum of the
+// linked BTC Explained reference, without copying its unlicensed source.
+const bitcoinExplainerScene = baseScene.extend({
+  type: z.literal('bitcoin-explainer'),
+  mode: z.enum(['network', 'wallets', 'transaction', 'broadcast', 'blockchain', 'confirmations', 'investigation', 'takeaway']),
+  title: z.string().min(1).max(80),
+  kicker: z.string().max(70).optional(),
+  footnote: z.string().max(130).optional(),
+});
+
 const motionDiagramScene = baseScene.extend({
   type: z.literal('motion-diagram'),
   title: z.string().min(1).max(90),
@@ -594,6 +604,7 @@ export const sceneSchema = z.discriminatedUnion('type', [
   photoMaskScene,
   kineticTitleScene,
   motionDiagramScene,
+  bitcoinExplainerScene,
   chapterNumberScene,
   lowerThirdScene,
   calloutScene,

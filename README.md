@@ -257,3 +257,23 @@ long-form scene architecture in [BTC Explained](https://github.com/Shimmy0530/bt
 No upstream source code or media from these three projects is bundled.
 See `skills/asset-free-youtube/SKILL.md` for the authoring protocol.
 
+
+## Bitcoin Explained: eight-scene motion-graphics reference
+
+The new `bitcoin-explained-svg-showcase` project is an original, asset-free
+**8-minute / 8-chapter** interactive YouTube example based on the *structure*
+of [Shimmy0530/btc-explained](https://github.com/Shimmy0530/btc-explained).
+
+- Eight independent 60-second chapter bases plus short typographic inserts.
+- Procedural SVG graphs, wallets/keys, signatures, propagation pulses,
+  linked blocks, confirmations, address relationships and recap cards.
+- 1920 × 1080, 30 fps; silent, with timed English captions and script notes.
+- No raster/video/audio files, third-party fonts, external APIs or map tiles.
+- Added to the normal Studio project catalog; Player and browser export share
+  the deterministic frame-driven React components.
+- Build test: `npm run test:bitcoin-example`.
+- Original upstream source has no explicit license. Its source code is **not**
+  imported. See `reference/Shimmy0530/btc-explained/README.md`.
+
+The Studio adaptation is original code and copy, **not a pixel-perfect
+reproduction of the unlicensed original**.
