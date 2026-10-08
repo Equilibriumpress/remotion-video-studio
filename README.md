@@ -26,6 +26,12 @@ MP4 rendered on the user's device
 
 GitHub Actions performs only project validation and the static Vite build. It does not render video.
 
+## Background scene reference library
+
+The authoring workflow now has a pinned **201-example / 16-category** Remotion Scenes catalog from [lifeprompt-team/remotion-scenes](https://github.com/lifeprompt-team/remotion-scenes) under `reference/lifeprompt-team/remotion-scenes/catalog.json` (MIT license). Search it via `npm run motion:find -- "Kyoto travel watercolor title"` or consult `skills/remotion-scene-library/SKILL.md`. The Premium Director authoring protocol uses these references to choose better animations.
+
+This is intentionally **index-only**. No upstream component code is bundled into the Pages app, no extra videos appear in the UI, and normal browser rendering is unaffected. Actual animations still require selective implementation and testing before the Studio can preview/export them. See the pinned source URLs in the catalog and the upstream [live gallery](https://lifeprompt-team.github.io/remotion-scenes/).
+
 ## Current features
 
 - React + TypeScript + Vite
