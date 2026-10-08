@@ -8,4 +8,4 @@ This directory contains an unmodified source snapshot of Remotion's official Rol
 - Upstream license: `LICENSE.md`
 - Upstream package README: `packages/jonnys-videos/README.md`
 
-The Roller Ski source files are intentionally kept byte-for-byte identical to upstream and are not imported by the production Vite application. They exist as a reference implementation next to this repository's JSON-first long-form YouTube compositor.
+The Roller Ski source files remain byte-for-byte identical to upstream. The Vite application now directly imports two of the original lightweight compositions, NordicRoutes and IntroLowerThird, as selectable standalone previews. The full rough cut, its external footage, and the WebGL blueprint are not integrated. Native composition metadata lives in `projects/roller-skis-original-*.json`. This is separate from the JSON-first long-form YouTube compositor.
