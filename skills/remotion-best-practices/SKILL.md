@@ -11,7 +11,7 @@ Use this skill for every task that changes Remotion code, project JSON, maps, ca
 ## Required order
 
 1. Read `AGENTS.md` and `src/project/schema.ts`.
-2. If the task starts from a free-form video request, read `../premium-video-director/SKILL.md` before selecting scenes.
+2. If the requested output is a long-form YouTube video, read `../youtube-longform/SKILL.md` before selecting scenes. For short prompt-led videos, read `../premium-video-director/SKILL.md`.
 3. Preserve the browser-first architecture: GitHub Pages previews and client-side rendering; Actions validate/build only.
 4. Prefer existing JSON scene types before adding React code.
 5. For maps, read `../remotion-maps/SKILL.md`.
