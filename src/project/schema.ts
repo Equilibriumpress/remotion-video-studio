@@ -657,10 +657,50 @@ const voiceoverCueSchema = z.object({
   text: z.string().min(1).max(500),
 });
 
+const youtubeOverlaySchema = z.object({
+  from: z.number().nonnegative(),
+  scene: sceneSchema,
+});
+
+const youtubeChapterSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  duration: z.number().min(2).max(180),
+  base: sceneSchema,
+  overlays: z.array(youtubeOverlaySchema).max(24).default([]),
+  captions: z.array(captionSegmentSchema).max(240).default([]),
+  captionStyle: captionStyleSchema.default('basic'),
+});
+
+const youtubeEndCardSchema = z.object({
+  duration: z.number().min(5).max(30).default(12),
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  channelName: z.string().min(1),
+  channelHandle: z.string().optional(),
+  subscribeLabel: z.string().default('Subscribe'),
+  avatarSrc: z.string().optional(),
+});
+
+const youtubeThumbnailSchema = z.object({
+  title: z.string().min(1),
+  subtitle: z.string().optional(),
+  src: z.string().optional(),
+});
+
+const youtubeStorySchema = z.object({
+  title: z.string().min(1),
+  voiceover: audioTrackSchema.optional(),
+  music: audioTrackSchema.optional(),
+  chapters: z.array(youtubeChapterSchema).min(1).max(20),
+  endCard: youtubeEndCardSchema.optional(),
+  thumbnail: youtubeThumbnailSchema.optional(),
+});
+
 const projectObjectSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
-  template: z.enum(['travel-story', 'explainer', 'data-story']),
+  template: z.enum(['travel-story', 'youtube-story', 'explainer', 'data-story']),
   format: z.enum(['vertical', 'landscape', 'square', 'appstore-header', 'appstore-search']),
   fps: z.union([z.literal(24), z.literal(25), z.literal(30), z.literal(50), z.literal(60)]),
   direction: motionDirectionSchema.optional(),
@@ -679,6 +719,7 @@ const projectObjectSchema = z.object({
   geoRoutes: z.record(z.string(), geoRouteSchema).optional(),
   elevationProfiles: z.record(z.string(), elevationProfileSchema).optional(),
   story: travelStoryConfigSchema.optional(),
+  youtube: youtubeStorySchema.optional(),
   audio: z.object({
     music: audioTrackSchema.optional(),
     voiceover: audioTrackSchema.optional(),
@@ -688,11 +729,11 @@ const projectObjectSchema = z.object({
 });
 
 export const projectSchema = projectObjectSchema.superRefine((project, ctx) => {
-  if (project.scenes.length === 0 && !project.story) {
+  if (project.scenes.length === 0 && !project.story && !project.youtube) {
     ctx.addIssue({
       code: 'custom',
       path: ['scenes'],
-      message: 'A project needs explicit scenes or a travel story configuration',
+      message: 'A project needs explicit scenes, a travel story, or a YouTube story configuration',
     });
   }
   if (project.director && !project.story) {
@@ -707,6 +748,8 @@ export const projectSchema = projectObjectSchema.superRefine((project, ctx) => {
 export type MotionPreset = z.infer<typeof motionPresetSchema>;
 export type MotionDirection = z.infer<typeof motionDirectionSchema>;
 export type PremiumDirector = z.infer<typeof premiumDirectorSchema>;
+export type YouTubeStory = z.infer<typeof youtubeStorySchema>;
+export type YouTubeChapter = z.infer<typeof youtubeChapterSchema>;
 export type TransitionPreset = z.infer<typeof transitionPresetSchema>;
 export type VideoScene = z.infer<typeof sceneSchema>;
 export type GeoRouteGeometry = z.infer<typeof geoRouteSchema>;
@@ -802,6 +845,13 @@ export const sceneTimeline = (project: VideoProject) => {
 };
 
 export const projectFrames = (project: VideoProject) => {
+  if (project.youtube) {
+    const seconds =
+      project.youtube.chapters.reduce((sum, chapter) => sum + chapter.duration, 0) +
+      (project.youtube.endCard?.duration ?? 0);
+    return Math.max(1, Math.round(seconds * project.fps));
+  }
+
   const timeline = sceneTimeline(project);
   const last = timeline[timeline.length - 1];
   return last ? last.from + last.durationInFrames : 1;
@@ -811,6 +861,8 @@ export const projectHasAudio = (project: VideoProject) =>
   Boolean(
     project.audio?.music ||
     project.audio?.voiceover ||
+    project.youtube?.music ||
+    project.youtube?.voiceover ||
     project.scenes.some(
       (scene) =>
         (scene.type === 'video' || scene.type === 'caption-video') &&
