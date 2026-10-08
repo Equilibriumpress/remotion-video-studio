@@ -1,0 +1,2612 @@
+{
+  "version": 1,
+  "name": "Remotion Scenes background reference catalog",
+  "source": {
+    "repository": "lifeprompt-team/remotion-scenes",
+    "commit": "02c7a84241da7010b5f59c420b0110aafd1d6f0d",
+    "license": "MIT",
+    "licenseUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/LICENSE",
+    "previewUrl": "https://lifeprompt-team.github.io/remotion-scenes/",
+    "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes",
+    "status": "catalog-only; no source vendored or bundled"
+  },
+  "count": 201,
+  "categoryCounts": {
+    "BackgroundAnimations": 10,
+    "CinematicAnimations": 10,
+    "DataAnimations": 8,
+    "DemoAnimations": 12,
+    "EffectAnimations": 10,
+    "LayoutAnimations": 12,
+    "LiquidAnimations": 10,
+    "ListAnimations": 12,
+    "LogoAnimations": 10,
+    "ParticleAnimations": 10,
+    "RollerAnimations": 22,
+    "ShapeAnimations": 10,
+    "TextAnimations": 12,
+    "ThemeAnimations": 33,
+    "TransitionAnimations": 10,
+    "UIAnimations": 10
+  },
+  "scenes": [
+    {
+      "id": "BackgroundAurora",
+      "category": "BackgroundAnimations",
+      "role": "background",
+      "tags": [
+        "background",
+        "aurora"
+      ],
+      "path": "src/scenes/BackgroundAnimations/BackgroundAurora.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/BackgroundAnimations/BackgroundAurora.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "BackgroundBokeh",
+      "category": "BackgroundAnimations",
+      "role": "background",
+      "tags": [
+        "background",
+        "bokeh"
+      ],
+      "path": "src/scenes/BackgroundAnimations/BackgroundBokeh.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/BackgroundAnimations/BackgroundBokeh.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "BackgroundFlowingGradient",
+      "category": "BackgroundAnimations",
+      "role": "background",
+      "tags": [
+        "background",
+        "flowing",
+        "gradient",
+        "color",
+        "ambient"
+      ],
+      "path": "src/scenes/BackgroundAnimations/BackgroundFlowingGradient.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/BackgroundAnimations/BackgroundFlowingGradient.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "BackgroundGeometric",
+      "category": "BackgroundAnimations",
+      "role": "background",
+      "tags": [
+        "background",
+        "geometric"
+      ],
+      "path": "src/scenes/BackgroundAnimations/BackgroundGeometric.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/BackgroundAnimations/BackgroundGeometric.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "BackgroundGrid",
+      "category": "BackgroundAnimations",
+      "role": "background",
+      "tags": [
+        "background",
+        "grid",
+        "geometry"
+      ],
+      "path": "src/scenes/BackgroundAnimations/BackgroundGrid.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/BackgroundAnimations/BackgroundGrid.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "BackgroundMeshGradient",
+      "category": "BackgroundAnimations",
+      "role": "background",
+      "tags": [
+        "background",
+        "mesh",
+        "gradient",
+        "color"
+      ],
+      "path": "src/scenes/BackgroundAnimations/BackgroundMeshGradient.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/BackgroundAnimations/BackgroundMeshGradient.tsx",
+      "compatibility": "performance-review"
+    },
+    {
+      "id": "BackgroundNoiseTexture",
+      "category": "BackgroundAnimations",
+      "role": "background",
+      "tags": [
+        "background",
+        "noise",
+        "texture"
+      ],
+      "path": "src/scenes/BackgroundAnimations/BackgroundNoiseTexture.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/BackgroundAnimations/BackgroundNoiseTexture.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "BackgroundPerspectiveGrid",
+      "category": "BackgroundAnimations",
+      "role": "background",
+      "tags": [
+        "background",
+        "perspective",
+        "grid",
+        "geometry",
+        "route",
+        "map"
+      ],
+      "path": "src/scenes/BackgroundAnimations/BackgroundPerspectiveGrid.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/BackgroundAnimations/BackgroundPerspectiveGrid.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "BackgroundRadial",
+      "category": "BackgroundAnimations",
+      "role": "background",
+      "tags": [
+        "background",
+        "radial"
+      ],
+      "path": "src/scenes/BackgroundAnimations/BackgroundRadial.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/BackgroundAnimations/BackgroundRadial.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "BackgroundWaves",
+      "category": "BackgroundAnimations",
+      "role": "background",
+      "tags": [
+        "background",
+        "waves",
+        "sea",
+        "coast",
+        "water"
+      ],
+      "path": "src/scenes/BackgroundAnimations/BackgroundWaves.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/BackgroundAnimations/BackgroundWaves.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "CinematicAction",
+      "category": "CinematicAnimations",
+      "role": "title",
+      "tags": [
+        "cinematic",
+        "action"
+      ],
+      "path": "src/scenes/CinematicAnimations/CinematicAction.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/CinematicAnimations/CinematicAction.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "CinematicAnime",
+      "category": "CinematicAnimations",
+      "role": "title",
+      "tags": [
+        "cinematic",
+        "anime"
+      ],
+      "path": "src/scenes/CinematicAnimations/CinematicAnime.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/CinematicAnimations/CinematicAnime.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "CinematicDocumentary",
+      "category": "CinematicAnimations",
+      "role": "title",
+      "tags": [
+        "cinematic",
+        "documentary",
+        "travel",
+        "story",
+        "editorial",
+        "opening"
+      ],
+      "path": "src/scenes/CinematicAnimations/CinematicDocumentary.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/CinematicAnimations/CinematicDocumentary.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "CinematicEpic",
+      "category": "CinematicAnimations",
+      "role": "title",
+      "tags": [
+        "cinematic",
+        "epic"
+      ],
+      "path": "src/scenes/CinematicAnimations/CinematicEpic.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/CinematicAnimations/CinematicEpic.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "CinematicHorror",
+      "category": "CinematicAnimations",
+      "role": "title",
+      "tags": [
+        "cinematic",
+        "horror"
+      ],
+      "path": "src/scenes/CinematicAnimations/CinematicHorror.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/CinematicAnimations/CinematicHorror.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "CinematicMinimalEnd",
+      "category": "CinematicAnimations",
+      "role": "title",
+      "tags": [
+        "cinematic",
+        "minimal",
+        "end"
+      ],
+      "path": "src/scenes/CinematicAnimations/CinematicMinimalEnd.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/CinematicAnimations/CinematicMinimalEnd.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "CinematicNoir",
+      "category": "CinematicAnimations",
+      "role": "title",
+      "tags": [
+        "cinematic",
+        "noir"
+      ],
+      "path": "src/scenes/CinematicAnimations/CinematicNoir.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/CinematicAnimations/CinematicNoir.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "CinematicRomance",
+      "category": "CinematicAnimations",
+      "role": "title",
+      "tags": [
+        "cinematic",
+        "romance"
+      ],
+      "path": "src/scenes/CinematicAnimations/CinematicRomance.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/CinematicAnimations/CinematicRomance.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "CinematicSciFi",
+      "category": "CinematicAnimations",
+      "role": "title",
+      "tags": [
+        "cinematic",
+        "sci",
+        "fi"
+      ],
+      "path": "src/scenes/CinematicAnimations/CinematicSciFi.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/CinematicAnimations/CinematicSciFi.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "CinematicVintage",
+      "category": "CinematicAnimations",
+      "role": "title",
+      "tags": [
+        "cinematic",
+        "vintage"
+      ],
+      "path": "src/scenes/CinematicAnimations/CinematicVintage.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/CinematicAnimations/CinematicVintage.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DataBarChart",
+      "category": "DataAnimations",
+      "role": "data",
+      "tags": [
+        "data",
+        "bar",
+        "chart"
+      ],
+      "path": "src/scenes/DataAnimations/DataBarChart.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DataAnimations/DataBarChart.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DataGauge",
+      "category": "DataAnimations",
+      "role": "data",
+      "tags": [
+        "data",
+        "gauge",
+        "metrics",
+        "progress"
+      ],
+      "path": "src/scenes/DataAnimations/DataGauge.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DataAnimations/DataGauge.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DataLineChart",
+      "category": "DataAnimations",
+      "role": "data",
+      "tags": [
+        "data",
+        "line",
+        "chart",
+        "route",
+        "elevation"
+      ],
+      "path": "src/scenes/DataAnimations/DataLineChart.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DataAnimations/DataLineChart.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DataPieChart",
+      "category": "DataAnimations",
+      "role": "data",
+      "tags": [
+        "data",
+        "pie",
+        "chart"
+      ],
+      "path": "src/scenes/DataAnimations/DataPieChart.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DataAnimations/DataPieChart.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DataProgressBars",
+      "category": "DataAnimations",
+      "role": "data",
+      "tags": [
+        "data",
+        "progress",
+        "bars"
+      ],
+      "path": "src/scenes/DataAnimations/DataProgressBars.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DataAnimations/DataProgressBars.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DataRanking",
+      "category": "DataAnimations",
+      "role": "data",
+      "tags": [
+        "data",
+        "ranking"
+      ],
+      "path": "src/scenes/DataAnimations/DataRanking.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DataAnimations/DataRanking.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DataStatsCards",
+      "category": "DataAnimations",
+      "role": "data",
+      "tags": [
+        "data",
+        "stats",
+        "cards",
+        "numbers"
+      ],
+      "path": "src/scenes/DataAnimations/DataStatsCards.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DataAnimations/DataStatsCards.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DataTimeline",
+      "category": "DataAnimations",
+      "role": "data",
+      "tags": [
+        "data",
+        "timeline",
+        "story",
+        "travel",
+        "chapter"
+      ],
+      "path": "src/scenes/DataAnimations/DataTimeline.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DataAnimations/DataTimeline.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DemoAddressBar",
+      "category": "DemoAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "demo",
+        "address",
+        "bar"
+      ],
+      "path": "src/scenes/DemoAnimations/DemoAddressBar.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DemoAnimations/DemoAddressBar.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DemoCursorClick",
+      "category": "DemoAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "demo",
+        "cursor",
+        "click"
+      ],
+      "path": "src/scenes/DemoAnimations/DemoCursorClick.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DemoAnimations/DemoCursorClick.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DemoDragDrop",
+      "category": "DemoAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "demo",
+        "drag",
+        "drop"
+      ],
+      "path": "src/scenes/DemoAnimations/DemoDragDrop.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DemoAnimations/DemoDragDrop.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DemoMenuExpand",
+      "category": "DemoAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "demo",
+        "menu",
+        "expand"
+      ],
+      "path": "src/scenes/DemoAnimations/DemoMenuExpand.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DemoAnimations/DemoMenuExpand.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DemoModal",
+      "category": "DemoAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "demo",
+        "modal"
+      ],
+      "path": "src/scenes/DemoAnimations/DemoModal.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DemoAnimations/DemoModal.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DemoPageTransition",
+      "category": "DemoAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "demo",
+        "page",
+        "transition"
+      ],
+      "path": "src/scenes/DemoAnimations/DemoPageTransition.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DemoAnimations/DemoPageTransition.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DemoScroll",
+      "category": "DemoAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "demo",
+        "scroll"
+      ],
+      "path": "src/scenes/DemoAnimations/DemoScroll.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DemoAnimations/DemoScroll.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DemoSearchFilter",
+      "category": "DemoAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "demo",
+        "search",
+        "filter"
+      ],
+      "path": "src/scenes/DemoAnimations/DemoSearchFilter.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DemoAnimations/DemoSearchFilter.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DemoTextInput",
+      "category": "DemoAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "demo",
+        "text",
+        "input"
+      ],
+      "path": "src/scenes/DemoAnimations/DemoTextInput.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DemoAnimations/DemoTextInput.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DemoTooltip",
+      "category": "DemoAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "demo",
+        "tooltip"
+      ],
+      "path": "src/scenes/DemoAnimations/DemoTooltip.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DemoAnimations/DemoTooltip.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DemoWizard",
+      "category": "DemoAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "demo",
+        "wizard"
+      ],
+      "path": "src/scenes/DemoAnimations/DemoWizard.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DemoAnimations/DemoWizard.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "DemoZoomFocus",
+      "category": "DemoAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "demo",
+        "zoom",
+        "focus",
+        "ui"
+      ],
+      "path": "src/scenes/DemoAnimations/DemoZoomFocus.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/DemoAnimations/DemoZoomFocus.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "EffectChromaticAberration",
+      "category": "EffectAnimations",
+      "role": "overlay",
+      "tags": [
+        "effect",
+        "chromatic",
+        "aberration"
+      ],
+      "path": "src/scenes/EffectAnimations/EffectChromaticAberration.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/EffectAnimations/EffectChromaticAberration.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "EffectDepthOfField",
+      "category": "EffectAnimations",
+      "role": "overlay",
+      "tags": [
+        "effect",
+        "depth",
+        "of",
+        "field"
+      ],
+      "path": "src/scenes/EffectAnimations/EffectDepthOfField.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/EffectAnimations/EffectDepthOfField.tsx",
+      "compatibility": "performance-review"
+    },
+    {
+      "id": "EffectDuotone",
+      "category": "EffectAnimations",
+      "role": "overlay",
+      "tags": [
+        "effect",
+        "duotone"
+      ],
+      "path": "src/scenes/EffectAnimations/EffectDuotone.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/EffectAnimations/EffectDuotone.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "EffectFilmGrain",
+      "category": "EffectAnimations",
+      "role": "overlay",
+      "tags": [
+        "effect",
+        "film",
+        "grain"
+      ],
+      "path": "src/scenes/EffectAnimations/EffectFilmGrain.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/EffectAnimations/EffectFilmGrain.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "EffectGlow",
+      "category": "EffectAnimations",
+      "role": "overlay",
+      "tags": [
+        "effect",
+        "glow"
+      ],
+      "path": "src/scenes/EffectAnimations/EffectGlow.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/EffectAnimations/EffectGlow.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "EffectKaleidoscope",
+      "category": "EffectAnimations",
+      "role": "overlay",
+      "tags": [
+        "effect",
+        "kaleidoscope"
+      ],
+      "path": "src/scenes/EffectAnimations/EffectKaleidoscope.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/EffectAnimations/EffectKaleidoscope.tsx",
+      "compatibility": "performance-review"
+    },
+    {
+      "id": "EffectLightLeak",
+      "category": "EffectAnimations",
+      "role": "overlay",
+      "tags": [
+        "effect",
+        "light",
+        "leak"
+      ],
+      "path": "src/scenes/EffectAnimations/EffectLightLeak.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/EffectAnimations/EffectLightLeak.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "EffectMatrix",
+      "category": "EffectAnimations",
+      "role": "overlay",
+      "tags": [
+        "effect",
+        "matrix"
+      ],
+      "path": "src/scenes/EffectAnimations/EffectMatrix.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/EffectAnimations/EffectMatrix.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "EffectNoise",
+      "category": "EffectAnimations",
+      "role": "overlay",
+      "tags": [
+        "effect",
+        "noise"
+      ],
+      "path": "src/scenes/EffectAnimations/EffectNoise.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/EffectAnimations/EffectNoise.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "EffectVHS",
+      "category": "EffectAnimations",
+      "role": "overlay",
+      "tags": [
+        "effect",
+        "vhs"
+      ],
+      "path": "src/scenes/EffectAnimations/EffectVHS.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/EffectAnimations/EffectVHS.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LayoutAsymmetric",
+      "category": "LayoutAnimations",
+      "role": "layout",
+      "tags": [
+        "layout",
+        "asymmetric"
+      ],
+      "path": "src/scenes/LayoutAnimations/LayoutAsymmetric.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LayoutAnimations/LayoutAsymmetric.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LayoutDiagonal",
+      "category": "LayoutAnimations",
+      "role": "layout",
+      "tags": [
+        "layout",
+        "diagonal"
+      ],
+      "path": "src/scenes/LayoutAnimations/LayoutDiagonal.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LayoutAnimations/LayoutDiagonal.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LayoutFrameInFrame",
+      "category": "LayoutAnimations",
+      "role": "layout",
+      "tags": [
+        "layout",
+        "frame",
+        "in"
+      ],
+      "path": "src/scenes/LayoutAnimations/LayoutFrameInFrame.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LayoutAnimations/LayoutFrameInFrame.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LayoutFullscreenType",
+      "category": "LayoutAnimations",
+      "role": "layout",
+      "tags": [
+        "layout",
+        "fullscreen",
+        "type"
+      ],
+      "path": "src/scenes/LayoutAnimations/LayoutFullscreenType.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LayoutAnimations/LayoutFullscreenType.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LayoutGiantNumber",
+      "category": "LayoutAnimations",
+      "role": "layout",
+      "tags": [
+        "layout",
+        "giant",
+        "number"
+      ],
+      "path": "src/scenes/LayoutAnimations/LayoutGiantNumber.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LayoutAnimations/LayoutGiantNumber.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LayoutGridBreak",
+      "category": "LayoutAnimations",
+      "role": "layout",
+      "tags": [
+        "layout",
+        "grid",
+        "break",
+        "geometry",
+        "background"
+      ],
+      "path": "src/scenes/LayoutAnimations/LayoutGridBreak.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LayoutAnimations/LayoutGridBreak.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LayoutLayered",
+      "category": "LayoutAnimations",
+      "role": "layout",
+      "tags": [
+        "layout",
+        "layered"
+      ],
+      "path": "src/scenes/LayoutAnimations/LayoutLayered.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LayoutAnimations/LayoutLayered.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LayoutMultiColumn",
+      "category": "LayoutAnimations",
+      "role": "layout",
+      "tags": [
+        "layout",
+        "multi",
+        "column"
+      ],
+      "path": "src/scenes/LayoutAnimations/LayoutMultiColumn.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LayoutAnimations/LayoutMultiColumn.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LayoutOffGrid",
+      "category": "LayoutAnimations",
+      "role": "layout",
+      "tags": [
+        "layout",
+        "off",
+        "grid",
+        "geometry",
+        "background"
+      ],
+      "path": "src/scenes/LayoutAnimations/LayoutOffGrid.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LayoutAnimations/LayoutOffGrid.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LayoutSplitContrast",
+      "category": "LayoutAnimations",
+      "role": "layout",
+      "tags": [
+        "layout",
+        "split",
+        "contrast",
+        "comparison"
+      ],
+      "path": "src/scenes/LayoutAnimations/LayoutSplitContrast.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LayoutAnimations/LayoutSplitContrast.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LayoutVerticalMix",
+      "category": "LayoutAnimations",
+      "role": "layout",
+      "tags": [
+        "layout",
+        "vertical",
+        "mix"
+      ],
+      "path": "src/scenes/LayoutAnimations/LayoutVerticalMix.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LayoutAnimations/LayoutVerticalMix.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LayoutWhitespace",
+      "category": "LayoutAnimations",
+      "role": "layout",
+      "tags": [
+        "layout",
+        "whitespace"
+      ],
+      "path": "src/scenes/LayoutAnimations/LayoutWhitespace.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LayoutAnimations/LayoutWhitespace.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LiquidBlob",
+      "category": "LiquidAnimations",
+      "role": "overlay",
+      "tags": [
+        "liquid",
+        "blob"
+      ],
+      "path": "src/scenes/LiquidAnimations/LiquidBlob.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LiquidAnimations/LiquidBlob.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LiquidCalligraphyInk",
+      "category": "LiquidAnimations",
+      "role": "overlay",
+      "tags": [
+        "liquid",
+        "calligraphy",
+        "ink"
+      ],
+      "path": "src/scenes/LiquidAnimations/LiquidCalligraphyInk.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LiquidAnimations/LiquidCalligraphyInk.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LiquidFluidWave",
+      "category": "LiquidAnimations",
+      "role": "overlay",
+      "tags": [
+        "liquid",
+        "fluid",
+        "wave"
+      ],
+      "path": "src/scenes/LiquidAnimations/LiquidFluidWave.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LiquidAnimations/LiquidFluidWave.tsx",
+      "compatibility": "performance-review"
+    },
+    {
+      "id": "LiquidInkSplash",
+      "category": "LiquidAnimations",
+      "role": "overlay",
+      "tags": [
+        "liquid",
+        "ink",
+        "splash"
+      ],
+      "path": "src/scenes/LiquidAnimations/LiquidInkSplash.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LiquidAnimations/LiquidInkSplash.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LiquidMorphBlob",
+      "category": "LiquidAnimations",
+      "role": "overlay",
+      "tags": [
+        "liquid",
+        "morph",
+        "blob"
+      ],
+      "path": "src/scenes/LiquidAnimations/LiquidMorphBlob.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LiquidAnimations/LiquidMorphBlob.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LiquidOilSpill",
+      "category": "LiquidAnimations",
+      "role": "overlay",
+      "tags": [
+        "liquid",
+        "oil",
+        "spill"
+      ],
+      "path": "src/scenes/LiquidAnimations/LiquidOilSpill.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LiquidAnimations/LiquidOilSpill.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LiquidPaintDrip",
+      "category": "LiquidAnimations",
+      "role": "overlay",
+      "tags": [
+        "liquid",
+        "paint",
+        "drip"
+      ],
+      "path": "src/scenes/LiquidAnimations/LiquidPaintDrip.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LiquidAnimations/LiquidPaintDrip.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LiquidSplatter",
+      "category": "LiquidAnimations",
+      "role": "overlay",
+      "tags": [
+        "liquid",
+        "splatter"
+      ],
+      "path": "src/scenes/LiquidAnimations/LiquidSplatter.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LiquidAnimations/LiquidSplatter.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LiquidSwirl",
+      "category": "LiquidAnimations",
+      "role": "overlay",
+      "tags": [
+        "liquid",
+        "swirl"
+      ],
+      "path": "src/scenes/LiquidAnimations/LiquidSwirl.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LiquidAnimations/LiquidSwirl.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LiquidWaterDrop",
+      "category": "LiquidAnimations",
+      "role": "overlay",
+      "tags": [
+        "liquid",
+        "water",
+        "drop",
+        "nature",
+        "rain"
+      ],
+      "path": "src/scenes/LiquidAnimations/LiquidWaterDrop.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LiquidAnimations/LiquidWaterDrop.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ListAsymmetric3",
+      "category": "ListAnimations",
+      "role": "list",
+      "tags": [
+        "list",
+        "asymmetric3"
+      ],
+      "path": "src/scenes/ListAnimations/ListAsymmetric3.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ListAnimations/ListAsymmetric3.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ListFullscreenSequence",
+      "category": "ListAnimations",
+      "role": "list",
+      "tags": [
+        "list",
+        "fullscreen",
+        "sequence"
+      ],
+      "path": "src/scenes/ListAnimations/ListFullscreenSequence.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ListAnimations/ListFullscreenSequence.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ListHeroWithList",
+      "category": "ListAnimations",
+      "role": "list",
+      "tags": [
+        "list",
+        "hero",
+        "with"
+      ],
+      "path": "src/scenes/ListAnimations/ListHeroWithList.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ListAnimations/ListHeroWithList.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ListHorizontalPeek",
+      "category": "ListAnimations",
+      "role": "list",
+      "tags": [
+        "list",
+        "horizontal",
+        "peek"
+      ],
+      "path": "src/scenes/ListAnimations/ListHorizontalPeek.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ListAnimations/ListHorizontalPeek.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ListMinimalLeft",
+      "category": "ListAnimations",
+      "role": "list",
+      "tags": [
+        "list",
+        "minimal",
+        "left"
+      ],
+      "path": "src/scenes/ListAnimations/ListMinimalLeft.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ListAnimations/ListMinimalLeft.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ListNumberedVertical",
+      "category": "ListAnimations",
+      "role": "list",
+      "tags": [
+        "list",
+        "numbered",
+        "vertical"
+      ],
+      "path": "src/scenes/ListAnimations/ListNumberedVertical.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ListAnimations/ListNumberedVertical.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ListSimpleText",
+      "category": "ListAnimations",
+      "role": "list",
+      "tags": [
+        "list",
+        "simple",
+        "text"
+      ],
+      "path": "src/scenes/ListAnimations/ListSimpleText.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ListAnimations/ListSimpleText.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ListStaggered",
+      "category": "ListAnimations",
+      "role": "list",
+      "tags": [
+        "list",
+        "staggered"
+      ],
+      "path": "src/scenes/ListAnimations/ListStaggered.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ListAnimations/ListStaggered.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ListStatsFocused",
+      "category": "ListAnimations",
+      "role": "list",
+      "tags": [
+        "list",
+        "stats",
+        "focused"
+      ],
+      "path": "src/scenes/ListAnimations/ListStatsFocused.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ListAnimations/ListStatsFocused.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ListTimeline",
+      "category": "ListAnimations",
+      "role": "list",
+      "tags": [
+        "list",
+        "timeline",
+        "story",
+        "travel",
+        "chapter"
+      ],
+      "path": "src/scenes/ListAnimations/ListTimeline.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ListAnimations/ListTimeline.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ListTwoColumnCompare",
+      "category": "ListAnimations",
+      "role": "list",
+      "tags": [
+        "list",
+        "two",
+        "column",
+        "compare"
+      ],
+      "path": "src/scenes/ListAnimations/ListTwoColumnCompare.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ListAnimations/ListTwoColumnCompare.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ListUnevenGrid",
+      "category": "ListAnimations",
+      "role": "list",
+      "tags": [
+        "list",
+        "uneven",
+        "grid",
+        "geometry",
+        "background"
+      ],
+      "path": "src/scenes/ListAnimations/ListUnevenGrid.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ListAnimations/ListUnevenGrid.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "Logo3DRotate",
+      "category": "LogoAnimations",
+      "role": "logo",
+      "tags": [
+        "logo3d",
+        "rotate"
+      ],
+      "path": "src/scenes/LogoAnimations/Logo3DRotate.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LogoAnimations/Logo3DRotate.tsx",
+      "compatibility": "performance-review"
+    },
+    {
+      "id": "LogoGlitch",
+      "category": "LogoAnimations",
+      "role": "logo",
+      "tags": [
+        "logo",
+        "glitch"
+      ],
+      "path": "src/scenes/LogoAnimations/LogoGlitch.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LogoAnimations/LogoGlitch.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LogoLightTrail",
+      "category": "LogoAnimations",
+      "role": "logo",
+      "tags": [
+        "logo",
+        "light",
+        "trail"
+      ],
+      "path": "src/scenes/LogoAnimations/LogoLightTrail.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LogoAnimations/LogoLightTrail.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LogoMaskReveal",
+      "category": "LogoAnimations",
+      "role": "logo",
+      "tags": [
+        "logo",
+        "mask",
+        "reveal",
+        "photo"
+      ],
+      "path": "src/scenes/LogoAnimations/LogoMaskReveal.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LogoAnimations/LogoMaskReveal.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LogoMorph",
+      "category": "LogoAnimations",
+      "role": "logo",
+      "tags": [
+        "logo",
+        "morph"
+      ],
+      "path": "src/scenes/LogoAnimations/LogoMorph.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LogoAnimations/LogoMorph.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LogoNeonSign",
+      "category": "LogoAnimations",
+      "role": "logo",
+      "tags": [
+        "logo",
+        "neon",
+        "sign"
+      ],
+      "path": "src/scenes/LogoAnimations/LogoNeonSign.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LogoAnimations/LogoNeonSign.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LogoParticles",
+      "category": "LogoAnimations",
+      "role": "logo",
+      "tags": [
+        "logo",
+        "particles"
+      ],
+      "path": "src/scenes/LogoAnimations/LogoParticles.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LogoAnimations/LogoParticles.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LogoSplitScreen",
+      "category": "LogoAnimations",
+      "role": "logo",
+      "tags": [
+        "logo",
+        "split",
+        "screen",
+        "comparison"
+      ],
+      "path": "src/scenes/LogoAnimations/LogoSplitScreen.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LogoAnimations/LogoSplitScreen.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LogoStamp",
+      "category": "LogoAnimations",
+      "role": "logo",
+      "tags": [
+        "logo",
+        "stamp"
+      ],
+      "path": "src/scenes/LogoAnimations/LogoStamp.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LogoAnimations/LogoStamp.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "LogoStroke",
+      "category": "LogoAnimations",
+      "role": "logo",
+      "tags": [
+        "logo",
+        "stroke"
+      ],
+      "path": "src/scenes/LogoAnimations/LogoStroke.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/LogoAnimations/LogoStroke.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ParticleBubbles",
+      "category": "ParticleAnimations",
+      "role": "overlay",
+      "tags": [
+        "particle",
+        "bubbles"
+      ],
+      "path": "src/scenes/ParticleAnimations/ParticleBubbles.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ParticleAnimations/ParticleBubbles.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ParticleConfetti",
+      "category": "ParticleAnimations",
+      "role": "overlay",
+      "tags": [
+        "particle",
+        "confetti"
+      ],
+      "path": "src/scenes/ParticleAnimations/ParticleConfetti.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ParticleAnimations/ParticleConfetti.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ParticleFireworks",
+      "category": "ParticleAnimations",
+      "role": "overlay",
+      "tags": [
+        "particle",
+        "fireworks"
+      ],
+      "path": "src/scenes/ParticleAnimations/ParticleFireworks.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ParticleAnimations/ParticleFireworks.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ParticleLightning",
+      "category": "ParticleAnimations",
+      "role": "overlay",
+      "tags": [
+        "particle",
+        "lightning"
+      ],
+      "path": "src/scenes/ParticleAnimations/ParticleLightning.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ParticleAnimations/ParticleLightning.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ParticleMagneticField",
+      "category": "ParticleAnimations",
+      "role": "overlay",
+      "tags": [
+        "particle",
+        "magnetic",
+        "field"
+      ],
+      "path": "src/scenes/ParticleAnimations/ParticleMagneticField.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ParticleAnimations/ParticleMagneticField.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ParticleSakura",
+      "category": "ParticleAnimations",
+      "role": "overlay",
+      "tags": [
+        "particle",
+        "sakura",
+        "kyoto",
+        "japan",
+        "travel",
+        "spring"
+      ],
+      "path": "src/scenes/ParticleAnimations/ParticleSakura.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ParticleAnimations/ParticleSakura.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ParticleShootingStars",
+      "category": "ParticleAnimations",
+      "role": "overlay",
+      "tags": [
+        "particle",
+        "shooting",
+        "stars"
+      ],
+      "path": "src/scenes/ParticleAnimations/ParticleShootingStars.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ParticleAnimations/ParticleShootingStars.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ParticleSmoke",
+      "category": "ParticleAnimations",
+      "role": "overlay",
+      "tags": [
+        "particle",
+        "smoke"
+      ],
+      "path": "src/scenes/ParticleAnimations/ParticleSmoke.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ParticleAnimations/ParticleSmoke.tsx",
+      "compatibility": "performance-review"
+    },
+    {
+      "id": "ParticleSnow",
+      "category": "ParticleAnimations",
+      "role": "overlay",
+      "tags": [
+        "particle",
+        "snow",
+        "winter",
+        "travel"
+      ],
+      "path": "src/scenes/ParticleAnimations/ParticleSnow.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ParticleAnimations/ParticleSnow.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ParticleSparks",
+      "category": "ParticleAnimations",
+      "role": "overlay",
+      "tags": [
+        "particle",
+        "sparks"
+      ],
+      "path": "src/scenes/ParticleAnimations/ParticleSparks.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ParticleAnimations/ParticleSparks.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "Roller3DCarousel",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller3d",
+        "carousel"
+      ],
+      "path": "src/scenes/RollerAnimations/Roller3DCarousel.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/Roller3DCarousel.tsx",
+      "compatibility": "performance-review"
+    },
+    {
+      "id": "RollerBlur",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "blur"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerBlur.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerBlur.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerCountdown",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "countdown",
+        "stats"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerCountdown.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerCountdown.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerDramaticStop",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "dramatic",
+        "stop"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerDramaticStop.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerDramaticStop.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerDrum",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "drum"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerDrum.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerDrum.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerFadeSlide",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "fade",
+        "slide"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerFadeSlide.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerFadeSlide.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerFlip",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "flip"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerFlip.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerFlip.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerGlitch",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "glitch"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerGlitch.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerGlitch.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerGradientWave",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "gradient",
+        "wave",
+        "color",
+        "background"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerGradientWave.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerGradientWave.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerLiquid",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "liquid"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerLiquid.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerLiquid.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerMaskSlide",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "mask",
+        "slide"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerMaskSlide.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerMaskSlide.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerMultiSlot",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "multi",
+        "slot"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerMultiSlot.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerMultiSlot.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerOutlineHighlight",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "outline",
+        "highlight"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerOutlineHighlight.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerOutlineHighlight.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerPerspectiveStripes",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "perspective",
+        "stripes"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerPerspectiveStripes.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerPerspectiveStripes.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerScaleBounce",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "scale",
+        "bounce"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerScaleBounce.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerScaleBounce.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerShuffle",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "shuffle"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerShuffle.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerShuffle.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerSlotMachine",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "slot",
+        "machine"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerSlotMachine.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerSlotMachine.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerSlotReveal",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "slot",
+        "reveal"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerSlotReveal.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerSlotReveal.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerSplitFlap",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "split",
+        "flap",
+        "comparison"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerSplitFlap.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerSplitFlap.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerTypewriter",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "typewriter",
+        "editorial",
+        "caption"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerTypewriter.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerTypewriter.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerVerticalList",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "vertical",
+        "list"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerVerticalList.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerVerticalList.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "RollerWave",
+      "category": "RollerAnimations",
+      "role": "title",
+      "tags": [
+        "roller",
+        "wave"
+      ],
+      "path": "src/scenes/RollerAnimations/RollerWave.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/RollerAnimations/RollerWave.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "Shape3DCube",
+      "category": "ShapeAnimations",
+      "role": "graphic",
+      "tags": [
+        "shape3d",
+        "cube"
+      ],
+      "path": "src/scenes/ShapeAnimations/Shape3DCube.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ShapeAnimations/Shape3DCube.tsx",
+      "compatibility": "performance-review"
+    },
+    {
+      "id": "ShapeCircularProgress",
+      "category": "ShapeAnimations",
+      "role": "graphic",
+      "tags": [
+        "shape",
+        "circular",
+        "progress"
+      ],
+      "path": "src/scenes/ShapeAnimations/ShapeCircularProgress.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ShapeAnimations/ShapeCircularProgress.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ShapeExplosion",
+      "category": "ShapeAnimations",
+      "role": "graphic",
+      "tags": [
+        "shape",
+        "explosion"
+      ],
+      "path": "src/scenes/ShapeAnimations/ShapeExplosion.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ShapeAnimations/ShapeExplosion.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ShapeHelix",
+      "category": "ShapeAnimations",
+      "role": "graphic",
+      "tags": [
+        "shape",
+        "helix"
+      ],
+      "path": "src/scenes/ShapeAnimations/ShapeHelix.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ShapeAnimations/ShapeHelix.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ShapeHexGrid",
+      "category": "ShapeAnimations",
+      "role": "graphic",
+      "tags": [
+        "shape",
+        "hex",
+        "grid",
+        "geometry",
+        "background"
+      ],
+      "path": "src/scenes/ShapeAnimations/ShapeHexGrid.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ShapeAnimations/ShapeHexGrid.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ShapeMandala",
+      "category": "ShapeAnimations",
+      "role": "graphic",
+      "tags": [
+        "shape",
+        "mandala"
+      ],
+      "path": "src/scenes/ShapeAnimations/ShapeMandala.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ShapeAnimations/ShapeMandala.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ShapeMorphing",
+      "category": "ShapeAnimations",
+      "role": "graphic",
+      "tags": [
+        "shape",
+        "morphing"
+      ],
+      "path": "src/scenes/ShapeAnimations/ShapeMorphing.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ShapeAnimations/ShapeMorphing.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ShapeParticleField",
+      "category": "ShapeAnimations",
+      "role": "graphic",
+      "tags": [
+        "shape",
+        "particle",
+        "field"
+      ],
+      "path": "src/scenes/ShapeAnimations/ShapeParticleField.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ShapeAnimations/ShapeParticleField.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ShapeRipples",
+      "category": "ShapeAnimations",
+      "role": "graphic",
+      "tags": [
+        "shape",
+        "ripples"
+      ],
+      "path": "src/scenes/ShapeAnimations/ShapeRipples.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ShapeAnimations/ShapeRipples.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ShapeSpinningRings",
+      "category": "ShapeAnimations",
+      "role": "graphic",
+      "tags": [
+        "shape",
+        "spinning",
+        "rings"
+      ],
+      "path": "src/scenes/ShapeAnimations/ShapeSpinningRings.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ShapeAnimations/ShapeSpinningRings.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "Text3DFlip",
+      "category": "TextAnimations",
+      "role": "title",
+      "tags": [
+        "text3d",
+        "flip"
+      ],
+      "path": "src/scenes/TextAnimations/Text3DFlip.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TextAnimations/Text3DFlip.tsx",
+      "compatibility": "performance-review"
+    },
+    {
+      "id": "TextCounter",
+      "category": "TextAnimations",
+      "role": "title",
+      "tags": [
+        "text",
+        "counter",
+        "stats",
+        "countdown"
+      ],
+      "path": "src/scenes/TextAnimations/TextCounter.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TextAnimations/TextCounter.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TextExplode",
+      "category": "TextAnimations",
+      "role": "title",
+      "tags": [
+        "text",
+        "explode"
+      ],
+      "path": "src/scenes/TextAnimations/TextExplode.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TextAnimations/TextExplode.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TextGlitch",
+      "category": "TextAnimations",
+      "role": "title",
+      "tags": [
+        "text",
+        "glitch"
+      ],
+      "path": "src/scenes/TextAnimations/TextGlitch.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TextAnimations/TextGlitch.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TextGradient",
+      "category": "TextAnimations",
+      "role": "title",
+      "tags": [
+        "text",
+        "gradient",
+        "color",
+        "background"
+      ],
+      "path": "src/scenes/TextAnimations/TextGradient.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TextAnimations/TextGradient.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TextKinetic",
+      "category": "TextAnimations",
+      "role": "title",
+      "tags": [
+        "text",
+        "kinetic",
+        "hook",
+        "energetic"
+      ],
+      "path": "src/scenes/TextAnimations/TextKinetic.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TextAnimations/TextKinetic.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TextMaskReveal",
+      "category": "TextAnimations",
+      "role": "title",
+      "tags": [
+        "text",
+        "mask",
+        "reveal",
+        "photo"
+      ],
+      "path": "src/scenes/TextAnimations/TextMaskReveal.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TextAnimations/TextMaskReveal.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TextNeon",
+      "category": "TextAnimations",
+      "role": "title",
+      "tags": [
+        "text",
+        "neon"
+      ],
+      "path": "src/scenes/TextAnimations/TextNeon.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TextAnimations/TextNeon.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TextScramble",
+      "category": "TextAnimations",
+      "role": "title",
+      "tags": [
+        "text",
+        "scramble"
+      ],
+      "path": "src/scenes/TextAnimations/TextScramble.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TextAnimations/TextScramble.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TextSplit",
+      "category": "TextAnimations",
+      "role": "title",
+      "tags": [
+        "text",
+        "split",
+        "comparison"
+      ],
+      "path": "src/scenes/TextAnimations/TextSplit.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TextAnimations/TextSplit.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TextTypewriter",
+      "category": "TextAnimations",
+      "role": "title",
+      "tags": [
+        "text",
+        "typewriter",
+        "editorial",
+        "caption"
+      ],
+      "path": "src/scenes/TextAnimations/TextTypewriter.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TextAnimations/TextTypewriter.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TextWave",
+      "category": "TextAnimations",
+      "role": "title",
+      "tags": [
+        "text",
+        "wave"
+      ],
+      "path": "src/scenes/TextAnimations/TextWave.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TextAnimations/TextWave.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "Theme3DGlass",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme3d",
+        "glass"
+      ],
+      "path": "src/scenes/ThemeAnimations/Theme3DGlass.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/Theme3DGlass.tsx",
+      "compatibility": "performance-review"
+    },
+    {
+      "id": "Theme3DGlassThreeJS",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme3d",
+        "glass",
+        "three",
+        "js"
+      ],
+      "path": "src/scenes/ThemeAnimations/Theme3DGlassThreeJS.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/Theme3DGlassThreeJS.tsx",
+      "compatibility": "webgl-review"
+    },
+    {
+      "id": "ThemeArtDeco",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "art",
+        "deco"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeArtDeco.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeArtDeco.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeBauhaus",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "bauhaus"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeBauhaus.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeBauhaus.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeBoho",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "boho"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeBoho.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeBoho.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeBrutalistWeb",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "brutalist",
+        "web"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeBrutalistWeb.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeBrutalistWeb.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeCosmic",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "cosmic"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeCosmic.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeCosmic.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeCyberpunk",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "cyberpunk"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeCyberpunk.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeCyberpunk.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeDarkMode",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "dark",
+        "mode"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeDarkMode.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeDarkMode.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeDuotone",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "duotone"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeDuotone.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeDuotone.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeGeometricAbstract",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "geometric",
+        "abstract"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeGeometricAbstract.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeGeometricAbstract.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeGlassmorphism",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "glassmorphism"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeGlassmorphism.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeGlassmorphism.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeGradient",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "gradient",
+        "color",
+        "background"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeGradient.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeGradient.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeHolographic",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "holographic"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeHolographic.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeHolographic.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeIndustrial",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "industrial"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeIndustrial.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeIndustrial.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeIsometric",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "isometric"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeIsometric.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeIsometric.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeJapanese",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "japanese",
+        "kyoto",
+        "japan",
+        "travel"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeJapanese.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeJapanese.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeLuxury",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "luxury"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeLuxury.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeLuxury.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeMemphis",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "memphis"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeMemphis.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeMemphis.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeMinimalist",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "minimalist",
+        "travel",
+        "editorial",
+        "clean"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeMinimalist.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeMinimalist.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeMonochrome",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "monochrome"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeMonochrome.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeMonochrome.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeNatural",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "natural",
+        "travel",
+        "nature",
+        "outdoors"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeNatural.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeNatural.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeNeobrutalism",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "neobrutalism"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeNeobrutalism.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeNeobrutalism.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeNeon",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "neon"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeNeon.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeNeon.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeNeumorphism",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "neumorphism"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeNeumorphism.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeNeumorphism.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeOrganic",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "organic"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeOrganic.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeOrganic.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemePaperCut",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "paper",
+        "cut",
+        "travel",
+        "editorial",
+        "texture"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemePaperCut.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemePaperCut.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemePop",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "pop"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemePop.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemePop.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeRetro",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "retro"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeRetro.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeRetro.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeSwiss",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "swiss"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeSwiss.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeSwiss.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeTech",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "tech"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeTech.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeTech.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeWatercolor",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "watercolor",
+        "travel",
+        "kyoto",
+        "japan",
+        "editorial",
+        "soft"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeWatercolor.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeWatercolor.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "ThemeY2K",
+      "category": "ThemeAnimations",
+      "role": "visual-style",
+      "tags": [
+        "theme",
+        "y2k"
+      ],
+      "path": "src/scenes/ThemeAnimations/ThemeY2K.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/ThemeAnimations/ThemeY2K.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TransitionBlinds",
+      "category": "TransitionAnimations",
+      "role": "transition",
+      "tags": [
+        "transition",
+        "blinds"
+      ],
+      "path": "src/scenes/TransitionAnimations/TransitionBlinds.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TransitionAnimations/TransitionBlinds.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TransitionBoxReveal",
+      "category": "TransitionAnimations",
+      "role": "transition",
+      "tags": [
+        "transition",
+        "box",
+        "reveal"
+      ],
+      "path": "src/scenes/TransitionAnimations/TransitionBoxReveal.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TransitionAnimations/TransitionBoxReveal.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TransitionCircleWipe",
+      "category": "TransitionAnimations",
+      "role": "transition",
+      "tags": [
+        "transition",
+        "circle",
+        "wipe",
+        "reveal"
+      ],
+      "path": "src/scenes/TransitionAnimations/TransitionCircleWipe.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TransitionAnimations/TransitionCircleWipe.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TransitionDiagonalSlice",
+      "category": "TransitionAnimations",
+      "role": "transition",
+      "tags": [
+        "transition",
+        "diagonal",
+        "slice"
+      ],
+      "path": "src/scenes/TransitionAnimations/TransitionDiagonalSlice.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TransitionAnimations/TransitionDiagonalSlice.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TransitionFlash",
+      "category": "TransitionAnimations",
+      "role": "transition",
+      "tags": [
+        "transition",
+        "flash"
+      ],
+      "path": "src/scenes/TransitionAnimations/TransitionFlash.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TransitionAnimations/TransitionFlash.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TransitionGlitch",
+      "category": "TransitionAnimations",
+      "role": "transition",
+      "tags": [
+        "transition",
+        "glitch"
+      ],
+      "path": "src/scenes/TransitionAnimations/TransitionGlitch.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TransitionAnimations/TransitionGlitch.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TransitionLineSweep",
+      "category": "TransitionAnimations",
+      "role": "transition",
+      "tags": [
+        "transition",
+        "line",
+        "sweep"
+      ],
+      "path": "src/scenes/TransitionAnimations/TransitionLineSweep.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TransitionAnimations/TransitionLineSweep.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TransitionLiquidMorph",
+      "category": "TransitionAnimations",
+      "role": "transition",
+      "tags": [
+        "transition",
+        "liquid",
+        "morph"
+      ],
+      "path": "src/scenes/TransitionAnimations/TransitionLiquidMorph.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TransitionAnimations/TransitionLiquidMorph.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TransitionShutter",
+      "category": "TransitionAnimations",
+      "role": "transition",
+      "tags": [
+        "transition",
+        "shutter"
+      ],
+      "path": "src/scenes/TransitionAnimations/TransitionShutter.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TransitionAnimations/TransitionShutter.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "TransitionZoomBlur",
+      "category": "TransitionAnimations",
+      "role": "transition",
+      "tags": [
+        "transition",
+        "zoom",
+        "blur"
+      ],
+      "path": "src/scenes/TransitionAnimations/TransitionZoomBlur.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/TransitionAnimations/TransitionZoomBlur.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "UIButton",
+      "category": "UIAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "ui",
+        "button"
+      ],
+      "path": "src/scenes/UIAnimations/UIButton.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/UIAnimations/UIButton.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "UICard",
+      "category": "UIAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "ui",
+        "card"
+      ],
+      "path": "src/scenes/UIAnimations/UICard.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/UIAnimations/UICard.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "UIDropdown",
+      "category": "UIAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "ui",
+        "dropdown"
+      ],
+      "path": "src/scenes/UIAnimations/UIDropdown.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/UIAnimations/UIDropdown.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "UIForm",
+      "category": "UIAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "ui",
+        "form"
+      ],
+      "path": "src/scenes/UIAnimations/UIForm.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/UIAnimations/UIForm.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "UILoading",
+      "category": "UIAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "ui",
+        "loading"
+      ],
+      "path": "src/scenes/UIAnimations/UILoading.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/UIAnimations/UILoading.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "UIModal",
+      "category": "UIAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "ui",
+        "modal"
+      ],
+      "path": "src/scenes/UIAnimations/UIModal.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/UIAnimations/UIModal.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "UINavigation",
+      "category": "UIAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "ui",
+        "navigation"
+      ],
+      "path": "src/scenes/UIAnimations/UINavigation.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/UIAnimations/UINavigation.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "UITabs",
+      "category": "UIAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "ui",
+        "tabs"
+      ],
+      "path": "src/scenes/UIAnimations/UITabs.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/UIAnimations/UITabs.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "UIToast",
+      "category": "UIAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "ui",
+        "toast"
+      ],
+      "path": "src/scenes/UIAnimations/UIToast.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/UIAnimations/UIToast.tsx",
+      "compatibility": "not-tested"
+    },
+    {
+      "id": "UIToggle",
+      "category": "UIAnimations",
+      "role": "ui-demo",
+      "tags": [
+        "ui",
+        "toggle"
+      ],
+      "path": "src/scenes/UIAnimations/UIToggle.tsx",
+      "sourceUrl": "https://github.com/lifeprompt-team/remotion-scenes/blob/02c7a84241da7010b5f59c420b0110aafd1d6f0d/src/scenes/UIAnimations/UIToggle.tsx",
+      "compatibility": "not-tested"
+    }
+  ]
+}
