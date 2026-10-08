@@ -743,6 +743,28 @@ export const projectSchema = projectObjectSchema.superRefine((project, ctx) => {
       message: 'Premium Director currently requires a travel story configuration',
     });
   }
+
+  project.youtube?.chapters.forEach((chapter, chapterIndex) => {
+    chapter.overlays.forEach((overlay, overlayIndex) => {
+      if (overlay.from + overlay.scene.duration > chapter.duration + 0.001) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['youtube', 'chapters', chapterIndex, 'overlays', overlayIndex],
+          message: `Overlay "${overlay.scene.id}" exceeds chapter "${chapter.id}" duration`,
+        });
+      }
+    });
+
+    chapter.captions.forEach((caption, captionIndex) => {
+      if (caption.end > chapter.duration + 0.001) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['youtube', 'chapters', chapterIndex, 'captions', captionIndex],
+          message: `Caption exceeds chapter "${chapter.id}" duration`,
+        });
+      }
+    });
+  });
 });
 
 export type MotionPreset = z.infer<typeof motionPresetSchema>;
