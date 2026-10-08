@@ -1,0 +1,15 @@
+{
+  "id": "roller-skis-original-nordic-routes",
+  "title": "Roller Skis · Original Nordic Routes",
+  "template": "data-story",
+  "format": "landscape",
+  "fps": 30,
+  "nativeComposition": "roller-skis-nordic-routes",
+  "theme": {
+    "background": "#F7F6F2",
+    "foreground": "#292C29",
+    "muted": "#85847D",
+    "accent": "#FC4C02"
+  },
+  "scenes": []
+}
