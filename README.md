@@ -217,10 +217,10 @@ It is pinned to upstream commit `5f253b8a298e10c8007677ba2bd8c541303603f0`. All 
 
 ## Original Remotion Roller Skis previews
 
-Two standalone entries in the Studio load the **unmodified** components from
-`reference/remotion-dev/remotion/packages/jonnys-videos/src/roller-skis/`:
+Two standalone entries in the Studio use the original Roller Skis animations
+from `reference/remotion-dev/remotion/packages/jonnys-videos/src/roller-skis/`:
 
 - **Roller Skis · Original Nordic Routes**: 180 frames at 30 fps, with the original GPX-derived route data and animated SVG drawing.
-- **Roller Skis · Original Lower Third**: 108 frames at 30 fps, using the original entrance and exit animation.
+- **Roller Skis · Original Lower Third**: 108 frames at 30 fps, using the original entrance and exit animation. A compatibility adapter copies the original render logic but omits the unsupported interactivity schema registration.
 
-These are native Remotion compositions, not JSON recreations. Their small JSON project files contain selection metadata only. Preview and browser export share the same component. The full upstream film is not included as a working Studio project, because it uses external motion footage, audio, and more intensive WebGL rendering. See `reference/remotion-dev/remotion/UPSTREAM.md` for attribution and source.
+These are native Remotion compositions, not JSON recreations. The Nordic Routes component imports unchanged upstream code. The lower-third preserves upstream motion and visuals through a local compatibility adapter. Their small JSON project files contain selection metadata only. Preview and browser export share the same component. The full upstream film is not included as a working Studio project, because it uses external motion footage, audio, and more intensive WebGL rendering. See `reference/remotion-dev/remotion/UPSTREAM.md` for attribution and source.

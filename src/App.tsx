@@ -179,7 +179,7 @@ export const App = () => {
               ? (
                   <div className="scene-chip">
                     <span>01</span>
-                    <strong>Unmodified upstream composition</strong>
+                    <strong>{project.nativeComposition === 'roller-skis-intro-lower-third' ? 'Original animation · compatibility adapter' : 'Unmodified upstream composition'}</strong>
                     <small>Original Remotion source · {(durationInFrames / project.fps).toFixed(1)}s</small>
                   </div>
                 )
