@@ -1,6 +1,6 @@
 import {existsSync, readFileSync, readdirSync} from 'node:fs';
 import {resolve} from 'node:path';
-import {parseProject, projectVisualScenes, type VideoProject, type VideoScene} from '../src/project/schema';
+import {parseProject, projectFrames, projectVisualScenes, type VideoProject, type VideoScene} from '../src/project/schema';
 
 const root = process.cwd();
 const projectDir = resolve(root, 'projects');
@@ -50,6 +50,13 @@ for (const file of files) {
       errors.push(`${file}: duplicate project id "${project.id}"`);
     }
     projectIds.add(project.id);
+
+    if (project.reelCaptions) {
+      const end = projectFrames(project) / project.fps;
+      if (project.reelCaptions.captions.some(caption => caption.end > end + 0.001)) {
+        errors.push(`${file}: global reel captions exceed video duration ${end}s`);
+      }
+    }
 
     if (project.story) {
       if (!project.geoRoutes?.[project.story.routeId]) {
@@ -124,6 +131,25 @@ for (const file of files) {
 
       if (scene.type === 'elevation-route' && !project.elevationProfiles?.[scene.profileId]) {
         errors.push(`${file}: elevation scene "${scene.id}" references missing profile "${scene.profileId}"`);
+      }
+
+      if (scene.type === 'travel-reel-highlight') {
+        const route = project.geoRoutes?.[scene.routeId];
+        if (!route) {
+          errors.push(`${file}: travel reel highlight "${scene.id}" references missing route "${scene.routeId}"`);
+        } else {
+          const [lon, lat] = scene.stop.coordinates;
+          const nearestKm = Math.min(...route.coordinates.map(([x, y]) => {
+            const rad = Math.PI / 180;
+            const dy = (lat - y) * rad, dx = (lon - x) * rad;
+            const a = Math.sin(dy / 2) ** 2 +
+              Math.cos(lat * rad) * Math.cos(y * rad) * Math.sin(dx / 2) ** 2;
+            return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          }));
+          if (nearestKm > (route.mode === 'walking' ? 0.4 : 10)) {
+            errors.push(`${file}: travel reel highlight "${scene.id}" lies outside the route corridor`);
+          }
+        }
       }
 
       if (scene.type === 'route-chapter') {
