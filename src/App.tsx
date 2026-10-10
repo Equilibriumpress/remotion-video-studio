@@ -57,7 +57,7 @@ export const App = () => {
           <span>{project.template}</span>
           <span>{Math.round(durationSeconds * 10) / 10}s</span>
           <span>{project.fps} fps</span>
-          <span title="Catalog version kyoto-svg-v2">Catalog: Kyoto SVG v2 · #81</span>
+          <span title="Catalog version kyoto-svg-v2">Catalog: Netherlands Sea + Kyoto SVG v2</span>
         </div>
       </header>
 
