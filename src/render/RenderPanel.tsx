@@ -5,6 +5,7 @@ import {getDimensions, projectFrames, projectHasAudio, projectVisualScenes} from
 import {ProjectComposition} from '../remotion/ProjectComposition';
 import {checkProjectAssets, type AssetCheck} from './preflight';
 import {renderProfiles, type RenderProfile} from './profiles';
+import {verifyExport} from '../animate/verifyExport';
 
 type Props = {
   project: VideoProject;
@@ -98,6 +99,10 @@ export const RenderPanel = ({project}: Props) => {
       });
 
       const blob = await result.getBlob();
+      if (usesAnimateCanvas) {
+        setMessage('Verifying exported MP4 in this browser…');
+        await verifyExport(blob, projectFrames(project) / project.fps);
+      }
       const url = URL.createObjectURL(blob);
       const anchor = document.createElement('a');
       anchor.href = url;
