@@ -1,0 +1,75 @@
+{
+  "id": "animate-build-a-city",
+  "title": "Build a City",
+  "template": "explainer",
+  "format": "square",
+  "fps": 30,
+  "proceduralScore": {
+    "bpm": 92,
+    "root": 110,
+    "volume": 0.4,
+    "waveform": "soft",
+    "seed": 7
+  },
+  "scenes": [
+    {
+      "id": "build-a-city-1",
+      "type": "animate-canvas",
+      "style": "isometric",
+      "motif": "village",
+      "camera": "push",
+      "title": "A BLANK CANVAS",
+      "subtitle": "An illustrated story",
+      "duration": 8,
+      "seed": 10
+    },
+    {
+      "id": "build-a-city-2",
+      "type": "animate-canvas",
+      "style": "isometric",
+      "motif": "village",
+      "camera": "pan-left",
+      "title": "STREETS APPEAR",
+      "subtitle": "Procedural illustration",
+      "duration": 8,
+      "seed": 21,
+      "transition": "fade"
+    },
+    {
+      "id": "build-a-city-3",
+      "type": "animate-canvas",
+      "style": "isometric",
+      "motif": "village",
+      "camera": "push",
+      "title": "A NEW NEIGHBOURHOOD",
+      "subtitle": "Layers in motion",
+      "duration": 8,
+      "seed": 32,
+      "transition": "fade"
+    },
+    {
+      "id": "build-a-city-4",
+      "type": "animate-canvas",
+      "style": "isometric",
+      "motif": "village",
+      "camera": "pan-left",
+      "title": "GREEN SPACES",
+      "subtitle": "Designed frame by frame",
+      "duration": 8,
+      "seed": 43,
+      "transition": "fade"
+    },
+    {
+      "id": "build-a-city-5",
+      "type": "animate-canvas",
+      "style": "isometric",
+      "motif": "village",
+      "camera": "push",
+      "title": "THE CITY GROWS",
+      "subtitle": "Made entirely in your browser",
+      "duration": 8,
+      "seed": 54,
+      "transition": "fade"
+    }
+  ]
+}
