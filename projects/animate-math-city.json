@@ -1,0 +1,34 @@
+{
+  "id": "animate-math-city",
+  "title": "City Geometry — Math and Pixel",
+  "template": "explainer",
+  "format": "square",
+  "fps": 30,
+  "theme": {
+    "background": "#101F32",
+    "foreground": "#F4F6EB",
+    "muted": "#7ED4CB",
+    "accent": "#FFB95B"
+  },
+  "scenes": [
+    {
+      "id": "math-1",
+      "type": "animate-canvas",
+      "style": "math",
+      "title": "CITY GEOMETRY",
+      "subtitle": "Patterns in motion",
+      "duration": 5,
+      "seed": 3
+    },
+    {
+      "id": "pixel-2",
+      "type": "animate-canvas",
+      "style": "pixel",
+      "title": "FROM GRID TO CITY",
+      "subtitle": "Procedural buildings",
+      "duration": 5,
+      "seed": 13,
+      "transition": "fade"
+    }
+  ]
+}
