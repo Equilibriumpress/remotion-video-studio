@@ -20,7 +20,7 @@ function BoardTile({scene, index}: {scene: Extract<VideoScene, {type: 'animate-c
 }
 
 export function AnimateStoryboard({project}: {project: VideoProject}) {
-  const scenes = project.scenes.filter((scene): scene is Extract<VideoScene, {type: 'animate-canvas'}> => scene.type === 'animate-canvas' && !scene.svgFilmShot);
+  const scenes = project.scenes.filter((scene): scene is Extract<VideoScene, {type: 'animate-canvas'}> => scene.type === 'animate-canvas' && !scene.svgFilmShot && !scene.seaFilmShot);
   if (scenes.length === 0) return null;
   return (
     <section aria-label="Animation storyboard" style={{marginTop: 20, padding: 16, border: '1px solid #66708555', borderRadius: 12}}>
