@@ -1,6 +1,7 @@
 import {useLayoutEffect, useRef} from 'react';
 import {AbsoluteFill, useCurrentFrame, useVideoConfig} from 'remotion';
 import {drawAnimateFrame} from './draw';
+import {KyotoLayeredScene} from './cinematic/KyotoLayeredScene';
 import type {VideoScene} from '../project/schema';
 
 export function AnimateScene({scene}: {scene: Extract<VideoScene, {type: 'animate-canvas'}>}) {
@@ -16,5 +17,6 @@ export function AnimateScene({scene}: {scene: Extract<VideoScene, {type: 'animat
       progress: Math.min(1, Math.max(0, frame / Math.max(1, Math.round(scene.duration * fps) - 1))),
     });
   }, [frame, scene, fps, width, height]);
+  if(scene.svgFilmShot)return <KyotoLayeredScene shot={scene.svgFilmShot} duration={scene.duration}/>;
   return <AbsoluteFill><canvas ref={canvas} width={width} height={height} style={{width: '100%', height: '100%', display: 'block'}} /></AbsoluteFill>;
 }
