@@ -601,8 +601,9 @@ const outroScene = baseScene.extend({
 });
 
 const illustrationElementSchema = z.object({
-  kind: z.enum(['path', 'circle', 'rect', 'label', 'flow']),
+  kind: z.enum(['path', 'circle', 'rect', 'label', 'flow', 'morph']),
   points: z.array(z.tuple([z.number().min(0).max(1), z.number().min(0).max(1)])).min(2).max(32).optional(),
+  targetPoints: z.array(z.tuple([z.number().min(0).max(1), z.number().min(0).max(1)])).min(2).max(32).optional(),
   x: z.number().min(0).max(1).optional(),
   y: z.number().min(0).max(1).optional(),
   width: z.number().min(0).max(1).optional(),
@@ -615,6 +616,8 @@ const illustrationElementSchema = z.object({
 }).superRefine((item, ctx) => {
   if ((item.kind === 'path' || item.kind === 'flow') && !item.points)
     ctx.addIssue({code:'custom', message:'Path/flow requires points'});
+  if (item.kind === 'morph' && (!item.points || !item.targetPoints || item.points.length !== item.targetPoints.length))
+    ctx.addIssue({code:'custom', message:'Morph requires matching points and targetPoints'});
   if (item.from !== undefined && item.to !== undefined && item.to <= item.from)
     ctx.addIssue({code:'custom', message:'to must be greater than from'});
 });
