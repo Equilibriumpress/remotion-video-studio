@@ -1,4 +1,10 @@
 import demo from '../../projects/demo.json';
+import animateShowcase0 from '../../projects/animate-kyoto-in-layers.json';
+import animateShowcase1 from '../../projects/animate-tokyo-through-time.json';
+import animateShowcase2 from '../../projects/animate-how-a-shinkansen-works.json';
+import animateShowcase3 from '../../projects/animate-build-a-city.json';
+import animateShowcase4 from '../../projects/animate-pixel-tokyo.json';
+import animateShowcase5 from '../../projects/animate-mathematics-of-motion.json';
 import animateTokyo from '../../projects/animate-tokyo-isometric.json';
 import animateKyoto from '../../projects/animate-kyoto-sketchbook.json';
 import animateMath from '../../projects/animate-math-city.json';
@@ -29,6 +35,12 @@ import pereLachaiseAppStoreSearch from '../../projects/perelachaise-appstore-sea
 import {parseProject, type VideoProject} from './schema';
 
 export const projects: VideoProject[] = [
+  parseProject(animateShowcase0),
+  parseProject(animateShowcase1),
+  parseProject(animateShowcase2),
+  parseProject(animateShowcase3),
+  parseProject(animateShowcase4),
+  parseProject(animateShowcase5),
   parseProject(animateTokyo),
   parseProject(animateKyoto),
   parseProject(animateMath),
