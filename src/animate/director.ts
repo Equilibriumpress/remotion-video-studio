@@ -9,6 +9,7 @@ export type AnimateBrief = {
   format: VideoProject['format'];
   fps: VideoProject['fps'];
   beats: {title: string; subtitle?: string; duration: number; seed?: number}[];
+  score?: {bpm: number; root: number; volume: number; waveform: 'sine' | 'soft' | 'pluck'; seed: number};
 };
 
 /** Compile agent-authored, editorially reviewed story beats to deterministic JSON. */
@@ -31,5 +32,6 @@ export function compileAnimateBrief(brief: AnimateBrief): VideoProject {
     format: brief.format, fps: brief.fps,
     theme: {background: palette.background, foreground: palette.foreground, accent: palette.accent, muted: palette.secondary},
     scenes,
+    proceduralScore: brief.score,
   } as VideoProject;
 }

@@ -6,6 +6,8 @@ Create premium travel videos and route stories that preview and render from GitH
 
 For illustrated procedural videos, read `skills/animate-director/SKILL.md`. Animate scenes are generated from reviewed storyboard beats and use existing Remotion browser export with experimental Canvas capture. Do not claim Safari/iPad MP4 compatibility without an end-to-end test.
 
+For `animate-canvas` projects, a top-level `proceduralScore` creates a deterministic WAV soundtrack in the browser. Run the Animation quality check and verify audio in the exported MP4. Canvas text checks are heuristic, not full OCR or video QA.
+
 ## New video workflow
 
 Before designing motion from a prompt, consult skills/remotion-scene-library/SKILL.md and search the pinned 201-entry background catalog if a motion technique beyond existing presets would improve the story. The catalog is authoring-only. Do not load it in the browser or imply all 201 source components are already runnable. Integrate and validate selected examples individually.
