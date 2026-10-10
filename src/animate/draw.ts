@@ -104,8 +104,10 @@ export function drawAnimateFrame(ctx: CanvasRenderingContext2D, args: AnimateDra
       }
     }
   }
-  if (args.motif && args.motif !== 'city') drawMotif(ctx, {...args, motif: args.motif});
-  else drawIllustrationDetails(ctx, args);
+  if (!args.paperObjects?.length) {
+    if (args.motif && args.motif !== 'city') drawMotif(ctx, {...args, motif: args.motif});
+    else drawIllustrationDetails(ctx, args);
+  }
   if(args.paperObjects?.length)drawPaperObjects(ctx,w,h,args.paperObjects,p,palette);
   if (args.figures?.length) drawFigures(ctx,w,h,args.figures,p,palette);
   if (args.elements?.length) drawElements(ctx, w, h, args.elements, p, palette);
