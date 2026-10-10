@@ -4,6 +4,7 @@ import {drawMotif, type IllustrationMotif, type CameraPreset} from './motifs';
 import {drawElements, type IllustrationElement} from './illustrationKit';
 import {drawHandoff, type Handoff} from './transitions/sharedShapes';
 import {drawFigures, type Figure} from './figures/FigureLibrary';
+import {drawMorph, type MorphSpec} from './transitions/morphPath';
 
 export type AnimateDrawing = {
   style: AnimateStyle;
@@ -18,6 +19,7 @@ export type AnimateDrawing = {
   elements?: IllustrationElement[];
   handoff?: Handoff;
   figures?: Figure[];
+  morph?: MorphSpec;
   frame?: number;
   frames?: number;
 };
@@ -121,6 +123,7 @@ export function drawAnimateFrame(ctx: CanvasRenderingContext2D, args: AnimateDra
     ctx.restore();
   }
   ctx.restore();
+  if(args.morph)drawMorph(ctx,w,h,args.morph,p);
   if(args.handoff)drawHandoff(ctx,w,h,args.handoff,args.frame??Math.round(p*89),args.frames??90);
 
   const pad = w * 0.10;
