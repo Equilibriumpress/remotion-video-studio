@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {parseProject,projectFrames,sceneTimeline} from '../src/project/schema';
+const project=parseProject(JSON.parse(readFileSync('projects/netherlands-vs-the-sea.json','utf8')));
+assert.equal(project.format,'vertical');
+assert.equal(project.fps,30);
+assert.equal(projectFrames(project),1350,'Film duration must equal 45 seconds');
+assert.equal(sceneTimeline(project).length,5);
+assert.deepEqual(project.scenes.map(s=>s.type==='animate-canvas'?s.seaFilmShot:null),['wave','polder','pump','barrier','map']);
+assert.ok(project.proceduralScore,'Instrumental music should be defined');
+console.log('The Netherlands vs. The Sea: 5 SVG scenes, 45s, 1080x1920.');
