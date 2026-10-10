@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {parseProject,projectFrames,sceneTimeline} from '../src/project/schema';
+const p=parseProject(JSON.parse(readFileSync('projects/animate-history-of-ai.json','utf8')));
+assert.equal(p.scenes.length,12);
+assert.equal(projectFrames(p),1800,'History of AI should render exactly 60s at 30 fps including transition overlap');
+const scenes=p.scenes.filter(s=>s.type==='animate-canvas');
+assert.equal(scenes.length,12);
+assert.ok(scenes.every(s=>s.handoff?.key==='orange-spark'));
+assert.ok(scenes.every(s=>s.figures && s.figures.length>=2));
+assert.ok(scenes.every(s=>s.style==='cut-paper'));
+assert.ok(sceneTimeline(p).every(s=>s.durationInFrames>0));
+console.log('History of AI: 12 illustrated scenes, 60 seconds, keyed spark and figured compositions validated.');

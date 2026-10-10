@@ -1,0 +1,1010 @@
+{
+  "id": "animate-history-of-ai",
+  "title": "History of AI — Cut Paper (60s)",
+  "template": "explainer",
+  "format": "landscape",
+  "fps": 30,
+  "proceduralScore": {
+    "bpm": 98,
+    "root": 110,
+    "volume": 0.34,
+    "waveform": "pluck",
+    "seed": 45
+  },
+  "scenes": [
+    {
+      "id": "history-ai-01",
+      "type": "animate-canvas",
+      "duration": 5,
+      "style": "cut-paper",
+      "motif": "geometry",
+      "camera": "push",
+      "title": "Can machines think?",
+      "subtitle": "The question that started a field",
+      "seed": 31,
+      "figures": [
+        {
+          "kind": "speech",
+          "x": 0.38,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#344B52",
+          "from": 0.14,
+          "to": 0.8
+        },
+        {
+          "kind": "brain",
+          "x": 0.66,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#A7634C",
+          "from": 0.26,
+          "to": 0.8
+        }
+      ],
+      "elements": [
+        {
+          "kind": "path",
+          "points": [
+            [
+              0.18,
+              0.83
+            ],
+            [
+              0.35,
+              0.8
+            ],
+            [
+              0.52,
+              0.82
+            ],
+            [
+              0.69,
+              0.8
+            ],
+            [
+              0.82,
+              0.83
+            ]
+          ],
+          "from": 0.22,
+          "to": 0.84,
+          "color": "#B9A995"
+        },
+        {
+          "kind": "label",
+          "x": 0.36,
+          "y": 0.92,
+          "text": "ORIGINS",
+          "from": 0.55,
+          "to": 0.85,
+          "color": "#344B52"
+        }
+      ],
+      "handoff": {
+        "key": "orange-spark",
+        "fromX": 0.84,
+        "fromY": 0.4,
+        "toX": 0.84,
+        "toY": 0.4,
+        "radius": 0.024,
+        "color": "#E9783F",
+        "entryFrames": 12,
+        "exitFrames": 12
+      }
+    },
+    {
+      "id": "history-ai-02",
+      "type": "animate-canvas",
+      "duration": 5.3,
+      "style": "cut-paper",
+      "motif": "village",
+      "camera": "static",
+      "title": "1950 · Alan Turing",
+      "subtitle": "A test of machine intelligence",
+      "seed": 38,
+      "figures": [
+        {
+          "kind": "person",
+          "x": 0.38,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#344B52",
+          "from": 0.14,
+          "to": 0.8
+        },
+        {
+          "kind": "book",
+          "x": 0.66,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#A7634C",
+          "from": 0.26,
+          "to": 0.8
+        }
+      ],
+      "elements": [
+        {
+          "kind": "path",
+          "points": [
+            [
+              0.18,
+              0.83
+            ],
+            [
+              0.35,
+              0.8
+            ],
+            [
+              0.52,
+              0.82
+            ],
+            [
+              0.69,
+              0.8
+            ],
+            [
+              0.82,
+              0.83
+            ]
+          ],
+          "from": 0.22,
+          "to": 0.84,
+          "color": "#B9A995"
+        },
+        {
+          "kind": "label",
+          "x": 0.36,
+          "y": 0.92,
+          "text": "1950",
+          "from": 0.55,
+          "to": 0.85,
+          "color": "#344B52"
+        }
+      ],
+      "handoff": {
+        "key": "orange-spark",
+        "fromX": 0.84,
+        "fromY": 0.4,
+        "toX": 0.84,
+        "toY": 0.4,
+        "radius": 0.024,
+        "color": "#DD7449",
+        "entryFrames": 12,
+        "exitFrames": 12
+      },
+      "transition": "fade",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "history-ai-03",
+      "type": "animate-canvas",
+      "duration": 5.3,
+      "style": "cut-paper",
+      "motif": "city",
+      "camera": "static",
+      "title": "1956 · Dartmouth",
+      "subtitle": "Artificial intelligence gets its name",
+      "seed": 45,
+      "figures": [
+        {
+          "kind": "person",
+          "x": 0.38,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#344B52",
+          "from": 0.14,
+          "to": 0.8
+        },
+        {
+          "kind": "computer",
+          "x": 0.66,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#A7634C",
+          "from": 0.26,
+          "to": 0.8
+        }
+      ],
+      "elements": [
+        {
+          "kind": "path",
+          "points": [
+            [
+              0.18,
+              0.83
+            ],
+            [
+              0.35,
+              0.8
+            ],
+            [
+              0.52,
+              0.82
+            ],
+            [
+              0.69,
+              0.8
+            ],
+            [
+              0.82,
+              0.83
+            ]
+          ],
+          "from": 0.22,
+          "to": 0.84,
+          "color": "#B9A995"
+        },
+        {
+          "kind": "label",
+          "x": 0.36,
+          "y": 0.92,
+          "text": "1956",
+          "from": 0.55,
+          "to": 0.85,
+          "color": "#344B52"
+        }
+      ],
+      "handoff": {
+        "key": "orange-spark",
+        "fromX": 0.84,
+        "fromY": 0.4,
+        "toX": 0.84,
+        "toY": 0.4,
+        "radius": 0.024,
+        "color": "#E9783F",
+        "entryFrames": 12,
+        "exitFrames": 12
+      },
+      "transition": "fade",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "history-ai-04",
+      "type": "animate-canvas",
+      "duration": 5.3,
+      "style": "cut-paper",
+      "motif": "geometry",
+      "camera": "push",
+      "title": "Early optimism",
+      "subtitle": "Researchers imagine thinking machines",
+      "seed": 52,
+      "figures": [
+        {
+          "kind": "robot",
+          "x": 0.38,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#344B52",
+          "from": 0.14,
+          "to": 0.8
+        },
+        {
+          "kind": "speech",
+          "x": 0.66,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#A7634C",
+          "from": 0.26,
+          "to": 0.8
+        }
+      ],
+      "elements": [
+        {
+          "kind": "path",
+          "points": [
+            [
+              0.18,
+              0.83
+            ],
+            [
+              0.35,
+              0.8
+            ],
+            [
+              0.52,
+              0.82
+            ],
+            [
+              0.69,
+              0.8
+            ],
+            [
+              0.82,
+              0.83
+            ]
+          ],
+          "from": 0.22,
+          "to": 0.84,
+          "color": "#B9A995"
+        },
+        {
+          "kind": "label",
+          "x": 0.36,
+          "y": 0.92,
+          "text": "1965",
+          "from": 0.55,
+          "to": 0.85,
+          "color": "#344B52"
+        }
+      ],
+      "handoff": {
+        "key": "orange-spark",
+        "fromX": 0.84,
+        "fromY": 0.4,
+        "toX": 0.84,
+        "toY": 0.4,
+        "radius": 0.024,
+        "color": "#DE7C53",
+        "entryFrames": 12,
+        "exitFrames": 12
+      },
+      "transition": "fade",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "history-ai-05",
+      "type": "animate-canvas",
+      "duration": 5.3,
+      "style": "cut-paper",
+      "motif": "city",
+      "camera": "static",
+      "title": "AI winter",
+      "subtitle": "Progress proves harder than expected",
+      "seed": 59,
+      "figures": [
+        {
+          "kind": "computer",
+          "x": 0.38,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#344B52",
+          "from": 0.14,
+          "to": 0.8
+        },
+        {
+          "kind": "book",
+          "x": 0.66,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#A7634C",
+          "from": 0.26,
+          "to": 0.8
+        }
+      ],
+      "elements": [
+        {
+          "kind": "path",
+          "points": [
+            [
+              0.18,
+              0.83
+            ],
+            [
+              0.35,
+              0.8
+            ],
+            [
+              0.52,
+              0.82
+            ],
+            [
+              0.69,
+              0.8
+            ],
+            [
+              0.82,
+              0.83
+            ]
+          ],
+          "from": 0.22,
+          "to": 0.84,
+          "color": "#B9A995"
+        },
+        {
+          "kind": "label",
+          "x": 0.36,
+          "y": 0.92,
+          "text": "1975",
+          "from": 0.55,
+          "to": 0.85,
+          "color": "#344B52"
+        }
+      ],
+      "handoff": {
+        "key": "orange-spark",
+        "fromX": 0.84,
+        "fromY": 0.4,
+        "toX": 0.84,
+        "toY": 0.4,
+        "radius": 0.024,
+        "color": "#7B847D",
+        "entryFrames": 12,
+        "exitFrames": 12
+      },
+      "transition": "fade",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "history-ai-06",
+      "type": "animate-canvas",
+      "duration": 5.3,
+      "style": "cut-paper",
+      "motif": "geometry",
+      "camera": "static",
+      "title": "Expert systems",
+      "subtitle": "Rules capture specialist knowledge",
+      "seed": 66,
+      "figures": [
+        {
+          "kind": "circuit",
+          "x": 0.38,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#344B52",
+          "from": 0.14,
+          "to": 0.8
+        },
+        {
+          "kind": "book",
+          "x": 0.66,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#A7634C",
+          "from": 0.26,
+          "to": 0.8
+        }
+      ],
+      "elements": [
+        {
+          "kind": "path",
+          "points": [
+            [
+              0.18,
+              0.83
+            ],
+            [
+              0.35,
+              0.8
+            ],
+            [
+              0.52,
+              0.82
+            ],
+            [
+              0.69,
+              0.8
+            ],
+            [
+              0.82,
+              0.83
+            ]
+          ],
+          "from": 0.22,
+          "to": 0.84,
+          "color": "#B9A995"
+        },
+        {
+          "kind": "label",
+          "x": 0.36,
+          "y": 0.92,
+          "text": "1985",
+          "from": 0.55,
+          "to": 0.85,
+          "color": "#344B52"
+        }
+      ],
+      "handoff": {
+        "key": "orange-spark",
+        "fromX": 0.84,
+        "fromY": 0.4,
+        "toX": 0.84,
+        "toY": 0.4,
+        "radius": 0.024,
+        "color": "#D87946",
+        "entryFrames": 12,
+        "exitFrames": 12
+      },
+      "transition": "fade",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "history-ai-07",
+      "type": "animate-canvas",
+      "duration": 5.3,
+      "style": "cut-paper",
+      "motif": "geometry",
+      "camera": "push",
+      "title": "1997 · Deep Blue",
+      "subtitle": "A computer defeats Kasparov",
+      "seed": 73,
+      "figures": [
+        {
+          "kind": "chess",
+          "x": 0.38,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#344B52",
+          "from": 0.14,
+          "to": 0.8
+        },
+        {
+          "kind": "computer",
+          "x": 0.66,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#A7634C",
+          "from": 0.26,
+          "to": 0.8
+        }
+      ],
+      "elements": [
+        {
+          "kind": "path",
+          "points": [
+            [
+              0.18,
+              0.83
+            ],
+            [
+              0.35,
+              0.8
+            ],
+            [
+              0.52,
+              0.82
+            ],
+            [
+              0.69,
+              0.8
+            ],
+            [
+              0.82,
+              0.83
+            ]
+          ],
+          "from": 0.22,
+          "to": 0.84,
+          "color": "#B9A995"
+        },
+        {
+          "kind": "label",
+          "x": 0.36,
+          "y": 0.92,
+          "text": "1997",
+          "from": 0.55,
+          "to": 0.85,
+          "color": "#344B52"
+        }
+      ],
+      "handoff": {
+        "key": "orange-spark",
+        "fromX": 0.84,
+        "fromY": 0.4,
+        "toX": 0.84,
+        "toY": 0.4,
+        "radius": 0.024,
+        "color": "#E9783F",
+        "entryFrames": 12,
+        "exitFrames": 12
+      },
+      "transition": "fade",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "history-ai-08",
+      "type": "animate-canvas",
+      "duration": 5.3,
+      "style": "cut-paper",
+      "motif": "geometry",
+      "camera": "static",
+      "title": "Learning from data",
+      "subtitle": "Connections replace some hand-built rules",
+      "seed": 80,
+      "figures": [
+        {
+          "kind": "brain",
+          "x": 0.38,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#344B52",
+          "from": 0.14,
+          "to": 0.8
+        },
+        {
+          "kind": "circuit",
+          "x": 0.66,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#A7634C",
+          "from": 0.26,
+          "to": 0.8
+        }
+      ],
+      "elements": [
+        {
+          "kind": "path",
+          "points": [
+            [
+              0.18,
+              0.83
+            ],
+            [
+              0.35,
+              0.8
+            ],
+            [
+              0.52,
+              0.82
+            ],
+            [
+              0.69,
+              0.8
+            ],
+            [
+              0.82,
+              0.83
+            ]
+          ],
+          "from": 0.22,
+          "to": 0.84,
+          "color": "#B9A995"
+        },
+        {
+          "kind": "label",
+          "x": 0.36,
+          "y": 0.92,
+          "text": "2006",
+          "from": 0.55,
+          "to": 0.85,
+          "color": "#344B52"
+        }
+      ],
+      "handoff": {
+        "key": "orange-spark",
+        "fromX": 0.84,
+        "fromY": 0.4,
+        "toX": 0.84,
+        "toY": 0.4,
+        "radius": 0.024,
+        "color": "#CB754F",
+        "entryFrames": 12,
+        "exitFrames": 12
+      },
+      "transition": "fade",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "history-ai-09",
+      "type": "animate-canvas",
+      "duration": 5.3,
+      "style": "cut-paper",
+      "motif": "geometry",
+      "camera": "static",
+      "title": "2012 · Deep learning",
+      "subtitle": "Image recognition transforms the field",
+      "seed": 87,
+      "figures": [
+        {
+          "kind": "brain",
+          "x": 0.38,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#344B52",
+          "from": 0.14,
+          "to": 0.8
+        },
+        {
+          "kind": "computer",
+          "x": 0.66,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#A7634C",
+          "from": 0.26,
+          "to": 0.8
+        }
+      ],
+      "elements": [
+        {
+          "kind": "path",
+          "points": [
+            [
+              0.18,
+              0.83
+            ],
+            [
+              0.35,
+              0.8
+            ],
+            [
+              0.52,
+              0.82
+            ],
+            [
+              0.69,
+              0.8
+            ],
+            [
+              0.82,
+              0.83
+            ]
+          ],
+          "from": 0.22,
+          "to": 0.84,
+          "color": "#B9A995"
+        },
+        {
+          "kind": "label",
+          "x": 0.36,
+          "y": 0.92,
+          "text": "2012",
+          "from": 0.55,
+          "to": 0.85,
+          "color": "#344B52"
+        }
+      ],
+      "handoff": {
+        "key": "orange-spark",
+        "fromX": 0.84,
+        "fromY": 0.4,
+        "toX": 0.84,
+        "toY": 0.4,
+        "radius": 0.024,
+        "color": "#E9783F",
+        "entryFrames": 12,
+        "exitFrames": 12
+      },
+      "transition": "fade",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "history-ai-10",
+      "type": "animate-canvas",
+      "duration": 5.3,
+      "style": "cut-paper",
+      "motif": "geometry",
+      "camera": "push",
+      "title": "2022 · Generative AI",
+      "subtitle": "Language models reach a wide audience",
+      "seed": 94,
+      "figures": [
+        {
+          "kind": "speech",
+          "x": 0.38,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#344B52",
+          "from": 0.14,
+          "to": 0.8
+        },
+        {
+          "kind": "computer",
+          "x": 0.66,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#A7634C",
+          "from": 0.26,
+          "to": 0.8
+        }
+      ],
+      "elements": [
+        {
+          "kind": "path",
+          "points": [
+            [
+              0.18,
+              0.83
+            ],
+            [
+              0.35,
+              0.8
+            ],
+            [
+              0.52,
+              0.82
+            ],
+            [
+              0.69,
+              0.8
+            ],
+            [
+              0.82,
+              0.83
+            ]
+          ],
+          "from": 0.22,
+          "to": 0.84,
+          "color": "#B9A995"
+        },
+        {
+          "kind": "label",
+          "x": 0.36,
+          "y": 0.92,
+          "text": "2022",
+          "from": 0.55,
+          "to": 0.85,
+          "color": "#344B52"
+        }
+      ],
+      "handoff": {
+        "key": "orange-spark",
+        "fromX": 0.84,
+        "fromY": 0.4,
+        "toX": 0.84,
+        "toY": 0.4,
+        "radius": 0.024,
+        "color": "#DD7449",
+        "entryFrames": 12,
+        "exitFrames": 12
+      },
+      "transition": "fade",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "history-ai-11",
+      "type": "animate-canvas",
+      "duration": 5.3,
+      "style": "cut-paper",
+      "motif": "city",
+      "camera": "static",
+      "title": "AI in daily life",
+      "subtitle": "New tools enter work and creativity",
+      "seed": 101,
+      "figures": [
+        {
+          "kind": "person",
+          "x": 0.38,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#344B52",
+          "from": 0.14,
+          "to": 0.8
+        },
+        {
+          "kind": "robot",
+          "x": 0.66,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#A7634C",
+          "from": 0.26,
+          "to": 0.8
+        }
+      ],
+      "elements": [
+        {
+          "kind": "path",
+          "points": [
+            [
+              0.18,
+              0.83
+            ],
+            [
+              0.35,
+              0.8
+            ],
+            [
+              0.52,
+              0.82
+            ],
+            [
+              0.69,
+              0.8
+            ],
+            [
+              0.82,
+              0.83
+            ]
+          ],
+          "from": 0.22,
+          "to": 0.84,
+          "color": "#B9A995"
+        },
+        {
+          "kind": "label",
+          "x": 0.36,
+          "y": 0.92,
+          "text": "2024",
+          "from": 0.55,
+          "to": 0.85,
+          "color": "#344B52"
+        }
+      ],
+      "handoff": {
+        "key": "orange-spark",
+        "fromX": 0.84,
+        "fromY": 0.4,
+        "toX": 0.84,
+        "toY": 0.4,
+        "radius": 0.024,
+        "color": "#E9783F",
+        "entryFrames": 12,
+        "exitFrames": 12
+      },
+      "transition": "fade",
+      "transitionDuration": 0.3
+    },
+    {
+      "id": "history-ai-12",
+      "type": "animate-canvas",
+      "duration": 5.3,
+      "style": "cut-paper",
+      "motif": "geometry",
+      "camera": "static",
+      "title": "The story continues",
+      "subtitle": "New questions are still being written",
+      "seed": 108,
+      "figures": [
+        {
+          "kind": "brain",
+          "x": 0.38,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#344B52",
+          "from": 0.14,
+          "to": 0.8
+        },
+        {
+          "kind": "book",
+          "x": 0.66,
+          "y": 0.62,
+          "scale": 0.19,
+          "color": "#A7634C",
+          "from": 0.26,
+          "to": 0.8
+        }
+      ],
+      "elements": [
+        {
+          "kind": "path",
+          "points": [
+            [
+              0.18,
+              0.83
+            ],
+            [
+              0.35,
+              0.8
+            ],
+            [
+              0.52,
+              0.82
+            ],
+            [
+              0.69,
+              0.8
+            ],
+            [
+              0.82,
+              0.83
+            ]
+          ],
+          "from": 0.22,
+          "to": 0.84,
+          "color": "#B9A995"
+        },
+        {
+          "kind": "label",
+          "x": 0.36,
+          "y": 0.92,
+          "text": "WHAT NEXT?",
+          "from": 0.55,
+          "to": 0.85,
+          "color": "#344B52"
+        }
+      ],
+      "handoff": {
+        "key": "orange-spark",
+        "fromX": 0.84,
+        "fromY": 0.4,
+        "toX": 0.84,
+        "toY": 0.4,
+        "radius": 0.024,
+        "color": "#E9783F",
+        "entryFrames": 12,
+        "exitFrames": 12
+      },
+      "transition": "fade",
+      "transitionDuration": 0.3
+    }
+  ]
+}
