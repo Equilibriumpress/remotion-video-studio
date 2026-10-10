@@ -606,6 +606,8 @@ const animateCanvasScene = baseScene.extend({
   title: z.string().min(1).max(100),
   subtitle: z.string().max(100).optional(),
   seed: z.number().int().min(0).max(100000).default(7),
+  motif: z.enum(['city', 'temple', 'train', 'village', 'pixel-night', 'geometry']).default('city'),
+  camera: z.enum(['static', 'push', 'pan-left']).default('static'),
 });
 
 export const sceneSchema = z.discriminatedUnion('type', [
