@@ -6,6 +6,7 @@ import {ProjectComposition} from './remotion/ProjectComposition';
 import {RenderPanel} from './render/RenderPanel';
 import {AnimateStoryboard} from './animate/AnimateStoryboard';
 import {AnimateStyleGuide} from './animate/StyleGuide';
+import {AnimateQA} from './animate/AnimateQA';
 
 export const App = () => {
   const [projectId, setProjectId] = useState(projects[0].id);
@@ -176,6 +177,7 @@ export const App = () => {
 
           <RenderPanel key={project.id} project={project} />
           <AnimateStoryboard project={project} />
+          <AnimateQA project={project} />
           {project.scenes.some((scene) => scene.type === 'animate-canvas') ? <AnimateStyleGuide /> : null}
 
           <div className="scene-strip" aria-label={project.youtube ? 'Chapter overview' : 'Scene overview'}>
