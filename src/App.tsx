@@ -9,7 +9,10 @@ import {AnimateStyleGuide} from './animate/StyleGuide';
 import {AnimateQA} from './animate/AnimateQA';
 
 export const App = () => {
-  const [projectId, setProjectId] = useState(projects[0].id);
+  const [projectId, setProjectId] = useState(() => {
+    const requested = new URLSearchParams(window.location.search).get('project');
+    return projects.find((item) => item.id === requested)?.id ?? projects[0].id;
+  });
   const [query, setQuery] = useState('');
   const [formatFilter, setFormatFilter] = useState('all');
   const [libraryOpen, setLibraryOpen] = useState(false);
@@ -35,6 +38,7 @@ export const App = () => {
 
   const selectProject = (id: string) => {
     setProjectId(id);
+    window.history.replaceState(null, '', `${window.location.pathname}?project=${encodeURIComponent(id)}${window.location.hash}`);
     setLibraryOpen(false);
     if (window.matchMedia('(max-width: 1100px)').matches) {
       window.requestAnimationFrame(() => libraryRef.current?.scrollIntoView({behavior: 'smooth', block: 'start'}));
@@ -52,6 +56,7 @@ export const App = () => {
           <span>{project.template}</span>
           <span>{Math.round(durationSeconds * 10) / 10}s</span>
           <span>{project.fps} fps</span>
+          <span title="Catalog includes History of AI">Catalog: History of AI included</span>
         </div>
       </header>
 
@@ -73,6 +78,9 @@ export const App = () => {
             <span className="count">{filteredProjects.length}/{projects.length}</span>
           </div>
 
+          {query || formatFilter !== 'all' ? (
+            <button type="button" className="secondary-button" onClick={() => {setQuery(''); setFormatFilter('all'); setLibraryOpen(true);}}>Clear search and filters</button>
+          ) : null}
           <div className="project-controls">
             <label className="sr-only" htmlFor="project-search">Search projects</label>
             <input id="project-search" type="search" placeholder="Search videos…" value={query} onChange={(event) => setQuery(event.target.value)} />
