@@ -24,7 +24,7 @@ export const inspectAnimateProject = (project: VideoProject): AnimateIssue[] => 
     if (scene.title.length > 75) issues.push({sceneId: scene.id, severity: 'warning', message: 'Long title risks more than three lines'});
     if (scene.subtitle && scene.subtitle.length > 55) issues.push({sceneId: scene.id, severity: 'warning', message: 'Subtitle might overflow the safe area'});
     if (scene.duration < 2) issues.push({sceneId: scene.id, severity: 'warning', message: 'Illustration reveals too quickly'});
-    drawAnimateFrame(ctx, {width: canvas.width, height: canvas.height, style: scene.style, title: scene.title, subtitle: scene.subtitle, progress: .82, seed: scene.seed, motif: scene.motif, camera: scene.camera, elements: scene.elements, handoff: scene.handoff, figures: scene.figures, morph: scene.morph, paperObjects: scene.paperObjects, beatCues: scene.beatCues, duration: scene.duration, special: scene.special});
+    drawAnimateFrame(ctx, {width: canvas.width, height: canvas.height, style: scene.style, title: scene.title, subtitle: scene.subtitle, progress: .82, seed: scene.seed, motif: scene.motif, camera: scene.camera, elements: scene.elements, handoff: scene.handoff, figures: scene.figures, morph: scene.morph, paperObjects: scene.paperObjects, beatCues: scene.beatCues, duration: scene.duration, special: scene.special, cinematicShot: scene.cinematicShot});
     const image = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let nonBackground = 0;
     const color = palette.background.slice(1).match(/.{2}/g)?.map(v => parseInt(v, 16)) ?? [255,255,255];
