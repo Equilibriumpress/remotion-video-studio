@@ -16,7 +16,8 @@ export const RenderPanel = ({project}: Props) => {
   const visualScenes = projectVisualScenes(project);
   const usesMapLibre = visualScenes.some((scene) => scene.type === 'maplibre-route');
   const usesThree = visualScenes.some((scene) => scene.type === 'three-globe');
-  const usesExperimentalCanvas = usesThree;
+  const usesAnimateCanvas = visualScenes.some((scene) => scene.type === 'animate-canvas');
+  const usesExperimentalCanvas = usesThree || usesAnimateCanvas;
   const [profile, setProfile] = useState<RenderProfile>('draft');
   const [state, setState] = useState<RenderState>('idle');
   const [progress, setProgress] = useState(0);
@@ -25,7 +26,9 @@ export const RenderPanel = ({project}: Props) => {
       ? 'Experimental 3D/WebGL export · Chromium recommended'
       : usesMapLibre
         ? 'MapLibre snapshot export · WebGL is released before frame capture'
-        : 'Ready for browser render',
+        : usesAnimateCanvas
+          ? 'Canvas export requires experimental HTML-in-canvas capture · test in Chromium'
+          : 'Ready for browser render',
   );
   const [assets, setAssets] = useState<AssetCheck[]>([]);
   const controllerRef = useRef<AbortController | null>(null);
@@ -181,6 +184,9 @@ export const RenderPanel = ({project}: Props) => {
           the WebGL canvas is converted to an image and released; route reveal and follow motion then use
           Remotion/SVG + CSS. Map exports therefore use the normal DOM compositor instead of experimental HTML-in-canvas capture.
         </p>
+      ) : null}
+      {usesAnimateCanvas ? (
+        <p className="render-note">Procedural Canvas scenes use experimental HTML-in-canvas capture for MP4 export. Verify the full output in Chromium before publishing. Safari/iPad support is not yet confirmed.</p>
       ) : null}
       {usesThree ? (
         <p className="render-note">
