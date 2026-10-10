@@ -1,0 +1,75 @@
+{
+  "id": "netherlands-vs-the-sea",
+  "title": "The Netherlands vs. The Sea — Engineering Film",
+  "template": "explainer",
+  "format": "vertical",
+  "fps": 30,
+  "proceduralScore": {
+    "bpm": 96,
+    "root": 110,
+    "volume": 0.27,
+    "waveform": "pluck",
+    "seed": 77
+  },
+  "scenes": [
+    {
+      "id": "netherlands-sea-wave",
+      "type": "animate-canvas",
+      "style": "isometric",
+      "title": "The Wave",
+      "seaFilmShot": "wave",
+      "duration": 7,
+      "motif": "geometry",
+      "camera": "static",
+      "seed": 280
+    },
+    {
+      "id": "netherlands-sea-polder",
+      "type": "animate-canvas",
+      "style": "isometric",
+      "title": "Below Sea Level",
+      "seaFilmShot": "polder",
+      "duration": 9,
+      "motif": "geometry",
+      "camera": "static",
+      "seed": 281,
+      "transition": "cut"
+    },
+    {
+      "id": "netherlands-sea-pump",
+      "type": "animate-canvas",
+      "style": "isometric",
+      "title": "The Pump",
+      "seaFilmShot": "pump",
+      "duration": 9,
+      "motif": "geometry",
+      "camera": "static",
+      "seed": 282,
+      "transition": "cut"
+    },
+    {
+      "id": "netherlands-sea-barrier",
+      "type": "animate-canvas",
+      "style": "isometric",
+      "title": "The Barrier",
+      "seaFilmShot": "barrier",
+      "duration": 10,
+      "motif": "geometry",
+      "camera": "static",
+      "seed": 283,
+      "transition": "cut"
+    },
+    {
+      "id": "netherlands-sea-map",
+      "type": "animate-canvas",
+      "style": "isometric",
+      "title": "An Engineered Country",
+      "seaFilmShot": "map",
+      "duration": 10,
+      "motif": "geometry",
+      "camera": "static",
+      "seed": 284,
+      "transition": "cut"
+    }
+  ]
+}

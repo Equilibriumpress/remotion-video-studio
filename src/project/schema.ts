@@ -632,6 +632,7 @@ const animateCanvasScene = baseScene.extend({
   camera: z.enum(['static', 'push', 'pan-left']).default('static'),
   elements: z.array(illustrationElementSchema).max(40).optional(),
   figures: z.array(z.object({kind:z.enum(['person','computer','robot','brain','circuit','book','timeline','speech','chess']),x:z.number().min(0).max(1),y:z.number().min(0).max(1),scale:z.number().min(.04).max(.65).optional(),color:z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),from:z.number().min(0).max(1).optional(),to:z.number().min(0).max(1).optional(),label:z.string().max(30).optional()})).max(24).optional(),
+  seaFilmShot: z.enum(['wave','polder','pump','barrier','map']).optional(),
   svgFilmShot: z.enum(['alley','lantern','pagoda','teahouse','panorama']).optional(),
   cinematicShot: z.enum(['arrival','lantern','pagoda','teahouse','finale']).optional(),
   special: z.object({kind:z.enum(['raindrop','watch','kyoto']),phase:z.number().optional(),detail:z.number().optional()}).optional(),
