@@ -13,6 +13,9 @@ ChatGPT is the editorial director. It converts a narrative prompt into checked b
 7. Review preview, full-size typography, transitions and storyboard.
 8. Test Draft MP4 export in Chromium. Canvas requires `allowHtmlInCanvas` in browser rendering. Check audio sync when audio is present. Record remaining platform limitations.
 
+## Procedural sound and QA
+Use top-level `proceduralScore` for short original generated music. BPM 40–180, root frequency 55–880, volume 0–1, waveform sine/soft/pluck and a fixed integer seed. Do not combine it with another music track without checking loudness. Score is a generated WAV data URI at runtime, so monitor memory and browser codec support. Run the in-Studio visual QA before export. The checker is heuristic and does not replace inspecting final MP4 frames and sound.
+
 ## Editorial safeguards
 Do not suggest this first implementation provides real historical reconstructions. The drawn cityscape is schematic. The style registry currently controls palettes and elementary textures, not seven complete upstream animation languages. Keep claims accurate.
 
