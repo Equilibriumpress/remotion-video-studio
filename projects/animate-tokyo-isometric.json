@@ -40,5 +40,12 @@
       "seed": 27,
       "transition": "fade"
     }
-  ]
+  ],
+  "proceduralScore": {
+    "bpm": 84,
+    "root": 110,
+    "volume": 0.45,
+    "waveform": "pluck",
+    "seed": 8
+  }
 }
