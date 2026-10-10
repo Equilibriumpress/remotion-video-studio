@@ -9,6 +9,7 @@ import {AnimateStyleGuide} from './animate/StyleGuide';
 import {AnimateQA} from './animate/AnimateQA';
 
 export const App = () => {
+  const requestedProjectId = new URLSearchParams(window.location.search).get('project');
   const [projectId, setProjectId] = useState(() => {
     const requested = new URLSearchParams(window.location.search).get('project');
     return projects.find((item) => item.id === requested)?.id ?? projects[0].id;
@@ -56,10 +57,15 @@ export const App = () => {
           <span>{project.template}</span>
           <span>{Math.round(durationSeconds * 10) / 10}s</span>
           <span>{project.fps} fps</span>
-          <span title="Catalog includes History of AI">Catalog: History of AI included</span>
+          <span title="Catalog version kyoto-svg-v2">Catalog: Kyoto SVG v2 · #81</span>
         </div>
       </header>
 
+      {requestedProjectId && !projects.some((item) => item.id === requestedProjectId) ? (
+        <div role="alert" style={{padding: '12px 20px', background: '#402022', color: '#fff', fontWeight: 600}}>
+          Video “{requestedProjectId}” is niet beschikbaar in deze catalogus. Controleer of de nieuwste GitHub Pages-build is gepubliceerd.
+        </div>
+      ) : null}
       <div className="studio-grid">
         <aside className="sidebar" ref={libraryRef}>
           <button
