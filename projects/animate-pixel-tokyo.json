@@ -1,0 +1,75 @@
+{
+  "id": "animate-pixel-tokyo",
+  "title": "Pixel Tokyo",
+  "template": "explainer",
+  "format": "vertical",
+  "fps": 30,
+  "proceduralScore": {
+    "bpm": 118,
+    "root": 110,
+    "volume": 0.4,
+    "waveform": "soft",
+    "seed": 7
+  },
+  "scenes": [
+    {
+      "id": "pixel-tokyo-1",
+      "type": "animate-canvas",
+      "style": "pixel",
+      "motif": "pixel-night",
+      "camera": "push",
+      "title": "PIXEL TOKYO",
+      "subtitle": "An illustrated story",
+      "duration": 6,
+      "seed": 10
+    },
+    {
+      "id": "pixel-tokyo-2",
+      "type": "animate-canvas",
+      "style": "pixel",
+      "motif": "pixel-night",
+      "camera": "pan-left",
+      "title": "CITY LIGHTS",
+      "subtitle": "Procedural illustration",
+      "duration": 6,
+      "seed": 21,
+      "transition": "fade"
+    },
+    {
+      "id": "pixel-tokyo-3",
+      "type": "animate-canvas",
+      "style": "pixel",
+      "motif": "pixel-night",
+      "camera": "push",
+      "title": "NIGHT TRAIN",
+      "subtitle": "Layers in motion",
+      "duration": 6,
+      "seed": 32,
+      "transition": "fade"
+    },
+    {
+      "id": "pixel-tokyo-4",
+      "type": "animate-canvas",
+      "style": "pixel",
+      "motif": "pixel-night",
+      "camera": "pan-left",
+      "title": "AFTER DARK",
+      "subtitle": "Designed frame by frame",
+      "duration": 6,
+      "seed": 43,
+      "transition": "fade"
+    },
+    {
+      "id": "pixel-tokyo-5",
+      "type": "animate-canvas",
+      "style": "pixel",
+      "motif": "pixel-night",
+      "camera": "push",
+      "title": "GOOD NIGHT TOKYO",
+      "subtitle": "Made entirely in your browser",
+      "duration": 6,
+      "seed": 54,
+      "transition": "fade"
+    }
+  ]
+}
