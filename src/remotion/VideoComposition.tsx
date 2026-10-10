@@ -1,6 +1,8 @@
 import {Audio} from '@remotion/media';
 import {CameraMotionBlur} from '@remotion/motion-blur';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
+import {useMemo} from 'react';
+import {makeProceduralWav} from '../animate/proceduralAudio';
 import type {VideoProject} from '../project/schema';
 import {projectFrames, sceneFrames} from '../project/schema';
 import {resolveAsset} from '../project/assets';
@@ -16,9 +18,11 @@ export type VideoCompositionProps = {
 
 export const VideoComposition = ({project}: VideoCompositionProps) => {
   const {width, height} = useVideoConfig();
+  const scoreSrc = useMemo(() => project.proceduralScore ? makeProceduralWav(projectFrames(project) / project.fps, project.proceduralScore) : null, [project]);
 
   return (
     <AbsoluteFill style={{backgroundColor: project.theme.background}}>
+      {scoreSrc ? <Audio src={scoreSrc} volume={1} /> : null}
       {project.audio?.music ? (
         <Audio
           src={resolveAsset(project.audio.music.src)}
