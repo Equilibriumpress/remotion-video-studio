@@ -8,6 +8,8 @@ For illustrated procedural videos, read `skills/animate-director/SKILL.md`. Anim
 
 For `animate-canvas` projects, a top-level `proceduralScore` creates a deterministic WAV soundtrack in the browser. Run the Animation quality check and verify audio in the exported MP4. Canvas text checks are heuristic, not full OCR or video QA.
 
+Before creating an illustrated explainer, read `skills/explainer-production/SKILL.md` and `docs/ILLUSTRATION-KIT.md`. ChatGPT authors the script, graphics and project JSON; GitHub Pages only previews and renders. Do not add prompt interpretation or director controls to the Studio.
+
 ## New video workflow
 
 Before designing motion from a prompt, consult skills/remotion-scene-library/SKILL.md and search the pinned 201-entry background catalog if a motion technique beyond existing presets would improve the story. The catalog is authoring-only. Do not load it in the browser or imply all 201 source components are already runnable. Integrate and validate selected examples individually.
