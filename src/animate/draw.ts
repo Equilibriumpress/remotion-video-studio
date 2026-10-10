@@ -2,6 +2,7 @@ import {animateStyles, type AnimateStyle} from './styles';
 import {drawIllustrationDetails} from './illustrationDetails';
 import {drawMotif, type IllustrationMotif, type CameraPreset} from './motifs';
 import {drawElements, type IllustrationElement} from './illustrationKit';
+import {drawHandoff, type Handoff} from './transitions/sharedShapes';
 
 export type AnimateDrawing = {
   style: AnimateStyle;
@@ -14,6 +15,9 @@ export type AnimateDrawing = {
   motif?: IllustrationMotif;
   camera?: CameraPreset;
   elements?: IllustrationElement[];
+  handoff?: Handoff;
+  frame?: number;
+  frames?: number;
 };
 
 const clamp = (x: number) => Math.max(0, Math.min(1, x));
@@ -114,6 +118,7 @@ export function drawAnimateFrame(ctx: CanvasRenderingContext2D, args: AnimateDra
     ctx.restore();
   }
   ctx.restore();
+  if(args.handoff)drawHandoff(ctx,w,h,args.handoff,args.frame??Math.round(p*89),args.frames??90);
 
   const pad = w * 0.10;
   ctx.fillStyle = palette.foreground;
