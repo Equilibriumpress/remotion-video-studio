@@ -1,4 +1,5 @@
 import demo from '../../projects/demo.json';
+import animateTokyo from '../../projects/animate-tokyo-isometric.json';
 import travelDemo from '../../projects/travel-demo.json';
 import renderTest from '../../projects/render-test.json';
 import premiumMotionDemo from '../../projects/premium-motion-demo.json';
@@ -26,6 +27,7 @@ import pereLachaiseAppStoreSearch from '../../projects/perelachaise-appstore-sea
 import {parseProject, type VideoProject} from './schema';
 
 export const projects: VideoProject[] = [
+  parseProject(animateTokyo),
   parseProject(demo),
   parseProject(travelDemo),
   parseProject(renderTest),
