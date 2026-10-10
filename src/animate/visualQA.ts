@@ -7,7 +7,7 @@ export type AnimateIssue = {sceneId: string; severity: 'warning' | 'error'; mess
 export const inspectAnimateProject = (project: VideoProject): AnimateIssue[] => {
   const issues: AnimateIssue[] = [];
   const {width, height} = getDimensions(project.format);
-  const scenes = project.scenes.filter((scene) => scene.type === 'animate-canvas' && !scene.svgFilmShot);
+  const scenes = project.scenes.filter((scene) => scene.type === 'animate-canvas' && !scene.svgFilmShot && !scene.seaFilmShot);
   const canvas = document.createElement('canvas');
   canvas.width = Math.min(720, width);
   canvas.height = Math.round(canvas.width * height / width);
