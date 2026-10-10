@@ -1,0 +1,75 @@
+{
+  "id": "kyoto-after-dark-v2",
+  "title": "Kyoto After Dark 2.0 — SVG Cinematic Film",
+  "template": "explainer",
+  "format": "vertical",
+  "fps": 30,
+  "proceduralScore": {
+    "bpm": 76,
+    "root": 110,
+    "volume": 0.22,
+    "waveform": "pluck",
+    "seed": 42
+  },
+  "scenes": [
+    {
+      "id": "kyoto-v2-alley",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "title": "Arrival in Kyoto",
+      "svgFilmShot": "alley",
+      "duration": 7,
+      "motif": "geometry",
+      "camera": "static",
+      "seed": 160
+    },
+    {
+      "id": "kyoto-v2-lantern",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "title": "Lantern Light",
+      "svgFilmShot": "lantern",
+      "duration": 7,
+      "motif": "geometry",
+      "camera": "static",
+      "seed": 161,
+      "transition": "cut"
+    },
+    {
+      "id": "kyoto-v2-pagoda",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "title": "The Pagoda",
+      "svgFilmShot": "pagoda",
+      "duration": 10,
+      "motif": "geometry",
+      "camera": "static",
+      "seed": 162,
+      "transition": "cut"
+    },
+    {
+      "id": "kyoto-v2-teahouse",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "title": "Tea House",
+      "svgFilmShot": "teahouse",
+      "duration": 10,
+      "motif": "geometry",
+      "camera": "static",
+      "seed": 163,
+      "transition": "cut"
+    },
+    {
+      "id": "kyoto-v2-panorama",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "title": "Kyoto After Dark",
+      "svgFilmShot": "panorama",
+      "duration": 11,
+      "motif": "geometry",
+      "camera": "static",
+      "seed": 164,
+      "transition": "cut"
+    }
+  ]
+}
