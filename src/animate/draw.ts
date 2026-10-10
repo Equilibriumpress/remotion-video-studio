@@ -1,4 +1,5 @@
 import {animateStyles, type AnimateStyle} from './styles';
+import {drawIllustrationDetails} from './illustrationDetails';
 
 export type AnimateDrawing = {
   style: AnimateStyle;
@@ -85,6 +86,7 @@ export function drawAnimateFrame(ctx: CanvasRenderingContext2D, args: AnimateDra
       }
     }
   }
+  drawIllustrationDetails(ctx, args);
   if (style === 'riso' || style === 'crosshatch' || style === 'sketchbook') {
     ctx.save();
     ctx.beginPath();
