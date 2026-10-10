@@ -1,0 +1,75 @@
+{
+  "id": "animate-tokyo-through-time",
+  "title": "Tokyo Through Time",
+  "template": "explainer",
+  "format": "landscape",
+  "fps": 30,
+  "proceduralScore": {
+    "bpm": 96,
+    "root": 110,
+    "volume": 0.4,
+    "waveform": "soft",
+    "seed": 7
+  },
+  "scenes": [
+    {
+      "id": "tokyo-through-time-1",
+      "type": "animate-canvas",
+      "style": "riso",
+      "motif": "village",
+      "camera": "push",
+      "title": "TOKYO THROUGH TIME",
+      "subtitle": "An illustrated story",
+      "duration": 12,
+      "seed": 10
+    },
+    {
+      "id": "tokyo-through-time-2",
+      "type": "animate-canvas",
+      "style": "riso",
+      "motif": "city",
+      "camera": "pan-left",
+      "title": "EARLY CITY",
+      "subtitle": "Procedural illustration",
+      "duration": 12,
+      "seed": 21,
+      "transition": "fade"
+    },
+    {
+      "id": "tokyo-through-time-3",
+      "type": "animate-canvas",
+      "style": "riso",
+      "motif": "city",
+      "camera": "push",
+      "title": "THE RAILWAY ERA",
+      "subtitle": "Layers in motion",
+      "duration": 12,
+      "seed": 32,
+      "transition": "fade"
+    },
+    {
+      "id": "tokyo-through-time-4",
+      "type": "animate-canvas",
+      "style": "riso",
+      "motif": "city",
+      "camera": "pan-left",
+      "title": "MODERN SKYLINE",
+      "subtitle": "Designed frame by frame",
+      "duration": 12,
+      "seed": 43,
+      "transition": "fade"
+    },
+    {
+      "id": "tokyo-through-time-5",
+      "type": "animate-canvas",
+      "style": "riso",
+      "motif": "city",
+      "camera": "push",
+      "title": "TOKYO TODAY",
+      "subtitle": "Made entirely in your browser",
+      "duration": 12,
+      "seed": 54,
+      "transition": "fade"
+    }
+  ]
+}
