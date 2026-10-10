@@ -2491,7 +2491,7 @@
     {
       "id": "history-ai-v2-15",
       "type": "animate-canvas",
-      "duration": 4.2,
+      "duration": 4,
       "style": "cut-paper",
       "motif": "geometry",
       "camera": "static",
