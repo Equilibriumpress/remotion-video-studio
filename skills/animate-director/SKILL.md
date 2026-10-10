@@ -16,6 +16,9 @@ ChatGPT is the editorial director. It converts a narrative prompt into checked b
 ## Procedural sound and QA
 Use top-level `proceduralScore` for short original generated music. BPM 40–180, root frequency 55–880, volume 0–1, waveform sine/soft/pluck and a fixed integer seed. Do not combine it with another music track without checking loudness. Score is a generated WAV data URI at runtime, so monitor memory and browser codec support. Run the in-Studio visual QA before export. The checker is heuristic and does not replace inspecting final MP4 frames and sound.
 
+## Full export acceptance
+Follow `docs/ANIMATE-EXPORT-TEST.md`. Metadata decoding is performed on export, but only a complete playback review proves that audio, frames and transitions are good. Do not claim this acceptance test passed unless the exported MP4 was actually produced and played.
+
 ## Editorial safeguards
 Do not suggest this first implementation provides real historical reconstructions. The drawn cityscape is schematic. The style registry currently controls palettes and elementary textures, not seven complete upstream animation languages. Keep claims accurate.
 
