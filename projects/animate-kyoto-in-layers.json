@@ -1,0 +1,75 @@
+{
+  "id": "animate-kyoto-in-layers",
+  "title": "Kyoto in Layers",
+  "template": "explainer",
+  "format": "vertical",
+  "fps": 30,
+  "proceduralScore": {
+    "bpm": 88,
+    "root": 110,
+    "volume": 0.4,
+    "waveform": "soft",
+    "seed": 7
+  },
+  "scenes": [
+    {
+      "id": "kyoto-in-layers-1",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "motif": "temple",
+      "camera": "push",
+      "title": "THE CITY AWAKENS",
+      "subtitle": "An illustrated story",
+      "duration": 9,
+      "seed": 10
+    },
+    {
+      "id": "kyoto-in-layers-2",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "motif": "temple",
+      "camera": "pan-left",
+      "title": "TEMPLES AND STREETS",
+      "subtitle": "Procedural illustration",
+      "duration": 9,
+      "seed": 21,
+      "transition": "fade"
+    },
+    {
+      "id": "kyoto-in-layers-3",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "motif": "temple",
+      "camera": "push",
+      "title": "LAYERS OF KYOTO",
+      "subtitle": "Layers in motion",
+      "duration": 9,
+      "seed": 32,
+      "transition": "fade"
+    },
+    {
+      "id": "kyoto-in-layers-4",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "motif": "temple",
+      "camera": "pan-left",
+      "title": "AN EVENING IN KYOTO",
+      "subtitle": "Designed frame by frame",
+      "duration": 9,
+      "seed": 43,
+      "transition": "fade"
+    },
+    {
+      "id": "kyoto-in-layers-5",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "motif": "temple",
+      "camera": "push",
+      "title": "A CITY TO REMEMBER",
+      "subtitle": "Made entirely in your browser",
+      "duration": 9,
+      "seed": 54,
+      "transition": "fade"
+    }
+  ]
+}
