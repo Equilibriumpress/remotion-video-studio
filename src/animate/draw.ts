@@ -8,6 +8,7 @@ import {drawMorph, type MorphSpec} from './transitions/morphPath';
 import {drawPaperObjects, type PaperObject} from './premium/CutPaperScene';
 import {paintBeatAccent, type BeatCue} from './audio/beatMap';
 import {drawSpecial, type SpecialObject} from './specialMotifs';
+import {drawKyotoCinematic, type KyotoShot} from './cinematic/KyotoAfterDark';
 
 export type AnimateDrawing = {
   style: AnimateStyle;
@@ -26,6 +27,7 @@ export type AnimateDrawing = {
   paperObjects?: PaperObject[];
   beatCues?: BeatCue[];
   special?: SpecialObject;
+  cinematicShot?: KyotoShot;
   duration?: number;
   frame?: number;
   frames?: number;
@@ -41,6 +43,7 @@ const hash = (x: number, seed: number) => {
 /** Pure frame drawing: no timers, external images, network or mutable random state. */
 export function drawAnimateFrame(ctx: CanvasRenderingContext2D, args: AnimateDrawing) {
   const {width: w, height: h, title, subtitle, style} = args;
+  if(args.cinematicShot){drawKyotoCinematic(ctx,w,h,args.cinematicShot,args.progress);return;}
   const p = clamp(args.progress);
   const palette = animateStyles[style];
   const seed = args.seed ?? 7;
