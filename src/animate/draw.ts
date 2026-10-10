@@ -1,6 +1,7 @@
 import {animateStyles, type AnimateStyle} from './styles';
 import {drawIllustrationDetails} from './illustrationDetails';
 import {drawMotif, type IllustrationMotif, type CameraPreset} from './motifs';
+import {drawElements, type IllustrationElement} from './illustrationKit';
 
 export type AnimateDrawing = {
   style: AnimateStyle;
@@ -12,6 +13,7 @@ export type AnimateDrawing = {
   seed?: number;
   motif?: IllustrationMotif;
   camera?: CameraPreset;
+  elements?: IllustrationElement[];
 };
 
 const clamp = (x: number) => Math.max(0, Math.min(1, x));
@@ -91,6 +93,7 @@ export function drawAnimateFrame(ctx: CanvasRenderingContext2D, args: AnimateDra
   }
   if (args.motif && args.motif !== 'city') drawMotif(ctx, {...args, motif: args.motif});
   else drawIllustrationDetails(ctx, args);
+  if (args.elements?.length) drawElements(ctx, w, h, args.elements, p, palette);
   if (style === 'riso' || style === 'crosshatch' || style === 'sketchbook') {
     ctx.save();
     ctx.beginPath();

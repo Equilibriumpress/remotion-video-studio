@@ -600,6 +600,28 @@ const outroScene = baseScene.extend({
   subtitle: z.string().optional(),
 });
 
+const illustrationElementSchema = z.object({
+  kind: z.enum(['path', 'circle', 'rect', 'label', 'flow', 'morph']),
+  points: z.array(z.tuple([z.number().min(0).max(1), z.number().min(0).max(1)])).min(2).max(32).optional(),
+  targetPoints: z.array(z.tuple([z.number().min(0).max(1), z.number().min(0).max(1)])).min(2).max(32).optional(),
+  x: z.number().min(0).max(1).optional(),
+  y: z.number().min(0).max(1).optional(),
+  width: z.number().min(0).max(1).optional(),
+  height: z.number().min(0).max(1).optional(),
+  text: z.string().max(64).optional(),
+  color: z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),
+  from: z.number().min(0).max(1).optional(),
+  to: z.number().min(0).max(1).optional(),
+  speed: z.number().min(0).max(10).optional(),
+}).superRefine((item, ctx) => {
+  if ((item.kind === 'path' || item.kind === 'flow') && !item.points)
+    ctx.addIssue({code:'custom', message:'Path/flow requires points'});
+  if (item.kind === 'morph' && (!item.points || !item.targetPoints || item.points.length !== item.targetPoints.length))
+    ctx.addIssue({code:'custom', message:'Morph requires matching points and targetPoints'});
+  if (item.from !== undefined && item.to !== undefined && item.to <= item.from)
+    ctx.addIssue({code:'custom', message:'to must be greater than from'});
+});
+
 const animateCanvasScene = baseScene.extend({
   type: z.literal('animate-canvas'),
   style: z.enum(['cut-paper', 'crosshatch', 'riso', 'sketchbook', 'pixel', 'math', 'isometric']),
@@ -608,6 +630,7 @@ const animateCanvasScene = baseScene.extend({
   seed: z.number().int().min(0).max(100000).default(7),
   motif: z.enum(['city', 'temple', 'train', 'village', 'pixel-night', 'geometry']).default('city'),
   camera: z.enum(['static', 'push', 'pan-left']).default('static'),
+  elements: z.array(illustrationElementSchema).max(40).optional(),
 });
 
 export const sceneSchema = z.discriminatedUnion('type', [

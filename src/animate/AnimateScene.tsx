@@ -12,7 +12,7 @@ export function AnimateScene({scene}: {scene: Extract<VideoScene, {type: 'animat
     if (!ctx) return;
     drawAnimateFrame(ctx, {
       width, height, style: scene.style, title: scene.title,
-      subtitle: scene.subtitle, seed: scene.seed, motif: scene.motif, camera: scene.camera,
+      subtitle: scene.subtitle, seed: scene.seed, motif: scene.motif, camera: scene.camera, elements: scene.elements,
       progress: Math.min(1, Math.max(0, frame / Math.max(1, Math.round(scene.duration * fps) - 1))),
     });
   }, [frame, scene, fps, width, height]);
