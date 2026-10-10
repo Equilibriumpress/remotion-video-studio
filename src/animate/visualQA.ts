@@ -24,7 +24,6 @@ export const inspectAnimateProject = (project: VideoProject): AnimateIssue[] => 
     if (scene.title.length > 75) issues.push({sceneId: scene.id, severity: 'warning', message: 'Long title risks more than three lines'});
     if (scene.subtitle && scene.subtitle.length > 55) issues.push({sceneId: scene.id, severity: 'warning', message: 'Subtitle might overflow the safe area'});
     if (scene.duration < 2) issues.push({sceneId: scene.id, severity: 'warning', message: 'Illustration reveals too quickly'});
-    const start = ctx.getImageData(0, 0, 1, 1);
     drawAnimateFrame(ctx, {width: canvas.width, height: canvas.height, style: scene.style, title: scene.title, subtitle: scene.subtitle, progress: .82, seed: scene.seed});
     const image = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let nonBackground = 0;
@@ -33,7 +32,6 @@ export const inspectAnimateProject = (project: VideoProject): AnimateIssue[] => 
       if (Math.abs(image.data[i] - color[0]) + Math.abs(image.data[i + 1] - color[1]) + Math.abs(image.data[i + 2] - color[2]) > 45) nonBackground++;
     }
     if (nonBackground < 10) issues.push({sceneId: scene.id, severity: 'error', message: 'Scene appears blank'});
-    void start;
   }
   const timeline = sceneTimeline(project);
   if (timeline.some(item => !Number.isFinite(item.from) || item.durationInFrames < 1)) {
