@@ -631,6 +631,7 @@ const animateCanvasScene = baseScene.extend({
   motif: z.enum(['city', 'temple', 'train', 'village', 'pixel-night', 'geometry']).default('city'),
   camera: z.enum(['static', 'push', 'pan-left']).default('static'),
   elements: z.array(illustrationElementSchema).max(40).optional(),
+  figures: z.array(z.object({kind:z.enum(['person','computer','robot','brain','circuit','book','timeline','speech','chess']),x:z.number().min(0).max(1),y:z.number().min(0).max(1),scale:z.number().min(.04).max(.65).optional(),color:z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),from:z.number().min(0).max(1).optional(),to:z.number().min(0).max(1).optional(),label:z.string().max(30).optional()})).max(24).optional(),
   handoff: z.object({key:z.string().min(1),fromX:z.number().min(0).max(1),fromY:z.number().min(0).max(1),toX:z.number().min(0).max(1),toY:z.number().min(0).max(1),radius:z.number().min(.005).max(.1).optional(),color:z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),entryFrames:z.number().int().min(1).max(90).optional(),exitFrames:z.number().int().min(1).max(90).optional()}).optional(),
 });
 
