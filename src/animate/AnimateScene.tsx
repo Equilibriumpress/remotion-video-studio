@@ -12,7 +12,7 @@ export function AnimateScene({scene}: {scene: Extract<VideoScene, {type: 'animat
     if (!ctx) return;
     drawAnimateFrame(ctx, {
       width, height, style: scene.style, title: scene.title,
-      subtitle: scene.subtitle, seed: scene.seed, motif: scene.motif, camera: scene.camera, elements: scene.elements, handoff: scene.handoff, figures: scene.figures, morph: scene.morph, paperObjects: scene.paperObjects, beatCues: scene.beatCues, duration: scene.duration, special: scene.special, frame, frames: Math.round(scene.duration * fps),
+      subtitle: scene.subtitle, seed: scene.seed, motif: scene.motif, camera: scene.camera, elements: scene.elements, handoff: scene.handoff, figures: scene.figures, morph: scene.morph, paperObjects: scene.paperObjects, beatCues: scene.beatCues, duration: scene.duration, special: scene.special, cinematicShot: scene.cinematicShot, frame, frames: Math.round(scene.duration * fps),
       progress: Math.min(1, Math.max(0, frame / Math.max(1, Math.round(scene.duration * fps) - 1))),
     });
   }, [frame, scene, fps, width, height]);

@@ -1,4 +1,5 @@
 import demo from '../../projects/demo.json';
+import kyotoAfterDark from '../../projects/kyoto-after-dark.json';
 import journeyRaindrop from '../../projects/animate-journey-raindrop.json';
 import mechanicalWatch from '../../projects/animate-mechanical-watch.json';
 import kyotoDay from '../../projects/animate-kyoto-day.json';
@@ -41,6 +42,7 @@ import pereLachaiseAppStoreSearch from '../../projects/perelachaise-appstore-sea
 import {parseProject, type VideoProject} from './schema';
 
 export const projects: VideoProject[] = [
+  parseProject(kyotoAfterDark),
   parseProject(journeyRaindrop),
   parseProject(mechanicalWatch),
   parseProject(kyotoDay),
