@@ -7,6 +7,7 @@ import {drawFigures, type Figure} from './figures/FigureLibrary';
 import {drawMorph, type MorphSpec} from './transitions/morphPath';
 import {drawPaperObjects, type PaperObject} from './premium/CutPaperScene';
 import {paintBeatAccent, type BeatCue} from './audio/beatMap';
+import {drawSpecial, type SpecialObject} from './specialMotifs';
 
 export type AnimateDrawing = {
   style: AnimateStyle;
@@ -24,6 +25,7 @@ export type AnimateDrawing = {
   morph?: MorphSpec;
   paperObjects?: PaperObject[];
   beatCues?: BeatCue[];
+  special?: SpecialObject;
   duration?: number;
   frame?: number;
   frames?: number;
@@ -104,10 +106,11 @@ export function drawAnimateFrame(ctx: CanvasRenderingContext2D, args: AnimateDra
       }
     }
   }
-  if (!args.paperObjects?.length) {
+  if (!args.paperObjects?.length && !args.special) {
     if (args.motif && args.motif !== 'city') drawMotif(ctx, {...args, motif: args.motif});
     else drawIllustrationDetails(ctx, args);
   }
+  if(args.special)drawSpecial(ctx,w,h,p,args.special,palette);
   if(args.paperObjects?.length)drawPaperObjects(ctx,w,h,args.paperObjects,p,palette);
   if (args.figures?.length) drawFigures(ctx,w,h,args.figures,p,palette);
   if (args.elements?.length) drawElements(ctx, w, h, args.elements, p, palette);
