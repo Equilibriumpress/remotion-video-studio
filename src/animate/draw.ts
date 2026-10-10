@@ -6,6 +6,7 @@ import {drawHandoff, type Handoff} from './transitions/sharedShapes';
 import {drawFigures, type Figure} from './figures/FigureLibrary';
 import {drawMorph, type MorphSpec} from './transitions/morphPath';
 import {drawPaperObjects, type PaperObject} from './premium/CutPaperScene';
+import {paintBeatAccent, type BeatCue} from './audio/beatMap';
 
 export type AnimateDrawing = {
   style: AnimateStyle;
@@ -22,6 +23,8 @@ export type AnimateDrawing = {
   figures?: Figure[];
   morph?: MorphSpec;
   paperObjects?: PaperObject[];
+  beatCues?: BeatCue[];
+  duration?: number;
   frame?: number;
   frames?: number;
 };
@@ -127,6 +130,7 @@ export function drawAnimateFrame(ctx: CanvasRenderingContext2D, args: AnimateDra
   }
   ctx.restore();
   if(args.morph)drawMorph(ctx,w,h,args.morph,p);
+  if(args.beatCues?.length)paintBeatAccent(ctx,w,h,args.beatCues,p*(args.duration??5));
   if(args.handoff)drawHandoff(ctx,w,h,args.handoff,args.frame??Math.round(p*89),args.frames??90);
 
   const pad = w * 0.10;

@@ -8,7 +8,7 @@ function BoardTile({scene, index}: {scene: Extract<VideoScene, {type: 'animate-c
   const canvas = useRef<HTMLCanvasElement>(null);
   useLayoutEffect(() => {
     const ctx = canvas.current?.getContext('2d');
-    if (ctx) drawAnimateFrame(ctx, {width: 240, height: 135, style: scene.style, title: scene.title, subtitle: scene.subtitle, seed: scene.seed, motif: scene.motif, camera: scene.camera, elements: scene.elements, figures: scene.figures, morph: scene.morph, paperObjects: scene.paperObjects, handoff: scene.handoff, progress: 0.8});
+    if (ctx) drawAnimateFrame(ctx, {width: 240, height: 135, style: scene.style, title: scene.title, subtitle: scene.subtitle, seed: scene.seed, motif: scene.motif, camera: scene.camera, elements: scene.elements, figures: scene.figures, morph: scene.morph, paperObjects: scene.paperObjects, beatCues: scene.beatCues, duration: scene.duration, handoff: scene.handoff, progress: 0.8});
   }, [scene]);
   return (
     <div style={{minWidth: 150, flex: '1 1 180px', maxWidth: 280}}>
