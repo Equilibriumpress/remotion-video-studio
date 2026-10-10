@@ -631,6 +631,7 @@ const animateCanvasScene = baseScene.extend({
   motif: z.enum(['city', 'temple', 'train', 'village', 'pixel-night', 'geometry']).default('city'),
   camera: z.enum(['static', 'push', 'pan-left']).default('static'),
   elements: z.array(illustrationElementSchema).max(40).optional(),
+  handoff: z.object({key:z.string().min(1),fromX:z.number().min(0).max(1),fromY:z.number().min(0).max(1),toX:z.number().min(0).max(1),toY:z.number().min(0).max(1),radius:z.number().min(.005).max(.1).optional(),color:z.string().regex(/^#[0-9a-fA-F]{6}$/).optional(),entryFrames:z.number().int().min(1).max(90).optional(),exitFrames:z.number().int().min(1).max(90).optional()}).optional(),
 });
 
 export const sceneSchema = z.discriminatedUnion('type', [
