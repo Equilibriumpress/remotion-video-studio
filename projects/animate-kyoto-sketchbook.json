@@ -1,0 +1,44 @@
+{
+  "id": "animate-kyoto-sketchbook",
+  "title": "Kyoto — Sketchbook Impressions",
+  "template": "explainer",
+  "format": "landscape",
+  "fps": 30,
+  "theme": {
+    "background": "#F8F1E3",
+    "foreground": "#363B3F",
+    "muted": "#8D9F9A",
+    "accent": "#CC7455"
+  },
+  "scenes": [
+    {
+      "id": "kyoto-sketch",
+      "type": "animate-canvas",
+      "style": "sketchbook",
+      "title": "KYOTO",
+      "subtitle": "An illustrated city portrait",
+      "duration": 6,
+      "seed": 42
+    },
+    {
+      "id": "kyoto-line",
+      "type": "animate-canvas",
+      "style": "crosshatch",
+      "title": "SHAPES AND STREETS",
+      "subtitle": "Architectural impressions",
+      "duration": 6,
+      "seed": 18,
+      "transition": "fade"
+    },
+    {
+      "id": "kyoto-finish",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "title": "THE JOURNEY CONTINUES",
+      "subtitle": "A browser-rendered animation",
+      "duration": 6,
+      "seed": 5,
+      "transition": "fade"
+    }
+  ]
+}

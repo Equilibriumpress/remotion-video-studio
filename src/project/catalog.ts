@@ -1,5 +1,7 @@
 import demo from '../../projects/demo.json';
 import animateTokyo from '../../projects/animate-tokyo-isometric.json';
+import animateKyoto from '../../projects/animate-kyoto-sketchbook.json';
+import animateMath from '../../projects/animate-math-city.json';
 import travelDemo from '../../projects/travel-demo.json';
 import renderTest from '../../projects/render-test.json';
 import premiumMotionDemo from '../../projects/premium-motion-demo.json';
@@ -28,6 +30,8 @@ import {parseProject, type VideoProject} from './schema';
 
 export const projects: VideoProject[] = [
   parseProject(animateTokyo),
+  parseProject(animateKyoto),
+  parseProject(animateMath),
   parseProject(demo),
   parseProject(travelDemo),
   parseProject(renderTest),
