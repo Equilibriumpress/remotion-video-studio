@@ -1,0 +1,80 @@
+{
+  "id": "kyoto-after-dark",
+  "title": "Kyoto After Dark — Cinematic Illustrated Film",
+  "template": "explainer",
+  "format": "vertical",
+  "fps": 30,
+  "proceduralScore": {
+    "bpm": 76,
+    "root": 110,
+    "volume": 0.22,
+    "waveform": "pluck",
+    "seed": 33
+  },
+  "scenes": [
+    {
+      "id": "kyoto-after-dark-arrival",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "title": "Arrival",
+      "subtitle": "Kyoto changes after sunset.",
+      "cinematicShot": "arrival",
+      "duration": 7,
+      "seed": 101,
+      "motif": "geometry",
+      "camera": "static"
+    },
+    {
+      "id": "kyoto-after-dark-lantern",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "title": "Lantern Light",
+      "subtitle": "Paper. Light. Silence.",
+      "cinematicShot": "lantern",
+      "duration": 7,
+      "seed": 102,
+      "motif": "geometry",
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "id": "kyoto-after-dark-pagoda",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "title": "Hidden Kyoto",
+      "subtitle": "A city of hidden views.",
+      "cinematicShot": "pagoda",
+      "duration": 10,
+      "seed": 103,
+      "motif": "geometry",
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "id": "kyoto-after-dark-teahouse",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "title": "Tea House",
+      "subtitle": "A softer rhythm begins.",
+      "cinematicShot": "teahouse",
+      "duration": 10,
+      "seed": 104,
+      "motif": "geometry",
+      "camera": "static",
+      "transition": "cut"
+    },
+    {
+      "id": "kyoto-after-dark-finale",
+      "type": "animate-canvas",
+      "style": "cut-paper",
+      "title": "Kyoto After Dark",
+      "subtitle": "Kyoto After Dark",
+      "cinematicShot": "finale",
+      "duration": 11,
+      "seed": 105,
+      "motif": "geometry",
+      "camera": "static",
+      "transition": "cut"
+    }
+  ]
+}
