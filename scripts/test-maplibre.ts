@@ -53,13 +53,13 @@ assert.match(source, /opacity:\s*ready\s*\?\s*1\s*:\s*0/);
 
 assert.match(
   renderPanel,
-  /const usesExperimentalCanvas = usesThree;/,
-  'MapLibre snapshots should not enable experimental HTML-in-canvas capture',
+  /const usesExperimentalCanvas = usesThree \|\| usesAnimateCanvas;/,
+  'MapLibre snapshots alone should not enable experimental HTML-in-canvas capture',
 );
 assert.match(
   renderPanel,
   /allowHtmlInCanvas:\s*usesExperimentalCanvas/,
-  'Only live Three.js canvas scenes should opt into HTML-in-canvas capture',
+  'Only live Three.js and Animate Canvas scenes should opt into HTML-in-canvas capture',
 );
 
 console.log('MapLibre v3: bounded snapshot, memory, lifecycle and fixed-plate invariants validated.');
