@@ -4,8 +4,9 @@
  */
 export type Point = [number, number];
 export type IllustrationElement = {
-  kind: 'path' | 'circle' | 'rect' | 'label' | 'flow';
+  kind: 'path' | 'circle' | 'rect' | 'label' | 'flow' | 'morph';
   points?: Point[];
+  targetPoints?: Point[];
   x?: number; y?: number; width?: number; height?: number;
   text?: string;
   color?: string;
@@ -28,6 +29,12 @@ export function drawElements(ctx:CanvasRenderingContext2D, width:number, height:
     if(element.kind==='label'){
       ctx.font=`600 ${Math.round(scale*.026)}px Arial, sans-serif`;
       ctx.fillText(element.text??'',(element.x??.5)*width,(element.y??.5)*height);
+    }
+    if(element.kind==='morph'&&element.points&&element.targetPoints&&element.points.length===element.targetPoints.length){
+      ctx.beginPath();element.points.forEach(([x,y],i)=>{
+        const [tx,ty]=element.targetPoints![i];const px=(x+(tx-x)*reveal)*width,py=(y+(ty-y)*reveal)*height;
+        i?ctx.lineTo(px,py):ctx.moveTo(px,py);
+      });ctx.closePath();ctx.fill();
     }
     if((element.kind==='path'||element.kind==='flow')&&element.points&&element.points.length>1){
       const points=element.points;const lengths:number[]=[];let total=0;
