@@ -1,0 +1,75 @@
+{
+  "id": "animate-how-a-shinkansen-works",
+  "title": "How a Shinkansen Works",
+  "template": "explainer",
+  "format": "landscape",
+  "fps": 30,
+  "proceduralScore": {
+    "bpm": 106,
+    "root": 110,
+    "volume": 0.4,
+    "waveform": "soft",
+    "seed": 7
+  },
+  "scenes": [
+    {
+      "id": "how-a-shinkansen-works-1",
+      "type": "animate-canvas",
+      "style": "sketchbook",
+      "motif": "train",
+      "camera": "push",
+      "title": "THE SHINKANSEN",
+      "subtitle": "An illustrated story",
+      "duration": 10,
+      "seed": 10
+    },
+    {
+      "id": "how-a-shinkansen-works-2",
+      "type": "animate-canvas",
+      "style": "sketchbook",
+      "motif": "train",
+      "camera": "pan-left",
+      "title": "STREAMLINED FORM",
+      "subtitle": "Procedural illustration",
+      "duration": 10,
+      "seed": 21,
+      "transition": "fade"
+    },
+    {
+      "id": "how-a-shinkansen-works-3",
+      "type": "animate-canvas",
+      "style": "sketchbook",
+      "motif": "train",
+      "camera": "push",
+      "title": "POWER AND MOTION",
+      "subtitle": "Layers in motion",
+      "duration": 10,
+      "seed": 32,
+      "transition": "fade"
+    },
+    {
+      "id": "how-a-shinkansen-works-4",
+      "type": "animate-canvas",
+      "style": "sketchbook",
+      "motif": "train",
+      "camera": "pan-left",
+      "title": "A SMOOTH JOURNEY",
+      "subtitle": "Designed frame by frame",
+      "duration": 10,
+      "seed": 43,
+      "transition": "fade"
+    },
+    {
+      "id": "how-a-shinkansen-works-5",
+      "type": "animate-canvas",
+      "style": "sketchbook",
+      "motif": "train",
+      "camera": "push",
+      "title": "ENGINEERING IN MOTION",
+      "subtitle": "Made entirely in your browser",
+      "duration": 10,
+      "seed": 54,
+      "transition": "fade"
+    }
+  ]
+}
