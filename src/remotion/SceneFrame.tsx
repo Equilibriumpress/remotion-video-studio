@@ -1,4 +1,5 @@
 import {Video} from '@remotion/media';
+import {AnimateScene} from '../animate/AnimateScene';
 import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {VideoProject, VideoScene} from '../project/schema';
 import {resolveAsset} from '../project/assets';
@@ -156,6 +157,8 @@ export const SceneFrame = ({scene, project, transitionInFrames = 0}: Props) => {
     config: {damping: 18, stiffness: 115, mass: 0.8},
     durationInFrames: Math.max(12, Math.round(fps * 0.75)),
   });
+
+  if (scene.type === 'animate-canvas') return <AnimateScene scene={scene} />;
 
   if (scene.type === 'bitcoin-explainer') {
     return <BitcoinExplainerSceneFrame scene={scene} project={project} />;

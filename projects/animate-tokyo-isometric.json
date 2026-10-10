@@ -1,0 +1,44 @@
+{
+  "id": "animate-tokyo-isometric",
+  "title": "Tokyo — Illustrated City",
+  "template": "explainer",
+  "format": "vertical",
+  "fps": 30,
+  "theme": {
+    "background": "#F4EFE3",
+    "foreground": "#25354A",
+    "muted": "#8BAAA4",
+    "accent": "#D16D54"
+  },
+  "scenes": [
+    {
+      "id": "tokyo-intro",
+      "type": "animate-canvas",
+      "duration": 5,
+      "style": "isometric",
+      "title": "TOKYO",
+      "subtitle": "A city in motion",
+      "seed": 7
+    },
+    {
+      "id": "tokyo-architecture",
+      "type": "animate-canvas",
+      "duration": 5,
+      "style": "cut-paper",
+      "title": "LAYERS OF TIME",
+      "subtitle": "An illustrated urban story",
+      "seed": 17,
+      "transition": "fade"
+    },
+    {
+      "id": "tokyo-riso",
+      "type": "animate-canvas",
+      "duration": 5,
+      "style": "riso",
+      "title": "A NEW PERSPECTIVE",
+      "subtitle": "Procedurally animated in your browser",
+      "seed": 27,
+      "transition": "fade"
+    }
+  ]
+}

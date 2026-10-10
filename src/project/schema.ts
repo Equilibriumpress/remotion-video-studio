@@ -600,7 +600,16 @@ const outroScene = baseScene.extend({
   subtitle: z.string().optional(),
 });
 
+const animateCanvasScene = baseScene.extend({
+  type: z.literal('animate-canvas'),
+  style: z.enum(['cut-paper', 'crosshatch', 'riso', 'sketchbook', 'pixel', 'math', 'isometric']),
+  title: z.string().min(1).max(100),
+  subtitle: z.string().max(100).optional(),
+  seed: z.number().int().min(0).max(100000).default(7),
+});
+
 export const sceneSchema = z.discriminatedUnion('type', [
+  animateCanvasScene,
   titleScene,
   imageScene,
   heroImageScene,
