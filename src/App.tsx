@@ -4,6 +4,7 @@ import {projects} from './project/catalog';
 import {getDimensions, projectFrames} from './project/schema';
 import {ProjectComposition} from './remotion/ProjectComposition';
 import {RenderPanel} from './render/RenderPanel';
+import {AnimateStoryboard} from './animate/AnimateStoryboard';
 
 export const App = () => {
   const [projectId, setProjectId] = useState(projects[0].id);
@@ -173,6 +174,7 @@ export const App = () => {
           </div>
 
           <RenderPanel key={project.id} project={project} />
+          <AnimateStoryboard project={project} />
 
           <div className="scene-strip" aria-label={project.youtube ? 'Chapter overview' : 'Scene overview'}>
             {project.nativeComposition
