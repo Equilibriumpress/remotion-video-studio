@@ -751,6 +751,14 @@ const reelCaptionsSchema = z.object({
   captions: z.array(captionSegmentSchema).min(1).max(200),
 });
 
+const proceduralScoreSchema = z.object({
+  bpm: z.number().min(40).max(180).default(88),
+  root: z.number().min(55).max(880).default(110),
+  volume: z.number().min(0).max(1).default(0.42),
+  waveform: z.enum(['sine', 'soft', 'pluck']).default('soft'),
+  seed: z.number().int().min(0).max(100000).default(7),
+});
+
 const projectObjectSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
@@ -779,6 +787,7 @@ const projectObjectSchema = z.object({
     voiceover: audioTrackSchema.optional(),
   }).optional(),
   voiceoverScript: z.array(voiceoverCueSchema).max(64).optional(),
+  proceduralScore: proceduralScoreSchema.optional(),
   reelCaptions: reelCaptionsSchema.optional(),
   scenes: z.array(sceneSchema).default([]),
   // The upstream reference is rendered directly, not converted into JSON scenes.
@@ -957,6 +966,7 @@ export const projectVisualScenes = (project: VideoProject): VideoScene[] => [
 
 export const projectHasAudio = (project: VideoProject) =>
   Boolean(
+    project.proceduralScore ||
     project.audio?.music ||
     project.audio?.voiceover ||
     project.youtube?.music ||
