@@ -1,4 +1,5 @@
 import demo from '../../projects/demo.json';
+import historyOfAiV2 from '../../projects/animate-history-of-ai-v2.json';
 import historyOfAi from '../../projects/animate-history-of-ai.json';
 import heatPumpExplainer from '../../projects/animate-heat-pump-explainer.json';
 import animateShowcase0 from '../../projects/animate-kyoto-in-layers.json';
@@ -37,6 +38,7 @@ import pereLachaiseAppStoreSearch from '../../projects/perelachaise-appstore-sea
 import {parseProject, type VideoProject} from './schema';
 
 export const projects: VideoProject[] = [
+  parseProject(historyOfAiV2),
   parseProject(historyOfAi),
   parseProject(heatPumpExplainer),
   parseProject(animateShowcase0),
