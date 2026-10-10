@@ -96,7 +96,7 @@
     {
       "id": "history-ai-02",
       "type": "animate-canvas",
-      "duration": 5,
+      "duration": 5.3,
       "style": "cut-paper",
       "motif": "village",
       "camera": "static",
@@ -179,7 +179,7 @@
     {
       "id": "history-ai-03",
       "type": "animate-canvas",
-      "duration": 5,
+      "duration": 5.3,
       "style": "cut-paper",
       "motif": "city",
       "camera": "static",
@@ -262,7 +262,7 @@
     {
       "id": "history-ai-04",
       "type": "animate-canvas",
-      "duration": 5,
+      "duration": 5.3,
       "style": "cut-paper",
       "motif": "geometry",
       "camera": "push",
@@ -345,7 +345,7 @@
     {
       "id": "history-ai-05",
       "type": "animate-canvas",
-      "duration": 5,
+      "duration": 5.3,
       "style": "cut-paper",
       "motif": "city",
       "camera": "static",
@@ -428,7 +428,7 @@
     {
       "id": "history-ai-06",
       "type": "animate-canvas",
-      "duration": 5,
+      "duration": 5.3,
       "style": "cut-paper",
       "motif": "geometry",
       "camera": "static",
@@ -511,7 +511,7 @@
     {
       "id": "history-ai-07",
       "type": "animate-canvas",
-      "duration": 5,
+      "duration": 5.3,
       "style": "cut-paper",
       "motif": "geometry",
       "camera": "push",
@@ -594,7 +594,7 @@
     {
       "id": "history-ai-08",
       "type": "animate-canvas",
-      "duration": 5,
+      "duration": 5.3,
       "style": "cut-paper",
       "motif": "geometry",
       "camera": "static",
@@ -677,7 +677,7 @@
     {
       "id": "history-ai-09",
       "type": "animate-canvas",
-      "duration": 5,
+      "duration": 5.3,
       "style": "cut-paper",
       "motif": "geometry",
       "camera": "static",
@@ -760,7 +760,7 @@
     {
       "id": "history-ai-10",
       "type": "animate-canvas",
-      "duration": 5,
+      "duration": 5.3,
       "style": "cut-paper",
       "motif": "geometry",
       "camera": "push",
@@ -843,7 +843,7 @@
     {
       "id": "history-ai-11",
       "type": "animate-canvas",
-      "duration": 5,
+      "duration": 5.3,
       "style": "cut-paper",
       "motif": "city",
       "camera": "static",
@@ -926,7 +926,7 @@
     {
       "id": "history-ai-12",
       "type": "animate-canvas",
-      "duration": 5,
+      "duration": 5.3,
       "style": "cut-paper",
       "motif": "geometry",
       "camera": "static",
