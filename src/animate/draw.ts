@@ -1,5 +1,6 @@
 import {animateStyles, type AnimateStyle} from './styles';
 import {drawIllustrationDetails} from './illustrationDetails';
+import {drawMotif, type IllustrationMotif, type CameraPreset} from './motifs';
 
 export type AnimateDrawing = {
   style: AnimateStyle;
@@ -9,6 +10,8 @@ export type AnimateDrawing = {
   width: number;
   height: number;
   seed?: number;
+  motif?: IllustrationMotif;
+  camera?: CameraPreset;
 };
 
 const clamp = (x: number) => Math.max(0, Math.min(1, x));
@@ -32,7 +35,7 @@ export function drawAnimateFrame(ctx: CanvasRenderingContext2D, args: AnimateDra
   const pixel = style === 'pixel';
   const baseY = h * 0.70;
   const spread = w * 0.77;
-  const count = 11;
+  const count = args.motif && args.motif !== 'city' ? 0 : 11;
   if (style === 'math' || style === 'isometric') {
     ctx.strokeStyle = palette.secondary;
     ctx.globalAlpha = 0.23;
@@ -86,7 +89,8 @@ export function drawAnimateFrame(ctx: CanvasRenderingContext2D, args: AnimateDra
       }
     }
   }
-  drawIllustrationDetails(ctx, args);
+  if (args.motif && args.motif !== 'city') drawMotif(ctx, {...args, motif: args.motif});
+  else drawIllustrationDetails(ctx, args);
   if (style === 'riso' || style === 'crosshatch' || style === 'sketchbook') {
     ctx.save();
     ctx.beginPath();
