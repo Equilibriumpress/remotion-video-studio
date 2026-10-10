@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run validate && npm run test:motion-library && npm run test:geo && npm run test:three && npm run test:maplibre && npm run test:motion-system && npm run test:director && npm run test:youtube && npm run test:asset-free-youtube && npm run test:bitcoin-example && npm run test:travel-reel && tsc -b && vite build",
+    "build": "npm run validate && npm run test:animate-showcases && npm run test:motion-library && npm run test:geo && npm run test:three && npm run test:maplibre && npm run test:motion-system && npm run test:director && npm run test:youtube && npm run test:asset-free-youtube && npm run test:bitcoin-example && npm run test:travel-reel && tsc -b && vite build",
     "preview": "vite preview",
     "validate": "tsx scripts/validate-projects.ts",
     "routes:scotland": "node scripts/refresh-scotland-route.mjs",
@@ -19,7 +19,8 @@
     "test:motion-library": "node scripts/test-motion-library.mjs",
     "test:asset-free-youtube": "tsx scripts/test-asset-free-youtube.ts",
     "test:bitcoin-example": "tsx scripts/test-bitcoin-example.ts",
-    "test:travel-reel": "tsx scripts/test-travel-reel.ts"
+    "test:travel-reel": "tsx scripts/test-travel-reel.ts",
+    "test:animate-showcases": "tsx scripts/test-animate-showcases.ts"
   },
   "dependencies": {
     "@remotion/player": "4.0.534",
