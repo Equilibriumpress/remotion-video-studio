@@ -5,6 +5,7 @@ import {drawElements, type IllustrationElement} from './illustrationKit';
 import {drawHandoff, type Handoff} from './transitions/sharedShapes';
 import {drawFigures, type Figure} from './figures/FigureLibrary';
 import {drawMorph, type MorphSpec} from './transitions/morphPath';
+import {drawPaperObjects, type PaperObject} from './premium/CutPaperScene';
 
 export type AnimateDrawing = {
   style: AnimateStyle;
@@ -20,6 +21,7 @@ export type AnimateDrawing = {
   handoff?: Handoff;
   figures?: Figure[];
   morph?: MorphSpec;
+  paperObjects?: PaperObject[];
   frame?: number;
   frames?: number;
 };
@@ -101,6 +103,7 @@ export function drawAnimateFrame(ctx: CanvasRenderingContext2D, args: AnimateDra
   }
   if (args.motif && args.motif !== 'city') drawMotif(ctx, {...args, motif: args.motif});
   else drawIllustrationDetails(ctx, args);
+  if(args.paperObjects?.length)drawPaperObjects(ctx,w,h,args.paperObjects,p,palette);
   if (args.figures?.length) drawFigures(ctx,w,h,args.figures,p,palette);
   if (args.elements?.length) drawElements(ctx, w, h, args.elements, p, palette);
   if (style === 'riso' || style === 'crosshatch' || style === 'sketchbook') {
