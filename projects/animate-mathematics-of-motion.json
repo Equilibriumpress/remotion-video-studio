@@ -1,0 +1,75 @@
+{
+  "id": "animate-mathematics-of-motion",
+  "title": "The Mathematics of Motion",
+  "template": "explainer",
+  "format": "landscape",
+  "fps": 30,
+  "proceduralScore": {
+    "bpm": 108,
+    "root": 110,
+    "volume": 0.4,
+    "waveform": "soft",
+    "seed": 7
+  },
+  "scenes": [
+    {
+      "id": "mathematics-of-motion-1",
+      "type": "animate-canvas",
+      "style": "math",
+      "motif": "geometry",
+      "camera": "push",
+      "title": "MOTION STARTS HERE",
+      "subtitle": "An illustrated story",
+      "duration": 7,
+      "seed": 10
+    },
+    {
+      "id": "mathematics-of-motion-2",
+      "type": "animate-canvas",
+      "style": "math",
+      "motif": "geometry",
+      "camera": "pan-left",
+      "title": "THE FIRST FRAME",
+      "subtitle": "Procedural illustration",
+      "duration": 7,
+      "seed": 21,
+      "transition": "fade"
+    },
+    {
+      "id": "mathematics-of-motion-3",
+      "type": "animate-canvas",
+      "style": "math",
+      "motif": "geometry",
+      "camera": "push",
+      "title": "PATHS AND CURVES",
+      "subtitle": "Layers in motion",
+      "duration": 7,
+      "seed": 32,
+      "transition": "fade"
+    },
+    {
+      "id": "mathematics-of-motion-4",
+      "type": "animate-canvas",
+      "style": "math",
+      "motif": "geometry",
+      "camera": "pan-left",
+      "title": "TIMING MATTERS",
+      "subtitle": "Designed frame by frame",
+      "duration": 7,
+      "seed": 43,
+      "transition": "fade"
+    },
+    {
+      "id": "mathematics-of-motion-5",
+      "type": "animate-canvas",
+      "style": "math",
+      "motif": "geometry",
+      "camera": "push",
+      "title": "EVERY FRAME COUNTS",
+      "subtitle": "Made entirely in your browser",
+      "duration": 7,
+      "seed": 54,
+      "transition": "fade"
+    }
+  ]
+}
